@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kursatca.com | Eğitim</title>
+  <meta name="description" content="5. sınıftan 12. sınıfa kadar Sosyal Bilgiler ve T.C. İnkılap Tarihi müfredatına uygun interaktif eğitim materyalleri." />
+  <link rel="stylesheet" href="css/style.css?v=1.0.1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+</head>
+<body class="education-page">
+
+  <!-- NAV -->
+  <nav class="nav" id="main-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="dot"></span>kursatca<span style="color: var(--clr-teal); font-weight: 400;">.com</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="egitim.html" class="active">Eğitim</a></li>
+        <li><a href="yapay-zeka.html">Yapay Zeka</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="hakkimda.html">Hakkımda</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <span class="badge"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg> Sosyal Bilgiler &amp; İnkılap Tarihi</span>
+    <h1 style="margin-top: var(--space-md);">Eğitim <span class="text-gradient">İçerikleri</span></h1>
+    <p>Ortaokul ve lise seviyesinde, müfredata uygun interaktif ders materyalleri ve etkinlikler.</p>
+  </header>
+
+  <!-- MAIN TABS & RECENTLY ADDED -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container container-wide education-glass-wrapper">
+
+      <!-- ═══════════ RECENTLY ADDED (SON EKLENENLER) ═══════════ -->
+      <div class="recently-added" style="margin-bottom: var(--space-xl);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-md);">
+          <h2 style="font-size: var(--fs-h3);"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg> Son Eklenen İçerikler</h2>
+          <span class="badge" style="font-size: 0.7rem;">Güncel</span>
+        </div>
+        <div class="content-grid" id="recent-docs-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+          <!-- Placeholder for dynamic content -->
+          <a href="#" class="topic-item" style="background: var(--clr-bg-surface); border: 1px solid var(--clr-border-glass); border-radius: var(--radius-md);">
+            <div class="topic-num" style="background: rgba(124,58,237,0.1); color: var(--clr-primary); padding: 8px; border-radius: 8px;"><span style="font-size: 0.7rem; font-weight: 800; display: inline-block; vertical-align: middle; color: currentColor;">YENİ</span></div>
+            <div class="topic-title" style="font-weight: 600;">8. Sınıf - Kuvâ-yı Millîye Hareketi</div>
+            <div class="topic-arrow">→</div>
+          </a>
+          <a href="#" class="topic-item" style="background: var(--clr-bg-surface); border: 1px solid var(--clr-border-glass); border-radius: var(--radius-md);">
+            <div class="topic-num" style="background: rgba(6,182,212,0.1); color: var(--clr-secondary); padding: 8px; border-radius: 8px;"><span style="font-size: 0.7rem; font-weight: 800; display: inline-block; vertical-align: middle; color: currentColor;">YENİ</span></div>
+            <div class="topic-title" style="font-weight: 600;">7. Sınıf - İletişimin Günlük Yaşamdaki Yeri</div>
+            <div class="topic-arrow">→</div>
+          </a>
+          <a href="#" class="topic-item" style="background: var(--clr-bg-surface); border: 1px solid var(--clr-border-glass); border-radius: var(--radius-md);">
+            <div class="topic-num" style="background: rgba(255,45,85,0.1); color: var(--clr-accent); padding: 8px; border-radius: 8px;"><span style="font-size: 0.7rem; font-weight: 800; display: inline-block; vertical-align: middle; color: currentColor;">YENİ</span></div>
+            <div class="topic-title" style="font-weight: 600;">Lise 9 - Eski Çağ'da Yönetenler</div>
+            <div class="topic-arrow">→</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="tab-ortaokul">Ortaokul (5–8)</button>
+        <button class="tab-btn" data-tab="tab-lise">Lise (9–12)</button>
+      </div>
+
+      <!-- ╔══════════════════════════════════════╗ -->
+      <!-- ║         ORTAOKUL TAB                 ║ -->
+      <!-- ╚══════════════════════════════════════╝ -->
+      <div class="tab-panel active" id="tab-ortaokul">
+
+        <!-- Grade Sub-Tabs -->
+        <div class="grade-tabs">
+          <button class="grade-btn active" data-grade="5">5. Sınıf</button>
+          <button class="grade-btn" data-grade="6">6. Sınıf</button>
+          <button class="grade-btn" data-grade="7">7. Sınıf</button>
+          <button class="grade-btn" data-grade="8">8. Sınıf</button>
+        </div>
+
+        <!-- ══════════ 5. SINIF ══════════ -->
+        <div class="grade-panel grade-5 active" id="grade-5">
+          <div class="grade-summary">
+            <div class="grade-summary-item"><span class="gs-number">6</span><span class="gs-label">Ünite</span></div>
+            <div class="grade-summary-item"><span class="gs-number">15</span><span class="gs-label">Konu</span></div>
+            <div class="grade-summary-item"><span class="gs-number">5</span><span class="gs-label">Sınıf Seviyesi</span></div>
+          </div>
+          
+          <!-- Özel Arşiv & Hazine Kutusu (5. Sınıf) -->
+          <div class="special-archive-area reveal" id="archive-5">
+            <div class="archive-header" onclick="this.parentElement.classList.toggle('open')">
+              <div class="archive-header-left">
+                <span class="archive-badge">📦 Hazine Kutusu</span>
+                <h2>5. Sınıf Genel Kaynaklar</h2>
+                <p style="font-size: 0.85rem; color: var(--clr-text-muted); margin: 0;">Bu sınıf seviyesi için özel kaynaklar yakında eklenecektir.</p>
+              </div>
+              <div class="archive-toggle-btn">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            
+            <div class="archive-content">
+              <div class="archive-list" style="text-align: center; padding: 40px;">
+                <p style="color: var(--clr-text-muted);">Henüz bir döküman bulunmuyor. Yeni kaynaklar eklendiğinde burada görebileceksin.</p>
+              </div>
+            </div>
+          </div>
+<div class="unit-list">
+
+            <!-- Ünite 1 -->
+            <div class="unit-accordion">
+              <div class="unit-header">
+                <div class="unit-number">1</div>
+                <div class="unit-info">
+                  <h3>Birlikte Yaşamak</h3>
+                  <span class="unit-meta">3 konu</span>
+                </div>
+                <div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </div>
+              <div class="unit-body">
+                <div class="unit-divider"></div>
+                <div class="topic-list">
+                  <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Gruplar ve Rollerimiz</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Kültürel Zenginliklerin Birlikte Yaşamaya Katkısı</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Yardımlaşma ve Dayanışmada Beraberiz</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ünite 2 -->
+            <div class="unit-accordion">
+              <div class="unit-header">
+                <div class="unit-number">2</div>
+                <div class="unit-info">
+                  <h3>Evimiz Dünya</h3>
+                  <span class="unit-meta">4 konu</span>
+                </div>
+                <div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </div>
+              <div class="unit-body">
+                <div class="unit-divider"></div>
+                <div class="topic-list">
+                  <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">İlimizin Göreceli Konumu</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Doğal ve Beşerî Çevremizdeki Değişim</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">İlimizde Yaşanabilecek Afetler ve Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">Ülkemize Komşu Devletler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ünite 3 -->
+            <div class="unit-accordion">
+              <div class="unit-header">
+                <div class="unit-number">3</div>
+                <div class="unit-info">
+                  <h3>Ortak Mirasımız</h3>
+                  <span class="unit-meta">3 konu</span>
+                </div>
+                <div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </div>
+              <div class="unit-body">
+                <div class="unit-divider"></div>
+                <div class="topic-list">
+                  <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Ortak Kültürel Mirasımız</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Anadolu'nun İlk Yerleşim Yerlerinde Yaşam</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Mezopotamya ve Anadolu Medeniyetlerinin Ortak Kültürel Mirasa Katkıları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ünite 4 -->
+            <div class="unit-accordion">
+              <div class="unit-header">
+                <div class="unit-number">4</div>
+                <div class="unit-info">
+                  <h3>Yaşayan Demokrasimiz</h3>
+                  <span class="unit-meta">4 konu</span>
+                </div>
+                <div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </div>
+              <div class="unit-body">
+                <div class="unit-divider"></div>
+                <div class="topic-list">
+                  <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Demokrasi ve Cumhuriyetin Temel Nitelikleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Etkin Vatandaşın Özellikleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Temel Hak ve Sorumluluklarımız</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">Sorunlarımızın Çözümünde Kurumlar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ünite 5 -->
+            <div class="unit-accordion">
+              <div class="unit-header">
+                <div class="unit-number">5</div>
+                <div class="unit-info">
+                  <h3>Hayatımızdaki Ekonomi</h3>
+                  <span class="unit-meta">3 konu</span>
+                </div>
+                <div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </div>
+              <div class="unit-body">
+                <div class="unit-divider"></div>
+                <div class="topic-list">
+                  <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Kaynaklarımızın Verimli Kullanımı</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Bütçemi Planlıyorum</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">İlimizdeki Ekonomik Faaliyetler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ünite 6 -->
+            <div class="unit-accordion">
+              <div class="unit-header">
+                <div class="unit-number">6</div>
+                <div class="unit-info">
+                  <h3>Teknoloji ve Sosyal Bilimler</h3>
+                  <span class="unit-meta">2 konu</span>
+                </div>
+                <div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </div>
+              <div class="unit-body">
+                <div class="unit-divider"></div>
+                <div class="topic-list">
+                  <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Teknolojik Gelişmelerin Toplum Hayatına Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                  <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Teknoloji Ürünlerinin Bilinçli Kullanımı</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ══════════ 6. SINIF ══════════ -->
+        <div class="grade-panel grade-6" id="grade-6">
+          <div class="grade-summary">
+            <div class="grade-summary-item"><span class="gs-number">6</span><span class="gs-label">Ünite</span></div>
+            <div class="grade-summary-item"><span class="gs-number">17</span><span class="gs-label">Konu</span></div>
+            <div class="grade-summary-item"><span class="gs-number">6</span><span class="gs-label">Sınıf Seviyesi</span></div>
+          </div>
+          
+          <!-- Özel Arşiv & Hazine Kutusu (6. Sınıf) -->
+          <div class="special-archive-area reveal" id="archive-6">
+            <div class="archive-header" onclick="this.parentElement.classList.toggle('open')">
+              <div class="archive-header-left">
+                <span class="archive-badge">📦 Hazine Kutusu</span>
+                <h2>6. Sınıf Genel Kaynaklar</h2>
+                <p style="font-size: 0.85rem; color: var(--clr-text-muted); margin: 0;">Bu sınıf seviyesi için özel kaynaklar yakında eklenecektir.</p>
+              </div>
+              <div class="archive-toggle-btn">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            
+            <div class="archive-content">
+              <div class="archive-list" style="text-align: center; padding: 40px;">
+                <p style="color: var(--clr-text-muted);">Henüz bir döküman bulunmuyor. Yeni kaynaklar eklendiğinde burada görebileceksin.</p>
+              </div>
+            </div>
+          </div>
+<div class="unit-list">
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">1</div><div class="unit-info"><h3>Birlikte Yaşamak</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Zaman İçinde Değişen Gruplar ve Roller</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Kültürel Bağlarımızın ve Millî Değerlerimizin Toplumsal Birlikteliğe Etkisi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Toplumsal Sorunlar ve Çözüm Önerileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">2</div><div class="unit-info"><h3>Evimiz Dünya</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Ülkemizin, Kıtaların ve Okyanusların Konum Özellikleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Doğal ve Beşerî Çevre Özellikleri Arasındaki İlişki</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Ülkemizin Türk Dünyasıyla Kültürel İş Birlikleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">3</div><div class="unit-info"><h3>Ortak Mirasımız</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Türkistan'da Kurulan İlk Türk Devletlerinin Medeniyetimize Katkıları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">VII-XIII. Yüzyıllar Arasında İslam Medeniyetinin İnsanlığın Ortak Mirasına Katkıları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">İslamiyetin Kabulüyle Türklerin Sosyal ve Kültürel Hayatlarında Meydana Gelen Değişimler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">XI-XIII. Yüzyıllar Arasında Meydana Gelen Askerî Mücadelelerin Anadolu'nun Türkleşmesi ve İslamlaşmasına Katkıları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">4</div><div class="unit-info"><h3>Yaşayan Demokrasimiz</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Yönetimin Karar Alma Sürecini Etkileyen Unsurlar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Temel Hak ve Sorumluluklarım</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Toplumsal Düzenin Sürdürülmesindeki Önemi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">Dijitalleşme ve Teknolojik Gelişmelerin Vatandaşlık Hak ve Sorumluluklarına Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">5</div><div class="unit-info"><h3>Hayatımızdaki Ekonomi</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Ülkemizin Kaynakları ve Ekonomik Faaliyetler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Ekonomik Faaliyetler ve Meslekler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Tasarlanan Bir Ürünün Yatırım ve Pazarlama Süreci</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">6</div><div class="unit-info"><h3>Teknoloji ve Sosyal Bilimler</h3><span class="unit-meta">2 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Ulaşım ve İletişim Teknolojilerinin Kültürel Etkileşimdeki Rolü</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Telif ve Patent Süreci</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+          </div>
+        </div>
+
+        <!-- ══════════ 7. SINIF ══════════ -->
+        <div class="grade-panel grade-7" id="grade-7">
+          <div class="grade-summary">
+            <div class="grade-summary-item"><span class="gs-number">7</span><span class="gs-label">Ünite</span></div>
+            <div class="grade-summary-item"><span class="gs-number">27</span><span class="gs-label">Konu</span></div>
+            <div class="grade-summary-item"><span class="gs-number">7</span><span class="gs-label">Sınıf Seviyesi</span></div>
+          </div>
+          
+          <!-- Özel Arşiv & Hazine Kutusu (7. Sınıf) -->
+          <div class="special-archive-area reveal" id="archive-7">
+            <div class="archive-header" onclick="this.parentElement.classList.toggle('open')">
+              <div class="archive-header-left">
+                <span class="archive-badge">📦 Hazine Kutusu</span>
+                <h2>7. Sınıf Genel Kaynaklar</h2>
+                <p style="font-size: 0.85rem; color: var(--clr-text-muted); margin: 0;">Bu sınıf seviyesi için özel kaynaklar yakında eklenecektir.</p>
+              </div>
+              <div class="archive-toggle-btn">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            
+            <div class="archive-content">
+              <div class="archive-list" style="text-align: center; padding: 40px;">
+                <p style="color: var(--clr-text-muted);">Henüz bir döküman bulunmuyor. Yeni kaynaklar eklendiğinde burada görebileceksin.</p>
+              </div>
+            </div>
+          </div>
+<div class="unit-list">
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">1</div><div class="unit-info"><h3>Birey, Toplum ve İletişim</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">İletişimin Günlük Yaşamdaki Yeri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Olumlu İletişim</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Medyanın Toplum Hayatına Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">Medya Özgürlüğü</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">2</div><div class="unit-info"><h3>Osmanlı Devleti ve Kültür</h3><span class="unit-meta">5 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Osmanlı Devleti'nin Tarih Sahnesinde</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Osmanlı Devleti'nde Fetihler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Avrupa'daki Gelişmeler ve Osmanlı Devleti</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">Osmanlı Devleti'nde Değişim Yılları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">5</span><span class="topic-title">Seyahatnamelerde Osmanlı</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">3</div><div class="unit-info"><h3>Ülkemizde Yerleşme, Nüfus ve Göç</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Geçmişten Günümüze Yerleşme</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Türkiye'de Nüfus</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Ülkemizde Göç</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">Bir Özgürlük Olarak Yerleşme ve Seyahat</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">4</div><div class="unit-info"><h3>Geçmişten Günümüze Bilim</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Yazının ve Bilginin Yolculuğu</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Doğu'nun Bilgi Birikimi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Avrupa'da Yaşanan Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">Özgür Düşünce ve Bilim</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">5</div><div class="unit-info"><h3>Üretim ve Sosyal Hayat</h3><span class="unit-meta">6 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Üretimde ve Yönetimde Toprak</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Teknolojinin Sosyal ve Ekonomik Hayata Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Bizim İçin Çalışanlar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">Ahilikten Meslek Odalarına</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">5</span><span class="topic-title">Mesleki Tercihlerim</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">6</span><span class="topic-title">Dijital Teknolojiler ve Ticaret</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">6</div><div class="unit-info"><h3>Demokrasi ve Vatandaşlık</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Geçmişten Bugüne Demokrasi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Atatürk ve Türk Demokrasisinin Gelişimi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Türkiye Cumhuriyeti'nin Nitelikleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">Demokratik Süreçler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">7</div><div class="unit-info"><h3>Türkiye ve Dünya</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1</span><span class="topic-title">Uluslararası Kuruluşlar ve Türkiye</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2</span><span class="topic-title">Türkiye'nin Uluslararası Ekonomik İlişkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3</span><span class="topic-title">Kalıp Yargıları Sorguluyorum</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4</span><span class="topic-title">Küresel Sorunlara Çözüm Üretiyorum</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+          </div>
+        </div>
+
+        <!-- ══════════ 8. SINIF ══════════ -->
+        <div class="grade-panel grade-8" id="grade-8">
+          <div class="grade-summary">
+            <div class="grade-summary-item"><span class="gs-number">7</span><span class="gs-label">Ünite</span></div>
+            <div class="grade-summary-item"><span class="gs-number">38</span><span class="gs-label">Konu</span></div>
+            <div class="grade-summary-item"><span class="gs-number">8</span><span class="gs-label">Sınıf Seviyesi</span></div>
+          </div>
+
+          <!-- Özel Arşiv & Hazine Kutusu (8. Sınıf) -->
+          <div class="special-archive-area reveal" id="archive-8">
+            <div class="archive-header" onclick="this.parentElement.classList.toggle('open')">
+              <div class="archive-header-left">
+                <span class="archive-badge">📦 Hazine Kutusu</span>
+                <h2>Özel Arşiv &amp; Ders Kaynakları</h2>
+                <p style="font-size: 0.85rem; color: var(--clr-text-muted); margin: 0;">LGS Hazırlık Süreci İçin Seçilmiş Özel Dökümanlar</p>
+              </div>
+              <div class="archive-toggle-btn">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            
+            <div class="archive-content">
+              <div class="archive-list">
+                <!-- Kaynak 1: LGS Ders Notları -->
+                <div class="archive-item">
+                  <div class="archive-item-head">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                      <div class="cat-icon" style="background: rgba(124, 58, 237, 0.1); width: 44px; height: 44px; border-radius: 12px; color: var(--clr-primary); font-size: 1.2rem;">
+                        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      </div>
+                      <h4>Kürşat Hoca'nın LGS Ders Notları</h4>
+                    </div>
+                    <span class="badge" style="background: rgba(124, 58, 237, 0.1); color: var(--clr-primary); font-size: 0.7rem;">PDF İncele</span>
+                  </div>
+                  
+                  <div class="archive-content-wrapper">
+                    <div class="archive-description">
+                      <p><strong>LGS'ye hazırlanırken en çok ne işe yarar?</strong> İnce ince yazılmış sayfalarca metin mi, yoksa konunun özünü net biçimde gösteren, aklında kalacak şekilde düzenlenmiş notlar mı?</p>
+                      <p>T.C. İnkılap Tarihi ve Atatürkçülük dersinin temel kavramları, kuru tanımlarla değil; gerçek örnekler ve günlük hayattan benzetmelerle ele alınıyor. Her kavram üç sütunlu bir yapıyla sunuluyor: <strong>Kavram — Tanım — Örnek.</strong></p>
+                      <div class="archive-actions">
+                        <a href="Ders kaynakları/Kürşat Hocanın LGS Notları.pdf" target="_blank" class="btn btn-primary">
+                          <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                          Notları İndir (PDF)
+                        </a>
+                      </div>
+                    </div>
+                    <img src="İlgili Görseller/Kursat hocanın LGS notları.png" alt="LGS Notları Tanıtım" class="archive-visual">
+                  </div>
+                </div>
+
+                <!-- Kaynak 2: Kavram Sözlüğü -->
+                <div class="archive-item">
+                  <div class="archive-item-head">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                      <div class="cat-icon" style="background: rgba(6, 182, 212, 0.1); width: 44px; height: 44px; border-radius: 12px; color: var(--clr-secondary); font-size: 1.2rem;">
+                        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
+                      </div>
+                      <h4>Kürşat'ın Sözlüğü — Kavram Sözlüğü</h4>
+                    </div>
+                    <span class="badge" style="background: rgba(6, 182, 212, 0.1); color: var(--clr-secondary); font-size: 0.7rem;">PDF İncele</span>
+                  </div>
+                  
+                  <div class="archive-content-wrapper">
+                    <div class="archive-description">
+                      <p>Kürşat'ın Sözlüğü, akademik terimleri "ders kitabı diliyle" değil, senin anlayacağın dilden anlatıyor. Bu çalışma, sadece kelime öğrenmen için değil, sosyal bilimlerin mantığını kavramanı sağlamak için tasarlandı.</p>
+                      <p><strong>Öne Çıkan Özellik:</strong> Her kavramın yanına eklenen günlük hayat örnekleri, sınavda karşına çıkacak karmaşık metinleri çözmende en büyük yardımcın olacak.</p>
+                      <div class="archive-actions">
+                        <a href="Ders kaynakları/Kürşat'ın Sözlüğü.pdf" target="_blank" class="btn btn-primary">
+                          <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                          Sözlüğü İndir (PDF)
+                        </a>
+                      </div>
+                    </div>
+                    <img src="İlgili Görseller/Kavramlar Sözlüğü.png" alt="Kavram Sözlüğü Tanıtım" class="archive-visual">
+                  
+                </div> <!-- /archive-item 2 -->
+              </div> <!-- /archive-list -->
+            </div> <!-- /archive-content -->
+          </div> <!-- /special-archive-area -->
+
+          <div class="unit-list">
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">1</div><div class="unit-info"><h3>Bir Kahraman Doğuyor</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1.1</span><span class="topic-title">Gelişen Avrupa ve Güç Kaybeden Osmanlı Devleti</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.2</span><span class="topic-title">Mustafa Kemal'in Çocukluk Dönemi ve Öğrenim Hayatı</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.3</span><span class="topic-title">Mustafa Kemal'in Fikir Hayatını Etkileyen Kişiler ve Olaylar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.4</span><span class="topic-title">Mustafa Kemal'in Askerlik Hayatı</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">2</div><div class="unit-info"><h3>Millî Uyanış: Yurdumuzun İşgaline Tepkiler</h3><span class="unit-meta">8 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">2.1</span><span class="topic-title">I. Dünya Savaşı (1914-1918)</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.2</span><span class="topic-title">I. Dünya Savaşı'nda Osmanlı Devleti</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.3</span><span class="topic-title">Mondros Ateşkes Antlaşması'nın İmzalanması ve Uygulanması</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.4</span><span class="topic-title">Kuvâ-yı Millîye Hareketi ve Cemiyetler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.5</span><span class="topic-title">Millî Mücadele'nin Hazırlık Dönemi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.6</span><span class="topic-title">Misakımillî'nin Kabulü ve Büyük Millet Meclisinin Açılması</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.7</span><span class="topic-title">Büyük Millet Meclisine Karşı Ayaklanmalar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.8</span><span class="topic-title">Sevr Antlaşması</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">3</div><div class="unit-info"><h3>Millî Bir Destan: Ya İstiklal Ya Ölüm!</h3><span class="unit-meta">7 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">3.1</span><span class="topic-title">Millî Mücadele Dönemi'nde Doğu ve Güney Cepheleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.2</span><span class="topic-title">Millî Mücadele Dönemi'nde Batı Cephesi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.3</span><span class="topic-title">Maarif Kongresi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.4</span><span class="topic-title">Başkomutanlık Kanunu ve Tekâlif-i Millîye Emirleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.5</span><span class="topic-title">Sakarya Meydan Savaşı'ndan Mudanya Ateşkes Antlaşması'na</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.6</span><span class="topic-title">Lozan Barış Antlaşması</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.7</span><span class="topic-title">Millî Mücadele'nin Sanata ve Edebiyata Yansımaları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">4</div><div class="unit-info"><h3>Atatürkçülük ve Çağdaşlaşan Türkiye</h3><span class="unit-meta">9 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">4.1</span><span class="topic-title">Atatürk İlkeleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.2</span><span class="topic-title">Siyasi Alanda Yapılan İnkılaplar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.3</span><span class="topic-title">Hukuk Alanında Yapılan İnkılaplar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.4</span><span class="topic-title">Eğitim ve Kültür Alanında Yapılan İnkılaplar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.5</span><span class="topic-title">Toplumsal Alanda Yapılan İnkılaplar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.6</span><span class="topic-title">Ekonomik Alanda Yapılan İnkılaplar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.7</span><span class="topic-title">Sağlık Alanındaki Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.8</span><span class="topic-title">Cumhuriyet'in Sağladığı Kazanımlar ve Atatürk'ün Türk Milletine Gösterdiği Hedefler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.9</span><span class="topic-title">Atatürk İlke ve İnkılaplarını Oluşturan Temel Esaslar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">5</div><div class="unit-info"><h3>Demokratikleşme Çabaları</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">5.1</span><span class="topic-title">Atatürk Dönemi'nde Demokratikleşme Yolunda Atılan Adımlar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">5.2</span><span class="topic-title">Mustafa Kemal'e Suikast Girişimi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">5.3</span><span class="topic-title">Türkiye Cumhuriyeti'ne Yönelik Tehditler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">6</div><div class="unit-info"><h3>Atatürk Dönemi Türk Dış Politikası</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">6.1</span><span class="topic-title">Atatürk Dönemi Türk Dış Politikasının Temel İlke ve Amaçları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">6.2</span><span class="topic-title">Atatürk Dönemi Türk Dış Politikasında Yaşanan Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">6.3</span><span class="topic-title">Hatay'ın Türkiye'ye Katılması</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">7</div><div class="unit-info"><h3>Atatürk'ten Sonrası</h3><span class="unit-meta">5 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">7.1</span><span class="topic-title">Atatürk'ün Ölümü ve Ölümünün Yansımaları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">7.2</span><span class="topic-title">Atatürk'ün Eserleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">7.3</span><span class="topic-title">Atatürk'ün II. Dünya Savaşı Öncesi Tespitleri ve Girişimleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">7.4</span><span class="topic-title">II. Dünya Savaşı ve Savaşın Türkiye'ye Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">7.5</span><span class="topic-title">Türkiye'nin Çok Partili Hayata Geçişi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </a>
+          </div></div></div>
+        </div><!-- /unit-list -->
+      </div><!-- /grade-panel grade-8 -->
+
+    </div><!-- /tab-ortaokul -->
+
+    <!-- ╔══════════════════════════════════════╗ -->
+    <!-- ║           LİSE TAB (9-12)             ║ -->
+    <!-- ╚══════════════════════════════════════╝ -->
+    
+      </div>
+
+    <div class="tab-panel" id="tab-lise">
+
+        <div class="grade-tabs">
+          <button class="grade-btn active" data-grade="9">9. Sınıf</button>
+          <button class="grade-btn" data-grade="10">10. Sınıf</button>
+          <button class="grade-btn" data-grade="11">11. Sınıf</button>
+          <button class="grade-btn" data-grade="12">12. Sınıf</button>
+        </div>
+
+        <!-- 9. SINIF -->
+        <div class="grade-panel grade-9 active" id="grade-9">
+          <div class="grade-summary">
+            <div class="grade-summary-item"><span class="gs-number">3</span><span class="gs-label">Ünite</span></div>
+            <div class="grade-summary-item"><span class="gs-number">13</span><span class="gs-label">Konu</span></div>
+            <div class="grade-summary-item"><span class="gs-number">9</span><span class="gs-label">Sınıf Seviyesi</span></div>
+          </div>
+          <div class="unit-list">
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">1</div><div class="unit-info"><h3>Geçmişin İnşa Sürecinde Tarih</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1.1</span><span class="topic-title">Tarih Öğrenmenin Faydaları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.2</span><span class="topic-title">Tarihin Doğası</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.3</span><span class="topic-title">Tarihsel Bilginin Üretim Süreci</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.4</span><span class="topic-title">Tarih Araştırma ve Yazımında Dijital Dönüşüm</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">2</div><div class="unit-info"><h3>Eski Çağ Medeniyetleri</h3><span class="unit-meta">5 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">2.1</span><span class="topic-title">Tarım Devrimi'nin Eski Çağ'a Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.2</span><span class="topic-title">Eski Çağ'da Yönetenler ve Savaşanlar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.3</span><span class="topic-title">Eski Çağ'da Hukuk</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.4</span><span class="topic-title">Eski Çağ'da İnanç, Bilim ve Sanat</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.5</span><span class="topic-title">Türklerde Konargöçer Yaşam</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">3</div><div class="unit-info"><h3>Orta Çağ Medeniyetleri</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">3.1</span><span class="topic-title">Orta Çağ'daki Kitlesel Göçler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.2</span><span class="topic-title">Orta Çağ'daki Siyasi ve Askerî Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.3</span><span class="topic-title">Orta Çağ'da Ticaret Yolları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.4</span><span class="topic-title">Orta Çağ'da Bilim, Kültür ve Sanat</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+          </div>
+        </div>
+
+        <!-- 10. SINIF -->
+        <div class="grade-panel grade-10" id="grade-10">
+          <div class="grade-summary">
+            <div class="grade-summary-item"><span class="gs-number">3</span><span class="gs-label">Ünite</span></div>
+            <div class="grade-summary-item"><span class="gs-number">14</span><span class="gs-label">Konu</span></div>
+            <div class="grade-summary-item"><span class="gs-number">10</span><span class="gs-label">Sınıf Seviyesi</span></div>
+          </div>
+          <div class="unit-list">
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">1</div><div class="unit-info"><h3>Türkistan'dan Türkiye'ye (1040-1299)</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1.1</span><span class="topic-title">Önemli Askerî Mücadelelerin Türk Tarihinin Seyrine Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.2</span><span class="topic-title">Türkistan'dan Türkiye'ye Türklerde Devlet ve Ordu Teşkilatları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.3</span><span class="topic-title">Türklerde Sosyoekonomik Hayat ve Şehirleşme</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.4</span><span class="topic-title">Türk-İslam Medeniyetinde Bilim, Kültür, Eğitim ve Sanat</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">2</div><div class="unit-info"><h3>Beylikten Devlete Osmanlı (1299-1453)</h3><span class="unit-meta">5 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">2.1</span><span class="topic-title">Osmanlı Devleti'nin Kuruluşuna Dair Görüşler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.2</span><span class="topic-title">Beylikten Devlete Siyasi ve Askerî Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.3</span><span class="topic-title">Osmanlı Devleti'nde Ordu, Hukuk ve Toprak Sistemi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.4</span><span class="topic-title">Osmanlı Devleti'nin İskân ve İstimâlet Politikası</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.5</span><span class="topic-title">Osmanlı Devleti'nin İlim ve İrfan Geleneği</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">3</div><div class="unit-info"><h3>Cihan Devleti Osmanlı (1453-1683)</h3><span class="unit-meta">5 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">3.1</span><span class="topic-title">Osmanlı Devleti'nin Cihan Devleti Hâline Gelmesi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.2</span><span class="topic-title">Osmanlı Devleti'nin Yönetim ve Ordu Yapısında Değişim</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.3</span><span class="topic-title">Avrupalıların Sömürgeci Politikaları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.4</span><span class="topic-title">Osmanlı Devleti'nde İsyanlar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.5</span><span class="topic-title">Osmanlı Devleti'nde Bilim, Kültür, Eğitim ve Sanat</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+          </div>
+        </div>
+
+        <!-- 11. SINIF -->
+        <div class="grade-panel grade-11" id="grade-11">
+          <div class="grade-summary">
+            <div class="grade-summary-item"><span class="gs-number">5</span><span class="gs-label">Ünite</span></div>
+            <div class="grade-summary-item"><span class="gs-number">19</span><span class="gs-label">Konu</span></div>
+            <div class="grade-summary-item"><span class="gs-number">11</span><span class="gs-label">Sınıf Seviyesi</span></div>
+          </div>
+          <div class="unit-list">
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">1</div><div class="unit-info"><h3>Değişen Dünya Dengeleri Karşısında Osmanlı Siyaseti (1595-1774)</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1.1</span><span class="topic-title">1595-1700 Yılları Arasındaki Başlıca Siyasi Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.2</span><span class="topic-title">XVIII. Yüzyılda Osmanlı Devleti'nin Uyguladığı Politikalar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.3</span><span class="topic-title">İç Denizlerden Okyanuslara: Değişen Deniz Siyaseti</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.4</span><span class="topic-title">XVIII. Yüzyılda Osmanlı Devleti'nin Uyguladığı Politikalar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">2</div><div class="unit-info"><h3>Değişim Çağında Avrupa ve Osmanlı</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">2.1</span><span class="topic-title">Avrupa'daki Değişimin Altyapısı</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.2</span><span class="topic-title">Avrupa'daki Gelişmelerin Etkisiyle Değişen Osmanlı Düzeni</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.3</span><span class="topic-title">Devlet ve Toplum Düzenindeki Çözülmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">3</div><div class="unit-info"><h3>Devrimler Çağında Değişen Devlet-Toplum İlişkileri</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">3.1</span><span class="topic-title">Fransız İhtilali ve Sanayi Devrimi'nin Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.2</span><span class="topic-title">Sömürgecilik Faaliyetleri ve Küresel Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.3</span><span class="topic-title">Modernleşen Ordu ve Askerî Yurttaşlar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.4</span><span class="topic-title">Ulus Devletleşme ve Endüstrileşme Süreçlerinde Sosyal Hayat</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">4</div><div class="unit-info"><h3>Uluslararası İlişkilerde Denge Stratejisi (1774-1914)</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">4.1</span><span class="topic-title">1774-1914 Yılları Arasındaki Başlıca Siyasi Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.2</span><span class="topic-title">Osmanlı Devleti'ne Karşı İç ve Dış Tehditler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.3</span><span class="topic-title">Tanzimat Fermanı, Islahat Fermanı ve Kanun-i Esasi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.4</span><span class="topic-title">1876-1913 Arasında Osmanlı Devleti'nde Darbeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">5</div><div class="unit-info"><h3>XIX ve XX. Yüzyılda Değişen Sosyoekonomik Hayat</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">5.1</span><span class="topic-title">Osmanlı Devleti'nde Sanayileşme Çabaları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">5.2</span><span class="topic-title">Osmanlı Devleti'nde Nüfus Hareketleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">5.3</span><span class="topic-title">Osmanlı Devleti'nde Modernleşmenin Gündelik Hayata Yansımaları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+          </div>
+        </div>
+
+        <!-- 12. SINIF -->
+        <div class="grade-panel grade-12" id="grade-12">
+          <div class="grade-summary">
+            <div class="grade-summary-item"><span class="gs-number">8</span><span class="gs-label">Ünite</span></div>
+            <div class="grade-summary-item"><span class="gs-number">30</span><span class="gs-label">Konu</span></div>
+            <div class="grade-summary-item"><span class="gs-number">12</span><span class="gs-label">Sınıf Seviyesi</span></div>
+          </div>
+          <div class="unit-list">
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">1</div><div class="unit-info"><h3>20. Yüzyıl Başlarında Osmanlı Devleti ve Dünya</h3><span class="unit-meta">4 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">1.1</span><span class="topic-title">Mustafa Kemal'in Lider Olarak Yetişmesinde Etkili Koşullar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.2</span><span class="topic-title">20. Yüzyıl Başlarında Osmanlı Devleti</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.3</span><span class="topic-title">I. Dünya Savaşı Sürecinde Osmanlı Devleti</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">1.4</span><span class="topic-title">I. Dünya Savaşı'nın Sonuçları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">2</div><div class="unit-info"><h3>Millî Mücadele</h3><span class="unit-meta">6 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">2.1</span><span class="topic-title">Millî Mücadele'ye Hazırlık Dönemi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.2</span><span class="topic-title">Büyük Millet Meclisinin Açılması</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.3</span><span class="topic-title">Sevr Antlaşması</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.4</span><span class="topic-title">Doğu ve Güney Cepheleri ile Bu Cephelerde Öne Çıkan Şahsiyetler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.5</span><span class="topic-title">Batı Cephesi ve Bu Cephede Öne Çıkan Şahsiyetler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">2.6</span><span class="topic-title">Millî Mücadele'nin Sona Ermesi ve Lozan Barış Konferansı</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">3</div><div class="unit-info"><h3>Atatürkçülük ve Türk İnkılabı</h3><span class="unit-meta">8 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">3.1</span><span class="topic-title">Atatürk İlkeleri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.2</span><span class="topic-title">Siyasi Alandaki Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.3</span><span class="topic-title">Hukuk Alanındaki Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.4</span><span class="topic-title">Eğitim ve Kültür Alanındaki İnkılaplar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.5</span><span class="topic-title">Toplumsal Alandaki İnkılaplar</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.6</span><span class="topic-title">Ekonomi Alanındaki Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.7</span><span class="topic-title">Sağlık Alanındaki Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">3.8</span><span class="topic-title">Türkiye Cumhuriyeti'nin Temelleri ve Atatürkçü Düşünce Sistemi</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">4</div><div class="unit-info"><h3>İki Savaş Arasındaki Dönemde Türkiye ve Dünya</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">4.1</span><span class="topic-title">Atatürk Dönemi İç Politik Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.2</span><span class="topic-title">Atatürk Dönemi Türk Dış Politikası</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">4.3</span><span class="topic-title">İki Dünya Savaşı Arasındaki Dönemde Dünyada Meydana Gelen Siyasi ve Ekonomik Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">5</div><div class="unit-info"><h3>II. Dünya Savaşı Sürecinde Türkiye ve Dünya</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">5.1</span><span class="topic-title">II. Dünya Savaşı</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">5.2</span><span class="topic-title">II. Dünya Savaşı Sürecinde Türkiye</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">5.3</span><span class="topic-title">II. Dünya Savaşı'nın Sonuçları</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">6</div><div class="unit-info"><h3>II. Dünya Savaşı Sonrasında Türkiye ve Dünya</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">6.1</span><span class="topic-title">II. Dünya Savaşı Sonrası Türkiye</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">6.2</span><span class="topic-title">II. Dünya Savaşı Sonrası Oluşan Güç Dengeleri ve Türkiye</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">6.3</span><span class="topic-title">1950'lerde Türkiye</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">7</div><div class="unit-info"><h3>Toplumsal Devrim Çağında Dünya ve Türkiye</h3><span class="unit-meta">3 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">7.1</span><span class="topic-title">1960 Sonrası Dünyada Yaşanan Siyasi Gelişmeler</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">7.2</span><span class="topic-title">1960 Sonrasında Türk Dış Politikası</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">7.3</span><span class="topic-title">Türkiye'deki Siyasi, Ekonomik, Sosyo-Kültürel Hayat</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+
+            <div class="unit-accordion"><div class="unit-header"><div class="unit-number">8</div><div class="unit-info"><h3>21. Yüzyılın Eşiğinde Türkiye ve Dünya</h3><span class="unit-meta">2 konu</span></div><div class="unit-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div></div><div class="unit-body"><div class="unit-divider"></div><div class="topic-list">
+              <a href="#" class="topic-item"><span class="topic-num">8.1</span><span class="topic-title">1990 Sonrasında Türkiye</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+              <a href="#" class="topic-item"><span class="topic-num">8.2</span><span class="topic-title">1990 Sonrasında Meydana Gelen Siyasi Gelişmelerin Türkiye'ye Etkileri</span><span class="topic-badge">Yakında</span><span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>
+            </div></div></div>
+          </div>
+        </div>
+
+      </div>
+
+      </div><!-- /tab-lise -->
+      
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">© 2026 kursatca.com — Kürşat Çelik. Tüm hakları saklıdır.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="yapay-zeka.html">Yapay Zeka</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="hakkimda.html">Hakkımda</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=1.0.1"></script>
+</body>
+</html>

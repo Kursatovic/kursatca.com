@@ -1,0 +1,12 @@
+# Kursatca.com Project Assets to Ignore
+*.py
+backups/
+.gemini/
+.claude/
+.gemini_antigravity/
+*.zip
+*.log
+.vscode/
+node_modules/
+.DS_Store
+Thumbs.db

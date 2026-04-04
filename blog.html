@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kursatca.com | Blog</title>
+  <meta name="description" content="Kürşat Çelik'in kişisel blogu. Kitap notları, tarih yazıları, günlük düşünceler ve hayatın içinden." />
+  <link rel="stylesheet" href="css/style.css?v=1.0.1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>" />
+</head>
+<body class="section-blog">
+
+  <!-- NAV -->
+  <nav class="nav" id="main-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="dot"></span>kursatca<span style="color: var(--clr-teal); font-weight: 400;">.com</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="egitim.html">Eğitim</a></li>
+        <li><a href="yapay-zeka.html">Yapay Zeka</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="hakkimda.html">Hakkımda</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <span class="badge"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M21.17 6.81a1 1 0 0 0-3.98-3.98L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/></svg> Blog</span>
+    <h1 style="margin-top: var(--space-md);">Kişisel <span class="text-gradient">Blog</span></h1>
+    <p>Kitaplar, tarih, düşünceler ve hayatın içinden yazılar. Okuyarak düşünmek, yazarak anlamak isteyenler için.</p>
+  </header>
+
+  <!-- TABS -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="tab-tum">Tümü</button>
+        <button class="tab-btn" data-tab="tab-kitap">Kitap Notları</button>
+        <button class="tab-btn" data-tab="tab-tarih">Tarih</button>
+        <button class="tab-btn" data-tab="tab-dusunce">Düşünceler</button>
+      </div>
+
+      <!-- Tümü Panel -->
+      <div class="tab-panel active" id="tab-tum">
+        <div class="blog-list">
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #00d4aa22); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <div class="blog-entry-body">
+              <h3>Sapiens'i Yeniden Okudum: Bu Sefer Farklı Gördüm</h3>
+              <p>Yuval Noah Harari'nin Sapiens kitabını ilk okuduğumda büyülenmişti. İkinci okumada ise sorguladığım şeyler çok farklıydı.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Mart 2026</span>
+                <span>⏱️ 10 dk okuma</span>
+                <span>🏷️ Kitap</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #ff8c4222); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">⚔️</div>
+            <div class="blog-entry-body">
+              <h3>Çanakkale'yi Anlamak: Sadece Savaş Değil</h3>
+              <p>Çanakkale Zaferi'ni her yıl anıyoruz ama gerçekten anlıyor muyuz? Cephenin ötesindeki insani hikayeler üzerine.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Mart 2026</span>
+                <span>⏱️ 15 dk okuma</span>
+                <span>🏷️ Tarih</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #8b5cf622); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">💭</div>
+            <div class="blog-entry-body">
+              <h3>Bayram Ziyaretlerinin Felsefesi</h3>
+              <p>İnternet çağında bayram ziyaretleri hâlâ anlamlı mı? Değişen gelenekler ve dönüşen insan ilişkileri üzerine kısa bir düşünce.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Nisan 2026</span>
+                <span>⏱️ 5 dk okuma</span>
+                <span>🏷️ Düşünce</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #f43f5e22); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></div>
+            <div class="blog-entry-body">
+              <h3>Aylık Okuma Listesi — Mart 2026</h3>
+              <p>Bu ay okuduğum 4 kitap, her birinden aldığım notlar ve size tavsiyelerim. Kısa özetler ve puanlar.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Mart 2026</span>
+                <span>⏱️ 7 dk okuma</span>
+                <span>🏷️ Kitap</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #06b6d422); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🗺️</div>
+            <div class="blog-entry-body">
+              <h3>İstanbul'un Unutulan Mahalleleri</h3>
+              <p>Turistlerin gitmediği, İstanbulluların bile unuttuğu semtlerdeki tarih. Bir pazar günü yürüyüşünden notlar.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Şubat 2026</span>
+                <span>⏱️ 9 dk okuma</span>
+                <span>🏷️ Tarih</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #00d4aa33); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🌱</div>
+            <div class="blog-entry-body">
+              <h3>Yeni Yılda Yeni Alışkanlıklar: 3 Ay Sonra Durum</h3>
+              <p>Ocak'ta başladığım 5 alışkanlıktan hangisi hayatta kaldı? Samimi bir muhasebe.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Mart 2026</span>
+                <span>⏱️ 6 dk okuma</span>
+                <span>🏷️ Düşünce</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Kitap Panel -->
+      <div class="tab-panel" id="tab-kitap">
+        <div class="blog-list">
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #00d4aa22); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <div class="blog-entry-body">
+              <h3>Sapiens'i Yeniden Okudum: Bu Sefer Farklı Gördüm</h3>
+              <p>Yuval Noah Harari'nin Sapiens kitabını ilk okuduğumda büyülenmişti. İkinci okumada ise sorguladığım şeyler çok farklıydı.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Mart 2026</span>
+                <span>⏱️ 10 dk okuma</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #f43f5e22); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></div>
+            <div class="blog-entry-body">
+              <h3>Aylık Okuma Listesi — Mart 2026</h3>
+              <p>Bu ay okuduğum 4 kitap, her birinden aldığım notlar ve size tavsiyelerim.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Mart 2026</span>
+                <span>⏱️ 7 dk okuma</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tarih Panel -->
+      <div class="tab-panel" id="tab-tarih">
+        <div class="blog-list">
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #ff8c4222); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">⚔️</div>
+            <div class="blog-entry-body">
+              <h3>Çanakkale'yi Anlamak: Sadece Savaş Değil</h3>
+              <p>Çanakkale Zaferi'ni her yıl anıyoruz ama gerçekten anlıyor muyuz? Cephenin ötesindeki insani hikayeler.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Mart 2026</span>
+                <span>⏱️ 15 dk okuma</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #06b6d422); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🗺️</div>
+            <div class="blog-entry-body">
+              <h3>İstanbul'un Unutulan Mahalleleri</h3>
+              <p>Turistlerin gitmediği, İstanbulluların bile unuttuğu semtlerdeki tarih.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Şubat 2026</span>
+                <span>⏱️ 9 dk okuma</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Düşünce Panel -->
+      <div class="tab-panel" id="tab-dusunce">
+        <div class="blog-list">
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #8b5cf622); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">💭</div>
+            <div class="blog-entry-body">
+              <h3>Bayram Ziyaretlerinin Felsefesi</h3>
+              <p>İnternet çağında bayram ziyaretleri hâlâ anlamlı mı? Değişen gelenekler üzerine kısa bir düşünce.</p>
+              <div class="blog-entry-meta">
+                <span>📅 Nisan 2026</span>
+                <span>⏱️ 5 dk okuma</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="blog-entry reveal">
+            <div style="min-height: 140px; background: linear-gradient(135deg, #172742, #00d4aa33); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🌱</div>
+            <div class="blog-entry-body">
+              <h3>Yeni Yılda Yeni Alışkanlıklar: 3 Ay Sonra Durum</h3>
+              <p>Ocak'ta başladığım 5 alışkanlıktan hangisi hayatta kaldı?</p>
+              <div class="blog-entry-meta">
+                <span>📅 Mart 2026</span>
+                <span>⏱️ 6 dk okuma</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">© 2026 kursatca.com — Kürşat Çelik. Tüm hakları saklıdır.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="egitim.html">Eğitim</a></li>
+        <li><a href="yapay-zeka.html">Yapay Zeka</a></li>
+        <li><a href="hakkimda.html">Hakkımda</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=1.0.1"></script>
+</body>
+</html>
