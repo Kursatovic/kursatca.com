@@ -1,0 +1,34 @@
+name: Siteyi Otomatik Yayınla (Deploy to Hostinger)
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  web-deploy:
+    name: 🎉 Canlıya Al
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 En güncel kodları al
+        uses: actions/checkout@v4
+      
+      - name: 📂 FTP ile Hostinger'a Gönder
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Sadece sitemiz için gerekli olanları at, çöp dosyaları ve yedekleri hariç tut
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.gemini*/**
+            **/.claude*/**
+            **/backups/**
+            **/*.zip
+            **/*.py
+            **/*.md
+            **/.vscode/**

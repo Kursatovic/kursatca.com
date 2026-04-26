@@ -10,7 +10,7 @@
  */
 async function fetchJSON(path) {
   try {
-    const res = await fetch(path);
+    const res = await fetch(path, { cache: 'no-cache' });
     if (!res.ok) throw new Error(`HTTP ${res.status} — ${path}`);
     return await res.json();
   } catch (err) {
