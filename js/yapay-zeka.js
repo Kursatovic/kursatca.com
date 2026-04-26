@@ -3,59 +3,52 @@
    content/yapay-zeka/ dosyalarından yükler
    ============================================ */
 
-/* ─── Özellik kartı (araçlar) ─── */
-function buildAracCard(arac) {
-  const ikon = arac.ikonTip === 'emoji'
-    ? `<span style="font-size:1.5rem;">${arac.ikon}</span>`
-    : '<svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
-
-  return `
-    <div class="feature-item reveal">
-      <div class="feature-icon">${ikon}</div>
-      <h3>${escapeHTML(arac.baslik)}</h3>
-      <p>${escapeHTML(arac.aciklama)}</p>
-    </div>`;
-}
-
-/* ─── Makale kartı ─── */
+/* ─── Premium Makale Kartı (Önizleme Görselli) ─── */
 function buildMakaleCard(makale) {
-  const ikon = makale.ikonTip === 'emoji'
-    ? `<span style="font-size:1.4rem;">${makale.ikon}</span>`
-    : '<svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>';
+  // Önizleme görseli varsa img, yoksa emoji placeholder
+  let thumbHTML;
+  if (makale.onizlemeGorsel) {
+    thumbHTML = `
+      <div class="yz-article-thumb">
+        <img src="${escapeHTML(makale.onizlemeGorsel)}" alt="${escapeHTML(makale.baslik)}" loading="lazy" />
+      </div>`;
+  } else {
+    const emoji = (makale.ikonTip === 'emoji' && makale.ikon) ? makale.ikon : '📝';
+    thumbHTML = `<div class="yz-article-thumb-emoji">${emoji}</div>`;
+  }
 
   return `
-    <a href="${escapeHTML(makale.href)}" class="blog-entry reveal">
-      <div class="blog-entry-visual">
-        <div class="blog-entry-icon">${ikon}</div>
-      </div>
-      <div class="blog-entry-body">
-        <div class="blog-entry-meta">
-          <span class="badge badge-sm">${escapeHTML(makale.kategori)}</span>
-          <span class="blog-entry-date">${escapeHTML(makale.tarih)}</span>
-          <span class="blog-entry-read">${escapeHTML(makale.okumaSuresi)}</span>
+    <a href="${escapeHTML(makale.href)}" class="yz-article-card reveal">
+      ${thumbHTML}
+      <div class="yz-article-body">
+        <div class="yz-article-meta">
+          <span class="yz-article-kategori">${escapeHTML(makale.kategori)}</span>
+          <span class="yz-article-tarih">${escapeHTML(makale.tarih)}</span>
+          <span class="yz-article-okuma">${escapeHTML(makale.okumaSuresi)}</span>
         </div>
-        <h3 class="blog-entry-title">${escapeHTML(makale.baslik)}</h3>
-        <p class="blog-entry-desc">${escapeHTML(makale.aciklama)}</p>
+        <h3 class="yz-article-title">${escapeHTML(makale.baslik)}</h3>
+        <p class="yz-article-desc">${escapeHTML(makale.aciklama)}</p>
+        <span class="yz-article-cta">
+          Yazıyı Oku
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
       </div>
     </a>`;
 }
 
 /* ─── Yapay Zeka sayfası başlatıcısı ─── */
 async function initYapayZekaPage() {
-  const [araclar, makaleler] = await Promise.all([
-    fetchJSON('content/yapay-zeka/araclar.json'),
-    fetchJSON('content/yapay-zeka/makaleler.json')
-  ]);
-
-  const aracGrid = document.getElementById('yz-arac-grid');
-  if (aracGrid && araclar) {
-    aracGrid.innerHTML = araclar.map(buildAracCard).join('');
-    initReveal(aracGrid);
-  }
+  const makaleler = await fetchJSON('content/yapay-zeka/makaleler.json');
 
   const makaleList = document.getElementById('yz-makale-list');
-  if (makaleList && makaleler) {
+  if (makaleList && makaleler && makaleler.length > 0) {
     makaleList.innerHTML = makaleler.map(buildMakaleCard).join('');
     initReveal(makaleList);
+  } else if (makaleList) {
+    makaleList.innerHTML = `
+      <div class="yz-empty-state">
+        <span>🚀</span>
+        <p>Henüz yayınlanmış yazı yok. Yakında burada olacak!</p>
+      </div>`;
   }
 }
