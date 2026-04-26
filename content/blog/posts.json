@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "sapiensi-yeniden-okudum",
+    "baslik": "Sapiens'i Yeniden Okudum: Bu Sefer Farklı Gördüm",
+    "kategori": "kitap",
+    "tarih": "Mart 2026",
+    "okumaSuresi": "10 dk okuma",
+    "aciklama": "Yuval Noah Harari'nin Sapiens kitabını ilk okuduğumda büyülenmişti. İkinci okumada ise sorguladığım şeyler çok farklıydı.",
+    "href": "#",
+    "ikonTip": "kitap"
+  },
+  {
+    "slug": "canakkaleyi-anlamak",
+    "baslik": "Çanakkale'yi Anlamak: Sadece Savaş Değil",
+    "kategori": "tarih",
+    "tarih": "Mart 2026",
+    "okumaSuresi": "15 dk okuma",
+    "aciklama": "Çanakkale Zaferi'ni her yıl anıyoruz ama gerçekten anlıyor muyuz? Cephenin ötesindeki insani hikayeler üzerine.",
+    "href": "#",
+    "ikonTip": "emoji",
+    "ikon": "⚔️"
+  },
+  {
+    "slug": "bayram-ziyaretlerinin-felsefesi",
+    "baslik": "Bayram Ziyaretlerinin Felsefesi",
+    "kategori": "dusunce",
+    "tarih": "Nisan 2026",
+    "okumaSuresi": "5 dk okuma",
+    "aciklama": "İnternet çağında bayram ziyaretleri hâlâ anlamlı mı? Değişen gelenekler ve dönüşen insan ilişkileri üzerine kısa bir düşünce.",
+    "href": "#",
+    "ikonTip": "emoji",
+    "ikon": "💭"
+  },
+  {
+    "slug": "aylik-okuma-listesi-mart-2026",
+    "baslik": "Aylık Okuma Listesi — Mart 2026",
+    "kategori": "kitap",
+    "tarih": "Mart 2026",
+    "okumaSuresi": "7 dk okuma",
+    "aciklama": "Bu ay okuduğum 4 kitap, her birinden aldığım notlar ve size tavsiyelerim. Kısa özetler ve puanlar.",
+    "href": "#",
+    "ikonTip": "yer-imi"
+  },
+  {
+    "slug": "istanbulun-unutulan-mahalleleri",
+    "baslik": "İstanbul'un Unutulan Mahalleleri",
+    "kategori": "tarih",
+    "tarih": "Şubat 2026",
+    "okumaSuresi": "9 dk okuma",
+    "aciklama": "Turistlerin gitmediği, İstanbulluların bile unuttuğu semtlerdeki tarih. Bir pazar günü yürüyüşünden notlar.",
+    "href": "#",
+    "ikonTip": "emoji",
+    "ikon": "🗺️"
+  },
+  {
+    "slug": "yeni-yilda-yeni-aliskanliklar",
+    "baslik": "Yeni Yılda Yeni Alışkanlıklar: 3 Ay Sonra Durum",
+    "kategori": "dusunce",
+    "tarih": "Mart 2026",
+    "okumaSuresi": "6 dk okuma",
+    "aciklama": "Ocak'ta başladığım 5 alışkanlıktan hangisi hayatta kaldı? Samimi bir muhasebe.",
+    "href": "#",
+    "ikonTip": "emoji",
+    "ikon": "🌱"
+  }
+]

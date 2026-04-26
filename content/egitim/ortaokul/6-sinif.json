@@ -1,0 +1,68 @@
+{
+  "sinif": 6,
+  "ders": "Sosyal Bilgiler",
+  "stats": { "unite": 6, "konu": 17 },
+  "hazineKutusu": {
+    "baslik": "6. Sınıf Genel Kaynaklar",
+    "altBaslik": "Bu sınıf seviyesi için özel kaynaklar yakında eklenecektir.",
+    "bos": true,
+    "kaynaklar": []
+  },
+  "uniteler": [
+    {
+      "no": 1,
+      "baslik": "Birlikte Yaşamak",
+      "konular": [
+        { "no": 1, "baslik": "Zaman İçinde Değişen Gruplar ve Roller", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Kültürel Bağlarımızın ve Millî Değerlerimizin Toplumsal Birlikteliğe Etkisi", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "Toplumsal Sorunlar ve Çözüm Önerileri", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 2,
+      "baslik": "Evimiz Dünya",
+      "konular": [
+        { "no": 1, "baslik": "Ülkemizin, Kıtaların ve Okyanusların Konum Özellikleri", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Doğal ve Beşerî Çevre Özellikleri Arasındaki İlişki", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "Ülkemizin Türk Dünyasıyla Kültürel İş Birlikleri", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 3,
+      "baslik": "Ortak Mirasımız",
+      "konular": [
+        { "no": 1, "baslik": "Türkistan'da Kurulan İlk Türk Devletlerinin Medeniyetimize Katkıları", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "VII-XIII. Yüzyıllar Arasında İslam Medeniyetinin İnsanlığın Ortak Mirasına Katkıları", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "İslamiyetin Kabulüyle Türklerin Sosyal ve Kültürel Hayatlarında Meydana Gelen Değişimler", "badge": "Yakında", "href": "#" },
+        { "no": 4, "baslik": "XI-XIII. Yüzyıllar Arasında Meydana Gelen Askerî Mücadelelerin Anadolu'nun Türkleşmesi ve İslamlaşmasına Katkıları", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 4,
+      "baslik": "Yaşayan Demokrasimiz",
+      "konular": [
+        { "no": 1, "baslik": "Yönetimin Karar Alma Sürecini Etkileyen Unsurlar", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Temel Hak ve Sorumluluklarım", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "Toplumsal Düzenin Sürdürülmesindeki Önemi", "badge": "Yakında", "href": "#" },
+        { "no": 4, "baslik": "Dijitalleşme ve Teknolojik Gelişmelerin Vatandaşlık Hak ve Sorumluluklarına Etkileri", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 5,
+      "baslik": "Hayatımızdaki Ekonomi",
+      "konular": [
+        { "no": 1, "baslik": "Ülkemizin Kaynakları ve Ekonomik Faaliyetler", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Ekonomik Faaliyetler ve Meslekler", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "Tasarlanan Bir Ürünün Yatırım ve Pazarlama Süreci", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 6,
+      "baslik": "Teknoloji ve Sosyal Bilimler",
+      "konular": [
+        { "no": 1, "baslik": "Ulaşım ve İletişim Teknolojilerinin Kültürel Etkileşimdeki Rolü", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Telif ve Patent Süreci", "badge": "Yakında", "href": "#" }
+      ]
+    }
+  ]
+}

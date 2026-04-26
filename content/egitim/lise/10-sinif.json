@@ -1,0 +1,45 @@
+{
+  "sinif": 10,
+  "ders": "Tarih",
+  "stats": { "unite": 3, "konu": 14 },
+  "hazineKutusu": {
+    "baslik": "10. Sınıf Genel Kaynaklar",
+    "altBaslik": "Bu sınıf seviyesi için özel kaynaklar yakında eklenecektir.",
+    "bos": true,
+    "kaynaklar": []
+  },
+  "uniteler": [
+    {
+      "no": 1,
+      "baslik": "Türkistan'dan Türkiye'ye (1040-1299)",
+      "konular": [
+        { "no": "1.1", "baslik": "Önemli Askerî Mücadelelerin Türk Tarihinin Seyrine Etkileri", "badge": "Yakında", "href": "#" },
+        { "no": "1.2", "baslik": "Türkistan'dan Türkiye'ye Türklerde Devlet ve Ordu Teşkilatları", "badge": "Yakında", "href": "#" },
+        { "no": "1.3", "baslik": "Türklerde Sosyoekonomik Hayat ve Şehirleşme", "badge": "Yakında", "href": "#" },
+        { "no": "1.4", "baslik": "Türk-İslam Medeniyetinde Bilim, Kültür, Eğitim ve Sanat", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 2,
+      "baslik": "Beylikten Devlete Osmanlı (1299-1453)",
+      "konular": [
+        { "no": "2.1", "baslik": "Osmanlı Devleti'nin Kuruluşuna Dair Görüşler", "badge": "Yakında", "href": "#" },
+        { "no": "2.2", "baslik": "Beylikten Devlete Siyasi ve Askerî Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": "2.3", "baslik": "Osmanlı Devleti'nde Ordu, Hukuk ve Toprak Sistemi", "badge": "Yakında", "href": "#" },
+        { "no": "2.4", "baslik": "Osmanlı Devleti'nin İskân ve İstimâlet Politikası", "badge": "Yakında", "href": "#" },
+        { "no": "2.5", "baslik": "Osmanlı Devleti'nin İlim ve İrfan Geleneği", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 3,
+      "baslik": "Cihan Devleti Osmanlı (1453-1683)",
+      "konular": [
+        { "no": "3.1", "baslik": "Osmanlı Devleti'nin Cihan Devleti Hâline Gelmesi", "badge": "Yakında", "href": "#" },
+        { "no": "3.2", "baslik": "Osmanlı Devleti'nin Yönetim ve Ordu Yapısında Değişim", "badge": "Yakında", "href": "#" },
+        { "no": "3.3", "baslik": "Avrupalıların Sömürgeci Politikaları", "badge": "Yakında", "href": "#" },
+        { "no": "3.4", "baslik": "Osmanlı Devleti'nde İsyanlar", "badge": "Yakında", "href": "#" },
+        { "no": "3.5", "baslik": "Osmanlı Devleti'nde Bilim, Kültür, Eğitim ve Sanat", "badge": "Yakında", "href": "#" }
+      ]
+    }
+  ]
+}

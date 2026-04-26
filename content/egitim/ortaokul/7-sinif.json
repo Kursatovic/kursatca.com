@@ -1,0 +1,86 @@
+{
+  "sinif": 7,
+  "ders": "Sosyal Bilgiler",
+  "stats": { "unite": 7, "konu": 27 },
+  "hazineKutusu": {
+    "baslik": "7. Sınıf Genel Kaynaklar",
+    "altBaslik": "Bu sınıf seviyesi için özel kaynaklar yakında eklenecektir.",
+    "bos": true,
+    "kaynaklar": []
+  },
+  "uniteler": [
+    {
+      "no": 1,
+      "baslik": "Birey, Toplum ve İletişim",
+      "konular": [
+        { "no": 1, "baslik": "İletişimin Günlük Yaşamdaki Yeri", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Olumlu İletişim", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "Medyanın Toplum Hayatına Etkileri", "badge": "Yakında", "href": "#" },
+        { "no": 4, "baslik": "Medya Özgürlüğü", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 2,
+      "baslik": "Osmanlı Devleti ve Kültür",
+      "konular": [
+        { "no": 1, "baslik": "Osmanlı Devleti'nin Tarih Sahnesinde", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Osmanlı Devleti'nde Fetihler", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "Avrupa'daki Gelişmeler ve Osmanlı Devleti", "badge": "Yakında", "href": "#" },
+        { "no": 4, "baslik": "Osmanlı Devleti'nde Değişim Yılları", "badge": "Yakında", "href": "#" },
+        { "no": 5, "baslik": "Seyahatnamelerde Osmanlı", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 3,
+      "baslik": "Ülkemizde Yerleşme, Nüfus ve Göç",
+      "konular": [
+        { "no": 1, "baslik": "Geçmişten Günümüze Yerleşme", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Türkiye'de Nüfus", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "Ülkemizde Göç", "badge": "Yakında", "href": "#" },
+        { "no": 4, "baslik": "Bir Özgürlük Olarak Yerleşme ve Seyahat", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 4,
+      "baslik": "Geçmişten Günümüze Bilim",
+      "konular": [
+        { "no": 1, "baslik": "Yazının ve Bilginin Yolculuğu", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Doğu'nun Bilgi Birikimi", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "Avrupa'da Yaşanan Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": 4, "baslik": "Özgür Düşünce ve Bilim", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 5,
+      "baslik": "Üretim ve Sosyal Hayat",
+      "konular": [
+        { "no": 1, "baslik": "Üretimde ve Yönetimde Toprak", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Teknolojinin Sosyal ve Ekonomik Hayata Etkileri", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "Bizim İçin Çalışanlar", "badge": "Yakında", "href": "#" },
+        { "no": 4, "baslik": "Ahilikten Meslek Odalarına", "badge": "Yakında", "href": "#" },
+        { "no": 5, "baslik": "Mesleki Tercihlerim", "badge": "Yakında", "href": "#" },
+        { "no": 6, "baslik": "Dijital Teknolojiler ve Ticaret", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 6,
+      "baslik": "Demokrasi ve Vatandaşlık",
+      "konular": [
+        { "no": 1, "baslik": "Geçmişten Bugüne Demokrasi", "badge": "Yakında", "href": "#" },
+        { "no": 2, "baslik": "Atatürk ve Türk Demokrasisinin Gelişimi", "badge": "Yakında", "href": "#" },
+        { "no": 3, "baslik": "Türkiye Cumhuriyeti'nin Nitelikleri", "badge": "Yakında", "href": "#" },
+        { "no": 4, "baslik": "Demokratik Süreçler", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 7,
+      "baslik": "Türkiye ve Dünya",
+      "konular": [
+        { "no": 1, "baslik": "Uluslararası Kuruluşlar ve Türkiye", "badge": "", "href": "egitim/kuresel-baglantilar/index.html" },
+        { "no": 2, "baslik": "Türkiye'nin Uluslararası Ekonomik İlişkileri", "badge": "Keşfet", "href": "egitim/kuresel-baglantilar/index.html" },
+        { "no": 3, "baslik": "Kalıp Yargıları Sorguluyorum", "badge": "Atölye", "href": "egitim/kuresel-baglantilar/index.html" },
+        { "no": 4, "baslik": "Küresel Sorunlara Çözüm Üretiyorum", "badge": "Görev", "href": "egitim/kuresel-baglantilar/index.html" }
+      ]
+    }
+  ]
+}

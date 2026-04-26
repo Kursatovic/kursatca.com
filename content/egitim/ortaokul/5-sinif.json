@@ -1,0 +1,68 @@
+{
+  "sinif": 5,
+  "ders": "Sosyal Bilgiler",
+  "stats": { "unite": 6, "konu": 19 },
+  "hazineKutusu": {
+    "baslik": "5. Sınıf Genel Kaynaklar",
+    "altBaslik": "Bu sınıf seviyesi için özel kaynaklar yakında eklenecektir.",
+    "bos": true,
+    "kaynaklar": []
+  },
+  "uniteler": [
+    {
+      "no": 1,
+      "baslik": "Birlikte Yaşamak",
+      "konular": [
+        { "no": 1, "baslik": "Gruplar ve Rollerimiz", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/1.%20%C3%BCnite/Gruplar%20ve%20Rollerimiz.pdf&title=Gruplar%20ve%20Rollerimiz" },
+        { "no": 2, "baslik": "Kültürel Zenginliklerin Birlikte Yaşamaya Katkısı", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/1.%20%C3%BCnite/K%C3%9CLT%C3%9CREL%20ZENG%C4%B0NL%C4%B0KLER%C4%B0N%20B%C4%B0RL%C4%B0KTE%20YA%C5%9EAMAYA%20KATKISI.pdf&title=K%C3%BClt%C3%BCrel%20Zenginliklerin%20Birlikte%20Ya%C5%9Famaya%20Katk%C4%B1s%C4%B1" },
+        { "no": 3, "baslik": "Yardımlaşma ve Dayanışmada Beraberiz", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/1.%20%C3%BCnite/YARDIMLA%C5%9EMA%20VE%20DAYANI%C5%9EMADA%20BERABER%C4%B0Z.pdf&title=Yard%C4%B1mla%C5%9Fma%20ve%20Dayan%C4%B1%C5%9Fmada%20Beraberiz" }
+      ]
+    },
+    {
+      "no": 2,
+      "baslik": "Evimiz Dünya",
+      "konular": [
+        { "no": 1, "baslik": "İlimizin Göreceli Konumu", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/2.%20%C3%BCnite/%C4%B0limizin%20G%C3%B6receli%20Konumu.pdf&title=%C4%B0limizin%20G%C3%B6receli%20Konumu" },
+        { "no": 2, "baslik": "Doğal ve Beşerî Çevremizdeki Değişim", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/2.%20%C3%BCnite/Do%C4%9Fal%20ve%20Be%C5%9Feri%20%C3%87evremizdeki%20De%C4%9Fi%C5%9Fim.pdf&title=Do%C4%9Fal%20ve%20Be%C5%9Feri%20%C3%87evremizdeki%20De%C4%9Fi%C5%9Fim" },
+        { "no": 3, "baslik": "İlimizde Yaşanabilecek Afetler ve Etkileri", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/2.%20%C3%BCnite/%C4%B0L%C4%B0M%C4%B0ZDE%20%20YA%C5%9EANAB%C4%B0LECEK%20%20AFETLER%20%20VE%20%20ETK%C4%B0LER%C4%B0.pdf&title=%C4%B0limizde%20Ya%C5%9Fanabilecek%20Afetler%20ve%20Etkileri" },
+        { "no": 4, "baslik": "Ülkemize Komşu Devletler", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/2.%20%C3%BCnite/%C3%9CLKEM%C4%B0ZE%20%20KOM%C5%9EU%20%20DEVLETLER.pdf&title=%C3%9Clkemize%20Kom%C5%9Fu%20Devletler" }
+      ]
+    },
+    {
+      "no": 3,
+      "baslik": "Ortak Mirasımız",
+      "konular": [
+        { "no": 1, "baslik": "Ortak Kültürel Mirasımız", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/3.%20%C3%BCnite/ORTAK%20%20K%C3%9CLT%C3%9CREL%20%20M%C4%B0RASIMIZ.pdf&title=Ortak%20K%C3%BClt%C3%BCrel%20Miras%C4%B1m%C4%B1z" },
+        { "no": 2, "baslik": "Anadolu'nun İlk Yerleşim Yerlerinde Yaşam", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/3.%20%C3%BCnite/ANADOLU%E2%80%99NUN%20%C4%B0LK%20YERLE%C5%9E%C4%B0M%20YERLER%C4%B0NDE%20YA%C5%9EAM.pdf&title=Anadolu'nun%20%C4%B0lk%20Yerle%C5%9Fim%20Yerlerinde%20Ya%C5%9Fam" },
+        { "no": 3, "baslik": "Mezopotamya ve Anadolu Medeniyetlerinin Ortak Kültürel Mirasa Katkıları", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/3.%20%C3%BCnite/MEZOPOTAMYA%20%20VE%20%20ANADOLU%20%20MEDEN%C4%B0YETLER%C4%B0N%C4%B0N%20ORTAK%20%20K%C3%9CLT%C3%9CREL%20%20M%C4%B0RASA%20%20KATKILARI.pdf&title=Mezopotamya%20ve%20Anadolu%20Medeniyetleri" }
+      ]
+    },
+    {
+      "no": 4,
+      "baslik": "Yaşayan Demokrasimiz",
+      "konular": [
+        { "no": 1, "baslik": "Demokrasi ve Cumhuriyetin Temel Nitelikleri", "badge": "Yeni", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/4.%20%C3%BCnite/Demokrasi%20ve%20Cumhuriyetin%20Temel%20Nitelikleri%20ve%20Etkin%20Vatanda%C5%9F%C4%B1n%20%C3%96zellikleri.pdf&title=Demokrasi%20ve%20Cumhuriyetin%20Temel%20Nitelikleri" },
+        { "no": 2, "baslik": "Etkin Vatandaşın Özellikleri", "badge": "Yeni", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/4.%20%C3%BCnite/Etkin%20Vatanda%C5%9F%C4%B1n%20%C3%96zellikleri.pdf&title=Etkin%20Vatanda%C5%9F%C4%B1n%20%C3%96zellikleri" },
+        { "no": 3, "baslik": "Temel Hak ve Sorumluluklarımız", "badge": "Yeni", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/4.%20%C3%BCnite/Temel%20Hak%20ve%20Sorumluluklar%C4%B1m%C4%B1z.pdf&title=Temel%20Hak%20ve%20Sorumluluklar%C4%B1m%C4%B1z" },
+        { "no": 4, "baslik": "Sorunlarımızın Çözümünde Kurumlar", "badge": "Yeni", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/4.%20%C3%BCnite/SORUNLARIMIZIN%20%C3%87%C3%96Z%C3%9CM%C3%9CNDE%20KURUMLAR.pdf&title=Sorunlar%C4%B1m%C4%B1z%C4%B1n%20%C3%87%C3%B6z%C3%BCm%C3%BCnde%20Kurumlar" }
+      ]
+    },
+    {
+      "no": 5,
+      "baslik": "Hayatımızdaki Ekonomi",
+      "konular": [
+        { "no": 1, "baslik": "Kaynaklarımızın Verimli Kullanımı", "badge": "Yeni", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/5.%20%C3%BCnite/KAYNAKLARIMIZIN%20VER%C4%B0ML%C4%B0%20KULLANIMI.pdf&title=Kaynaklar%C4%B1m%C4%B1z%C4%B1n%20Verimli%20Kullan%C4%B1m%C4%B1" },
+        { "no": 2, "baslik": "Bütçemi Planlıyorum", "badge": "Yeni", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/5.%20%C3%BCnite/B%C3%9CT%C3%87EM%C4%B0%20PLANLIYORUM.pdf&title=B%C3%BCt%C3%A7emi%20Planl%C4%B1yorum" },
+        { "no": 3, "baslik": "İlimizdeki Ekonomik Faaliyetler", "badge": "Yeni", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/5.%20%C3%BCnite/%C4%B0limizdeki%20Ekonomik%20Faaliyetler.pdf&title=%C4%B0limizdeki%20Ekonomik%20Faaliyetler" }
+      ]
+    },
+    {
+      "no": 6,
+      "baslik": "Teknoloji ve Sosyal Bilimler",
+      "konular": [
+        { "no": 1, "baslik": "Teknolojik Gelişmelerin Toplum Hayatına Etkileri", "badge": "Yeni", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/6.%20%C3%BCnite/TEKNOLOJ%C4%B0K%20GEL%C4%B0%C5%9EMELER%C4%B0N%20TOPLUM%20HAYATINA%20ETK%C4%B0LER%C4%B0.pdf&title=Teknolojik%20Geli%C5%9Fmelerin%20Toplum%20Hayat%C4%B1na%20Etkileri" },
+        { "no": 2, "baslik": "Teknoloji Ürünlerinin Bilinçli Kullanımı", "badge": "Yeni", "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/5.%20S%C4%B1n%C4%B1f/6.%20%C3%BCnite/TEKNOLOJ%C4%B0K%20%C3%9CR%C3%9CNLER%C4%B0N%20B%C4%B0L%C4%B0N%C3%87L%C4%B0%20KULLANIMI.pdf&title=Teknoloji%20%C3%9Cr%C3%BCnlerinin%20Bilin%C3%A7li%20Kullan%C4%B1m%C4%B1" }
+      ]
+    }
+  ]
+}

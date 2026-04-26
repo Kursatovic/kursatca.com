@@ -1,0 +1,44 @@
+{
+  "sinif": 9,
+  "ders": "Tarih",
+  "stats": { "unite": 3, "konu": 13 },
+  "hazineKutusu": {
+    "baslik": "9. Sınıf Genel Kaynaklar",
+    "altBaslik": "Bu sınıf seviyesi için özel kaynaklar yakında eklenecektir.",
+    "bos": true,
+    "kaynaklar": []
+  },
+  "uniteler": [
+    {
+      "no": 1,
+      "baslik": "Geçmişin İnşa Sürecinde Tarih",
+      "konular": [
+        { "no": "1.1", "baslik": "Tarih Öğrenmenin Faydaları", "badge": "Yakında", "href": "#" },
+        { "no": "1.2", "baslik": "Tarihin Doğası", "badge": "Yakında", "href": "#" },
+        { "no": "1.3", "baslik": "Tarihsel Bilginin Üretim Süreci", "badge": "Yakında", "href": "#" },
+        { "no": "1.4", "baslik": "Tarih Araştırma ve Yazımında Dijital Dönüşüm", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 2,
+      "baslik": "Eski Çağ Medeniyetleri",
+      "konular": [
+        { "no": "2.1", "baslik": "Tarım Devrimi'nin Eski Çağ'a Etkileri", "badge": "Yakında", "href": "#" },
+        { "no": "2.2", "baslik": "Eski Çağ'da Yönetenler ve Savaşanlar", "badge": "Yakında", "href": "#" },
+        { "no": "2.3", "baslik": "Eski Çağ'da Hukuk", "badge": "Yakında", "href": "#" },
+        { "no": "2.4", "baslik": "Eski Çağ'da İnanç, Bilim ve Sanat", "badge": "Yakında", "href": "#" },
+        { "no": "2.5", "baslik": "Türklerde Konargöçer Yaşam", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 3,
+      "baslik": "Orta Çağ Medeniyetleri",
+      "konular": [
+        { "no": "3.1", "baslik": "Orta Çağ'daki Kitlesel Göçler", "badge": "Yakında", "href": "#" },
+        { "no": "3.2", "baslik": "Orta Çağ'daki Siyasi ve Askerî Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": "3.3", "baslik": "Orta Çağ'da Ticaret Yolları", "badge": "Yakında", "href": "#" },
+        { "no": "3.4", "baslik": "Orta Çağ'da Bilim, Kültür ve Sanat", "badge": "Yakında", "href": "#" }
+      ]
+    }
+  ]
+}

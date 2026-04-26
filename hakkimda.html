@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>kursatca.com | Hakkımda</title>
   <meta name="description" content="Sosyal bilgileri sıkıcı bulanlara inat anlatan bir eğitimcinin yaklaşımı, üretim tarzı ve iletişim alanı." />
-  <link rel="stylesheet" href="css/style.css?v=1.0.1" />
+  <link rel="stylesheet" href="css/style.css?v=1.0.3" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>" />
+  <link rel="canonical" href="https://kursatca.com/hakkimda.html" />
 </head>
 <body>
 
@@ -49,9 +50,8 @@
             <svg class="svg-icon" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3l1.9 5.8 1.9-5.8a2 2 0 0 1 1.3-1.3l5.8-1.9-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
             Ezber değil, anlayarak
           </span>
-          <h2 class="about-hero-title">Sosyal bilgileri sıkıcı bulanlara inat anlatan biriyim.</h2>
-          <p class="about-hero-text">Konu anlatmak benim için sadece “bilgi vermek” değil.</p>
-          <p class="about-hero-text">Bir şeyi gerçekten anlamak, onu başka birine anlatabilecek seviyeye gelmek demek. Bu yüzden burada ezber yok, şişirme yok, laf kalabalığı yok.</p>
+          <h2 class="about-hero-title">15 yıldır anlatıyorum.<br>Her yıl biraz farklı anlatıyorum.</h2>
+          <p class="about-hero-text">İstanbul Üniversitesi Tarih mezunuyum. 2011'den beri öğretmenlik yapıyorum. Bu sürede şunu çok gördüm: öğrenci anlamıyor değil, anlatım ona ulaşmıyor.</p>
         </div>
 
         <div class="about-visual-card">
@@ -67,7 +67,18 @@
 
       <div class="about-content-grid">
         <div class="about-glass-card about-story-card">
-          <div class="about-list-block">
+
+          <div class="about-body" style="margin-bottom: var(--space-lg);">
+            <p>Fark büyük. Birincisinde sorun öğrencide, ikincisinde anlatımda. Ben ikincisini düzeltmeye çalışıyorum; kendi anlatımımı, kendi materyallerimi, kendi sorularımı.</p>
+            <p>Bunu yaparken fark ettiğim bir şey daha var: konunun mantığını görmeden ezberlenen hiçbir şey tutmuyor. Tarih dersi de, sosyal bilgiler de bu açıdan farklı değil. "Ne oldu" sorusunu geçip "neden oldu, başka türlü olabilir miydi" sorusuna geçince bir şeyler değişiyor. Öğrencide değil, anlatımda.</p>
+            <p>Son yıllarda yapay zekayı da bu işe koşmaya çalışıyorum. Nasıl daha iyi soru sorulur, nasıl daha hızlı geri bildirim verilir, nerede işe yarar nerede körleştirir; bunları düşünüyorum. Sihirli bir araç olduğunu düşünmüyorum. Ama iyi kullanıldığında fark yaratabileceğini gördüm.</p>
+            
+            <div class="about-quote">
+              <p><strong>Bu site de o düşüncenin bir çıktısı.</strong></p>
+            </div>
+          </div>
+
+          <div class="about-list-block" style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: var(--space-lg);">
             <p class="about-list-label">Bu sitede:</p>
             <ul class="about-list">
               <li>
@@ -95,15 +106,6 @@
                 Kendi öğrenme sürecimi açık açık paylaşıyorum
               </li>
             </ul>
-          </div>
-
-          <div class="about-body">
-            <p>Burayı bir “ders sitesi” gibi değil, birlikte öğrenilen bir alan gibi düşünebilirsin.</p>
-            <p>Bazen bir konuyu anlatırım, bazen bir soruyu kurcalarım, bazen de “bu böyle mi olmalı?” diye kafa açarım.</p>
-
-            <div class="about-quote">
-              <p>Ama ortak nokta şu:<br><strong>Anlamadan geçmek yok.</strong></p>
-            </div>
           </div>
         </div>
 
@@ -151,8 +153,14 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
-      <p class="footer-copy">© 2026 kursatca.com — Kürşat Çelik. Tüm hakları saklıdır.</p>
+      <div class="footer-info">
+        <p class="footer-copy">© 2026 kursatca.com — Kürşat Çelik. Tüm hakları saklıdır.</p>
+        <p class="footer-disclaimer" style="font-size: 0.8rem; color: var(--clr-text-muted); margin-top: 4px;">
+          Eğitim amaçlı, ücretsiz ve güvenli içerik platformudur. İletişim: <a href="mailto:kursat@kursatca.com" style="color: inherit;">kursat@kursatca.com</a>
+        </p>
+      </div>
       <ul class="footer-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
         <li><a href="egitim.html">Eğitim</a></li>
         <li><a href="yapay-zeka.html">Yapay Zeka</a></li>
         <li><a href="blog.html">Blog</a></li>
@@ -161,6 +169,10 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=1.0.1"></script>
+  <script src="js/shared/utils.js?v=1.0.5"></script>
+  <script src="js/shared/ui.js?v=1.0.5"></script>
+  <script src="js/shared/tabs.js?v=1.0.5"></script>
+  <script src="js/shared/search.js?v=1.0.5"></script>
+  <script src="js/main.js?v=1.0.5"></script>
 </body>
 </html>

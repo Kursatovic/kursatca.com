@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Küresel Bağlantılar Macerası</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="canonical" href="https://kursatca.com/egitim/kuresel-baglantilar/" />
+</head>
+<body class="is-adventure">
+
+  <nav class="nav" id="main-nav">
+    <div class="container nav-inner">
+      <a href="../../index.html" class="nav-logo">
+        <span class="dot"></span>kursatca<span style="color: var(--clr-teal); font-weight: 400;">.com</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../../index.html">Ana Sayfa</a></li>
+        <li><a href="../../egitim.html" class="active">Eğitim</a></li>
+        <li><a href="../../yapay-zeka.html">Yapay Zeka</a></li>
+        <li><a href="../../blog.html">Blog</a></li>
+        <li><a href="../../hakkimda.html">Hakkımda</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">7. Sınıf Sosyal Bilgiler</p>
+        <h1>Küresel Bağlantılar Macerası</h1>
+      </div>
+      <div class="progress-box">
+        <div class="progress-meta">
+          <span>İlerleme</span>
+          <strong id="progressLabel">%12</strong>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav-pills" id="navPills">
+      <button class="nav-pill active" data-slide="0">Kanca</button>
+      <button class="nav-pill" data-slide="1">Kavramlar</button>
+      <button class="nav-pill" data-slide="2">Dış Politika</button>
+      <button class="nav-pill" data-slide="3">Kuruluşlar</button>
+      <button class="nav-pill" data-slide="4">Bulmaca</button>
+      <button class="nav-pill" data-slide="5">Eşleştirme</button>
+      <button class="nav-pill" data-slide="6">Doğru-Yanlış</button>
+      <button class="nav-pill" data-slide="7">Test</button>
+    </nav>
+
+    <main class="slider-wrap">
+      <div class="slides" id="slides">
+        <section class="slide hero-slide">
+          <div class="hero-grid">
+            <div class="hero-card">
+              <div class="hero-image-wrapper">
+                <img src="assets/images/hero_global.png" alt="Global bağlantılar" class="hero-main-img">
+              </div>
+              <p class="tag">Dikkat Çekelim</p>
+              <h2>“En güçlü devlet bile tek başına hiçtir!”</h2>
+              <p>Sence bu iddia doğru mu? Salgın hastalık, iklim değişikliği ya da ekonomik kriz gibi küresel sorunlarda bir ülke tek başına yeterli olabilir mi?</p>
+              <div class="hook-actions">
+                <button class="choice-btn hook-btn" data-hook="agree">İş birliği şart</button>
+                <button class="choice-btn hook-btn" data-hook="disagree">Güçlü ülke tek başına yapar</button>
+              </div>
+              <div class="feedback-panel" id="hookFeedback">Uluslararası iş birliği, ülkelerin sorunları daha kolay çözmesini sağlar. Bugün bunu Türkiye'nin rolü üzerinden keşfedeceğiz.</div>
+            </div>
+
+            <aside class="spark-card">
+              <h3>Bugün Neler Var?</h3>
+              <ul class="spark-list">
+                <li>Kavram kartları</li>
+                <li>Mustafa Kemal'in sözleriyle dış politika</li>
+                <li>Detay açılan kuruluş kartları</li>
+                <li>Harf kutucuklu bulmaca, eşleştirme, doğru-yanlış ve akışkan test</li>
+              </ul>
+              <button class="next-btn" data-next>İlk Etkinliğe Geç</button>
+            </aside>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="section-head">
+            <div>
+              <p class="tag">2. Bölüm</p>
+              <h2>Kavramlara Dokun, Anlamı Aç</h2>
+            </div>
+            <p class="section-note">Kartlara tıklayınca anlamlar açılır.</p>
+          </div>
+          <div class="concept-grid">
+            <button class="concept-card"><span class="concept-title">Kalıp yargı</span><span class="concept-body">Bir kişi ya da toplum hakkında değişmesi çok zor olan yerleşmiş düşüncelerdir.</span></button>
+            <button class="concept-card"><span class="concept-title">Ön yargı</span><span class="concept-body">Bir kişi ya da olay hakkında yeterince tanımadan önce edinilen olumlu ya da olumsuz yargıdır.</span></button>
+            <button class="concept-card"><span class="concept-title">Küresel sorun</span><span class="concept-body">Tüm insanlığı ve dünyayı ilgilendiren ortak sorunlardır.</span></button>
+            <button class="concept-card"><span class="concept-title">Diplomasi</span><span class="concept-body">Ülkelerin sorunları görüşme, anlaşma ve barışçıl yollarla çözme sürecidir.</span></button>
+            <button class="concept-card"><span class="concept-title">Dış ticaret</span><span class="concept-body">Ülkelerin başka ülkelerle yaptığı alışveriş, yani ithalat ve ihracattır.</span></button>
+            <button class="concept-card"><span class="concept-title">Ekonomi</span><span class="concept-body">Üretim, dağıtım, tüketim ve kaynakların kullanımıyla ilgili alandır.</span></button>
+            <button class="concept-card"><span class="concept-title">Irkçılık</span><span class="concept-body">İnsanları ırklarına göre üstün ya da değersiz görme anlayışıdır.</span></button>
+            <button class="concept-card"><span class="concept-title">Sulh</span><span class="concept-body">Barış demektir; çatışma yerine huzur ve uzlaşmayı anlatır.</span></button>
+          </div>
+          <div class="section-actions">
+            <button class="next-btn" data-next>Sonraki Etkinlik</button>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="section-head">
+            <div>
+              <p class="tag">3. Bölüm</p>
+              <h2>Türkiye'nin Dış Politika Esasları</h2>
+            </div>
+            <div class="policy-hero">
+              <img src="assets/images/ataturk_peace.png" alt="Atatürk Barış İllüstrasyonu" class="policy-img">
+            </div>
+          </div>
+          <div class="policy-grid">
+            <article class="quote-card">
+              <h3>Barışçılık</h3>
+              <blockquote>“Yurtta sulh, cihanda sulh.”</blockquote>
+              <p>Türkiye, sorunları savaş yerine barış ve diplomasi ile çözmeyi hedefler.</p>
+            </article>
+            <article class="quote-card">
+              <h3>Tam Bağımsızlık</h3>
+              <blockquote>“Bağımsızlık benim karakterimdir.”</blockquote>
+              <p>Dış politikada başka devletlerin etkisi altında kalmadan karar vermek önemlidir.</p>
+            </article>
+            <article class="quote-card">
+              <h3>Gerçekçilik</h3>
+              <blockquote>“Büyük hayaller peşinde koşup yapamayacağımız şeyleri yapar görünmeyelim.”</blockquote>
+              <p>Kararlar, duygulara değil ülkenin gerçek şartlarına ve çıkarlarına göre alınmalıdır.</p>
+            </article>
+            <article class="quote-card">
+              <h3>Karşılıklılık <span class="sub-term">(Mütekabiliyet)</span></h3>
+              <blockquote>“İnsan mensup olduğu milletin varlığını ve mutluluğunu düşündüğü kadar bütün dünya milletlerinin huzurunu da düşünmelidir.”</blockquote>
+              <p>Ülkeler arası ilişkilerde saygı, denge ve karşılıklı yarar gözetilir.</p>
+            </article>
+          </div>
+          <div class="section-actions">
+            <button class="next-btn" data-next>Kuruluşlara Geç</button>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="section-head">
+            <div>
+              <p class="tag">4. Bölüm</p>
+              <h2>Uluslararası Kuruluşlar Galerisi</h2>
+            </div>
+            <p class="section-note">Kartlara tıkla; açılan pencerede kuruluş yılı, merkezi, üye sayısı, görevleri ve Türkiye ile ilişkisi gelsin.</p>
+          </div>
+          <div class="org-grid">
+            <button class="org-card" data-org="un"><img src="assets/logos/un.png" alt="Birleşmiş Milletler logosu"><h3>Birleşmiş Milletler</h3><p>Barış, güvenlik ve uluslararası iş birliği.</p><span class="org-hint">Detayları aç</span></button>
+            <button class="org-card" data-org="nato"><img src="assets/logos/nato.png" alt="NATO logosu"><h3>NATO</h3><p>Ortak savunma ve güvenlik ittifakı.</p><span class="org-hint">Detayları aç</span></button>
+            <button class="org-card" data-org="unesco"><img src="assets/logos/unesco.png" alt="UNESCO logosu"><h3>UNESCO</h3><p>Eğitim, bilim ve kültür alanında iş birliği.</p><span class="org-hint">Detayları aç</span></button>
+            <button class="org-card" data-org="who"><img src="assets/logos/who.svg" alt="Dünya Sağlık Örgütü logosu"><h3>Dünya Sağlık Örgütü</h3><p>Küresel sağlık eş güdümü sağlar.</p><span class="org-hint">Detayları aç</span></button>
+            <button class="org-card" data-org="oic"><img src="assets/logos/oic.png" alt="İslam İş Birliği Teşkilatı logosu"><h3>İslam İş Birliği Teşkilatı</h3><p>Dayanışma ve ortak meselelerde iş birliği.</p><span class="org-hint">Detayları aç</span></button>
+            <button class="org-card" data-org="bsec"><img src="assets/logos/bsec.png" alt="Karadeniz Ekonomik İş Birliği logosu"><h3>KEİ</h3><p>Bölgesel ekonomik iş birliği ağı.</p><span class="org-hint">Detayları aç</span></button>
+            <button class="org-card" data-org="d8"><img src="assets/logos/d8.png" alt="D-8 logosu"><h3>D-8</h3><p>Ekonomik ilişkileri geliştirmeyi hedefler.</p><span class="org-hint">Detayları aç</span></button>
+            <button class="org-card" data-org="eu"><img src="assets/logos/eu.svg" alt="Avrupa Birliği logosu"><h3>Avrupa Birliği</h3><p>Siyasi ve ekonomik iş birliği birliği.</p><span class="org-hint">Detayları aç</span></button>
+          </div>
+          <div class="map-panel">
+            <div>
+              <p class="tag">Kuruluş Haritası</p>
+              <h3>Merkezler Nerede?</h3>
+              <p class="section-note">Kuruluşların merkez şehirlerini yaklaşık konumlarıyla incele.</p>
+            </div>
+            <div class="mini-world">
+              <div class="continent americas"></div>
+              <div class="continent europe"></div>
+              <div class="continent africa"></div>
+              <div class="continent asia"></div>
+              <div class="continent oceania"></div>
+              <span class="map-pin ny">New York<br>BM</span>
+              <span class="map-pin brussels">Brüksel<br>NATO, AB</span>
+              <span class="map-pin paris">Paris<br>UNESCO</span>
+              <span class="map-pin geneva">Cenevre<br>WHO</span>
+              <span class="map-pin jeddah">Cidde<br>İİT</span>
+              <span class="map-pin istanbul">İstanbul<br>KEİ, D-8</span>
+            </div>
+          </div>
+          <div class="section-actions">
+            <button class="next-btn" data-next>Bulmacaya Geç</button>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="section-head">
+            <div>
+              <p class="tag">5. Bölüm</p>
+              <h2>Kavram Bulmacası</h2>
+            </div>
+            <p class="section-note">Bulmaca son düzenine göre hazırlandı. İpucuna bastığında kavram otomatik yerleşir.</p>
+          </div>
+          <div class="crossword-shell">
+            <div class="crossword-board">
+              <div class="crossword-grid">
+                <!-- Izgara: 40px adımlı, left=(sütun-1)*40, top=(satır-1)*40 -->
+                <!-- Kesişimler: ÖNYARGI-I ↔ DİŞTİCARET-İ(sütun3) | EKONOMİ-İ ↔ DİŞTİCARET-İ(sütun6) | DİPLOMASİ-A ↔ DİŞTİCARET-A(sütun8) | SULH-S ↔ KÜRESELSORUNsütun12 -->
+
+                <!-- Sözcük 1: DİŞTİCARET — yatay, satır 8 -->
+                <div class="cw-number" style="left:40px; top:280px;">1</div>
+                <div class="cw-cell fixed" data-word="DISTICARET"           style="left:40px;  top:280px;">D</div>
+                <div class="cw-cell fixed" data-word="DISTICARET ONYARGI"   style="left:80px;  top:280px;">İ</div>
+                <div class="cw-cell fixed" data-word="DISTICARET"           style="left:120px; top:280px;">Ş</div>
+                <div class="cw-cell fixed" data-word="DISTICARET"           style="left:160px; top:280px;">T</div>
+                <div class="cw-cell fixed" data-word="DISTICARET EKONOMI"   style="left:200px; top:280px;">İ</div>
+                <div class="cw-cell fixed" data-word="DISTICARET"           style="left:240px; top:280px;">C</div>
+                <div class="cw-cell fixed" data-word="DISTICARET DIPLOMASI" style="left:280px; top:280px;">A</div>
+                <div class="cw-cell fixed" data-word="DISTICARET"           style="left:320px; top:280px;">R</div>
+                <div class="cw-cell fixed" data-word="DISTICARET"           style="left:360px; top:280px;">E</div>
+                <div class="cw-cell fixed" data-word="DISTICARET"           style="left:400px; top:280px;">T</div>
+
+                <!-- Sözcük 2: ÖNYARGI — dikey, sütun 3 -->
+                <div class="cw-number" style="left:80px; top:40px;">2</div>
+                <input class="cw-input" data-word="ONYARGI" data-answer="Ö" maxlength="1" style="left:80px; top:40px;">
+                <div class="cw-cell fixed" data-word="ONYARGI" style="left:80px; top:80px;">N</div>
+                <div class="cw-cell fixed" data-word="ONYARGI" style="left:80px; top:120px;">Y</div>
+                <div class="cw-cell fixed" data-word="ONYARGI" style="left:80px; top:160px;">A</div>
+                <div class="cw-cell fixed" data-word="ONYARGI" style="left:80px; top:200px;">R</div>
+                <div class="cw-cell fixed" data-word="ONYARGI" style="left:80px; top:240px;">G</div>
+
+                <!-- Sözcük 3: EKONOMİ — dikey, sütun 6 -->
+                <div class="cw-number" style="left:200px; top:40px;">3</div>
+                <input class="cw-input" data-word="EKONOMI" data-answer="E" maxlength="1" style="left:200px; top:40px;">
+                <div class="cw-cell fixed" data-word="EKONOMI" style="left:200px; top:80px;">K</div>
+                <div class="cw-cell fixed" data-word="EKONOMI" style="left:200px; top:120px;">O</div>
+                <div class="cw-cell fixed" data-word="EKONOMI" style="left:200px; top:160px;">N</div>
+                <div class="cw-cell fixed" data-word="EKONOMI" style="left:200px; top:200px;">O</div>
+                <div class="cw-cell fixed" data-word="EKONOMI" style="left:200px; top:240px;">M</div>
+
+                <!-- Sözcük 4: DİPLOMASİ — dikey, sütun 8 -->
+                <div class="cw-number" style="left:280px; top:40px;">4</div>
+                <input class="cw-input" data-word="DIPLOMASI" data-answer="D" maxlength="1" style="left:280px; top:40px;">
+                <div class="cw-cell fixed" data-word="DIPLOMASI" style="left:280px; top:80px;">İ</div>
+                <div class="cw-cell fixed" data-word="DIPLOMASI" style="left:280px; top:120px;">P</div>
+                <div class="cw-cell fixed" data-word="DIPLOMASI" style="left:280px; top:160px;">L</div>
+                <div class="cw-cell fixed" data-word="DIPLOMASI" style="left:280px; top:200px;">O</div>
+                <div class="cw-cell fixed" data-word="DIPLOMASI" style="left:280px; top:240px;">M</div>
+                <div class="cw-cell fixed" data-word="DIPLOMASI" style="left:280px; top:320px;">S</div>
+                <div class="cw-cell fixed" data-word="DIPLOMASI" style="left:280px; top:360px;">İ</div>
+
+                <!-- Sözcük 6: KÜRESEL SORUN — dikey, sütun 12 -->
+                <div class="cw-number" style="left:440px; top:40px;">6</div>
+                <input class="cw-input" data-word="KURESELSORUN" data-answer="K" maxlength="1" style="left:440px; top:40px;">
+                <div class="cw-cell fixed" data-word="KURESELSORUN" style="left:440px; top:80px;">Ü</div>
+                <div class="cw-cell fixed" data-word="KURESELSORUN" style="left:440px; top:120px;">R</div>
+                <div class="cw-cell fixed" data-word="KURESELSORUN" style="left:440px; top:160px;">E</div>
+                <div class="cw-cell fixed" data-word="KURESELSORUN" style="left:440px; top:200px;">S</div>
+                <div class="cw-cell fixed" data-word="KURESELSORUN" style="left:440px; top:240px;">E</div>
+                <div class="cw-cell fixed" data-word="KURESELSORUN" style="left:440px; top:280px;">L</div>
+                <div class="cw-cell fixed" data-word="KURESELSORUN" style="left:440px; top:360px;">O</div>
+                <div class="cw-cell fixed" data-word="KURESELSORUN" style="left:440px; top:400px;">R</div>
+                <div class="cw-cell fixed" data-word="KURESELSORUN" style="left:440px; top:440px;">U</div>
+                <div class="cw-cell fixed" data-word="KURESELSORUN" style="left:440px; top:480px;">N</div>
+
+                <!-- Sözcük 5: SULH — yatay, satır 9 -->
+                <div class="cw-number" style="left:440px; top:320px;">5</div>
+                <input class="cw-input" data-word="SULH KURESELSORUN" data-answer="S" maxlength="1" style="left:440px; top:320px;">
+                <div class="cw-cell fixed" data-word="SULH" style="left:480px; top:320px;">U</div>
+                <div class="cw-cell fixed" data-word="SULH" style="left:520px; top:320px;">L</div>
+                <input class="cw-input" data-word="SULH" data-answer="H" maxlength="1" style="left:560px; top:320px;">
+              </div>
+            </div>
+
+            <aside class="crossword-clues">
+              <h3>İpuçları</h3>
+              <ol>
+                <li><button class="crossword-clue-btn" data-word="DISTICARET">Ülkeler arası alışveriş</button></li>
+                <li><button class="crossword-clue-btn" data-word="ONYARGI">Tanımadan önce oluşan peşin hüküm</button></li>
+                <li><button class="crossword-clue-btn" data-word="EKONOMI">Üretim, dağıtım ve tüketim düzeni</button></li>
+                <li><button class="crossword-clue-btn" data-word="DIPLOMASI">Ülkelerin sorunları görüşme yoluyla çözme süreci</button></li>
+                <li><button class="crossword-clue-btn" data-word="SULH">Barış</button></li>
+                <li><button class="crossword-clue-btn" data-word="KURESELSORUN">Tüm insanlığı ilgilendiren ortak problem</button></li>
+              </ol>
+              <button class="crossword-check" id="crosswordCheckBtn">Tümünü Göster</button>
+              <div class="score-panel" id="crosswordFeedback">Son halde 6 kavram var: disticaret, onyargi, ekonomi, diplomasi, sulh ve kureselsorun.</div>
+            </aside>
+          </div>
+          <div class="section-actions">
+            <button class="next-btn" data-next>Eşleştirmeye Geç</button>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="section-head">
+            <div>
+              <p class="tag">6. Bölüm</p>
+              <h2>Bilgileri Eşleştir</h2>
+            </div>
+            <p class="section-note">Soldan bir kart, sonra sağdan doğru eşini seç.</p>
+          </div>
+          <div class="match-board">
+            <div class="match-column" id="matchLeft">
+              <button class="match-item left" data-group="bm">Birleşmiş Milletler</button>
+              <button class="match-item left" data-group="unesco">UNESCO</button>
+              <button class="match-item left" data-group="who">Dünya Sağlık Örgütü</button>
+              <button class="match-item left" data-group="onyargi">Ön yargı</button>
+              <button class="match-item left" data-group="kuresel">Küresel sorun</button>
+            </div>
+            <div class="match-column" id="matchRight">
+              <button class="match-item right" data-group="who">Uluslararası sağlık alanında çalışır.</button>
+              <button class="match-item right" data-group="kuresel">Tüm insanlığı ilgilendiren ortak problemdir.</button>
+              <button class="match-item right" data-group="bm">Barış ve güvenliği sağlamaya çalışır.</button>
+              <button class="match-item right" data-group="onyargi">Bir kişi hakkında peşin hüküm vermektir.</button>
+              <button class="match-item right" data-group="unesco">Eğitim, bilim ve kültür alanında çalışır.</button>
+            </div>
+          </div>
+          <p class="match-feedback" id="matchFeedback">Hazırsan ilk çifti seç.</p>
+          <div class="match-controls">
+            <button class="choice-btn" id="matchResetBtn" hidden>Tekrar Dene</button>
+          </div>
+          <div class="section-actions">
+            <button class="next-btn" data-next>Doğru-Yanlışa Geç</button>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="section-head">
+            <div>
+              <p class="tag">7. Bölüm</p>
+              <h2>Doğru mu, Yanlış mı?</h2>
+            </div>
+            <p class="section-note">Her soruda doğru seçeneğe tıkla.</p>
+          </div>
+          <div class="tf-grid">
+            <article class="tf-card" data-answer="true" data-explanation="Türkiye ekonomik, kültürel ve siyasi alanlarda farklı uluslararası kuruluşlarda yer alır."><p>1. Türkiye ekonomik, kültürel ve siyasi alanlarda uluslararası kuruluşlara üyedir.</p><div class="tf-actions"><button class="tf-btn" data-value="true">Doğru</button><button class="tf-btn" data-value="false">Yanlış</button></div><span class="mini-feedback"></span></article>
+            <article class="tf-card" data-answer="false" data-explanation="Ön yargılar insanları yakınlaştırmaz; çoğu zaman yanlış anlamaları ve ayrışmayı artırır."><p>2. Ön yargılar insanları birbirine daha çok yaklaştırır.</p><div class="tf-actions"><button class="tf-btn" data-value="true">Doğru</button><button class="tf-btn" data-value="false">Yanlış</button></div><span class="mini-feedback"></span></article>
+            <article class="tf-card" data-answer="false" data-explanation="Küresel sorunlar yalnızca tek bir ülkeyi değil, çok sayıda ülkeyi ve tüm insanlığı etkiler."><p>3. Küresel sorunlar yalnızca tek bir ülkeyi ilgilendirir.</p><div class="tf-actions"><button class="tf-btn" data-value="true">Doğru</button><button class="tf-btn" data-value="false">Yanlış</button></div><span class="mini-feedback"></span></article>
+            <article class="tf-card" data-answer="true" data-explanation="KEİ, Karadeniz çevresindeki ülkeler arasında ekonomik iş birliğini geliştirmek için çalışır."><p>4. KEİ, ekonomik iş birliğini geliştirmeyi amaçlayan kuruluşlardan biridir.</p><div class="tf-actions"><button class="tf-btn" data-value="true">Doğru</button><button class="tf-btn" data-value="false">Yanlış</button></div><span class="mini-feedback"></span></article>
+            <article class="tf-card" data-answer="true" data-explanation="Salgın hastalıklar sınır tanımaz; bu yüzden küresel sorun örnekleri arasında yer alır."><p>5. Salgın hastalıklar küresel sorun örnekleri arasındadır.</p><div class="tf-actions"><button class="tf-btn" data-value="true">Doğru</button><button class="tf-btn" data-value="false">Yanlış</button></div><span class="mini-feedback"></span></article>
+          </div>
+          <div class="score-panel" id="tfSummary" hidden></div>
+          <div class="section-actions">
+            <button class="next-btn" data-next>Teste Geç</button>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="section-head">
+            <div>
+              <p class="tag">8. Bölüm</p>
+              <h2>Kuruluşlar Test Arenası</h2>
+            </div>
+            <p class="section-note">Tüm sorular aynı anda görünür. Cevapladıkça puan artar.</p>
+          </div>
+          <div class="difficulty-panel">
+            <span>Zorluk seç:</span>
+            <button class="difficulty-btn active" data-level="easy">Kolay</button>
+            <button class="difficulty-btn" data-level="medium">Orta</button>
+            <button class="difficulty-btn" data-level="hard">Zor</button>
+          </div>
+          <div class="quiz-stage" id="quizStage"></div>
+          <div class="score-strip">
+            <div class="score-panel">Cevaplanan: <strong id="quizCurrent">0</strong> / 8 | Doğru: <strong id="scoreValue">0</strong> / 8</div>
+            <div class="badge-panel" id="badgePanel">Rozet bekleniyor</div>
+          </div>
+          <div class="score-panel" id="quizFeedback">Cevabını seç ve sonucu gör.</div>
+          <div class="summary-panel" id="summaryPanel" hidden>
+            <div class="summary-head">
+              <img src="assets/images/global_problems.png" alt="Küresel Sorunlar Analizi" class="summary-img">
+              <div>
+                <h3>Bugün Ne Öğrendik?</h3>
+                <p><strong>Türkiye neden uluslararası kuruluşlara katılır?</strong> Çünkü barış, güvenlik, sağlık, ekonomi ve kültür gibi alanlarda başka ülkelerle iş birliği yapmak tek başına hareket etmekten daha etkilidir.</p>
+              </div>
+            </div>
+            <p><strong>Dış politikanın temel ilkeleri nelerdir?</strong> Barışçılık, tam bağımsızlık, gerçekçilik ve karşılıklılık Türkiye'nin dış politika anlayışını yönlendirir.</p>
+            <p><strong>Küresel sorunlar neden iş birliği gerektirir?</strong> Salgın, iklim değişikliği, savaş, göç ve ekonomik kriz gibi sorunlar sınır aşar; bu yüzden çözümleri de ortak hareket etmeyi gerektirir.</p>
+          </div>
+          <div class="section-actions">
+            <button class="choice-btn" id="quizNextBtn" hidden>Sonraki Soru</button>
+            <button class="next-btn" id="restartBtn">Başa Dön ve Tekrar Oyna</button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p class="footer-copy">© 2026 kursatca.com — Kürşat Çelik. Tüm hakları saklıdır.</p>
+        <ul class="footer-links">
+          <li><a href="../../egitim.html">Eğitim</a></li>
+          <li><a href="../../hakkimda.html">Hakkımda</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <dialog id="orgModal" class="org-modal">
+    <div class="org-modal-body">
+      <div class="org-modal-head">
+        <h2 id="modalTitle">Kuruluş Detayı</h2>
+        <button id="closeModalBtn" class="org-modal-close" aria-label="Kapat">×</button>
+      </div>
+      <div class="org-modal-grid">
+        <img id="modalLogo" src="" alt="Kuruluş logosu">
+        <div class="org-info">
+          <div class="org-facts">
+            <div class="fact-box"><span>Kuruluş yılı</span><strong id="modalFounded"></strong></div>
+            <div class="fact-box"><span>Üye sayısı</span><strong id="modalMembers"></strong></div>
+            <div class="fact-box"><span>Çalışma alanı</span><strong id="modalArea"></strong></div>
+          </div>
+          <p><strong>Görevi:</strong> <span id="modalTextbook"></span></p>
+          <p><strong>Türkiye ile ilişkisi:</strong> <span id="modalTurkey"></span></p>
+          <p><strong>Ayrıntı:</strong> <span id="modalNote"></span></p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="../../js/main.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

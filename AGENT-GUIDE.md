@@ -22,6 +22,11 @@ Bu dosya, bu projede çalışacak gelecek AI agent'lar (Antigravity, Gemini, Cla
 - **Aktivasyon:** `.unit-header` tıklandığında `.unit-accordion` elemanına `.active` sınıfı eklenir.
 - **Not:** Hazine Kutusu `.open` kullanırken, üniteler `.active` sınıfını kullanır. Bu ayrım CSS çakışmalarını önlemek içindir.
 
+### ⚠️ Event Listener ve Caching Uyarısı (Turn 4.13.26)
+- **Duplicate Listeners BUG:** Sekme (Tab) geçişlerinde sayfadaki DOM elemanları silinmediğinden, `document.querySelectorAll` kullanılarak atanan tıklama eventleri (örneğin Hazine Kutusu ve Akordeonlar için) tekrar tekrar atanabilir. Bu durum, kutunun tıklandığında 1 milisaniyede açılıp geri kapanması sorununa yol açar. Bir EventListener eklerken daima `if (header.dataset.ready) return;` kontrolü KULLANIN!
+- **CSS / JS Sınıf Uyuşmazlığı:** Hazine Kutusu CSS'te `.open` beklerken JavaScript'te hata ile `.active` atanabilir. Kutuların ve animasyonların çalışmaması durumunda mutlaka CSS'teki hedef sınıf ismiyle (`open` / `active`) JavaScript'teki `classList.toggle()` sınıf isimlerinin uyuşup uyuşmadığını kontrol edin.
+- **Tarayıcı Önbelleği (Cache):** Proje Vanilla yapıda olduğu için, JS veya CSS dosyalarında yapılan güncellemeler Hostinger üzerinden doğrudan kullanıcı tarayıcısına eski versiyonla (Chrome Cache) geçebilir. Bir JavaScript/CSS dosyası güncellediğinizde ESNEMEDEN HTML dosyalarındaki `<script src="js/dosya.js?v=1.X.X"></script>` parametresini güncelleyin!
+
 ### 🌓 Tasarım Dili (Midnight Luxe)
 - **Renkler:** `--clr-primary` (Mor/Teal), `--clr-bg` (Luxe Black/Glass).
 - **Efektler:** High-blur (`backdrop-filter`), Glassmorphism, ve Custom Scroll Reveal (`.reveal.visible`).

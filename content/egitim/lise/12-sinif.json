@@ -1,0 +1,93 @@
+{
+  "sinif": 12,
+  "ders": "T.C. İnkılap Tarihi ve Atatürkçülük",
+  "stats": { "unite": 8, "konu": 30 },
+  "hazineKutusu": {
+    "baslik": "12. Sınıf Genel Kaynaklar",
+    "altBaslik": "Bu sınıf seviyesi için özel kaynaklar yakında eklenecektir.",
+    "bos": true,
+    "kaynaklar": []
+  },
+  "uniteler": [
+    {
+      "no": 1,
+      "baslik": "20. Yüzyıl Başlarında Osmanlı Devleti ve Dünya",
+      "konular": [
+        { "no": "1.1", "baslik": "Mustafa Kemal'in Lider Olarak Yetişmesinde Etkili Koşullar", "badge": "Yakında", "href": "#" },
+        { "no": "1.2", "baslik": "20. Yüzyıl Başlarında Osmanlı Devleti", "badge": "Yakında", "href": "#" },
+        { "no": "1.3", "baslik": "I. Dünya Savaşı Sürecinde Osmanlı Devleti", "badge": "Yakında", "href": "#" },
+        { "no": "1.4", "baslik": "I. Dünya Savaşı'nın Sonuçları", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 2,
+      "baslik": "Millî Mücadele",
+      "konular": [
+        { "no": "2.1", "baslik": "Millî Mücadele'ye Hazırlık Dönemi", "badge": "Yakında", "href": "#" },
+        { "no": "2.2", "baslik": "Büyük Millet Meclisinin Açılması", "badge": "Yakında", "href": "#" },
+        { "no": "2.3", "baslik": "Sevr Antlaşması", "badge": "Yakında", "href": "#" },
+        { "no": "2.4", "baslik": "Doğu ve Güney Cepheleri ile Bu Cephelerde Öne Çıkan Şahsiyetler", "badge": "Yakında", "href": "#" },
+        { "no": "2.5", "baslik": "Batı Cephesi ve Bu Cephede Öne Çıkan Şahsiyetler", "badge": "Yakında", "href": "#" },
+        { "no": "2.6", "baslik": "Millî Mücadele'nin Sona Ermesi ve Lozan Barış Konferansı", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 3,
+      "baslik": "Atatürkçülük ve Türk İnkılabı",
+      "konular": [
+        { "no": "3.1", "baslik": "Atatürk İlkeleri", "badge": "Yakında", "href": "#" },
+        { "no": "3.2", "baslik": "Siyasi Alandaki Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": "3.3", "baslik": "Hukuk Alanındaki Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": "3.4", "baslik": "Eğitim ve Kültür Alanındaki İnkılaplar", "badge": "Yakında", "href": "#" },
+        { "no": "3.5", "baslik": "Toplumsal Alandaki İnkılaplar", "badge": "Yakında", "href": "#" },
+        { "no": "3.6", "baslik": "Ekonomi Alanındaki Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": "3.7", "baslik": "Sağlık Alanındaki Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": "3.8", "baslik": "Türkiye Cumhuriyeti'nin Temelleri ve Atatürkçü Düşünce Sistemi", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 4,
+      "baslik": "İki Savaş Arasındaki Dönemde Türkiye ve Dünya",
+      "konular": [
+        { "no": "4.1", "baslik": "Atatürk Dönemi İç Politik Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": "4.2", "baslik": "Atatürk Dönemi Türk Dış Politikası", "badge": "Yakında", "href": "#" },
+        { "no": "4.3", "baslik": "İki Dünya Savaşı Arasındaki Dönemde Dünyada Meydana Gelen Siyasi ve Ekonomik Gelişmeler", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 5,
+      "baslik": "II. Dünya Savaşı Sürecinde Türkiye ve Dünya",
+      "konular": [
+        { "no": "5.1", "baslik": "II. Dünya Savaşı", "badge": "Yakında", "href": "#" },
+        { "no": "5.2", "baslik": "II. Dünya Savaşı Sürecinde Türkiye", "badge": "Yakında", "href": "#" },
+        { "no": "5.3", "baslik": "II. Dünya Savaşı'nın Sonuçları", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 6,
+      "baslik": "II. Dünya Savaşı Sonrasında Türkiye ve Dünya",
+      "konular": [
+        { "no": "6.1", "baslik": "II. Dünya Savaşı Sonrası Türkiye", "badge": "Yakında", "href": "#" },
+        { "no": "6.2", "baslik": "II. Dünya Savaşı Sonrası Oluşan Güç Dengeleri ve Türkiye", "badge": "Yakında", "href": "#" },
+        { "no": "6.3", "baslik": "1950'lerde Türkiye", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 7,
+      "baslik": "Toplumsal Devrim Çağında Dünya ve Türkiye",
+      "konular": [
+        { "no": "7.1", "baslik": "1960 Sonrası Dünyada Yaşanan Siyasi Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": "7.2", "baslik": "1960 Sonrasında Türk Dış Politikası", "badge": "Yakında", "href": "#" },
+        { "no": "7.3", "baslik": "Türkiye'deki Siyasi, Ekonomik, Sosyo-Kültürel Hayat", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 8,
+      "baslik": "21. Yüzyılın Eşiğinde Türkiye ve Dünya",
+      "konular": [
+        { "no": "8.1", "baslik": "1990 Sonrasında Türkiye", "badge": "Yakında", "href": "#" },
+        { "no": "8.2", "baslik": "1990 Sonrasında Meydana Gelen Siyasi Gelişmelerin Türkiye'ye Etkileri", "badge": "Yakında", "href": "#" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "sinif": 8,
+  "ders": "T.C. İnkılap Tarihi ve Atatürkçülük",
+  "stats": { "unite": 7, "konu": 38 },
+  "hazineKutusu": {
+    "baslik": "Özel Arşiv & Ders Kaynakları",
+    "altBaslik": "LGS Hazırlık Süreci İçin Seçilmiş Özel Dökümanlar",
+    "bos": false,
+    "kaynaklar": [
+      {
+        "baslik": "Kürşat Hoca'nın LGS Ders Notları",
+        "ikonTip": "dosya",
+        "ikonRenk": "primary",
+        "rozetMetin": "PDF İncele",
+        "rozetRenk": "primary",
+        "paragraflar": [
+          "LGS'ye hazırlanırken en çok ne işe yarar? İnce ince yazılmış sayfalarca metin mi, yoksa konunun özünü net biçimde gösteren, aklında kalacak şekilde düzenlenmiş notlar mı?",
+          "T.C. İnkılap Tarihi ve Atatürkçülük dersinin temel kavramları, kuru tanımlarla değil; gerçek örnekler ve günlük hayattan benzetmelerle ele alınıyor. Her kavram üç sütunlu bir yapıyla sunuluyor: Kavram — Tanım — Örnek."
+        ],
+        "butonMetin": "Notları İndir (PDF)",
+        "butonHref": "Ders kaynakları/Kürşat Hocanın LGS Notları.pdf",
+        "gorsel": "İlgili Görseller/Kursat hocanın LGS notları.png",
+        "gorselAlt": "LGS Notları Tanıtım"
+      },
+      {
+        "baslik": "Kürşat'ın Sözlüğü — Kavram Sözlüğü",
+        "ikonTip": "kitap",
+        "ikonRenk": "secondary",
+        "rozetMetin": "PDF İncele",
+        "rozetRenk": "secondary",
+        "paragraflar": [
+          "Kürşat'ın Sözlüğü, akademik terimleri 'ders kitabı diliyle' değil, senin anlayacağın dilden anlatıyor. Bu çalışma, sadece kelime öğrenmen için değil, sosyal bilimlerin mantığını kavramanı sağlamak için tasarlandı.",
+          "Öne Çıkan Özellik: Her kavramın yanına eklenen günlük hayat örnekleri, sınavda karşına çıkacak karmaşık metinleri çözmende en büyük yardımcın olacak."
+        ],
+        "butonMetin": "Sözlüğü İndir (PDF)",
+        "butonHref": "Ders kaynakları/Kürşat'ın Sözlüğü.pdf",
+        "gorsel": "İlgili Görseller/Kavramlar Sözlüğü.png",
+        "gorselAlt": "Kavram Sözlüğü Tanıtım"
+      }
+    ]
+  },
+  "uniteler": [
+    {
+      "no": 1,
+      "baslik": "Bir Kahraman Doğuyor",
+      "konular": [
+        { "no": "1.1", "baslik": "Gelişen Avrupa ve Güç Kaybeden Osmanlı Devleti", "badge": "Yakında", "href": "#" },
+        { "no": "1.2", "baslik": "Mustafa Kemal'in Çocukluk Dönemi ve Öğrenim Hayatı", "badge": "Yakında", "href": "#" },
+        { "no": "1.3", "baslik": "Mustafa Kemal'in Fikir Hayatını Etkileyen Kişiler ve Olaylar", "badge": "Yakında", "href": "#" },
+        { "no": "1.4", "baslik": "Mustafa Kemal'in Askerlik Hayatı", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 2,
+      "baslik": "Millî Uyanış: Yurdumuzun İşgaline Tepkiler",
+      "konular": [
+        { "no": "2.1", "baslik": "I. Dünya Savaşı (1914-1918)", "badge": "Yakında", "href": "#" },
+        { "no": "2.2", "baslik": "I. Dünya Savaşı'nda Osmanlı Devleti", "badge": "Yakında", "href": "#" },
+        { "no": "2.3", "baslik": "Mondros Ateşkes Antlaşması'nın İmzalanması ve Uygulanması", "badge": "Yakında", "href": "#" },
+        { "no": "2.4", "baslik": "Kuvâ-yı Millîye Hareketi ve Cemiyetler", "badge": "Yakında", "href": "#" },
+        { "no": "2.5", "baslik": "Millî Mücadele'nin Hazırlık Dönemi", "badge": "Yakında", "href": "#" },
+        { "no": "2.6", "baslik": "Misakımillî'nin Kabulü ve Büyük Millet Meclisinin Açılması", "badge": "Yakında", "href": "#" },
+        { "no": "2.7", "baslik": "Büyük Millet Meclisine Karşı Ayaklanmalar", "badge": "Yakında", "href": "#" },
+        { "no": "2.8", "baslik": "Sevr Antlaşması", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 3,
+      "baslik": "Millî Bir Destan: Ya İstiklal Ya Ölüm!",
+      "konular": [
+        { "no": "3.1", "baslik": "Millî Mücadele Dönemi'nde Doğu ve Güney Cepheleri", "badge": "Yakında", "href": "#" },
+        { "no": "3.2", "baslik": "Millî Mücadele Dönemi'nde Batı Cephesi", "badge": "Yakında", "href": "#" },
+        { "no": "3.3", "baslik": "Maarif Kongresi", "badge": "Yakında", "href": "#" },
+        { "no": "3.4", "baslik": "Başkomutanlık Kanunu ve Tekâlif-i Millîye Emirleri", "badge": "Yakında", "href": "#" },
+        { "no": "3.5", "baslik": "Sakarya Meydan Savaşı'ndan Mudanya Ateşkes Antlaşması'na", "badge": "Yakında", "href": "#" },
+        { "no": "3.6", "baslik": "Lozan Barış Antlaşması", "badge": "Yakında", "href": "#" },
+        { "no": "3.7", "baslik": "Millî Mücadele'nin Sanata ve Edebiyata Yansımaları", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 4,
+      "baslik": "Atatürkçülük ve Çağdaşlaşan Türkiye",
+      "konular": [
+        { "no": "4.1", "baslik": "Atatürk İlkeleri", "badge": "Yakında", "href": "#" },
+        { "no": "4.2", "baslik": "Siyasi Alanda Yapılan İnkılaplar", "badge": "Yakında", "href": "#" },
+        { "no": "4.3", "baslik": "Hukuk Alanında Yapılan İnkılaplar", "badge": "Yakında", "href": "#" },
+        { "no": "4.4", "baslik": "Eğitim ve Kültür Alanında Yapılan İnkılaplar", "badge": "Yakında", "href": "#" },
+        { "no": "4.5", "baslik": "Toplumsal Alanda Yapılan İnkılaplar", "badge": "Yakında", "href": "#" },
+        { "no": "4.6", "baslik": "Ekonomik Alanda Yapılan İnkılaplar", "badge": "Yakında", "href": "#" },
+        { "no": "4.7", "baslik": "Sağlık Alanındaki Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": "4.8", "baslik": "Cumhuriyet'in Sağladığı Kazanımlar ve Atatürk'ün Türk Milletine Gösterdiği Hedefler", "badge": "Yakında", "href": "#" },
+        { "no": "4.9", "baslik": "Atatürk İlke ve İnkılaplarını Oluşturan Temel Esaslar", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 5,
+      "baslik": "Demokratikleşme Çabaları",
+      "konular": [
+        { "no": "5.1", "baslik": "Atatürk Dönemi'nde Demokratikleşme Yolunda Atılan Adımlar", "badge": "Yakında", "href": "#" },
+        { "no": "5.2", "baslik": "Mustafa Kemal'e Suikast Girişimi", "badge": "Yakında", "href": "#" },
+        { "no": "5.3", "baslik": "Türkiye Cumhuriyeti'ne Yönelik Tehditler", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 6,
+      "baslik": "Atatürk Dönemi Türk Dış Politikası",
+      "konular": [
+        { "no": "6.1", "baslik": "Atatürk Dönemi Türk Dış Politikasının Temel İlke ve Amaçları", "badge": "Yakında", "href": "#" },
+        { "no": "6.2", "baslik": "Atatürk Dönemi Türk Dış Politikasında Yaşanan Gelişmeler", "badge": "Yakında", "href": "#" },
+        { "no": "6.3", "baslik": "Hatay'ın Türkiye'ye Katılması", "badge": "Yakında", "href": "#" }
+      ]
+    },
+    {
+      "no": 7,
+      "baslik": "Atatürk'ten Sonrası",
+      "konular": [
+        { "no": "7.1", "baslik": "Atatürk'ün Ölümü ve Ölümünün Yansımaları", "badge": "Yakında", "href": "#" },
+        { "no": "7.2", "baslik": "Atatürk'ün Eserleri", "badge": "Yakında", "href": "#" },
+        { "no": "7.3", "baslik": "Atatürk'ün II. Dünya Savaşı Öncesi Tespitleri ve Girişimleri", "badge": "Yakında", "href": "#" },
+        { "no": "7.4", "baslik": "II. Dünya Savaşı ve Savaşın Türkiye'ye Etkileri", "badge": "Yakında", "href": "#" },
+        { "no": "7.5", "baslik": "Türkiye'nin Çok Partili Hayata Geçişi", "badge": "Yakında", "href": "#" }
+      ]
+    }
+  ]
+}

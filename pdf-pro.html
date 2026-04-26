@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kursatca.com | Pro PDF Okuyucu</title>
+  <meta name="description" content="PDF.js tabanlı özel eğitim dökümanı okuyucusu." />
+  <link rel="stylesheet" href="css/style.css?v=1.0.3" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>" />
+  
+  <!-- PDF.js Kütüphanesi -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  
+  <style>
+    /* Pro Viewer Özel Stilleri */
+    .pro-viewer-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 180px);
+      min-height: 600px;
+      background: var(--clr-bg-surface);
+      border: 1px solid var(--clr-border-glass);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-xl);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    
+    .pro-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--clr-border-glass);
+      z-index: 10;
+    }
+
+    /* Koyu mod desteği için toolbar */
+    @media (prefers-color-scheme: dark) {
+      .pro-toolbar {
+        background: rgba(30, 30, 35, 0.8);
+      }
+    }
+
+    .pro-title-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      color: var(--clr-text-primary);
+      max-width: 300px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pro-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--clr-bg-alt);
+      padding: 4px 8px;
+      border-radius: 100px;
+      border: 1px solid var(--clr-border-glass);
+    }
+
+    .pro-btn {
+      background: transparent;
+      border: none;
+      color: var(--clr-text-primary);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pro-btn:hover:not(:disabled) {
+      background: rgba(124, 58, 237, 0.1); /* Primary color low opacity */
+      color: var(--clr-primary);
+    }
+
+    .pro-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .pro-page-info {
+      font-size: 0.9rem;
+      font-weight: 600;
+      min-width: 80px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pro-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .pro-canvas-container {
+      flex: 1;
+      overflow: auto;
+      background: #e5e7eb; /* Koyu/Açık farketmez PDF kağıt zemin hissiyatı */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+      position: relative;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .pro-canvas-container {
+        background: #27272a;
+      }
+    }
+
+    #pdf-wrapper {
+      position: relative;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      transition: transform 0.2s ease-out;
+      transform-origin: top center;
+    }
+
+    #pdf-render {
+      display: block;
+      border-radius: 4px;
+    }
+
+    #draw-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      pointer-events: none;
+      cursor: crosshair;
+      border-radius: 4px;
+      mix-blend-mode: multiply;
+    }
+
+    #draw-layer.active {
+      pointer-events: auto;
+    }
+
+    #draw-layer.active {
+      pointer-events: auto;
+    }
+
+    .pro-btn.active {
+      background: rgba(220, 38, 38, 0.1);
+      color: #dc2626;
+    }
+
+    .loading-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      font-weight: 600;
+      color: var(--clr-primary);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .loading-overlay { background: rgba(30,30,35,0.8); }
+    }
+
+    .spinner {
+      width: 40px; height: 40px;
+      border: 4px solid rgba(124,58,237,0.2);
+      border-top-color: var(--clr-primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 16px;
+    }
+
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    /* Tam Ekran düzeltmeleri */
+    .pro-viewer-wrapper:fullscreen {
+      height: 100vh !important;
+      border-radius: 0 !important;
+      border: none !important;
+      margin: 0 !important;
+    }
+  </style>
+</head>
+<body class="education-page">
+
+  <!-- NAV -->
+  <nav class="nav" id="main-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="dot"></span>kursatca<span style="color: var(--clr-teal); font-weight: 400;">.com</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="egitim.html" class="active">Eğitim</a></li>
+        <li><a href="yapay-zeka.html">Yapay Zeka</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="hakkimda.html">Hakkımda</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header" style="padding-top: calc(var(--nav-height) + 2rem); padding-bottom: 1rem;">
+    <span class="badge" style="background: rgba(6,182,212,0.1); color: var(--clr-secondary);">
+      <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      Pro Görüntüleyici
+    </span>
+  </header>
+
+  <!-- GÖRÜNTÜLEYİCİ -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container container-wide">
+      
+      <div class="pro-viewer-wrapper reveal">
+        
+        <!-- ÖZEL TOOLBAR -->
+        <div class="pro-toolbar">
+          <div class="pro-title-area" id="doc-title" title="Döküman Yükleniyor">
+            <svg class="svg-icon" viewBox="0 0 24 24" style="color: var(--clr-primary); min-width:24px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span id="title-text">Yükleniyor...</span>
+          </div>
+
+          <div class="pro-controls">
+            <button class="pro-btn" id="toggle-draw" title="Kalem Modu (Aç/Kapat)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+            </button>
+            <button class="pro-btn" id="toggle-highlight" title="Fosforlu Kalem">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4.5l-4 4L7 12.5a2.12 2.12 0 0 0 3 3l4-4 4-4a2.12 2.12 0 0 0-3-3z"/><path d="M2 22h20"/></svg>
+            </button>
+            <button class="pro-btn" id="toggle-eraser" title="Silgi">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20H7L3 16C2.5 15.5 2.5 14.5 3 14L13 4C13.5 3.5 14.5 3.5 15 4L20 9C20.5 9.5 20.5 10.5 20 11L11 20H20V20Z"/><line x1="18" y1="11" x2="11" y2="18"/></svg>
+            </button>
+            <input type="color" id="draw-color" value="#dc2626" title="Kalem Rengi" style="display:none; width: 28px; height: 28px; border: none; padding: 0; cursor: pointer; background: transparent; margin: 0 2px;">
+            <button class="pro-btn" id="clear-draw" title="Çizimi Temizle" style="display:none;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+            </button>
+            <div style="width: 1px; height: 20px; background: var(--clr-border-glass); margin: 0 4px;"></div>
+
+            <button class="pro-btn" id="zoom-out" title="Uzaklaştır">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </button>
+            <button class="pro-btn" id="zoom-in" title="Yakınlaştır">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </button>
+            
+            <div style="width: 1px; height: 20px; background: var(--clr-border-glass); margin: 0 4px;"></div>
+            
+            <button class="pro-btn" id="prev-page" title="Önceki Sayfa" disabled>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <span class="pro-page-info" style="display: flex; align-items: center; gap: 4px;">
+              <input type="number" id="page-input" value="1" min="1" title="Sayfaya Atla" style="width: 44px; text-align: center; border: 1px solid var(--clr-border-glass); border-radius: 4px; background: transparent; color: inherit; font-family: inherit; font-weight: 600; padding: 2px;">
+              <span>/ <span id="page-count">0</span></span>
+            </span>
+            <button class="pro-btn" id="next-page" title="Sonraki Sayfa" disabled>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+          <div class="pro-actions">
+            <button class="pro-btn" id="fullscreen-btn" title="Tam Ekran" style="background: rgba(124,58,237,0.1); color: var(--clr-primary);">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            </button>
+            <a href="#" id="download-btn" class="btn btn-primary" download style="padding: 8px 16px; font-size: 0.9rem;">
+              <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              İndir
+            </a>
+          </div>
+        </div>
+        
+        <!-- CANVAS ALANI -->
+        <div class="pro-canvas-container" id="canvas-container">
+          <div class="loading-overlay" id="loading-overlay">
+            <div class="spinner"></div>
+            <div>PDF Yükleniyor...</div>
+          </div>
+          <div id="pdf-wrapper">
+            <canvas id="pdf-render"></canvas>
+            <canvas id="draw-layer"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-info">
+        <p class="footer-copy">© 2026 kursatca.com — Kürşat Çelik. Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="js/shared/utils.js?v=1.0.5"></script>
+  <script src="js/shared/ui.js?v=1.0.5"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initSharedUI();
+      initReveal();
+
+      // PDF.js worker ayarı
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const pdfUrl = urlParams.get('pdf');
+      let docTitle = urlParams.get('title') || 'Döküman';
+
+      const titleText = document.getElementById('title-text');
+      const downloadBtn = document.getElementById('download-btn');
+      const loadingOverlay = document.getElementById('loading-overlay');
+      
+      titleText.textContent = docTitle;
+      document.title = `kursatca.com | ${docTitle}`;
+
+      if (!pdfUrl) {
+        loadingOverlay.innerHTML = `<h3>Hata</h3><p>Gösterilecek PDF bulunamadı.</p>`;
+        return;
+      }
+
+      downloadBtn.href = pdfUrl;
+      downloadBtn.setAttribute('download', docTitle + '.pdf');
+
+      // PDF.js Değişkenleri
+      let pdfDoc = null,
+          pageNum = 1,
+          pageIsRendering = false,
+          pageNumIsPending = null,
+          scale = 1.2;
+
+      const canvas = document.getElementById('pdf-render'),
+            ctx = canvas.getContext('2d'),
+            drawCanvas = document.getElementById('draw-layer'),
+            drawCtx = drawCanvas.getContext('2d'),
+            container = document.getElementById('canvas-container');
+
+      // Çizim Değişkenleri
+      let isDrawing = false;
+      let drawMode = false;
+      let currentTool = 'none';
+
+      // Sayfayı Çiz (Render)
+      const renderPage = num => {
+        pageIsRendering = true;
+
+        pdfDoc.getPage(num).then(page => {
+          const viewport = page.getViewport({ scale });
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          
+          // Çizim katmanını da aynı boyuta getir
+          drawCanvas.height = viewport.height;
+          drawCanvas.width = viewport.width;
+          
+          // Boyut değişince çizim özellikleri sıfırlanır, tekrar ayarlayalım
+          drawCtx.strokeStyle = document.getElementById('draw-color').value;
+          drawCtx.lineWidth = 5; // Daha kalın kalem
+          drawCtx.lineCap = 'round';
+          drawCtx.lineJoin = 'round';
+
+          const renderCtx = {
+            canvasContext: ctx,
+            viewport: viewport
+          };
+
+          page.render(renderCtx).promise.then(() => {
+            pageIsRendering = false;
+            
+            if (pageNumIsPending !== null) {
+              renderPage(pageNumIsPending);
+              pageNumIsPending = null;
+            }
+          });
+
+          // Sayfa bilgisini güncelle
+          document.getElementById('page-input').value = num;
+          
+          // Butonları güncelle
+          document.getElementById('prev-page').disabled = num <= 1;
+          document.getElementById('next-page').disabled = num >= pdfDoc.numPages;
+        });
+      };
+
+      // Sayfaya Atla (Go to Page)
+      const pageInput = document.getElementById('page-input');
+      pageInput.addEventListener('change', (e) => {
+        let desiredPage = parseInt(e.target.value);
+        if (desiredPage >= 1 && desiredPage <= pdfDoc.numPages) {
+          pageNum = desiredPage;
+          queueRenderPage(pageNum);
+          container.scrollTop = 0;
+        } else {
+          e.target.value = pageNum;
+        }
+      });
+
+      // Sayfa Çizimini Sıraya Koy
+      const queueRenderPage = num => {
+        if (pageIsRendering) {
+          pageNumIsPending = num;
+        } else {
+          renderPage(num);
+        }
+      };
+
+      // Çizim Mantığı
+      const toggleDrawBtn = document.getElementById('toggle-draw');
+      const toggleHighlightBtn = document.getElementById('toggle-highlight');
+      const toggleEraserBtn = document.getElementById('toggle-eraser');
+      const clearDrawBtn = document.getElementById('clear-draw');
+      const drawColorInput = document.getElementById('draw-color');
+
+      const setTool = (tool) => {
+        if (currentTool === tool) {
+          tool = 'none'; // Kapat
+        }
+        currentTool = tool;
+        
+        drawCanvas.classList.remove('active');
+        toggleDrawBtn.classList.remove('active');
+        toggleHighlightBtn.classList.remove('active');
+        toggleEraserBtn.classList.remove('active');
+        clearDrawBtn.style.display = 'none';
+        drawColorInput.style.display = 'none';
+        drawMode = false;
+        drawCtx.globalCompositeOperation = 'source-over'; // Çizim/Fosforlu için varsayılan blend modu
+
+        if (tool === 'pen') {
+          drawMode = true;
+          drawCanvas.classList.add('active');
+          toggleDrawBtn.classList.add('active');
+          clearDrawBtn.style.display = 'flex';
+          drawColorInput.style.display = 'block';
+          drawCtx.globalAlpha = 1.0;
+          drawCtx.lineWidth = 5;
+          drawColorInput.value = '#dc2626'; // Varsayılan kalem rengi
+          drawCtx.strokeStyle = '#dc2626';
+        } else if (tool === 'highlight') {
+          drawMode = true;
+          drawCanvas.classList.add('active');
+          toggleHighlightBtn.classList.add('active');
+          clearDrawBtn.style.display = 'flex';
+          drawColorInput.style.display = 'block';
+          drawCtx.globalAlpha = 0.5; // Daha şeffaf
+          drawCtx.lineWidth = 24; // Fosforlu kalınlığı
+          drawColorInput.value = '#eab308'; // Varsayılan fosforlu sarı
+          drawCtx.strokeStyle = '#eab308';
+        } else if (tool === 'eraser') {
+          drawMode = true;
+          drawCanvas.classList.add('active');
+          toggleEraserBtn.classList.add('active');
+          clearDrawBtn.style.display = 'flex';
+          drawColorInput.style.display = 'none';
+          drawCtx.globalCompositeOperation = 'destination-out'; // Silgi olarak çalışır
+          drawCtx.globalAlpha = 1.0;
+          drawCtx.lineWidth = 30; // Silgi boyutu
+        }
+      };
+
+      toggleDrawBtn.addEventListener('click', () => setTool('pen'));
+      toggleHighlightBtn.addEventListener('click', () => setTool('highlight'));
+      toggleEraserBtn.addEventListener('click', () => setTool('eraser'));
+
+      drawColorInput.addEventListener('input', (e) => {
+        drawCtx.strokeStyle = e.target.value;
+      });
+
+      clearDrawBtn.addEventListener('click', () => {
+        drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+      });
+
+      const startDrawing = (e) => {
+        if (!drawMode) return;
+        isDrawing = true;
+        const rect = drawCanvas.getBoundingClientRect();
+        // Mouse veya Dokunmatik koordinatları hesaplama
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const x = (clientX - rect.left) * (drawCanvas.width / rect.width);
+        const y = (clientY - rect.top) * (drawCanvas.height / rect.height);
+        
+        drawCtx.beginPath();
+        drawCtx.moveTo(x, y);
+        e.preventDefault();
+      };
+
+      const draw = (e) => {
+        if (!isDrawing || !drawMode) return;
+        const rect = drawCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const x = (clientX - rect.left) * (drawCanvas.width / rect.width);
+        const y = (clientY - rect.top) * (drawCanvas.height / rect.height);
+        
+        drawCtx.lineTo(x, y);
+        drawCtx.stroke();
+        e.preventDefault();
+      };
+
+      const stopDrawing = () => {
+        if (!isDrawing) return;
+        isDrawing = false;
+        drawCtx.closePath();
+      };
+
+      drawCanvas.addEventListener('mousedown', startDrawing);
+      drawCanvas.addEventListener('mousemove', draw);
+      drawCanvas.addEventListener('mouseup', stopDrawing);
+      drawCanvas.addEventListener('mouseout', stopDrawing);
+
+      // Dokunmatik destek
+      drawCanvas.addEventListener('touchstart', startDrawing, {passive: false});
+      drawCanvas.addEventListener('touchmove', draw, {passive: false});
+      drawCanvas.addEventListener('touchend', stopDrawing);
+      drawCanvas.addEventListener('touchcancel', stopDrawing);
+
+      // Önceki Sayfa
+      document.getElementById('prev-page').addEventListener('click', () => {
+        if (pageNum <= 1) return;
+        pageNum--;
+        queueRenderPage(pageNum);
+        container.scrollTop = 0;
+      });
+
+      // Sonraki Sayfa
+      document.getElementById('next-page').addEventListener('click', () => {
+        if (pageNum >= pdfDoc.numPages) return;
+        pageNum++;
+        queueRenderPage(pageNum);
+        container.scrollTop = 0;
+      });
+
+      // Zoom In
+      document.getElementById('zoom-in').addEventListener('click', () => {
+        if (scale >= 3.0) return;
+        scale += 0.2;
+        queueRenderPage(pageNum);
+      });
+
+      // Zoom Out
+      document.getElementById('zoom-out').addEventListener('click', () => {
+        if (scale <= 0.6) return;
+        scale -= 0.2;
+        queueRenderPage(pageNum);
+      });
+
+      // Tam Ekran (Fullscreen)
+      const viewerWrapper = document.querySelector('.pro-viewer-wrapper');
+      document.getElementById('fullscreen-btn').addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+          viewerWrapper.requestFullscreen().catch(err => {
+            console.error(`Tam ekran hatası: ${err.message}`);
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      });
+
+      // PDF'i Yükle
+      pdfjsLib.getDocument(pdfUrl).promise.then(pdfDoc_ => {
+        pdfDoc = pdfDoc_;
+        document.getElementById('page-count').textContent = pdfDoc.numPages;
+        loadingOverlay.style.display = 'none';
+        
+        // İlk sayfayı çiz
+        renderPage(pageNum);
+      }).catch(err => {
+        console.error(err);
+        loadingOverlay.innerHTML = `<h3>Bağlantı Hatası</h3><p>PDF yüklenirken bir hata oluştu.</p>`;
+      });
+    });
+  </script>
+</body>
+</html>

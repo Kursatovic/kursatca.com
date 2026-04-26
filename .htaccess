@@ -1,4 +1,15 @@
 RewriteEngine On
+
+# HTTP to HTTPS and WWW to Non-WWW
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
+
+# Redirect old kuresel-baglantilar-atolyesi to new location
+RewriteRule ^egitim/kuresel-baglantilar-atolyesi\.html$ /egitim/kuresel-baglantilar/ [L,R=301]
+
+# Internally rewrite extensionless to .html
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [NC,L]

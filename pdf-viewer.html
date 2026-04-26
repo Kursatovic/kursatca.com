@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kursatca.com | Döküman Görüntüleyici</title>
+  <meta name="description" content="Eğitim dökümanlarını görüntüleyin ve indirin." />
+  <link rel="stylesheet" href="css/style.css?v=1.0.3" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>" />
+  <style>
+    /* Viewer Özel Stilleri */
+    .viewer-container {
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 180px); /* Header ve Footer payı */
+      min-height: 600px;
+      background: var(--clr-bg-surface);
+      border: 1px solid var(--clr-border-glass);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-xl);
+    }
+    .viewer-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--clr-border-glass);
+    }
+    .viewer-title {
+      font-size: var(--fs-h4);
+      font-weight: 600;
+      color: var(--clr-text-primary);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .viewer-actions {
+      display: flex;
+      gap: 12px;
+    }
+    .viewer-iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #f8f9fa; /* PDF arka planı */
+    }
+    .viewer-error {
+      display: none;
+      padding: 40px;
+      text-align: center;
+      color: var(--clr-text-muted);
+    }
+  </style>
+</head>
+<body class="education-page">
+
+  <!-- NAV -->
+  <nav class="nav" id="main-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="dot"></span>kursatca<span style="color: var(--clr-teal); font-weight: 400;">.com</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="egitim.html" class="active">Eğitim</a></li>
+        <li><a href="yapay-zeka.html">Yapay Zeka</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="hakkimda.html">Hakkımda</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header" style="padding-top: calc(var(--nav-height) + 2rem); padding-bottom: 1rem;">
+    <span class="badge">
+      <svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Döküman Görüntüleyici
+    </span>
+  </header>
+
+  <!-- GÖRÜNTÜLEYİCİ -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container container-wide">
+      
+      <div class="viewer-container reveal">
+        <div class="viewer-header-bar">
+          <h2 class="viewer-title" id="doc-title">
+            <svg class="svg-icon" viewBox="0 0 24 24" style="color: var(--clr-primary);"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
+            Yükleniyor...
+          </h2>
+          <div class="viewer-actions">
+            <a href="egitim.html" class="btn btn-ghost">
+              <svg class="svg-icon" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Geri Dön
+            </a>
+            <a href="#" id="download-btn" class="btn btn-primary" download>
+              <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Cihaza İndir
+            </a>
+          </div>
+        </div>
+        
+        <iframe id="pdf-frame" class="viewer-iframe" src=""></iframe>
+        
+        <div id="viewer-error" class="viewer-error">
+          <svg class="svg-icon" viewBox="0 0 24 24" style="width: 48px; height: 48px; margin-bottom: 16px; opacity: 0.5;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <h3>Döküman Bulunamadı</h3>
+          <p>Lütfen bağlantının doğru olduğundan emin olun.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-info">
+        <p class="footer-copy">© 2026 kursatca.com — Kürşat Çelik. Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="js/shared/utils.js?v=1.0.5"></script>
+  <script src="js/shared/ui.js?v=1.0.5"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ortak UI
+      initSharedUI();
+      initReveal();
+
+      // URL Parametrelerini Al
+      const urlParams = new URLSearchParams(window.location.search);
+      const pdfUrl = urlParams.get('pdf');
+      let title = urlParams.get('title');
+
+      const titleEl = document.getElementById('doc-title');
+      const iframe = document.getElementById('pdf-frame');
+      const downloadBtn = document.getElementById('download-btn');
+      const errorDiv = document.getElementById('viewer-error');
+
+      if (!pdfUrl) {
+        titleEl.innerHTML = 'Hata';
+        iframe.style.display = 'none';
+        errorDiv.style.display = 'block';
+        downloadBtn.style.display = 'none';
+        return;
+      }
+
+      if (!title) {
+        title = "Döküman";
+      }
+
+      // Title set
+      titleEl.innerHTML = `<svg class="svg-icon" viewBox="0 0 24 24" style="color: var(--clr-primary);"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg> ${escapeHTML(title)}`;
+      document.title = `kursatca.com | ${title}`;
+
+      // PDF yükle
+      iframe.src = pdfUrl;
+      
+      // Download butonu
+      downloadBtn.href = pdfUrl;
+      downloadBtn.setAttribute('download', title + '.pdf');
+    });
+  </script>
+</body>
+</html>

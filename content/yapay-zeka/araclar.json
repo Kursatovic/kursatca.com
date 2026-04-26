@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "prompt-muhendisligi-101",
+    "baslik": "Prompt Mühendisliği 101",
+    "aciklama": "ChatGPT, Gemini ve Claude gibi araçlardan en iyi sonuçları almak için etkili prompt yazma teknikleri. Öğretmenler ve öğrenciler için örneklerle.",
+    "ikonTip": "emoji",
+    "ikon": "💬",
+    "href": "#"
+  },
+  {
+    "slug": "yapay-zeka-ile-gorsel-uretim",
+    "baslik": "Yapay Zeka ile Görsel Üretim",
+    "aciklama": "DALL·E, Midjourney ve Canva AI ile eğitim materyalleri için görsel üretme rehberi. Ders sunumlarından posterlere kadar.",
+    "ikonTip": "emoji",
+    "ikon": "🎨",
+    "href": "#"
+  },
+  {
+    "slug": "otomatik-degerlendirme",
+    "baslik": "Otomatik Değerlendirme",
+    "aciklama": "Öğrenci ödevlerini YZ destekli olarak değerlendirme, geri bildirim oluşturma ve rubrik hazırlama stratejileri.",
+    "ikonTip": "svg",
+    "ikonSvg": "belge",
+    "href": "#"
+  },
+  {
+    "slug": "kissellestirilmis-ogrenme",
+    "baslik": "Kişiselleştirilmiş Öğrenme",
+    "aciklama": "Her öğrencinin seviyesine göre adaptif içerik önerileri ve YZ tabanlı öğrenme yolları oluşturma.",
+    "ikonTip": "emoji",
+    "ikon": "🧠",
+    "href": "#"
+  },
+  {
+    "slug": "etik-ve-guvenli-kullanim",
+    "baslik": "Etik ve Güvenli Kullanım",
+    "aciklama": "Yapay zekayı eğitimde kullanırken dikkat edilmesi gereken etik kurallar, telif hakları ve güvenli kullanım önerileri.",
+    "ikonTip": "emoji",
+    "ikon": "🛡️",
+    "href": "#"
+  },
+  {
+    "slug": "yz-arac-kutusu",
+    "baslik": "YZ Araç Kutusu",
+    "aciklama": "Eğitimciler için en kullanışlı YZ araçlarının karşılaştırmalı listesi. Hangisi ne işe yarar, ücretsiz mi, nasıl kullanılır?",
+    "ikonTip": "emoji",
+    "ikon": "🔧",
+    "href": "#"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "gemini-flash-sinifta-ilk-deneyimlerim",
+    "baslik": "Gemini 3.0 Flash ile Sınıfta İlk Deneyimlerim",
+    "kategori": "Deneyim",
+    "tarih": "Mart 2026",
+    "okumaSuresi": "8 dk okuma",
+    "aciklama": "Google'ın yeni modeli Gemini 3.0 Flash'ı sınıf ortamında nasıl kullandım? Öğrencilerin tepkileri ve derslere etkisi.",
+    "href": "#",
+    "ikonTip": "svg",
+    "ikonSvg": "monitor"
+  },
+  {
+    "slug": "yapay-zeka-ogretmenin-yerini-alabilir-mi",
+    "baslik": "Yapay Zeka Öğretmenin Yerini Alabilir mi?",
+    "kategori": "Düşünce",
+    "tarih": "Şubat 2026",
+    "okumaSuresi": "12 dk okuma",
+    "aciklama": "Bu soruyu her duyduğumda farklı düşünüyorum. Bir eğitimci olarak deneyimlerim ve korkularım üzerine.",
+    "href": "#",
+    "ikonTip": "emoji",
+    "ikon": "⚖️"
+  },
+  {
+    "slug": "ogrenciler-icin-en-iyi-10-ucretsiz-yz-araci",
+    "baslik": "Öğrenciler İçin En İyi 10 Ücretsiz YZ Aracı",
+    "kategori": "Rehber",
+    "tarih": "Ocak 2026",
+    "okumaSuresi": "6 dk okuma",
+    "aciklama": "Ödev hazırlamadan proje oluşturmaya, öğrencilerin güvenle kullanabileceği ücretsiz yapay zeka araçları.",
+    "href": "#",
+    "ikonTip": "svg",
+    "ikonSvg": "hedef"
+  }
+]
