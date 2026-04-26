@@ -10,7 +10,11 @@
  */
 async function fetchJSON(path) {
   try {
-    const res = await fetch(path, { cache: 'no-cache' });
+    // Cache buster: Her zaman en güncel dosyayı çekmek için sona benzersiz bir numara ekler
+    const timestamp = new Date().getTime();
+    const separator = path.includes('?') ? '&' : '?';
+    const res = await fetch(`${path}${separator}v=${timestamp}`, { cache: 'no-cache' });
+    
     if (!res.ok) throw new Error(`HTTP ${res.status} — ${path}`);
     return await res.json();
   } catch (err) {
