@@ -6,10 +6,10 @@
     "tarih": "Nisan 2026",
     "okumaSuresi": "10 dk okuma",
     "aciklama": "Yapay zekayı eğitime entegre edelim mi diye tartışırken öğrenci çoktan entegre etti. Stanford HAI 2026 Raporu incelemesi.",
-    "href": "yapay-zeka/gemi-kalkti-okul-iskelede.html",
+    "href": "/yapay-zeka/gemi-kalkti-okul-iskelede.html",
     "ikonTip": "emoji",
     "ikon": "🛳️",
-    "onizlemeGorsel": "img/yapay-zeka/gemi-kalkti/image1.jpeg"
+    "onizlemeGorsel": "/img/yapay-zeka/gemi-kalkti/image1.jpeg"
   },
   {
     "slug": "yapay-zeka-ile-insan-arasinda-uc-kademe-var",
@@ -18,9 +18,9 @@
     "tarih": "Mayıs 2026",
     "okumaSuresi": "8 dk okuma",
     "aciklama": "OECD'nin Yapay Zekâ Yetkinlik Göstergeleri raporuna göre yapay zeka ile insan arasındaki beceri farkı ve eğitime yansımaları.",
-    "href": "yapay-zeka/yapay-zeka-ile-insan-arasinda-uc-kademe-var.html",
+    "href": "/yapay-zeka/yapay-zeka-ile-insan-arasinda-uc-kademe-var.html",
     "ikonTip": "emoji",
     "ikon": "📊",
-    "onizlemeGorsel": "img/yapay-zeka/uc-kademe/image5.jpeg"
+    "onizlemeGorsel": "/img/yapay-zeka/uc-kademe/image1.png"
   }
 ]
