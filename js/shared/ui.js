@@ -33,8 +33,12 @@ function initNavScroll() {
 /** Aktif nav linkini işaretle */
 function initActiveNav() {
   const current = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === current);
+  const links = document.querySelectorAll('.nav-links a');
+  const active = Array.from(links).find(a => a.getAttribute('href') === current);
+  if (!active) return;
+
+  links.forEach(a => {
+    a.classList.toggle('active', a === active);
   });
 }
 
