@@ -216,6 +216,10 @@ Statik hosting için aşağıdaki dosya/klasörler gereklidir:
 - `js/`
 - `img/`
 
+> [!IMPORTANT]
+> **Otomatik Yayınlama (GitHub Actions):**
+> Projede `.github/workflows/deploy.yml` mevcuttur. Master dalına yapılan push'lar otomatik olarak FTP üzerinden Hostinger'a yüklenir. Sitenin canlıya çıkması için manuel zip almanıza veya yüklemenize gerek yoktur. Agent olarak kodları `git commit` ve `git push` ile göndermeniz yeterlidir.
+
 Ek olarak tavsiye edilen ama zorunlu olmayan dokümantasyon:
 - `README.md`
 - `mimari-kararlar.md`

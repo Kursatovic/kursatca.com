@@ -42,6 +42,11 @@ Bu dosya, bu projede çalışacak gelecek AI agent'lar (Antigravity, Gemini, Cla
 - `/İlgili Görseller/`: Arşiv içindeki döküman kapakları.
 - `/img/`: Avatar ve dekoratif motifler.
 
+## 4. Yayınlama (Deployment) Kuralları
+- **Otomatik Dağıtım (GitHub Actions):** Projede `.github/workflows/deploy.yml` bulunmaktadır. Master/main dalına yapılan push'lar otomatik olarak FTP üzerinden Hostinger canlı sunucusuna yüklenir.
+- Canlı siteye güncelleme yapmak için manuel olarak ZIP oluşturup yüklemeye **GEREK YOKTUR**.
+- Dış bir agent kodu değiştirdiğinde ve onay aldığında sadece `git commit` ve `git push` yapması yeterlidir.
+
 ---
 
 ## 🚀 Agent'lara Mesaj:
