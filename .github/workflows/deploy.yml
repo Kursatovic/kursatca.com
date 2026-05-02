@@ -20,8 +20,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./
-          state-name: .ftp-deploy-sync-state-v3.json
+          server-dir: /domains/kursatca.com/public_html/
+          state-name: .ftp-deploy-sync-state-v4.json
           # Sadece sitemiz için gerekli olanları at, çöp dosyaları ve yedekleri hariç tut
           exclude: |
             **/.git*
