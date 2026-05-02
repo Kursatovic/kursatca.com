@@ -76,10 +76,10 @@
       "no": 7,
       "baslik": "Türkiye ve Dünya",
       "konular": [
-        { "no": 1, "baslik": "Uluslararası Kuruluşlar ve Türkiye", "badge": "", "href": "egitim/kuresel-baglantilar/index.html" },
-        { "no": 2, "baslik": "Türkiye'nin Uluslararası Ekonomik İlişkileri", "badge": "Keşfet", "href": "egitim/kuresel-baglantilar/index.html" },
-        { "no": 3, "baslik": "Kalıp Yargıları Sorguluyorum", "badge": "Atölye", "href": "egitim/kuresel-baglantilar/index.html" },
-        { "no": 4, "baslik": "Küresel Sorunlara Çözüm Üretiyorum", "badge": "Görev", "href": "egitim/kuresel-baglantilar/index.html" }
+        { "no": 1, "baslik": "Uluslararası Kuruluşlar ve Türkiye", "badge": "", "href": "egitim/kuresel-baglantilar/" },
+        { "no": 2, "baslik": "Türkiye'nin Uluslararası Ekonomik İlişkileri", "badge": "Keşfet", "href": "egitim/kuresel-baglantilar/" },
+        { "no": 3, "baslik": "Kalıp Yargıları Sorguluyorum", "badge": "Atölye", "href": "egitim/kuresel-baglantilar/" },
+        { "no": 4, "baslik": "Küresel Sorunlara Çözüm Üretiyorum", "badge": "Görev", "href": "egitim/kuresel-baglantilar/" }
       ]
     }
   ]
