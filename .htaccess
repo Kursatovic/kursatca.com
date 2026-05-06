@@ -6,6 +6,11 @@ RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
 
+# Redirect index.html to root
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ / [L,R=301]
+
+
 # Redirect old kuresel-baglantilar-atolyesi to new location
 RewriteRule ^egitim/kuresel-baglantilar-atolyesi\.html$ /egitim/kuresel-baglantilar/ [L,R=301]
 
