@@ -58,10 +58,9 @@
 - İslamiyetin Kabulüyle Türklerin Sosyal ve Kültürel Hayatlarında Meydana Gelen Değişimler
 - XI–XIII. Yüzyıllar Arasında Meydana Gelen Askerî Mücadelelerin Anadolu'nun Türkleşmesi ve İslamlaşmasına Katkıları
 
-### Ünite 4: Yaşayan Demokrasimiz
+### Ünite 4: Yaşayan Demokrasi
 - Yönetimin Karar Alma Sürecini Etkileyen Unsurlar
-- Temel Hak ve Sorumluluklarım
-- Toplumsal Düzenin Sürdürülmesindeki Önemi
+- Temel Hak ve Sorumlulukların Toplumsal Düzenin Sürdürülmesindeki Önemi
 - Dijitalleşme ve Teknolojik Gelişmelerin Vatandaşlık Hak ve Sorumluluklarına Etkileri
 
 ### Ünite 5: Hayatımızdaki Ekonomi

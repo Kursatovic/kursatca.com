@@ -1,67 +1,176 @@
 {
   "sinif": 6,
   "ders": "Sosyal Bilgiler",
-  "stats": { "unite": 6, "konu": 17 },
+  "stats": {
+    "unite": 6,
+    "konu": 18
+  },
   "hazineKutusu": {
     "baslik": "6. Sınıf Genel Kaynaklar",
-    "altBaslik": "Bu sınıf seviyesi için özel kaynaklar yakında eklenecektir.",
-    "bos": true,
-    "kaynaklar": []
+    "altBaslik": "Tüm ünitelere ait interaktif ders sunumları ve etkinlikler eklendi.",
+    "bos": false,
+    "kaynaklar": [
+      {
+        "baslik": "6. Sınıf Tüm Sunumlar",
+        "altBaslik": "Tüm üniteleri kapsayan interaktif ders sunumları.",
+        "gorsel": "img/ogrenci-calisiyor.jpg",
+        "gorselAlt": "Öğrenci ders çalışıyor",
+        "ikonTip": "kitap",
+        "ikonRenk": "primary",
+        "rozetMetin": "Tam Liste",
+        "rozetRenk": "primary",
+        "paragraflar": [
+          "6. sınıf Sosyal Bilgiler dersine ait tüm ünitelerin sunumları sisteme yüklenmiştir.",
+          "Aşağıdaki listeden istediğiniz konuyu seçerek interaktif olarak inceleyebilirsiniz."
+        ],
+        "butonMetin": "İncele",
+        "butonHref": "#grade-6"
+      }
+    ]
   },
   "uniteler": [
     {
       "no": 1,
       "baslik": "Birlikte Yaşamak",
       "konular": [
-        { "no": 1, "baslik": "Zaman İçinde Değişen Gruplar ve Roller", "badge": "Yakında", "href": "#" },
-        { "no": 2, "baslik": "Kültürel Bağlarımızın ve Millî Değerlerimizin Toplumsal Birlikteliğe Etkisi", "badge": "Yakında", "href": "#" },
-        { "no": 3, "baslik": "Toplumsal Sorunlar ve Çözüm Önerileri", "badge": "Yakında", "href": "#" }
+        {
+          "no": 1,
+          "baslik": "Zaman İçinde Değişen Gruplar ve Roller",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/1.%20%C3%9CN%C4%B0TE/1.%201%20ZAMAN%20%C4%B0%C3%87INDE%20DE%C4%9EI%C5%9EEN%20GRUPLAR%20VE%20ROLLER.pdf&title=Zaman%20%C4%B0%C3%A7inde%20De%C4%9Fi%C5%9Fen%20Gruplar%20ve%20Roller"
+        },
+        {
+          "no": 2,
+          "baslik": "Kültürel Bağlarımızın ve Millî Değerlerimizin Toplumsal Birlikteliğe Etkisi",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/1.%20%C3%9CN%C4%B0TE/1.2%20K%C3%9CLT%C3%9CREL%20BA%C4%9ELARIMIZIN%20VE%20MILL%C3%8E%20DE%C4%9EERLERIMIZIN%20TOPLUMSAL%20BIRLIKTELI%C4%9EE%20ETK%C4%B0S%C4%B0.pdf&title=K%C3%BClt%C3%BCrel%20Ba%C4%9Flar%C4%B1m%C4%B1z%C4%B1n%20ve%20Mill%C3%AE%20De%C4%9Ferlerimizin%20Toplumsal%20Birlikteli%C4%9Fe%20Etkisi"
+        },
+        {
+          "no": 3,
+          "baslik": "Toplumsal Sorunlar ve Çözüm Önerileri",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/1.%20%C3%9CN%C4%B0TE/1.3%20TOPLUMSAL%20SORUNLAR%20VE%20%C3%87%C3%96Z%C3%9CM%20%C3%96NERILERI%20.pdf&title=Toplumsal%20Sorunlar%20ve%20%C3%87%C3%B6z%C3%BCm%20%C3%96nerileri"
+        }
       ]
     },
     {
       "no": 2,
       "baslik": "Evimiz Dünya",
       "konular": [
-        { "no": 1, "baslik": "Ülkemizin, Kıtaların ve Okyanusların Konum Özellikleri", "badge": "Yakında", "href": "#" },
-        { "no": 2, "baslik": "Doğal ve Beşerî Çevre Özellikleri Arasındaki İlişki", "badge": "Yakında", "href": "#" },
-        { "no": 3, "baslik": "Ülkemizin Türk Dünyasıyla Kültürel İş Birlikleri", "badge": "Yakında", "href": "#" }
+        {
+          "no": 1,
+          "baslik": "Ülkemizin, Kıtaların ve Okyanusların Konum Özellikleri",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/2.%20%C3%9CN%C4%B0TE/2.1%20%C3%9CLKEMIZIN%2C%20KITALARIN%20VE%20OKYANUSLARIN%20KONUM%20%C3%96ZELLIKLERI.pdf&title=%C3%9Clkemizin%2C%20K%C4%B1talar%C4%B1n%20ve%20Okyanuslar%C4%B1n%20Konum%20%C3%96zellikleri"
+        },
+        {
+          "no": 2,
+          "baslik": "Doğal ve Beşerî Çevre Özellikleri Arasındaki İlişki",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/2.%20%C3%9CN%C4%B0TE/2.2%20DO%C4%9EAL%20VE%20BE%C5%9EER%C3%8E%20%C3%87EVRE%20%C3%96ZELL%C4%B0KLER%C4%B0%20ARASINDAKI%20%C4%B0LI%C5%9EK.pdf&title=Do%C4%9Fal%20ve%20Be%C5%9Fer%C3%AE%20%C3%87evre%20%C3%96zellikleri%20Aras%C4%B1ndaki%20%C4%B0li%C5%9Fki"
+        },
+        {
+          "no": 3,
+          "baslik": "Ülkemizin Türk Dünyasıyla Kültürel İş Birlikleri",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/2.%20%C3%9CN%C4%B0TE/2.3%20%C3%9CLKEMIZIN%20T%C3%9CRK%20D%C3%9CNYASIYLA%20K%C3%9CLT%C3%9CREL%20%C4%B0%C5%9E%20BIRLIKLERI.pdf&title=%C3%9Clkemizin%20T%C3%BCrk%20D%C3%BCnyas%C4%B1yla%20K%C3%BClt%C3%BCrel%20%C4%B0%C5%9F%20Birlikleri"
+        }
       ]
     },
     {
       "no": 3,
       "baslik": "Ortak Mirasımız",
       "konular": [
-        { "no": 1, "baslik": "Türkistan'da Kurulan İlk Türk Devletlerinin Medeniyetimize Katkıları", "badge": "Yakında", "href": "#" },
-        { "no": 2, "baslik": "VII-XIII. Yüzyıllar Arasında İslam Medeniyetinin İnsanlığın Ortak Mirasına Katkıları", "badge": "Yakında", "href": "#" },
-        { "no": 3, "baslik": "İslamiyetin Kabulüyle Türklerin Sosyal ve Kültürel Hayatlarında Meydana Gelen Değişimler", "badge": "Yakında", "href": "#" },
-        { "no": 4, "baslik": "XI-XIII. Yüzyıllar Arasında Meydana Gelen Askerî Mücadelelerin Anadolu'nun Türkleşmesi ve İslamlaşmasına Katkıları", "badge": "Yakında", "href": "#" }
+        {
+          "no": 1,
+          "baslik": "Türkistan'da Kurulan İlk Türk Devletlerinin Medeniyetimize Katkıları",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/3.1%20T%C3%9CRKISTAN%E2%80%99DA%20KURULAN%20%C4%B0LK%20T%C3%9CRK%20DEVLETLERININ%20MEDENIYETIMIZE%20KATKILARI.pdf&title=T%C3%BCrkistan%27da%20Kurulan%20%C4%B0lk%20T%C3%BCrk%20Devletlerinin%20Medeniyetimize%20Katk%C4%B1lar%C4%B1"
+        },
+        {
+          "no": 2,
+          "baslik": "VII-XIII. Yüzyıllar Arasında İslam Medeniyetinin İnsanlığın Ortak Mirasına Katkıları",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/3.2%20VII-XIII.%20Y%C3%9CZYILLAR%20ARASINDA%20%C4%B0SLAM%20MEDEN%C4%B0YET%C4%B0N%C4%B0N%20%20%C4%B0NSANLI%C4%9EIN%20ORTAK%20M%C4%B0RASINA%20KATKILARI%20.pdf&title=VII-XIII.%20Y%C3%BCzy%C4%B1llar%20Aras%C4%B1nda%20%C4%B0slam%20Medeniyetinin%20%C4%B0nsanl%C4%B1%C4%9F%C4%B1n%20Ortak%20Miras%C4%B1na%20Katk%C4%B1lar%C4%B1"
+        },
+        {
+          "no": 3,
+          "baslik": "İslamiyetin Kabulüyle Türklerin Sosyal ve Kültürel Hayatlarında Meydana Gelen Değişimler",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/3.3%20%C4%B0SLAM%C4%B0YET%E2%80%99%C4%B0N%20KABUL%C3%9CYLE%20T%C3%9CRKLER%C4%B0N%20SOSYAL%20VE%20K%C3%9CLT%C3%9CREL%20HAYATLARINDA%20%20MEYDANA%20GELEN%20DE%C4%9E%C4%B0%C5%9E%C4%B0MLER.pdf&title=%C4%B0slamiyetin%20Kabul%C3%BCyle%20T%C3%BCrklerin%20Sosyal%20ve%20K%C3%BClt%C3%BCrel%20Hayatlar%C4%B1nda%20Meydana%20Gelen%20De%C4%9Fi%C5%9Fimler"
+        },
+        {
+          "no": 4,
+          "baslik": "XI-XIII. Yüzyıllar Arasında Meydana Gelen Askerî Mücadelelerin Anadolu'nun Türkleşmesi ve İslamlaşmasına Katkıları",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/3.4%20XI-%20XIII.%20Y%C3%9CZYILLAR%20ARASINDA%20MEYDANA%20GELEN%20ASKER%C3%8E%20M%C3%9CCADELELER%C4%B0N%20%20ANADOLU%E2%80%99NUN%20T%C3%9CRKLE%C5%9EMES%C4%B0%20VE%20%C4%B0SLAMLA%C5%9EMASINA%20KATKILARI.pdf&title=XI-XIII.%20Y%C3%BCzy%C4%B1llar%20Aras%C4%B1nda%20Meydana%20Gelen%20Asker%C3%AE%20M%C3%BCcadelelerin%20Anadolu%27nun%20T%C3%BCrkle%C5%9Fmesi%20ve%20%C4%B0slamla%C5%9Fmas%C4%B1na%20Katk%C4%B1lar%C4%B1"
+        }
       ]
     },
     {
       "no": 4,
-      "baslik": "Yaşayan Demokrasimiz",
+      "baslik": "Yaşayan Demokrasi",
       "konular": [
-        { "no": 1, "baslik": "Yönetimin Karar Alma Sürecini Etkileyen Unsurlar", "badge": "Yakında", "href": "#" },
-        { "no": 2, "baslik": "Temel Hak ve Sorumluluklarım", "badge": "Yakında", "href": "#" },
-        { "no": 3, "baslik": "Toplumsal Düzenin Sürdürülmesindeki Önemi", "badge": "Yakında", "href": "#" },
-        { "no": 4, "baslik": "Dijitalleşme ve Teknolojik Gelişmelerin Vatandaşlık Hak ve Sorumluluklarına Etkileri", "badge": "Yakında", "href": "#" }
+        {
+          "no": 1,
+          "baslik": "Yönetimin Karar Alma Sürecini Etkileyen Unsurlar",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/4.%20%C3%9CN%C4%B0TE/4.1%20Y%C3%96NET%C4%B0M%C4%B0N%20KARAR%20ALMA%20S%C3%9CREC%C4%B0N%C4%B0%20ETK%C4%B0LEYEN%20UNSURLAR%20.pdf&title=Y%C3%B6netimin%20Karar%20Alma%20S%C3%BCrecini%20Etkileyen%20Unsurlar"
+        },
+        {
+          "no": 2,
+          "baslik": "Temel Hak ve Sorumlulukların Toplumsal Düzenin Sürdürülmesindeki Önemi",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/4.%20%C3%9CN%C4%B0TE/4.2%20TEMEL%20HAK%20VE%20SORUMLULUKLARIN%20%20TOPLUMSAL%20D%C3%9CZEN%C4%B0N%20S%C3%9CRD%C3%9CR%C3%9CLMES%C4%B0NDEK%C4%B0%20%C3%96NEM%C4%B0.pdf&title=Temel%20Hak%20ve%20Sorumluluklar%C4%B1n%20Toplumsal%20D%C3%BCzenin%20S%C3%BCrd%C3%BCr%C3%BClmesindeki%20%C3%96nemi"
+        },
+        {
+          "no": 3,
+          "baslik": "Dijitalleşme ve Teknolojik Gelişmelerin Vatandaşlık Hak ve Sorumluluklarına Etkileri",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/4.%20%C3%9CN%C4%B0TE/4.3%20D%C4%B0J%C4%B0TALLE%C5%9EME%20VE%20TEKNOLOJ%C4%B0K%20GEL%C4%B0%C5%9EMELER%C4%B0N%20%20VATANDA%C5%9ELIK%20HAK%20VE%20SORUMLULUKLARINA%20ETK%C4%B0LER%C4%B0%20.pdf&title=Dijitalle%C5%9Fme%20ve%20Teknolojik%20Geli%C5%9Fmelerin%20Vatanda%C5%9Fl%C4%B1k%20Hak%20ve%20Sorumluluklar%C4%B1na%20Etkileri"
+        }
       ]
     },
     {
       "no": 5,
       "baslik": "Hayatımızdaki Ekonomi",
       "konular": [
-        { "no": 1, "baslik": "Ülkemizin Kaynakları ve Ekonomik Faaliyetler", "badge": "Yakında", "href": "#" },
-        { "no": 2, "baslik": "Ekonomik Faaliyetler ve Meslekler", "badge": "Yakında", "href": "#" },
-        { "no": 3, "baslik": "Tasarlanan Bir Ürünün Yatırım ve Pazarlama Süreci", "badge": "Yakında", "href": "#" }
+        {
+          "no": 1,
+          "baslik": "Ülkemizin Kaynakları ve Ekonomik Faaliyetler",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/5.%20%C3%9CN%C4%B0TE/5.1%20%C3%9CLKEM%C4%B0Z%C4%B0N%20KAYNAKLARI%20VE%20EKONOM%C4%B0K%20FAAL%C4%B0YETLER.pdf&title=%C3%9Clkemizin%20Kaynaklar%C4%B1%20ve%20Ekonomik%20Faaliyetler"
+        },
+        {
+          "no": 2,
+          "baslik": "Ekonomik Faaliyetler ve Meslekler",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/5.%20%C3%9CN%C4%B0TE/5.2%20EKONOMIK%20FAALIYETLER%20VE%20MESLEKLER.pdf&title=Ekonomik%20Faaliyetler%20ve%20Meslekler"
+        },
+        {
+          "no": 3,
+          "baslik": "Tasarlanan Bir Ürünün Yatırım ve Pazarlama Süreci",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/5.%20%C3%9CN%C4%B0TE/5.3%20TASARLANAN%20B%C4%B0R%20%C3%9CR%C3%9CN%C3%9CN%20YATIRIM%20VE%20PAZARLAMA%20S%C3%9CREC%C4%B0.pdf&title=Tasarlanan%20Bir%20%C3%9Cr%C3%BCn%C3%BCn%20Yat%C4%B1r%C4%B1m%20ve%20Pazarlama%20S%C3%BCreci"
+        }
       ]
     },
     {
       "no": 6,
       "baslik": "Teknoloji ve Sosyal Bilimler",
       "konular": [
-        { "no": 1, "baslik": "Ulaşım ve İletişim Teknolojilerinin Kültürel Etkileşimdeki Rolü", "badge": "Yakında", "href": "#" },
-        { "no": 2, "baslik": "Telif ve Patent Süreci", "badge": "Yakında", "href": "#" }
+        {
+          "no": 1,
+          "baslik": "Ulaşım ve İletişim Teknolojilerinin Kültürel Etkileşimdeki Rolü",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/6.%20%C3%9CN%C4%B0TE/6.1%20ULA%C5%9EIM%20VE%20%C4%B0LETI%C5%9EIM%20TEKNOLOJILERININ%20K%C3%9CLT%C3%9CREL%20ETKILE%C5%9EIMDEKI%20ROL%C3%9C.pdf&title=Ula%C5%9F%C4%B1m%20ve%20%C4%B0leti%C5%9Fim%20Teknolojilerinin%20K%C3%BClt%C3%BCrel%20Etkile%C5%9Fimdeki%20Rol%C3%BC"
+        },
+        {
+          "no": 2,
+          "baslik": "Telif ve Patent Süreci",
+          "badge": "Yeni",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/6.%20S%C4%B1n%C4%B1f/6.%20%C3%9CN%C4%B0TE/6.2%20TELIF%20VE%20PATENT%20S%C3%9CRECi.pdf&title=Telif%20ve%20Patent%20S%C3%BCreci"
+        }
       ]
     }
   ]
