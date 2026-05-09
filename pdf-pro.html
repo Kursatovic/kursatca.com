@@ -239,6 +239,10 @@
           </div>
 
           <div class="pro-controls">
+            <button class="pro-btn" id="prev-topic" title="Önceki Konu" style="margin-right: 4px; background: rgba(6,182,212,0.1); color: var(--clr-secondary); display: none;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+            </button>
+
             <button class="pro-btn" id="toggle-draw" title="Kalem Modu (Aç/Kapat)">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
             </button>
@@ -272,6 +276,10 @@
             </span>
             <button class="pro-btn" id="next-page" title="Sonraki Sayfa" disabled>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <button class="pro-btn" id="next-topic" title="Sonraki Konu" style="margin-left: 4px; background: rgba(6,182,212,0.1); color: var(--clr-secondary); display: none;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
             </button>
           </div>
 
@@ -343,6 +351,36 @@
       downloadBtn.href = pdfUrl;
       downloadBtn.setAttribute('download', docTitle + '.pdf');
 
+      // Konu Navigasyonu (Önceki/Sonraki Konu)
+      const topicListRaw = localStorage.getItem('currentTopicList');
+      if (topicListRaw) {
+        try {
+          const topicList = JSON.parse(topicListRaw);
+          const currentIndex = topicList.findIndex(t => t.href.includes(pdfUrl));
+          
+          if (currentIndex !== -1) {
+            const prevBtn = document.getElementById('prev-topic');
+            const nextBtn = document.getElementById('next-topic');
+            
+            if (currentIndex > 0) {
+              prevBtn.style.display = 'flex';
+              prevBtn.addEventListener('click', () => {
+                const prev = topicList[currentIndex - 1];
+                window.location.href = prev.href;
+              });
+            }
+            
+            if (currentIndex < topicList.length - 1) {
+              nextBtn.style.display = 'flex';
+              nextBtn.addEventListener('click', () => {
+                const next = topicList[currentIndex + 1];
+                window.location.href = next.href;
+              });
+            }
+          }
+        } catch (e) { console.error('Konu listesi okunamadı', e); }
+      }
+
       // PDF.js Değişkenleri
       let pdfDoc = null,
           pageNum = 1,
@@ -376,7 +414,7 @@
           
           // Boyut değişince çizim özellikleri sıfırlanır, tekrar ayarlayalım
           drawCtx.strokeStyle = document.getElementById('draw-color').value;
-          drawCtx.lineWidth = 5; // Daha kalın kalem
+          drawCtx.lineWidth = 5; 
           drawCtx.lineCap = 'round';
           drawCtx.lineJoin = 'round';
 
@@ -445,7 +483,7 @@
         clearDrawBtn.style.display = 'none';
         drawColorInput.style.display = 'none';
         drawMode = false;
-        drawCtx.globalCompositeOperation = 'source-over'; // Çizim/Fosforlu için varsayılan blend modu
+        drawCtx.globalCompositeOperation = 'source-over'; 
 
         if (tool === 'pen') {
           drawMode = true;
@@ -455,7 +493,7 @@
           drawColorInput.style.display = 'block';
           drawCtx.globalAlpha = 1.0;
           drawCtx.lineWidth = 5;
-          drawColorInput.value = '#dc2626'; // Varsayılan kalem rengi
+          drawColorInput.value = '#dc2626';
           drawCtx.strokeStyle = '#dc2626';
         } else if (tool === 'highlight') {
           drawMode = true;
@@ -463,9 +501,9 @@
           toggleHighlightBtn.classList.add('active');
           clearDrawBtn.style.display = 'flex';
           drawColorInput.style.display = 'block';
-          drawCtx.globalAlpha = 0.5; // Daha şeffaf
-          drawCtx.lineWidth = 24; // Fosforlu kalınlığı
-          drawColorInput.value = '#eab308'; // Varsayılan fosforlu sarı
+          drawCtx.globalAlpha = 0.5;
+          drawCtx.lineWidth = 24;
+          drawColorInput.value = '#eab308';
           drawCtx.strokeStyle = '#eab308';
         } else if (tool === 'eraser') {
           drawMode = true;
@@ -473,9 +511,9 @@
           toggleEraserBtn.classList.add('active');
           clearDrawBtn.style.display = 'flex';
           drawColorInput.style.display = 'none';
-          drawCtx.globalCompositeOperation = 'destination-out'; // Silgi olarak çalışır
+          drawCtx.globalCompositeOperation = 'destination-out'; 
           drawCtx.globalAlpha = 1.0;
-          drawCtx.lineWidth = 30; // Silgi boyutu
+          drawCtx.lineWidth = 30;
         }
       };
 
@@ -495,7 +533,6 @@
         if (!drawMode) return;
         isDrawing = true;
         const rect = drawCanvas.getBoundingClientRect();
-        // Mouse veya Dokunmatik koordinatları hesaplama
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         const x = (clientX - rect.left) * (drawCanvas.width / rect.width);
@@ -530,7 +567,6 @@
       drawCanvas.addEventListener('mouseup', stopDrawing);
       drawCanvas.addEventListener('mouseout', stopDrawing);
 
-      // Dokunmatik destek
       drawCanvas.addEventListener('touchstart', startDrawing, {passive: false});
       drawCanvas.addEventListener('touchmove', draw, {passive: false});
       drawCanvas.addEventListener('touchend', stopDrawing);
@@ -583,8 +619,6 @@
         pdfDoc = pdfDoc_;
         document.getElementById('page-count').textContent = pdfDoc.numPages;
         loadingOverlay.style.display = 'none';
-        
-        // İlk sayfayı çiz
         renderPage(pageNum);
       }).catch(err => {
         console.error(err);

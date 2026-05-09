@@ -15,25 +15,7 @@ function initArchiveToggles() {
 }
 
 /* ─── Ünite Accordion Mantığı ─── */
-function initAccordions(container = document) {
-  container.querySelectorAll('.unit-header').forEach(header => {
-    if (header.dataset.accordionReady) return;
-    header.dataset.accordionReady = '1';
-    header.addEventListener('click', () => {
-      const accordion = header.closest('.unit-accordion');
-      const isActive = accordion.classList.contains('active');
-      
-      // Diğer üniteleri kapat
-      const parent = accordion.parentElement;
-      parent.querySelectorAll('.unit-accordion').forEach(item => item.classList.remove('active'));
-      
-      // Tıklananı aç/kapat
-      if (!isActive) {
-        accordion.classList.add('active');
-      }
-    });
-  });
-}
+/* shared/tabs.js içindeki initAccordions kullanılıyor */
 
 /* ─── İkon seçici (kaynak tipine göre) ─── */
 function archiveIcon(tip) {
@@ -103,7 +85,7 @@ function buildGradeHTML(data) {
   const unitsHTML = `
     <div class="unit-list">
       ${uniteler.map(unite => `
-        <div class="unit-accordion">
+        <div class="unit-accordion" data-unit-no="${unite.no}">
           <div class="unit-header">
             <div class="unit-number">${unite.no}</div>
             <div class="unit-info">
@@ -116,7 +98,7 @@ function buildGradeHTML(data) {
             <div class="unit-divider"></div>
             <div class="topic-list">
               ${unite.konular.map(konu => `
-                <a href="${escapeHTML(konu.href)}" class="topic-item">
+                <a href="${escapeHTML(konu.href)}" class="topic-item" data-topic-list='${JSON.stringify(unite.konular).replace(/'/g, "&apos;")}'>
                   <span class="topic-num">${escapeHTML(String(konu.no))}</span>
                   <span class="topic-title">${escapeHTML(konu.baslik)}</span>
                   <span class="topic-badge">${escapeHTML(konu.badge)}</span>
@@ -160,7 +142,7 @@ async function loadRecentItems() {
 
 /* ─── Tek sınıfı yükle ve panele yerleştir ─── */
 async function loadGrade(sinif, panel) {
-  if (panel.dataset.loaded) return; // Zaten yüklendi
+  if (panel.dataset.loaded === 'done') return; // Zaten yüklendi
   panel.dataset.loaded = 'loading';
 
   const grup = sinif <= 8 ? 'ortaokul' : 'lise';
@@ -175,9 +157,17 @@ async function loadGrade(sinif, panel) {
   panel.dataset.loaded = 'done';
 
   // Yeni eklenen accordion ve archive listenerlarını bağla
-  initAccordions(panel);
+  if (typeof initAccordions === 'function') initAccordions(panel);
   initArchiveToggles();
   initReveal(panel);
+
+  // PDF linklerine tıklandığında liste bilgisini kaydet
+  panel.querySelectorAll('.topic-item').forEach(link => {
+    link.addEventListener('click', () => {
+      const listData = link.dataset.topicList;
+      if (listData) localStorage.setItem('currentTopicList', listData);
+    });
+  });
 }
 
 /* ─── Tüm sınıf tab butonlarına lazy-load ekle ─── */

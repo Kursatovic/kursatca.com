@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSharedUI();   // js/shared/ui.js
   initReveal();     // js/shared/utils.js
   initSearch();     // js/shared/search.js
-  initAllTabs();    // js/shared/tabs.js
-
   // ── Sayfa özelinde başlatma ──────────────────
   const page = document.body.dataset.page;
 
@@ -25,4 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'blog')       initBlogPage();      // js/blog.js
   if (page === 'yapay-zeka') initYapayZekaPage(); // js/yapay-zeka.js
 
+  // ── Sekme Sistemi (Durum geri yükleme içerebilir) ──
+  initAllTabs();    // js/shared/tabs.js
 });
