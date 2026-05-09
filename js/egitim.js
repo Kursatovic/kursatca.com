@@ -1,6 +1,7 @@
 /* ============================================
    egitim.js — Eğitim sayfası renderer
    JSON verilerini okur, HTML'e işler
+   v1.0.8
    ============================================ */
 
 /* ─── Hazine Kutusu (Arşiv) ─── */

@@ -72,10 +72,12 @@ function initGradeTabs() {
         const savedAccordion = localStorage.getItem(`activeAccordion_${targetGrade}`);
         if (savedAccordion) {
             setTimeout(() => {
-                const header = panel.querySelector(`.unit-accordion[data-unit-no="${savedAccordion}"] .unit-header`);
-                if (header && !header.closest('.unit-accordion').classList.contains('active')) {
-                    header.click();
-                }
+                try {
+                    const header = panel.querySelector(`.unit-accordion[data-unit-no="${savedAccordion}"] .unit-header`);
+                    if (header && !header.closest('.unit-accordion').classList.contains('active')) {
+                        header.click();
+                    }
+                } catch (e) { console.warn('Accordion restore failed', e); }
             }, 100);
         }
       }
