@@ -189,7 +189,7 @@ function initGradeLazyLoad() {
 }
 
 /* ─── Eğitim sayfası başlatıcısı ─── */
-async function initEgitimPage() {
-  await loadRecentItems();
+function initEgitimPage() {
+  loadRecentItems(); // Async çalışsın ama main blocklamasın
   initGradeLazyLoad();
 }

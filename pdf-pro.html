@@ -356,7 +356,14 @@
       if (topicListRaw) {
         try {
           const topicList = JSON.parse(topicListRaw);
-          const currentIndex = topicList.findIndex(t => t.href.includes(pdfUrl));
+          const currentIndex = topicList.findIndex(t => {
+            try {
+              const tUrl = new URL(t.href, window.location.origin);
+              return tUrl.searchParams.get('pdf') === pdfUrl;
+            } catch (e) {
+              return t.href.includes(encodeURIComponent(pdfUrl));
+            }
+          });
           
           if (currentIndex !== -1) {
             const prevBtn = document.getElementById('prev-topic');
