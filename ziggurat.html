@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sümer Zigguratı - İnteraktif Tarih Stüdyosu</title>
+    
+    <!-- Hata Yakalayıcı (Debug) -->
+    <div id="debug-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); color:#ff5555; z-index:99999; display:none; padding: 2rem; font-family:monospace; white-space:pre-wrap; overflow-y:auto; pointer-events:none;"></div>
+    <script>
+    window.onerror = function(msg, url, lineNo, columnNo, error) {
+        var overlay = document.getElementById('debug-overlay');
+        overlay.style.display = 'block';
+        overlay.innerHTML += 'JavaScript Hatası:\n' + msg + '\nSatır: ' + lineNo + ':' + columnNo + '\n\n';
+        return false;
+    };
+    window.addEventListener('unhandledrejection', function(event) {
+        var overlay = document.getElementById('debug-overlay');
+        overlay.style.display = 'block';
+        overlay.innerHTML += 'Modül/Promise Hatası:\n' + (event.reason.stack || event.reason) + '\n\n';
+    });
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c9a263; /* Altın/Toprak rengi */
+            --bg-dark: #0a0a0c;
+            --panel-bg: rgba(20, 20, 25, 0.7);
+            --panel-border: rgba(201, 162, 99, 0.2);
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none; /* Let clicks pass through to the 3D canvas by default */
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+        }
+
+        .panel {
+            pointer-events: auto; /* Re-enable clicks for UI elements */
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .left-panel {
+            width: 380px;
+            height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+
+        .right-panel {
+            width: 320px;
+            align-self: flex-start;
+        }
+
+        /* Scrollbar Hide */
+        .left-panel::-webkit-scrollbar { display: none; }
+        .left-panel { -ms-overflow-style: none; scrollbar-width: none; }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2rem;
+            line-height: 1.1;
+            background: linear-gradient(90deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(201, 162, 99, 0.15);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--panel-border);
+        }
+
+        .interactive-points {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .point-btn {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-main);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .point-btn:hover, .point-btn.active {
+            background: rgba(201, 162, 99, 0.1);
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .point-number {
+            background: var(--primary);
+            color: var(--bg-dark);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.8rem;
+        }
+
+        .ai-tutor {
+            background: rgba(10, 10, 15, 0.6);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 3px solid var(--primary);
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .ai-header svg {
+            fill: var(--primary);
+            width: 18px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Loading Screen */
+        #loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-dark);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: opacity 1s ease;
+        }
+        .spinner {
+            width: 50px; height: 50px;
+            border: 3px solid rgba(201, 162, 99, 0.3);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+            margin-bottom: 1rem;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Lightbox (Tam Ekran Görsel) */
+        #lightbox {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 200;
+            display: none; /* JS ile flex yapılacak */
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            cursor: zoom-out;
+        }
+        
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.8);
+            border: 2px solid var(--primary);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        #lightbox.active {
+            opacity: 1;
+        }
+        
+        #lightbox.active img {
+            transform: scale(1);
+        }
+
+    </style>
+    <!-- Import Map for Three.js (Gerekli kütüphanelerin düzgün yüklenmesi için) -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="spinner"></div>
+        <h2>TARİH YÜKLENİYOR...</h2>
+    </div>
+
+    <!-- 3D Canvas -->
+    <div id="canvas-container"></div>
+
+    <!-- UI Overlay -->
+    <div class="ui-layer">
+        
+        <!-- Sol Panel: Bilgi ve Etkileşim -->
+        <div class="panel left-panel">
+            <div>
+                <span class="tag">Geçmişe Yolculuk 🚀</span>
+            </div>
+            
+            <div>
+                <h1>Sümerlerin Dev Kulesi: Ziggurat</h1>
+                <p>Binlerce yıl önce Mezopotamya'da yaşayan Sümerler, bu devasa kuleleri inşa ettiler! Sadece bir tapınak değil, aynı zamanda tahılların saklandığı bir depo, yıldızların incelendiği bir rasathane ve çocukların eğitim gördüğü bir okuldu!</p>
+            </div>
+
+            <hr style="border-color: rgba(255,255,255,0.05);">
+
+            <h2>HAYDİ KEŞFEDELİM</h2>
+            <div class="interactive-points">
+                <button class="point-btn active" data-target="0">
+                    <span class="point-number">⭐</span>
+                    <div>
+                        <div style="font-weight: 600;">En Üst Kat (Gözlemevi)</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Geceleri yıldızları izleyip takvim yapıyorlardı.</div>
+                    </div>
+                </button>
+                <button class="point-btn" data-target="1">
+                    <span class="point-number">📜</span>
+                    <div>
+                        <div style="font-weight: 600;">Orta Katlar (Okul ve Arşiv)</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Kil tabletlere çivi yazısı yazılan yerler.</div>
+                    </div>
+                </button>
+                <button class="point-btn" data-target="2">
+                    <span class="point-number">🌾</span>
+                    <div>
+                        <div style="font-weight: 600;">Alt Kat (Depolar)</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Halkın getirdiği buğdayların saklandığı ambar.</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sağ Panel: AI Tutor -->
+        <div class="panel right-panel">
+            <div class="ai-tutor">
+                <div class="ai-header">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    Zaman Yolcusu Rehberin
+                </div>
+                <div id="ai-image-container" style="display:none; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; border: 1px solid var(--panel-border); transition: opacity 0.3s ease; cursor: zoom-in;" onclick="openLightbox()">
+                    <img id="ai-image" src="" style="width: 100%; height: auto; display: block; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Tarihi Görsel" title="Büyütmek için tıkla">
+                </div>
+                <p id="ai-text" style="transition: opacity 0.3s ease;">Ziggurat'ın en üst katına çıkmak sence de yorucu değil mi? 🥵 Sümerli rahipler, yıldızları daha iyi görebilmek ve tanrılara yakın olmak için bu dev merdivenleri tırmanırlardı!</p>
+            </div>
+
+            <div class="point-btn" style="justify-content: center; background: rgba(201,162,99,0.2); border-color: var(--primary); pointer-events: none;">
+                <svg style="width:20px; fill:#fff;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                Modeli Döndür ve İncele!
+            </div>
+        </div>
+
+        <!-- Popup kaldırıldı -->
+
+    </div>
+
+    <!-- Tam Ekran Resim (Lightbox) -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Büyütülmüş Görsel">
+    </div>
+
+    <!-- Three.js Library -->
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+        // 1. Sahne Kurulumu
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x0a0a0c, 0.015);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(40, 30, 40);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        container.appendChild(renderer.domElement);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.zoomSpeed = 2.5; // Yakınlaşma ve uzaklaşmayı (zoom) kolaylaştırdık
+        controls.panSpeed = 1.2;
+        controls.maxPolarAngle = Math.PI / 2 + 0.1; // Don't go too far below ground
+        controls.minDistance = 10; // Modele daha da yakından bakabilmek için sınırı düşürdüm
+        controls.maxDistance = 150; // Daha rahat uzaklaşabilmek için sınırı artırdım
+
+        // 2. Işıklandırma (Dramatik ve Premium)
+        const ambientLight = new THREE.AmbientLight(0xffeedd, 0.4);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffddaa, 1.5);
+        directionalLight.position.set(50, 60, 20);
+        directionalLight.castShadow = true;
+        directionalLight.shadow.mapSize.width = 2048;
+        directionalLight.shadow.mapSize.height = 2048;
+        directionalLight.shadow.camera.near = 0.5;
+        directionalLight.shadow.camera.far = 150;
+        directionalLight.shadow.camera.left = -50;
+        directionalLight.shadow.camera.right = 50;
+        directionalLight.shadow.camera.top = 50;
+        directionalLight.shadow.camera.bottom = -50;
+        scene.add(directionalLight);
+
+        const backLight = new THREE.DirectionalLight(0x4455aa, 0.8);
+        backLight.position.set(-50, 30, -50);
+        scene.add(backLight);
+
+        // 3. 3D Modelin Yüklenmesi
+        const zigguratGroup = new THREE.Group();
+        scene.add(zigguratGroup);
+
+        const gltfLoader = new GLTFLoader();
+        gltfLoader.load('3d/step pyramid 3d model.glb', function (gltf) {
+            const model = gltf.scene;
+            
+            // Tripo3D modelleri bazen boyut olarak öngörülemeyebiliyor, 
+            // varsayılan bir boyut verip merkeze oturtuyoruz.
+            
+            // Modeli merkeze oturtma
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+            
+            // Boyuta göre otomatik ölçekleme (Görüş alanına sığması için)
+            const maxDim = Math.max(size.x, size.y, size.z);
+            if(maxDim > 0) {
+                const scale = 40 / maxDim; // Hedef ortalama boyut
+                model.scale.set(scale, scale, scale);
+            }
+            
+            // Yeniden merkezleme
+            const newBox = new THREE.Box3().setFromObject(model);
+            const newCenter = newBox.getCenter(new THREE.Vector3());
+            
+            model.position.x -= newCenter.x;
+            model.position.y -= newBox.min.y; // Y eksenini sıfırlama (tam zemine oturtma)
+            model.position.z -= newCenter.z;
+            
+            model.traverse((child) => {
+                if (child.isMesh) {
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                    // Malzeme rengini biraz canlandırmak veya materyali ayarlamak mümkün
+                }
+            });
+
+            zigguratGroup.add(model);
+            
+            console.log("Model başarıyla yüklendi!", gltf);
+            
+            // Yükleme ekranını gizle
+            document.getElementById('loader').style.opacity = '0';
+            setTimeout(() => document.getElementById('loader').style.display = 'none', 1000);
+            
+        }, undefined, function (error) {
+            console.error('Model yüklenirken hata:', error);
+            document.getElementById('loader').innerHTML = `
+                <div style="text-align:center; padding:2rem; max-width:600px; background:rgba(20,20,25,0.9); border:1px solid #ff5555; border-radius:15px;">
+                    <h2 style="color:#ff5555; margin-bottom:1rem;">Model Yüklenemedi! (CORS Hatası)</h2>
+                    <p style="color:#fff; font-size:1rem; line-height:1.6; margin-bottom:1rem;">Tarayıcılar, güvenlik nedeniyle bilgisayarındaki yerel (file://) 3D modelleri doğrudan okumaya izin vermez.</p>
+                    <p style="color:var(--primary); font-size:1.1rem; font-weight:600;">Çözüm: VS Code'da sağ alttaki "Go Live" (Live Server) butonuna tıklayarak sayfayı açmalısın.</p>
+                </div>
+            `;
+        });
+
+        // (Eski interaktif katman değişkenleri temizlendi)
+
+        // Zemin (Çöl/Toprak)
+        const groundGeo = new THREE.PlaneGeometry(200, 200);
+        const groundMat = new THREE.MeshStandardMaterial({ 
+            color: 0x1a1510,
+            roughness: 1,
+            metalness: 0
+        });
+        const ground = new THREE.Mesh(groundGeo, groundMat);
+        ground.rotation.x = -Math.PI / 2;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        // 4. Etkileşim ve Kamera Animasyonları
+        const targetPositions = [
+            { pos: new THREE.Vector3(0, 22, 28), target: new THREE.Vector3(0, 16.5, 0), text: "Burası Ziggurat'ın zirvesi! Rahipler gece boyunca gökyüzüne bakıp gezegenleri inceliyorlardı. Ay'ın hareketlerini kaydedip tarihteki ilk takvimlerden birini yaptılar! 🌙🔭", image: "3d/gözlemevi.png" }, // Tapınak
+            { pos: new THREE.Vector3(0, 14, 38), target: new THREE.Vector3(0, 8.5, 0), text: "Orta katlarda Sümerli çocuklar okula gidiyordu. Defter yerine kil tabletler kullanıp, kalem yerine ucu üçgen çubuklarla çivi yazısı yazıyorlardı! 📝", image: "3d/okul.png" }, // Orta
+            { pos: new THREE.Vector3(0, 8, 50), target: new THREE.Vector3(0, 3, 0), text: "Alt katlar dev bir kiler gibiydi. Çiftçiler tarladan kaldırdıkları buğdayları buraya getirirdi. Böylece kıtlık olduğunda kimse aç kalmazdı. 🌾🥖", image: "3d/depo.png" }  // Alt
+        ];
+
+        let isAnimating = false;
+
+        document.querySelectorAll('.point-btn[data-target]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // UI Güncelleme
+                document.querySelectorAll('.point-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const index = parseInt(btn.getAttribute('data-target'));
+                const aiText = document.getElementById('ai-text');
+                const aiImageContainer = document.getElementById('ai-image-container');
+                const aiImage = document.getElementById('ai-image');
+                
+                // AI Metni ve Görseli Değiştirme Animasyonu
+                aiText.style.opacity = 0;
+                aiImageContainer.style.opacity = 0;
+                
+                setTimeout(() => {
+                    // Metni güncelle
+                    aiText.innerText = targetPositions[index].text;
+                    aiText.style.opacity = 1;
+                    
+                    // Görsel varsa göster, yoksa gizle
+                    if(targetPositions[index].image) {
+                        aiImage.src = targetPositions[index].image;
+                        aiImageContainer.style.display = 'block';
+                        // Resim yüklendikten sonra opacity 1 yapalım
+                        aiImage.onload = () => { aiImageContainer.style.opacity = 1; };
+                        // Eğer resim bulunamazsa (hata verirse) gizle
+                        aiImage.onerror = () => { aiImageContainer.style.display = 'none'; };
+                    } else {
+                        aiImageContainer.style.display = 'none';
+                    }
+                }, 300);
+
+                // (Katman vurgulama kodu, dışarıdan yüklenen tek parça modelde çalışmaz, o yüzden kaldırıldı)
+
+                // Kamerayı Hareket Ettirme (Basit Animasyon)
+                const targetCamPos = targetPositions[index].pos;
+                const targetLookAt = targetPositions[index].target;
+                
+                // Tweening benzeri manuel animasyon
+                const startPos = camera.position.clone();
+                const startTarget = controls.target.clone();
+                let progress = 0;
+                isAnimating = true;
+
+                function animateCamera() {
+                    if(progress < 1) {
+                        progress += 0.02; // Hız
+                        
+                        // Ease in-out
+                        const easeProgress = progress < .5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+                        
+                        camera.position.lerpVectors(startPos, targetCamPos, easeProgress);
+                        controls.target.lerpVectors(startTarget, targetLookAt, easeProgress);
+                        controls.update();
+                        
+                        requestAnimationFrame(animateCamera);
+                    } else {
+                        isAnimating = false;
+                    }
+                }
+                animateCamera();
+            });
+        });
+
+        // 5. Render Döngüsü
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if(!isAnimating) controls.update();
+            
+            // Hafif süzülme efekti (nefes alma)
+            const time = clock.getElapsedTime();
+            zigguratGroup.position.y = Math.sin(time * 0.5) * 0.2;
+
+            renderer.render(scene, camera);
+        }
+
+        // Yükleme ekranı model yüklendiğinde gltfLoader callback'i içinde gizleniyor
+        animate();
+
+        // Sayfa ilk açıldığında birinci bölümün resmini ve metnini yükle
+        setTimeout(() => {
+            const firstBtn = document.querySelector('.point-btn[data-target="0"]');
+            if(firstBtn) firstBtn.click();
+        }, 100);
+
+        // (Tıklama popup kodu kaldırıldı)
+
+        // Pencere yeniden boyutlandırma
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Resim Büyütme (Lightbox) Fonksiyonları
+        window.openLightbox = function() {
+            const aiImageSrc = document.getElementById('ai-image').src;
+            if(!aiImageSrc) return;
+            
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = aiImageSrc;
+            lightbox.style.display = 'flex';
+            
+            // Küçük bir gecikme ile active class'ını ekleyerek animasyonu tetikliyoruz
+            setTimeout(() => {
+                lightbox.classList.add('active');
+            }, 10);
+        };
+        
+        window.closeLightbox = function() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            
+            // Animasyon bittikten sonra display none yapıyoruz
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+            }, 300);
+        };
+
+    </script>
+</body>
+</html>
