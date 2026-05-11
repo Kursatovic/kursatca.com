@@ -255,15 +255,16 @@
             transform: scale(1);
         }
 
-        /* Mobil Uyumluluk */
+        /* Mobil Uyumluluk - ULTRA KOMPAKT */
         @media (max-width: 768px) {
             .ui-layer {
                 display: block;
                 padding: 0;
             }
+            
             .left-panel {
                 position: absolute;
-                bottom: 0; left: 0;
+                bottom: 10px; left: 0;
                 width: 100%; height: auto;
                 max-height: none;
                 background: transparent;
@@ -271,22 +272,22 @@
                 box-shadow: none;
                 backdrop-filter: none;
                 -webkit-backdrop-filter: none;
-                padding: 10px;
-            }
-            .right-panel {
-                position: absolute;
-                top: 0; left: 0;
-                width: 100%; height: auto;
-                max-height: 40vh; /* Ekranın en fazla %40'ı */
-                border-radius: 0 0 20px 20px; /* Sadece alt köşeler yuvarlak */
-                padding: 10px;
-                overflow-y: auto;
-                border-top: none;
-                border-left: none;
-                border-right: none;
+                padding: 0 10px;
             }
             
-            /* Mobilde gereksiz yer kaplayan ana metinleri tamamen gizle */
+            .right-panel {
+                position: absolute;
+                top: 10px; left: 0;
+                width: 100%; height: auto;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                padding: 0 10px;
+            }
+            
+            /* Sol paneldeki ana başlıkları tamamen gizle */
             .left-panel > p, 
             .left-panel > h1, 
             .left-panel > h2,
@@ -294,54 +295,73 @@
                 display: none !important;
             }
 
-            /* Butonları yatay kaydırılabilir yap (Instagram filtreleri gibi) */
+            /* Alt Butonlar - Sadece başlık kalsın, açıklamalar gizlensin */
             .interactive-points {
                 display: flex;
                 flex-direction: row;
                 overflow-x: auto;
-                gap: 10px;
+                gap: 8px;
                 padding-bottom: 5px;
             }
-            
-            /* Scrollbar Hide for horizontal */
             .interactive-points::-webkit-scrollbar { display: none; }
             .interactive-points { -ms-overflow-style: none; scrollbar-width: none; }
 
             .point-btn {
-                flex: 0 0 220px; /* Sabit genişlik */
+                flex: 0 0 auto; /* Metne göre genişle */
                 background: rgba(15, 15, 20, 0.9);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                padding: 12px;
-                border-radius: 12px;
-                font-size: 0.9rem;
+                padding: 10px 15px;
+                border-radius: 30px; /* Hap şeklinde buton */
+                gap: 8px;
+            }
+            .point-number {
+                width: 20px; height: 20px; font-size: 0.7rem;
             }
             
+            /* Butonlardaki alt yazıları (description) font-size:0 ile gizliyoruz */
             .point-btn span {
-                font-size: 0.75rem;
+                font-size: 0 !important;
+            }
+            .point-btn span strong {
+                font-size: 0.85rem !important;
                 display: block;
-                margin-top: 4px;
             }
-            
+
+            /* AI Asistan (Sağ panel) - Ultra Kompakt Yatay Kutu */
             .ai-tutor {
+                display: flex;
+                flex-direction: row; /* Resmi ve yazıyı yan yana diz */
+                align-items: center;
+                gap: 12px;
                 padding: 10px;
+                border-left: none;
+                border-top: 2px solid var(--primary);
+                border-radius: 12px;
+                background: rgba(15, 15, 20, 0.9);
             }
-            
-            #ai-text {
-                font-size: 0.85rem;
-                line-height: 1.4;
+            .ai-header {
+                display: none !important; /* Başlığı gizle */
             }
-            
             #ai-image-container {
-                max-height: 100px;
-                margin-bottom: 0.5rem;
+                flex: 0 0 80px; /* Çok küçük bir kapak resmi */
+                height: 80px;
+                margin-bottom: 0 !important;
+                border: none !important;
             }
-            
             #ai-image-container img {
-                height: 100px;
+                width: 80px !important;
+                height: 80px !important;
+                object-fit: cover;
+            }
+            #ai-text {
+                font-size: 0.75rem !important;
+                line-height: 1.4 !important;
+                flex: 1;
+                max-height: 80px;
+                overflow-y: auto;
+                margin: 0;
             }
             
-            /* Mobilde "Modeli Döndür" uyarısını gizle çünkü yer dar */
+            /* "Modeli Döndür" uyarısını gizle */
             .right-panel > div:last-child {
                 display: none !important;
             }
