@@ -255,6 +255,61 @@
             transform: scale(1);
         }
 
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            .ui-layer {
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 1rem;
+            }
+            .panel {
+                width: 100%;
+                padding: 1rem;
+                gap: 0.8rem;
+            }
+            .left-panel {
+                height: auto;
+                max-height: 45vh;
+                order: 2; /* Sol menüyü ekranın en altına al */
+            }
+            .right-panel {
+                height: auto;
+                max-height: 45vh;
+                order: 1; /* Asistanı ekranın en üstüne al */
+                overflow-y: auto;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            /* Mobilde modelin görünmesi için uzun açıklama metinlerini gizle */
+            .left-panel > p:nth-of-type(1), 
+            .left-panel > h2 {
+                display: none;
+            }
+            .interactive-points {
+                gap: 0.5rem;
+            }
+            .point-btn {
+                padding: 0.6rem;
+            }
+            .point-btn span {
+                font-size: 0.85rem;
+            }
+            .ai-tutor {
+                padding: 1rem;
+            }
+            #ai-text {
+                font-size: 0.85rem;
+            }
+            #ai-image-container {
+                max-height: 100px;
+            }
+            #ai-image-container img {
+                height: 100px;
+                object-fit: cover;
+            }
+        }
+
     </style>
     <!-- Import Map for Three.js (Gerekli kütüphanelerin düzgün yüklenmesi için) -->
     <script type="importmap">
