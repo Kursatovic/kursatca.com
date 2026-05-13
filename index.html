@@ -8,7 +8,8 @@
   <title>kursatca.com | Ana Sayfa</title>
   <meta name="description" content="Kürşat Çelik'in kişisel web sitesi. Ortaokul ve lise öğrencileri için eğitim içerikleri, yapay zeka ve eğitim yazıları, kişisel blog." />
   <meta name="keywords" content="eğitim, yapay zeka, blog, ortaokul, lise, kürşat çelik" />
-  <link rel="stylesheet" href="css/style.css?v=1.0.3" />
+  <link rel="stylesheet" href="css/style.min.css?v=1.0.4" />
+  <link rel="preload" as="image" href="img/profil-foto-768.jpg" imagesrcset="img/profil-foto-480.jpg 480w, img/profil-foto-768.jpg 768w" imagesizes="(max-width: 768px) 240px, 340px" fetchpriority="high" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>" />
   <meta name="google-site-verification" content="8s5WF85cKQ-UOzhQiCMstagAyba_p4Qopgf_4JcCtV4" />
   <link rel="canonical" href="https://kursatca.com/" />
@@ -73,7 +74,7 @@
 
       <div class="hero-visual">
         <div class="hero-avatar-wrapper">
-          <img class="hero-avatar" src="img/profil-foto.png" alt="Kürşat Çelik profil fotoğrafı" />
+          <img class="hero-avatar" src="img/profil-foto-480.jpg" srcset="img/profil-foto-480.jpg 480w, img/profil-foto-768.jpg 768w" sizes="(max-width: 768px) 240px, 340px" width="340" height="340" alt="Kürşat Çelik profil fotoğrafı" fetchpriority="high" decoding="async" />
           <div class="hero-avatar-ring"></div>
           <div class="hero-avatar-glow"></div>
           <!-- Floating badges -->
@@ -193,10 +194,10 @@
     </div>
   </footer>
 
-  <script src="js/shared/utils.js?v=1.0.8"></script>
-  <script src="js/shared/ui.js?v=1.0.8"></script>
-  <script src="js/shared/tabs.js?v=1.0.8"></script>
-  <script src="js/shared/search.js?v=1.0.8"></script>
-  <script src="js/main.js?v=1.0.8"></script>
+  <script src="js/shared/utils.js?v=1.0.8" defer></script>
+  <script src="js/shared/ui.js?v=1.0.8" defer></script>
+  <script src="js/shared/tabs.js?v=1.0.8" defer></script>
+  <script src="js/shared/search.js?v=1.0.8" defer></script>
+  <script src="js/main.js?v=1.0.8" defer></script>
 </body>
 </html>
