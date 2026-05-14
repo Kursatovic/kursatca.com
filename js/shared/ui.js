@@ -32,9 +32,14 @@ function initNavScroll() {
 
 /** Aktif nav linkini işaretle */
 function initActiveNav() {
-  const current = window.location.pathname.split('/').pop() || 'index.html';
+  const path = window.location.pathname.replace(/\/$/, '') || '/';
+  const current = path.split('/').pop() || '/';
   const links = document.querySelectorAll('.nav-links a');
-  const active = Array.from(links).find(a => a.getAttribute('href') === current);
+  const active = Array.from(links).find(a => {
+    const href = a.getAttribute('href') || '';
+    const normalized = href.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+    return normalized === current || normalized === path;
+  });
   if (!active) return;
 
   links.forEach(a => {

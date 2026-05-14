@@ -2,43 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kursatca.com/</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://kursatca.com/egitim.html</loc>
-    <lastmod>2026-04-25</lastmod>
+    <loc>https://kursatca.com/egitim</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://kursatca.com/yapay-zeka.html</loc>
-    <lastmod>2026-04-25</lastmod>
+    <loc>https://kursatca.com/yapay-zeka</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kursatca.com/blog.html</loc>
-    <lastmod>2026-04-25</lastmod>
+    <loc>https://kursatca.com/blog</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kursatca.com/hakkimda.html</loc>
-    <lastmod>2026-04-25</lastmod>
+    <loc>https://kursatca.com/hakkimda</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://kursatca.com/egitim/kuresel-baglantilar/</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://kursatca.com/yapay-zeka/gemi-kalkti-okul-iskelede.html</loc>
-    <lastmod>2026-04-26</lastmod>
+    <loc>https://kursatca.com/yapay-zeka/gemi-kalkti-okul-iskelede</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
