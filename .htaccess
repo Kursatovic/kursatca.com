@@ -32,26 +32,31 @@ RewriteEngine On
   </FilesMatch>
 </IfModule>
 
-# Force one canonical host: https://kursatca.com
+# Force every public URL variant to one canonical shape:
+# https://kursatca.com/...
+# no www, no http, no top-level .html, no directory index files.
+RewriteRule ^index\.html$ https://kursatca.com/ [L,NE,R=301]
+RewriteRule ^(.+)/index\.html$ https://kursatca.com/$1/ [L,NE,R=301]
+RewriteRule ^egitim\.html$ https://kursatca.com/egitim [L,NE,R=301]
+RewriteRule ^yapay-zeka\.html$ https://kursatca.com/yapay-zeka [L,NE,R=301]
+RewriteRule ^blog\.html$ https://kursatca.com/blog [L,NE,R=301]
+RewriteRule ^hakkimda\.html$ https://kursatca.com/hakkimda [L,NE,R=301]
+
+# Redirect old kuresel-baglantilar-atolyesi to new location
+RewriteRule ^egitim/kuresel-baglantilar-atolyesi\.html$ https://kursatca.com/egitim/kuresel-baglantilar/ [L,NE,R=301]
+
+# Force canonical scheme and host for everything else.
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
-RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
+RewriteRule ^ https://kursatca.com%{REQUEST_URI} [L,NE,R=301]
 
-# Keep top-level pages extensionless even when same-named folders exist
+# Keep top-level pages extensionless even when same-named folders exist.
 RewriteRule ^(egitim|yapay-zeka|blog)/$ /$1 [L,NE,R=301]
 RewriteRule ^(egitim|yapay-zeka|blog)$ $1.html [NC,L]
 
-# Redirect directory index files to their folder URL
-RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
-RewriteRule ^(.*/)?index\.html$ /$1 [L,NE,R=301]
-
-# Redirect old kuresel-baglantilar-atolyesi to new location
-RewriteRule ^egitim/kuresel-baglantilar-atolyesi\.html$ /egitim/kuresel-baglantilar/ [L,R=301]
-
-# Redirect direct .html requests to extensionless URLs
+# Redirect direct .html requests to extensionless URLs.
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
-RewriteRule ^(.+)\.html$ /$1 [L,NE,R=301]
+RewriteRule ^(.+)\.html$ https://kursatca.com/$1 [L,NE,R=301]
 
 # Internally rewrite extensionless to .html
 RewriteCond %{REQUEST_FILENAME} !-d
