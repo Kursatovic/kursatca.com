@@ -1,5 +1,17 @@
 [
   {
+    "slug": "ai-ses-dosyasi-nasil-olusturulur",
+    "baslik": "AI ses dosyanızı nasıl oluşturursunuz?",
+    "kategori": "Rehber",
+    "tarih": "Haziran 2026",
+    "okumaSuresi": "9 dk okuma",
+    "aciklama": "Yapay zekanın size benzeyen taslaklar üretmesi için kendi AI ses dosyanızı nasıl hazırlayacağınızı adım adım anlatan rehber.",
+    "href": "/yapay-zeka/ai-ses-dosyasi-nasil-olusturulur",
+    "ikonTip": "emoji",
+    "ikon": "AI",
+    "onizlemeGorsel": "/img/yapay-zeka/ai-ses-dosyasi/kapak-ai-ses-dosyasi-duzeltildi.png"
+  },
+  {
     "slug": "mia-raporu-yapay-zeka-artik-hedef-seciyor",
     "baslik": "Millî İstihbarat Akademisi'nin Raporunu Okudum: Yapay Zekâ Artık Hedef Seçiyor",
     "kategori": "İnceleme",
