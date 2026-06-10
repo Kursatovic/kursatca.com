@@ -66,7 +66,7 @@
       "no": 6,
       "baslik": "Demokrasi ve Vatandaşlık",
       "konular": [
-        { "no": 1, "baslik": "Geçmişten Bugüne Demokrasi", "badge": "Yakında", "href": "#" },
+        { "no": 1, "baslik": "Geçmişten Bugüne Demokrasi", "badge": "Açıldı", "href": "egitim/gecmisten-bugune-demokrasi/" },
         { "no": 2, "baslik": "Atatürk ve Türk Demokrasisinin Gelişimi", "badge": "Yakında", "href": "#" },
         { "no": 3, "baslik": "Türkiye Cumhuriyeti'nin Nitelikleri", "badge": "Yakında", "href": "#" },
         { "no": 4, "baslik": "Demokratik Süreçler", "badge": "Yakında", "href": "#" }
