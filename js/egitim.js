@@ -113,6 +113,81 @@ function buildGradeHTML(data) {
   return statsHTML + archiveHTML + unitsHTML;
 }
 
+function buildFocusedGradeHTML(data) {
+  const { sinif, ders, stats, uniteler } = data;
+  const totalTopics = uniteler.reduce((total, unite) => total + unite.konular.length, 0);
+
+  return `
+    <section class="focused-grade-hero reveal">
+      <div>
+        <span class="badge">Sınıf Yol Haritası</span>
+        <h2>${sinif}. Sınıf ${escapeHTML(ders)}</h2>
+        <p>${sinif}. sınıf konularını Türkiye Yüzyılı Maarif Modeli öğrenme alanlarına göre burada topladık. Bir üniteyi aç, konuyu seç, ders anlatımına kaldığın yerden devam et.</p>
+      </div>
+      <div class="focused-grade-stats" aria-label="${sinif}. sınıf özet bilgileri">
+        <span><strong>${stats.unite}</strong> ünite</span>
+        <span><strong>${totalTopics}</strong> konu</span>
+        <span><strong>TYMM</strong> uyumlu</span>
+      </div>
+    </section>
+
+    <div class="focused-unit-list">
+      ${uniteler.map(unite => `
+        <article class="focused-unit-card reveal" data-unit-no="${unite.no}">
+          <div class="focused-unit-head">
+            <span class="focused-unit-number">${unite.no}</span>
+            <div>
+              <p>${escapeHTML(unite.ogrenmeAlani || 'Öğrenme Alanı')}</p>
+              <h3>${escapeHTML(unite.baslik)}</h3>
+            </div>
+            <span class="focused-topic-count">${unite.konular.length} konu</span>
+          </div>
+          <div class="focused-topic-list">
+            ${unite.konular.map(konu => `
+              <a href="${escapeHTML(konu.href)}" class="focused-topic-link" data-topic-list='${JSON.stringify(unite.konular).replace(/'/g, "&apos;")}'>
+                <span>${escapeHTML(String(konu.no))}</span>
+                <strong>${escapeHTML(konu.baslik)}</strong>
+                <em>${escapeHTML((konu.etiketler || []).slice(0, 3).join(' · '))}</em>
+              </a>`).join('')}
+          </div>
+        </article>`).join('')}
+    </div>
+
+    <div class="focused-grade-actions">
+      <a href="/egitim/" class="btn btn-ghost">Tüm eğitim arşivini gör</a>
+    </div>`;
+}
+
+async function initFocusedGradeView(sinif) {
+  const wrapper = document.querySelector('.education-glass-wrapper');
+  if (!wrapper) return false;
+
+  const grup = sinif <= 8 ? 'ortaokul' : 'lise';
+  const data = await fetchJSON(`content/egitim/${grup}/${sinif}-sinif.json`);
+  if (!data) return false;
+
+  localStorage.setItem('activeMainTab', sinif <= 8 ? 'tab-ortaokul' : 'tab-lise');
+  localStorage.setItem('activeGradeTab', String(sinif));
+
+  wrapper.classList.add('focused-grade-wrapper');
+  wrapper.innerHTML = buildFocusedGradeHTML(data);
+
+  const headerTitle = document.querySelector('.page-header h1');
+  const headerText = document.querySelector('.page-header p');
+  if (headerTitle) headerTitle.innerHTML = `${sinif}. Sınıf <span class="text-gradient">${escapeHTML(data.ders)}</span>`;
+  if (headerText) headerText.textContent = `${sinif}. sınıf üniteleri ve konu anlatımları. Sadece bu sınıfa ait ders yol haritası gösteriliyor.`;
+
+  initReveal(wrapper);
+  wrapper.querySelectorAll('[data-topic-list]').forEach(link => {
+    link.addEventListener('click', () => {
+      const listData = link.dataset.topicList;
+      if (listData) localStorage.setItem('currentTopicList', listData);
+    });
+  });
+
+  return true;
+}
+
 /* ─── Son Eklenenler bölümü ─── */
 /* content/egitim/son-eklenenler.json dosyasından verileri çeker */
 async function loadRecentItems() {
@@ -188,10 +263,12 @@ function initGradeLazyLoad() {
   });
 }
 
-function openGradeFromURL() {
+async function openGradeFromURL() {
   const params = new URLSearchParams(window.location.search);
   const sinif = parseInt(params.get('sinif'), 10);
   if (!sinif) return;
+
+  if (await initFocusedGradeView(sinif)) return;
 
   const mainTabId = sinif <= 8 ? 'tab-ortaokul' : 'tab-lise';
   const mainTabBtn = document.querySelector(`.tab-btn[data-tab="${mainTabId}"]`);
@@ -206,7 +283,8 @@ function openGradeFromURL() {
 
 /* ─── Eğitim sayfası başlatıcısı ─── */
 function initEgitimPage() {
-  loadRecentItems(); // Async çalışsın ama main blocklamasın
+  const hasFocusedGrade = new URLSearchParams(window.location.search).has('sinif');
+  if (!hasFocusedGrade) loadRecentItems(); // Async çalışsın ama main blocklamasın
   initGradeLazyLoad();
   openGradeFromURL();
 }

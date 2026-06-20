@@ -254,3 +254,21 @@ Bu projede bir sonraki yapısal işler yapılırken şu sıraya sadık kalınmas
 Önemli:
 Bu proje içerik üretim sitesi olduğu için kısa vadeli hız uğruna uzun vadeli düzensizlik yaratılmamalıdır.
 
+---
+
+## Eğitim Sayfasında Sınıf Odaklı Görünüm Fikri
+
+Konu sayfalarındaki `5. Sınıf` / `6. Sınıf` rozetlerinden eğitim sayfasına dönüldüğünde, kullanıcının genel eğitim kataloğuna değil doğrudan ilgili sınıfa odaklanmış bir görünüme gitmesi daha iyi bir deneyim olabilir.
+
+Eleştiri:
+Mevcut genel eğitim sayfası arşiv mantığı için iyi çalışır; fakat konu sayfasından gelen öğrenci veya veli zaten belirli bir sınıf bağlamındadır. Bu kişiye tüm sınıfları ve sekmeleri tekrar göstermek dikkat dağıtır. Özellikle mobilde “ben 6. sınıftaydım, niye 5. sınıf açıldı?” hissi oluşabilir.
+
+Önerilen yön:
+- `/egitim/` genel katalog olarak kalmalıdır.
+- `/egitim/?sinif=5` ve `/egitim/?sinif=6` gibi adresler sınıf odaklı görünüm açmalıdır.
+- Bu görünümde üstte yalnızca seçili sınıfın başlığı, kısa açıklaması ve TYMM uyum bilgisi yer almalıdır.
+- Altında sadece o sınıfa ait üniteler ve konular görünmelidir; diğer sınıflar ikincil bir geçiş olarak kalmalıdır.
+- Bu davranış sekme seçmekten daha güçlü bir “sınıf yol haritası” hissi vermelidir.
+
+Uygulama notu:
+Bu fikir hemen uygulanmak zorunda değildir. Uygulanırken genel katalog bozulmamalı; sınıf odaklı görünüm, konu sayfasından gelen kullanıcı akışını sadeleştiren ayrı bir durum gibi ele alınmalıdır.
