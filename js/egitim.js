@@ -188,8 +188,25 @@ function initGradeLazyLoad() {
   });
 }
 
+function openGradeFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const sinif = parseInt(params.get('sinif'), 10);
+  if (!sinif) return;
+
+  const mainTabId = sinif <= 8 ? 'tab-ortaokul' : 'tab-lise';
+  const mainTabBtn = document.querySelector(`.tab-btn[data-tab="${mainTabId}"]`);
+  if (mainTabBtn) mainTabBtn.click();
+
+  const gradeBtn = document.querySelector(`.grade-btn[data-grade="${sinif}"]`);
+  if (gradeBtn) {
+    gradeBtn.click();
+    document.getElementById(`grade-${sinif}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 /* ─── Eğitim sayfası başlatıcısı ─── */
 function initEgitimPage() {
   loadRecentItems(); // Async çalışsın ama main blocklamasın
   initGradeLazyLoad();
+  openGradeFromURL();
 }

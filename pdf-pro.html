@@ -79,6 +79,20 @@
       box-shadow: 0 10px 24px rgba(15,23,42,0.04);
     }
 
+    a.lesson-meta-pill {
+      color: var(--clr-text-primary);
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    a.lesson-meta-pill:hover {
+      transform: translateY(-2px);
+      border-color: rgba(124,58,237,0.32);
+      box-shadow: 0 14px 28px rgba(124,58,237,0.12);
+      color: var(--clr-primary);
+    }
+
     .lesson-brief {
       display: grid;
       grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
@@ -529,7 +543,7 @@
         <p id="lesson-hero-text">Bu sayfada konu hedefini, derste ne anlatıldığını ve ders kaynağını birlikte görebilirsin.</p>
       </div>
       <div class="lesson-meta-pills" aria-label="Konu bilgileri">
-        <span class="lesson-meta-pill" id="lesson-grade-pill">Sınıf</span>
+        <a class="lesson-meta-pill" id="lesson-grade-pill" href="/egitim/" title="Bu sınıfın tüm konularını gör">Sınıf</a>
         <span class="lesson-meta-pill" id="lesson-unit-pill">Ünite</span>
         <span class="lesson-meta-pill">PDF / Slayt</span>
       </div>
@@ -887,7 +901,13 @@
 
       document.getElementById('lesson-heading').textContent = docTitle;
       document.getElementById('lesson-hero-text').textContent = lessonCopy.hero;
-      document.getElementById('lesson-grade-pill').textContent = lessonInfo.grade;
+      const gradePill = document.getElementById('lesson-grade-pill');
+      const gradeNumber = lessonInfo.grade.match(/\d+/)?.[0];
+      gradePill.textContent = lessonInfo.grade;
+      if (gradeNumber) {
+        gradePill.href = `/egitim/?sinif=${encodeURIComponent(gradeNumber)}`;
+        gradePill.title = `${lessonInfo.grade} konularını eğitim sayfasında aç`;
+      }
       document.getElementById('lesson-unit-pill').textContent = currentTopicProfile?.learningArea || lessonInfo.unit;
       document.getElementById('lesson-summary').textContent = lessonCopy.summary;
       document.getElementById('lesson-search-note').textContent = `${docTitle} konusunu tekrar ederken kullanabileceğin ders, kazanım, Maarif Modeli ve dijital kaynak bağlantıları.`;
