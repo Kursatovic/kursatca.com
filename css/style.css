@@ -599,6 +599,61 @@ body::after {
   line-height: 1.75;
 }
 
+.hero-miniblock {
+  position: relative;
+  z-index: 4;
+  width: min(760px, calc(100vw - 64px));
+  margin-bottom: var(--space-lg);
+  padding: 18px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+}
+
+.hero-miniblock-title {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--clr-text-primary);
+}
+
+.hero-miniblock-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-miniblock-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.44);
+  color: var(--clr-text-secondary);
+  font-size: 0.88rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.hero-miniblock-list .svg-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--clr-secondary);
+}
+
+.hero-miniblock-list span {
+  overflow-wrap: anywhere;
+}
+
 .hero-cta-group {
   display: flex;
   gap: var(--space-md);
@@ -1471,6 +1526,14 @@ body::after {
   .hero-subtitle {
     margin-left: auto;
     margin-right: auto;
+  }
+  .hero-miniblock {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-miniblock-list {
+    grid-template-columns: 1fr;
   }
   .hero-cta-group {
     justify-content: center;
