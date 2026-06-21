@@ -569,14 +569,15 @@ body::after {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
-  align-items: center;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  gap: clamp(48px, 7vw, 96px);
+  align-items: start;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
+  max-width: 640px;
 }
 
 .hero-eyebrow {
@@ -591,11 +592,11 @@ body::after {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
   color: var(--clr-text-secondary);
-  max-width: 500px;
-  margin-bottom: var(--space-xl);
-  line-height: 1.8;
+  max-width: 610px;
+  margin-bottom: var(--space-lg);
+  line-height: 1.75;
 }
 
 .hero-cta-group {
@@ -651,12 +652,14 @@ body::after {
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: start;
+  padding-top: clamp(88px, 12vh, 132px);
 }
 
 .hero-avatar-wrapper {
   position: relative;
-  width: 340px;
-  height: 340px;
+  width: clamp(320px, 27vw, 390px);
+  height: clamp(320px, 27vw, 390px);
   border-radius: 50%;
   background: linear-gradient(135deg, #FFF0F6, #EEF2FF);
 }
@@ -1949,7 +1952,7 @@ body::after {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .about-story-card {
@@ -1959,6 +1962,11 @@ body::after {
 .about-contact-panel {
   position: sticky;
   top: 108px;
+  align-self: stretch;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .about-list-block {
@@ -1970,6 +1978,7 @@ body::after {
 .about-contact-card {
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 
 .about-contact-card::before {
