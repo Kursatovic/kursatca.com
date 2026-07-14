@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bir Liderin Oluşumu: Mustafa Kemal, 1881-1914</title>
+  <meta name="description" content="Mustafa Kemal'in çocukluk, eğitim, fikir ve ilk görev yıllarını 1881'den 1914'e kadar etkileşimli sahnelerle inceleyen ders materyali.">
+  <link rel="canonical" href="https://kursatca.com/egitim/bir-liderin-olusumu/">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" id="homeButton" aria-label="Başlangıç ekranına dön">
+        <span class="brand-mark">MK</span>
+        <span><strong>Bir Liderin Oluşumu</strong><small>Mustafa Kemal · 1881-1914</small></span>
+      </button>
+      <div class="era-track" aria-label="Bölüm ilerlemesi">
+        <button class="era is-active" data-scene="location"><span>00</span> Konum</button>
+        <button class="era" data-scene="selanik"><span>01</span> Selanik</button>
+        <button class="era" data-scene="school"><span>02</span> Eğitim</button>
+        <button class="era" data-scene="rustiye"><span>03</span> Rüştiye</button>
+        <button class="era" data-scene="manastir"><span>04</span> Manastır</button>
+        <button class="era" data-scene="harp"><span>05</span> Harp</button>
+        <button class="era" data-scene="ideas"><span>06</span> Fikirler</button>
+        <button class="era" data-scene="crises"><span>07</span> Deneyimler</button>
+        <button class="era" data-scene="final"><span>08</span> 1914</button>
+      </div>
+      <a class="icon-button site-back-button" href="/egitim?sinif=8" aria-label="8. sınıf konularına dön" title="8. sınıf konularına dön">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6M9 12h10"/></svg>
+      </a>
+      <button class="icon-button" id="fullscreenButton" aria-label="Tam ekran" title="Tam ekran">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>
+      </button>
+      <button class="icon-button source-button" id="sourcesButton" aria-label="Kaynakları aç" title="Kaynaklar">K</button>
+    </header>
+
+    <main>
+      <section class="scene is-active location-scene" id="scene-location" aria-labelledby="locationTitle">
+        <div class="location-stage" id="locationStage">
+          <div class="earth-orbit-stage" aria-hidden="true">
+            <img src="assets/dunya-yaklasma-v2.webp" alt="">
+            <div class="approach-route"><span>DÜNYA</span><i></i><span>AVRUPA</span><i></i><strong>DÖNEM HARİTASI</strong></div>
+          </div>
+          <div class="location-copy">
+            <p class="eyebrow">20. yüzyıl başı Avrupa siyasi haritası</p>
+            <h1 id="locationTitle">Selanik tam olarak nerede?</h1>
+            <p>Uzay görüntüsü yalnızca yaklaşma hissi verir. Ardından 20. yüzyıl başındaki Avrupa siyasi haritasında Balkanlara inecek ve Selanik'i kendi adıyla gösterildiği yerde bulacağız.</p>
+            <div class="location-status" id="locationStatus"><span>01</span><strong>Dünya'dan Avrupa'ya yaklaşıyoruz; henüz şehir işaretlenmedi</strong></div>
+          </div>
+          <div class="world-map-wrap modern-location-map historical-location-map" aria-label="20. yüzyıl başı Avrupa siyasi haritasında Selanik'in konumu">
+            <div class="historical-map-frame">
+              <img src="assets/avrupa-1914-selanik-haritasi.webp" alt="20. yüzyıl başı Avrupa siyasi haritasında Balkanlar ve Selanik">
+              <div class="selanik-highlight" aria-hidden="true"><span>SELANİK</span></div>
+            </div>
+            <div class="modern-map-label"><span>SELANİK</span><strong>Balkanların güneyi</strong><small>40.64° K · 22.94° D</small></div>
+            <div class="map-scale-label">20. YÜZYIL BAŞI AVRUPA SİYASİ HARİTASI · PARLAK ÇERÇEVE: SELANİK</div>
+          </div>
+        </div>
+        <div class="teacher-dock location-dock">
+          <div class="dock-question"><span class="dock-index">KONUM</span><p>Selanik neden hem bir Osmanlı şehri hem de bir Avrupa limanı olarak düşünülebilir?</p></div>
+          <button class="reveal-button" id="replayLocation">Konuma yaklaş <span>↻</span></button>
+          <button class="reveal-button" data-scene-target="selanik">Selanik'e in <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="scene" id="scene-selanik" aria-labelledby="selanikTitle">
+        <div class="scene-visual selanik-visual">
+          <img src="assets/selanik-panorama.webp" alt="1890 dolaylarında Selanik limanı ve şehir dokusunun temsili canlandırması">
+          <div class="image-wash"></div>
+          <div class="scene-heading">
+            <p class="eyebrow">1881 · Osmanlı Selanik'i</p>
+            <h1 id="selanikTitle">Bir şehir, bir çocuğun ufkunu ne kadar değiştirebilir?</h1>
+            <p>Şehri okumak için hareket noktalarını aç. Her nokta bir bilgi değil, bir kanıt.</p>
+          </div>
+
+          <button class="hotspot hotspot-harbor" data-evidence="harbor" aria-label="Limanı incele">
+            <span class="pulse"></span><span class="hotspot-label">Liman</span>
+          </button>
+          <button class="hotspot hotspot-rail" data-evidence="rail" aria-label="Demir yolunu incele">
+            <span class="pulse"></span><span class="hotspot-label">Demir yolu</span>
+          </button>
+          <button class="hotspot hotspot-press" data-evidence="press" aria-label="Basın ve fikir hayatını incele">
+            <span class="pulse"></span><span class="hotspot-label">Basın</span>
+          </button>
+          <button class="hotspot hotspot-neighborhood" data-evidence="neighborhood" aria-label="Mahalleleri incele">
+            <span class="pulse"></span><span class="hotspot-label">Mahalleler</span>
+          </button>
+
+          <div class="reconstruction-label">Tarihî verilere dayalı temsili canlandırma</div>
+        </div>
+
+        <aside class="evidence-drawer" id="evidenceDrawer" aria-live="polite">
+          <button class="drawer-close" id="drawerClose" aria-label="Bilgi panelini kapat">×</button>
+          <p class="drawer-kicker" id="drawerKicker">Şehir kanıtı</p>
+          <h2 id="drawerTitle">Liman</h2>
+          <p class="drawer-lead" id="drawerLead"></p>
+          <div class="evidence-detail" id="drawerDetail"></div>
+          <div class="evidence-tags" id="evidenceTags"></div>
+          <div class="thinking-prompt">
+            <span>Düşünme durağı</span>
+            <p id="drawerQuestion"></p>
+          </div>
+          <button class="collect-button" id="collectButton">Kanıt çantasına ekle</button>
+        </aside>
+
+        <div class="teacher-dock">
+          <div class="dock-question">
+            <span class="dock-index">SORU 01</span>
+            <p>Selanik'in hangi özellikleri Mustafa Kemal'in düşünce dünyasını etkilemiş olabilir?</p>
+          </div>
+          <div class="evidence-bag" id="evidenceBag" aria-label="Toplanan kanıtlar">
+            <span class="bag-label">Kanıt çantası</span>
+            <div class="bag-slots">
+              <span class="bag-slot"></span><span class="bag-slot"></span><span class="bag-slot"></span><span class="bag-slot"></span>
+            </div>
+            <span class="bag-count"><b id="bagCount">0</b>/4</span>
+          </div>
+          <button class="reveal-button" id="revealConnection" disabled>Bağlantıyı kur <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="scene" id="scene-school" aria-labelledby="schoolTitle">
+        <div class="school-stage">
+          <div class="school-heading">
+            <p class="eyebrow">1886-1893 · İlk eğitim yılları</p>
+            <h1 id="schoolTitle">Başkalarının seçimi mi, kendi yolu mu?</h1>
+            <p>Aynı şehirde iki eğitim anlayışı. Perdeyi hareket ettirerek sınıfları karşılaştır.</p>
+            <button class="context-button" id="educationContextButton">Dönemin eğitim yapısı</button>
+          </div>
+
+          <div class="comparison" id="comparison">
+            <div class="school-side traditional">
+              <img class="classroom-image" src="assets/mahalle-mektebi.webp" alt="Çocukların yerde rahleler önünde oturduğu geleneksel mahalle mektebi canlandırması">
+              <div class="classroom-shade"></div>
+              <div class="school-caption"><span>Geleneksel eğitim</span><strong>Mahalle Mektebi</strong></div>
+            </div>
+            <div class="school-side modern">
+              <img class="classroom-image" src="assets/semsi-efendi-sinifi.webp" alt="Öğrencilerin sıralarda oturduğu, öğretmenin tahta kullandığı Şemsi Efendi Okulu canlandırması">
+              <div class="classroom-shade"></div>
+              <div class="school-caption"><span>Usul-i cedid · Yeni yöntem</span><strong>Şemsi Efendi Okulu</strong></div>
+            </div>
+            <input type="range" id="comparisonRange" min="18" max="82" value="50" aria-label="İki okulu karşılaştır">
+            <div class="comparison-handle" id="comparisonHandle"><span>↔</span></div>
+          </div>
+
+          <div class="decision-strip">
+            <div class="family-side"><img src="assets/zubeyde-hanim.webp" alt="Zübeyde Hanım"><span>Anne</span><strong>Zübeyde Hanım</strong><p>Geleneksel eğitimden yana</p></div>
+            <div class="decision-question"><span>KIRILMA NOKTASI</span><p>Bir ailenin eğitim tercihi,<br>bir çocuğun geleceğine nasıl yön verir?</p></div>
+            <div class="family-side father"><img src="assets/ali-riza-tartismali.webp" alt="Ali Rıza Efendi olarak yayımlanan ancak kimliği tartışmalı portre"><span>Baba</span><strong>Ali Rıza Efendi</strong><p>Yeni yöntemlerden yana · Portre tartışmalı</p></div>
+          </div>
+        </div>
+        <div class="teacher-dock school-dock">
+          <button class="back-button" data-scene-target="selanik">← Selanik'e dön</button>
+          <div class="dock-question"><span class="dock-index">SORU 02</span><p>Burada yalnızca iki okul mu karşılaşıyor, yoksa iki farklı gelecek tasavvuru mu?</p></div>
+          <button class="reveal-button" id="revealChoice">Oluşum izini göster <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="scene rustiye-scene" id="scene-rustiye" aria-labelledby="rustiyeTitle">
+        <div class="rustiye-stage">
+          <img class="rustiye-bg" src="assets/rustiye-karar-sahnesi.webp" alt="Zübeyde Hanımın kaygısı, genç Mustafa'nın askerî okula yönelişi ve matematik dersindeki başarısını bir arada gösteren temsili canlandırma">
+          <div class="rustiye-wash"></div>
+          <header class="rustiye-heading">
+            <p class="eyebrow">1893 · Selanik Mülkiye Rüştiyesinden Askerî Rüştiyeye</p>
+            <h1 id="rustiyeTitle">Kendi yolunu ilk kez<br>kendisi seçti.</h1>
+            <p>Aile tercihinden kişisel karara geçiş: askerlik isteği, annenin korkusu, giriş sınavı ve “Kemal” adının doğuşu.</p>
+          </header>
+
+          <div class="initiative-axis" role="tablist" aria-label="Mustafa'nın Askerî Rüştiyeye geçişindeki dönüm noktaları">
+            <button class="initiative-tab" data-initiative="civil" role="tab"><span>01</span><strong>Mülkiye Rüştiyesi</strong><small>Kısa süren yol</small></button>
+            <button class="initiative-tab" data-initiative="uniform" role="tab"><span>02</span><strong>Üniforma</strong><small>Hedef belirleme</small></button>
+            <button class="initiative-tab is-active" data-initiative="exam" role="tab"><span>03</span><strong>Giriş sınavı</strong><small>İnisiyatif anı</small></button>
+            <button class="initiative-tab" data-initiative="math" role="tab"><span>04</span><strong>“Kemal” adı</strong><small>Matematikte başarı</small></button>
+            <button class="initiative-tab" data-initiative="nakiyuddin" role="tab"><span>05</span><strong>Nakiyüddin Bey</strong><small>Vatan ve gelecek</small></button>
+          </div>
+
+          <article class="initiative-detail" id="initiativeDetail">
+            <span class="initiative-number">03</span>
+            <div><p class="eyebrow">Annesine haber vermeden sınava girdi</p><h2>Bir engel karşısında yönlendirme beklemedi.</h2><p>Zübeyde Hanım, asker olan oğlunu savaşta kaybetmekten korktuğu için bu karara karşıydı. Mustafa ise kararını vermişti: Askerî Rüştiyenin giriş sınavına annesine haber vermeden katıldı ve kazandı. Annesini bir oldubittiyle karşı karşıya bırakması aile açısından zorlayıcıydı; fakat kendi yaşam yönünü belirlemek için harekete geçtiği ilk açık örneklerden biriydi.</p><div class="initiative-definition"><span>İNSİYATİF</span><strong>Başkalarının harekete geçmesini beklemeden sorumluluk alıp kararını uygulamak.</strong></div><div class="initiative-question">Karar almak ile o kararın sorumluluğunu üstlenmek arasında nasıl bir fark vardır?</div></div>
+          </article>
+
+          <div class="rustiye-conclusion"><span>BU DÖNEMDEN ÇIKAN YENİ SONUÇ</span><p>Bu okulda yalnızca adı değişmedi: kararını uygulama cesareti, matematikle güçlenen akılcı yönü ve vatan düşüncesi birlikte görünür oldu.</p></div>
+          <div class="reconstruction-label rustiye-label">Yapay zekâyla üretilmiş temsili canlandırma · Tarihî fotoğraf değildir</div>
+        </div>
+        <div class="teacher-dock rustiye-dock">
+          <button class="back-button" data-scene-target="school">← Eğitim yılları</button>
+          <div class="dock-question"><span class="dock-index">SORU 03</span><p>Mustafa'nın askerî okula geçişi neden yalnızca bir okul değişikliği değil, bir inisiyatif göstergesidir?</p></div>
+          <button class="reveal-button" data-scene-target="manastir">Manastır'a geç <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="scene dossier-scene" id="scene-manastir" aria-labelledby="manastirTitle">
+        <div class="dossier-stage manastir-stage">
+          <img class="chapter-bg" src="assets/manastir-montaj.webp" alt="Manastır Askerî İdadisi ve öğrencinin çalışma masasının temsili canlandırması">
+          <div class="chapter-wash"></div>
+          <header class="dossier-heading">
+            <p class="eyebrow">1896-1899 · Manastır Askerî İdadisi</p>
+            <h1 id="manastirTitle">Bir öğrencinin dünyası sınıfın dışına taşınca</h1>
+            <p>Manastır yalnızca bir okul değildi: savaş haberleri, şiir, tarih ve farklı fikirlerin kesiştiği bir Balkan şehriydi.</p>
+          </header>
+          <div class="influence-grid">
+            <button class="influence-item is-active" data-influence="history"><span>01</span><strong>Tarih bilinci</strong><small>Mehmet Tevfik Bey</small></button>
+            <button class="influence-item" data-influence="literature"><span>02</span><strong>Edebiyat ve hitabet</strong><small>Ömer Naci</small></button>
+            <button class="influence-item" data-influence="war"><span>03</span><strong>1897 Türk-Yunan Savaşı</strong><small>Vatan kaygısı</small></button>
+            <button class="influence-item" data-influence="french"><span>04</span><strong>Fransızca</strong><small>Yeni düşüncelere erişim</small></button>
+          </div>
+          <article class="influence-detail" id="influenceDetail">
+            <span class="detail-number">01</span>
+            <div><p class="eyebrow">Tarih bilinci · Mehmet Tevfik Bey</p><h2>Tarih, geçmişi ezberlemek değil; geleceği anlamaktır.</h2><p>Manastır Askerî İdadisinde tarih öğretmeni Mehmet Tevfik Bey, Mustafa Kemal'in olayları neden-sonuç ilişkisi içinde değerlendirme alışkanlığını güçlendirdi. Devletlerin yükseliş ve çöküş sebeplerini incelerken milletlerin kaderini yalnız askerî gücün değil; eğitim, ekonomi ve millî birliğin de belirlediğini kavradı. Bu bakış, ileride sorunları geniş bir çerçevede değerlendirmesine katkı sağladı.</p><div class="influence-skill"><span>KAZANDIRDIĞI ÖZELLİK</span><strong>Tarih bilinci</strong></div><div class="detail-question">Bir lider geçmişteki hatalardan ders çıkarmazsa geleceği doğru planlayabilir mi?</div></div>
+          </article>
+          <div class="formation-line manastir-chain"><span>Manastır'da oluşan bağ</span><strong>Mehmet Tevfik Bey + Ömer Naci + 1897 Savaşı + Fransızca</strong><i>↓</i><b>Tarih bilinci + etkili iletişim + siyasi farkındalık + çağdaş düşünce</b><i>↓</i><em>Liderlik ve devlet adamlığı özelliklerinin gelişmesi</em></div>
+        </div>
+      </section>
+
+      <section class="scene dossier-scene" id="scene-harp" aria-labelledby="harpTitle">
+        <div class="dossier-stage harp-stage">
+          <img class="chapter-bg" src="assets/harbiye-montaj.webp" alt="Harp Okulu ve Harp Akademisi eğitim ortamlarının temsili canlandırması">
+          <div class="chapter-wash"></div>
+          <header class="dossier-heading">
+            <p class="eyebrow">1899-1905 · İstanbul</p>
+            <h1 id="harpTitle">Subay olmak ile kurmay olmak arasındaki yol</h1>
+            <p>İki okul, iki farklı gelişim evresi. Birinde ülke sorunlarını tartışan öğrenci; diğerinde çözüm üreten kurmay adayı.</p>
+          </header>
+          <div class="harp-tabs" role="tablist">
+            <button class="harp-tab is-active" data-harp="school" role="tab">1899-1902 · Harp Okulu</button>
+            <button class="harp-tab" data-harp="academy" role="tab">1902-1905 · Harp Akademisi</button>
+          </div>
+          <article class="harp-content" id="harpContent">
+            <div class="harp-year">1899</div>
+            <div><p class="eyebrow">Harp Okulu</p><h2>Ülkesinin geleceğini sorgulayan bir öğrenci</h2><p>Mustafa Kemal Harp Okulunda yalnızca askerlik eğitimi almadı. Gazeteler okuyarak ülkenin içinde bulunduğu sorunları takip etti; arkadaşlarıyla özgürlük, yönetim ve devletin geleceği üzerine tartışmalar yaptı. El yazısıyla gazete çıkararak düşüncelerini paylaşmaya başladı. Bu süreç, onun sorgulayan ve fikir üreten yönünü güçlendirdi.</p><div class="skill-row"><span>Fikir üretme</span><span>Yazılı ifade</span><span>Sorgulama</span><span>Toplumsal sorunlara ilgi</span></div><div class="harp-thought">Sorunları fark etmek mi daha önemlidir, çözüm üretmek mi?</div></div>
+          </article>
+          <div class="harp-question"><span>SONUÇ</span><p>Harp Okulu Mustafa Kemal'in fikirlerini geliştirdi; Harp Akademisi ise bu fikirleri plan ve stratejiye dönüştürmeyi öğretti.</p></div>
+        </div>
+      </section>
+
+      <section class="scene dossier-scene" id="scene-ideas" aria-labelledby="ideasTitle">
+        <div class="dossier-stage ideas-stage">
+          <header class="dossier-heading compact-heading">
+            <p class="eyebrow">Kişi → fikir → etki → düşünce dünyasındaki iz</p>
+            <h1 id="ideasTitle">Mustafa Kemal'in düşünce dünyasını kimler, nasıl besledi?</h1>
+          </header>
+          <div class="thinker-grid" aria-label="Mustafa Kemal'i etkileyen düşünürler">
+            <button class="thinker local-thinker is-active" data-thinker="namik"><b>OSMANLI / MİLLÎ</b><img src="assets/namik-kemal.webp" alt="Namık Kemal"><span><strong>Namık Kemal</strong><small>Vatan · Hürriyet</small></span></button>
+            <button class="thinker local-thinker" data-thinker="emin"><b>OSMANLI / MİLLÎ</b><img src="assets/mehmet-emin.webp" alt="Mehmet Emin Yurdakul"><span><strong>Mehmet Emin</strong><small>Millî benlik</small></span></button>
+            <button class="thinker local-thinker" data-thinker="ziya"><b>OSMANLI / MİLLÎ</b><img src="assets/ziya-gokalp.webp" alt="Ziya Gökalp"><span><strong>Ziya Gökalp</strong><small>Millet · Kültür</small></span></button>
+            <button class="thinker local-thinker" data-thinker="fikret"><b>OSMANLI / ÇAĞDAŞ</b><img src="assets/tevfik-fikret.webp" alt="Tevfik Fikret"><span><strong>Tevfik Fikret</strong><small>Çağdaşlaşma</small></span></button>
+            <button class="thinker universal-thinker" data-thinker="rousseau"><b>EVRENSEL</b><img src="assets/rousseau.webp" alt="Jean-Jacques Rousseau"><span><strong>Rousseau</strong><small>Hak · Toplum</small></span></button>
+            <button class="thinker universal-thinker" data-thinker="montesquieu"><b>EVRENSEL</b><img src="assets/montesquieu.webp" alt="Montesquieu"><span><strong>Montesquieu</strong><small>Hukuk · Yönetim</small></span></button>
+          </div>
+          <article class="thinker-detail" id="thinkerDetail"></article>
+          <button class="ideas-synthesis-trigger" id="openIdeasSynthesis"><span>BÜYÜK SONUÇ</span><strong>Mustafa Kemal bir fikri kopyalamadı.</strong><i>Sonuç zincirini aç →</i></button>
+          <aside class="ideas-synthesis-modal" id="ideasSynthesis" aria-hidden="true"><button id="closeIdeasSynthesis" aria-label="Büyük sonucu kapat">×</button><span>BÜYÜK SONUÇ</span><h2>Mustafa Kemal bir fikri kopyalamadı.</h2><div class="synthesis-flow"><p><b>Namık Kemal</b>Vatan sevgisi</p><p><b>Mehmet Emin</b>Millî kimlik</p><p><b>Ziya Gökalp</b>Millet anlayışı</p><p><b>Tevfik Fikret</b>Çağdaşlaşma</p><p><b>Rousseau</b>Millî egemenlik</p><p><b>Montesquieu</b>Hukuk devleti</p></div><strong>Mustafa Kemal bu fikirleri olduğu gibi benimsemedi. Okudu, karşılaştırdı, eleştirdi ve Türk milletinin ve ülkenin ihtiyaçlarına göre yeniden yorumladı.</strong></aside>
+          <div class="portrait-source">Portreler: Wikimedia Commons · Kamu malı / açık lisans</div>
+        </div>
+      </section>
+
+      <section class="scene dossier-scene" id="scene-crises" aria-labelledby="crisesTitle">
+        <div class="crisis-stage">
+          <header class="dossier-heading crisis-heading">
+            <p class="eyebrow">1905-1914 · Liderliği şekillendiren deneyimler</p>
+            <h1 id="crisesTitle">Fikirler teori olmaktan çıktı; liderlik tecrübeye dönüştü.</h1>
+            <p>Her dosyayı aç: koşulları gör, çözümü tartış, Mustafa Kemal'in gerçek rolünü ardından incele.</p>
+          </header>
+          <div class="crisis-list">
+            <article class="crisis-file is-open">
+              <button class="crisis-toggle" aria-expanded="true"><span>1905</span><strong>Şam · Osmanlı'nın uzak topraklarında bir görev</strong><i>−</i></button>
+              <div class="crisis-body"><figure class="crisis-visual"><img src="assets/kriz-sam.webp" alt="Şam'da subayların örgütlü hareket planladığı temsili sahne"><figcaption>Temsili canlandırma · Şam, 1905</figcaption></figure><div><b>Ne oldu?</b><p>Mustafa Kemal Harp Akademisinden mezun olduktan sonra Şam'daki 5. Orduya atandı. Osmanlı Devleti'nin birçok bölgesinde yönetim sorunları yaşanıyor, milliyetçilik hareketleri güçleniyordu.</p></div><div><b>Mustafa Kemal ne yaptı?</b><p>Devletin sorunlarını yalnız eleştirmekle yetinmedi. Arkadaşlarıyla Vatan ve Hürriyet Cemiyetini kurdu. Cemiyet, devletin dağılmasını önlemek ve meşrutiyet yönetimini savunmak amacıyla faaliyet gösteriyordu.</p></div><div><b>Deneyimin anlamı</b><p>Mustafa Kemal burada yalnızca devlet sorunlarını tartışmadı; insanları ortak bir amaç etrafında toplamanın ve düşünceyi eyleme dönüştürmenin önemini öğrendi. Bu deneyim, sonraki teşkilatlanmalarının ilk adımı oldu.</p></div><div class="experience-takeaway"><span>İLK ÖRGÜTLENME DENEMESİ</span><p>Sorunları görmek yeterli değildir. Çözüm için insanları bir araya getirecek bir organizasyon da gerekir.</p></div><div class="gain-strip"><span>MUSTAFA KEMAL'İN ÇANTASINA NE GİRDİ?</span><strong>Teşkilatçılık</strong><strong>İnsanları ortak amaçta toplama</strong><strong>Düşünceyi eyleme dönüştürme</strong><strong>İnisiyatif alma</strong></div></div>
+            </article>
+            <article class="crisis-file">
+              <button class="crisis-toggle" aria-expanded="false"><span>13 Nisan 1909</span><strong>31 Mart Olayı</strong><i>+</i></button>
+              <div class="crisis-body"><figure class="crisis-visual"><img src="assets/kriz-31-mart.webp" alt="Hareket Ordusunun İstanbul'a ilerleyişi ve kurmay planlamasının temsili sahnesi"><figcaption>Temsili canlandırma · Hareket Ordusu, 1909</figcaption></figure><div><b>Ne oldu?</b><p>II. Meşrutiyet'in ilanından sonra İstanbul'daki bazı askerler ile meşrutiyet karşıtı grupların etkisiyle bir ayaklanma çıktı. Hareket tek merkezden yönetilen basit bir kalkışma değildi; meşrutiyet düzenini zayıflatıp eski düzene dönme talepleri etrafında büyüdü.</p></div><div><b>Mustafa Kemal ne yaptı?</b><p>Selanik'ten gelen Hareket Ordusunun hazırlık çalışmalarında görev aldı. Kurmay subay olarak planlamaya katkı sağladı ve “Hareket Ordusu” adını önerdi.</p></div><div><b>Deneyimin anlamı</b><p>Kriz zamanlarında başarının yalnız cesarete değil; planlama, doğru bilgi ve koordinasyona bağlı olduğunu gördü. Düzenli hareket etmenin rastgele tepkilerden daha etkili olduğunu öğrendi.</p></div><div class="experience-takeaway"><span>KRİZLERDEN ÇIKAN DERS</span><p>Büyük sorunlar karşısında duygusal tepki vermek yerine planlı hareket etmek gerekir.</p></div><div class="gain-strip"><span>MUSTAFA KEMAL'İN ÇANTASINA NE GİRDİ?</span><strong>Meşrutiyet ve demokrasiye bağlılık</strong><strong>Kurmaylık becerisi</strong><strong>Planlı kriz yönetimi</strong><strong>Ordu-siyaset ayrımı</strong></div></div>
+            </article>
+            <article class="crisis-file">
+              <button class="crisis-toggle" aria-expanded="false"><span>1911-1912</span><strong>Trablusgarp: İmkânsızlıklarla savunma</strong><i>+</i></button>
+              <div class="crisis-body trablus"><figure class="crisis-visual"><img src="assets/kriz-trablusgarp.webp" alt="Osmanlı subayları ile yerel halkın savunma planı oluşturduğu temsili Trablusgarp sahnesi"><figcaption>Temsili canlandırma · Derne çevresi, 1911</figcaption></figure><div><b>Ne oldu?</b><p>İtalya, Osmanlı Devleti'nin Trablusgarp toprağını işgal etti. Osmanlı Devleti denizlerde İtalya üstün olduğu, Mısır da İngiliz denetiminde bulunduğu için bölgeye düzenli ordu gönderemiyordu.</p></div><div><b>Mustafa Kemal ne yaptı?</b><p>Gizlice bölgeye geçti. Tobruk ve Derne'de yerel halkı örgütledi ve direnişi yönetti.</p></div><div class="constraint-list"><b>Durum haritası</b><p>Düzenli ordu gönderilemiyor.</p><p>İtalya askerî bakımdan üstün.</p><p>Yerel halk var fakat örgütlü değil.</p><p>Gönüllü subaylar gizlice ulaşabilir.</p><button class="plan-button" data-plan="trablus">Savunma planını çalıştır</button><p class="plan-result" id="trablusResult"></p></div><div class="experience-meaning trablus-meaning"><b>Deneyimin anlamı</b><p>Mustafa Kemal ilk kez düzenli ordunun bulunmadığı bir ortamda halkı örgütleyerek direniş oluşturdu. Sınırlı imkânlarla etkili sonuçlar üretmenin mümkün olduğunu gördü.</p></div><div class="experience-takeaway"><span>GÜCÜN YENİ KAYNAĞI</span><p>Güç yalnız asker sayısından gelmez. Doğru örgütlenme ve yerel destek de önemli bir güç kaynağıdır.</p></div><div class="gain-strip"><span>MUSTAFA KEMAL'İN ÇANTASINA NE GİRDİ?</span><strong>Halkı bir araya getirme</strong><strong>Teşkilatçılık</strong><strong>Milis savaş tecrübesi</strong><strong>Sınırlı imkânlarla çözüm</strong></div></div>
+            </article>
+            <article class="crisis-file">
+              <button class="crisis-toggle" aria-expanded="false"><span>1912-1913</span><strong>Balkan Savaşları: Kaybedilen vatan</strong><i>+</i></button>
+              <div class="crisis-body"><figure class="crisis-visual"><img src="assets/kriz-balkan.webp" alt="Balkan Savaşlarında geri çekilme, göç ve kurmay değerlendirmesini gösteren temsili sahne"><figcaption>Temsili canlandırma · Balkan yenilgisi ve göç, 1912-1913</figcaption></figure><div><b>Ne oldu?</b><p>Balkan devletleri Osmanlı Devleti'ne karşı birleşti. Osmanlı Devleti kısa sürede büyük toprak kayıpları yaşadı; Mustafa Kemal'in doğduğu Selanik de kaybedildi.</p></div><div><b>Mustafa Kemal ne yaptı?</b><p>Gelibolu ve Bolayır'da görev yaptı. II. Balkan Savaşı sırasında Edirne'nin geri alınması harekâtına katıldı.</p></div><div><b>Deneyimin anlamı</b><p>Mustafa Kemal yenilgiyi yalnız düşmanın gücüyle açıklamadı. Hazırlık eksikliği, komuta sorunları, ordunun siyasete karışması ve plansızlığın da büyük rol oynadığını değerlendirdi.</p></div><div class="experience-takeaway"><span>KAYBEDİLEN ŞEHİRDEN KAZANILAN DERS</span><p>Selanik'i kaybetti; fakat gelecekte bir ülkenin nasıl kaybedilmemesi gerektiğini öğrendi.</p></div><div class="gain-strip"><span>MUSTAFA KEMAL'İN ÇANTASINA NE GİRDİ?</span><strong>Başarısızlıktan ders çıkarma</strong><strong>Komuta birliği</strong><strong>Ordu-siyaset ayrımı</strong><strong>Vatan kaybının etkisini görme</strong></div></div>
+            </article>
+            <article class="crisis-file">
+              <button class="crisis-toggle" aria-expanded="false"><span>1913-1914</span><strong>Sofya: Avrupa'yı içeriden gözlemek</strong><i>+</i></button>
+              <div class="crisis-body"><figure class="crisis-visual sofya-visual"><img src="assets/sofya-yeniceri.webp" alt="Mustafa Kemal Sofya'daki kıyafet balosunda yeniçeri kıyafetiyle"><figcaption>Gerçek fotoğraf · Sofya, 11-12 Mayıs 1914 · TTK / Wikimedia Commons</figcaption></figure><div><b>Ne oldu?</b><p>Mustafa Kemal askerî ataşe olarak Sofya'ya gönderildi. Bulgaristan'ın siyasi ve askerî yapısını yakından inceleme fırsatı buldu.</p></div><div><b>Mustafa Kemal ne yaptı?</b><p>Bulgar Parlamentosunu izledi, diplomatik toplantılara katıldı ve Avrupa toplumlarını gözlemledi. Balkanlarda yaşayan Türklerin sorunlarıyla da yakından ilgilendi.</p></div><div><b>Deneyimin anlamı</b><p>Mustafa Kemal farklı devletlerin yönetim biçimlerini, parlamentolarını ve diplomatik ilişkilerini yerinde gözlemledi. Böylece yalnız Osmanlı'yı değil, Avrupa'yı da karşılaştırarak değerlendirme fırsatı buldu.</p></div><div class="experience-takeaway"><span>GÖRDÜ, KARŞILAŞTIRDI, SORGULADI</span><p>Batıyı taklit etmedi; parlamento düzenini, diplomasiyi ve toplum hayatını gözlemleyip değerlendirdi.</p></div><div class="gain-strip"><span>MUSTAFA KEMAL'İN ÇANTASINA NE GİRDİ?</span><strong>Diplomasi tecrübesi</strong><strong>Meclis kültürü</strong><strong>Uluslararası bakış</strong><strong>Millî birlik bilinci</strong><strong>Yönetimleri karşılaştırma</strong></div></div>
+            </article>
+          </div>
+          <section class="leadership-chain" aria-label="Deneyimlerden oluşan liderlik zinciri"><span>LİDERLİK ZİNCİRİ</span><div><b>Şam</b><strong>Teşkilatçılık</strong></div><i>→</i><div><b>31 Mart</b><strong>Kriz yönetimi</strong></div><i>→</i><div><b>Trablusgarp</b><strong>Halkı örgütleme</strong></div><i>→</i><div><b>Balkanlar</b><strong>Yenilgiden ders</strong></div><i>→</i><div><b>Sofya</b><strong>Diplomasi</strong></div><p>Bu deneyimler, Millî Mücadele'nin liderlik altyapısını hazırladı.</p></section>
+        </div>
+      </section>
+
+      <section class="scene final-scene" id="scene-final" aria-labelledby="finalTitle">
+        <div class="final-stage" id="finalStage">
+          <header class="final-heading">
+            <p class="eyebrow">1914 · Büyük savaşın eşiğinde</p>
+            <h1 id="finalTitle">1881'de doğan Mustafa, 1914'e geldiğinde nasıl bir insana dönüştü?</h1>
+            <p>Altı oluşum hattını birleştir. Her başlık yaşananı değil, Mustafa Kemal'de bıraktığı izi gösterecek.</p>
+          </header>
+          <div class="formation-metrics"><span>OLUŞUM MATRİSİ</span><b>6 deneyim hattı</b><b>8 liderlik özelliği</b><b>1881 → 1914</b></div>
+          <div class="formation-network" aria-label="Mustafa Kemal'in oluşum ağı">
+            <svg class="network-lines" viewBox="0 0 1000 520" role="img" aria-label="Deneyimlerin 1914 Mustafa Kemal profilinde birleşmesi">
+              <path d="M160 95 C310 110 360 210 500 260"/><path d="M130 250 C290 250 350 250 500 260"/><path d="M190 430 C310 390 375 300 500 260"/>
+              <path d="M840 95 C690 110 640 210 500 260"/><path d="M870 250 C710 250 650 250 500 260"/><path d="M810 430 C690 390 625 300 500 260"/>
+            </svg>
+            <button class="formation-node n1" data-final-node="selanik"><span>01 · ÇOK SESLİ ÇEVRE</span><strong>Selanik</strong><small>Olaylara farklı açılardan bakmayı öğrendi.</small></button>
+            <button class="formation-node n2" data-final-node="egitim"><span>02 · YENİLİKLE TEMAS</span><strong>Eğitim</strong><small>Karar verirken akıl ve bilimi rehber edinmeyi öğrendi.</small></button>
+            <button class="formation-node n3" data-final-node="manastir"><span>03 · TARİH VE VATAN</span><strong>Manastır</strong><small>Geçmişten ders çıkararak geleceği yorumlamayı öğrendi.</small></button>
+            <button class="formation-node n4" data-final-node="harbiye"><span>04 · ANALİZ VE KURMAYLIK</span><strong>Harbiye</strong><small>Düşüncelerini plan ve stratejiye dönüştürmeyi öğrendi.</small></button>
+            <button class="formation-node n5" data-final-node="fikirler"><span>05 · MİLLÎ VE EVRENSEL</span><strong>Fikirler</strong><small>Farklı düşünceleri kendi yorumuyla birleştirdi.</small></button>
+            <button class="formation-node n6" data-final-node="krizler"><span>06 · EYLEM ALANI</span><strong>Deneyimler</strong><small>Krizleri yöneterek liderlik tecrübesi kazandı.</small></button>
+            <div class="final-core"><img src="assets/mustafa-kemal-1914-portre.webp" alt="1914'te 33 yaşındaki Mustafa Kemal'in yapay zekâyla üretilmiş temsili portresi"><span>1914</span><strong>Mustafa Kemal</strong><small>Kurmay Yarbay · 33 yaşında</small><b>Henüz Çanakkale ve Millî Mücadele yoktu. Ama artık düşünen, sorgulayan, planlayan ve örgütleyen bir kurmaydı.</b></div>
+          </div>
+          <div class="assembled-profile">
+            <span>1914'E GELİNDİĞİNDE MUSTAFA KEMAL</span><strong>Gözlemci</strong><strong>Teşkilatçı</strong><strong>Stratejik düşünebilen</strong><strong>Bağımsız karar verebilen</strong><strong>Yenilgiden ders çıkaran</strong><strong>Fikirleri sorgulayan</strong><strong>İnsanları ortak amaç etrafında toplayabilen</strong><strong>Dünyadaki gelişmeleri takip eden</strong><p class="final-verdict"><span>Mustafa Kemal bir günde oluşmadı.</span><b>Ailesi, eğitimi, okuduğu fikirler, yaşadığı krizler ve görev yaptığı şehirler onu adım adım geleceğin liderine dönüştürdü.</b></p>
+          </div>
+          <button class="assemble-button" id="assembleLeader">Lideri oluşturan bağları kur <span>→</span></button>
+        </div>
+      </section>
+
+      <aside class="education-panel" id="educationPanel" aria-live="polite">
+        <button class="profile-close" id="educationClose" aria-label="Eğitim panelini kapat">×</button>
+        <p class="eyebrow">Geç Osmanlı eğitim yapısı</p>
+        <h2>Tek merkez, tek program, tek okul türü yoktu.</h2>
+        <div class="education-lanes">
+          <div><span>01</span><strong>Geleneksel kurumlar</strong><p>Mahalle ve sıbyan mektepleri ile medreseler dinî-geleneksel yapıyı sürdürüyordu.</p></div>
+          <div><span>02</span><strong>Modern devlet okulları</strong><p>Rüştiye ve idadiler farklı bir idare, program ve öğretim anlayışıyla gelişiyordu.</p></div>
+          <div><span>03</span><strong>Özel ve cemaat okulları</strong><p>Gayrimüslim cemaatlerin, yabancı devletlerin ve özel girişimlerin okulları da eğitim alanındaydı.</p></div>
+        </div>
+        <div class="accuracy-note"><strong>Tarihçinin notu</strong><p>Bugünkü anlamda laik ve birleşik bir eğitim sistemi yoktu. Karma eğitim de tek bir kurala bağlı değildi: bazı mahalle mekteplerinde kız ve erkek çocuklar birlikte, bazı kurumlarda ayrı okuyabiliyordu.</p></div>
+        <p class="panel-source">Kaynak: Atatürk Ansiklopedisi; Türk Maarif Ansiklopedisi; MEB 8. sınıf T.C. İnkılap Tarihi kitabı.</p>
+      </aside>
+
+      <aside class="sources-panel" id="sourcesPanel" aria-live="polite">
+        <button class="profile-close" id="sourcesClose" aria-label="Kaynakları kapat">×</button>
+        <p class="eyebrow">Kaynak defteri</p>
+        <h2>Bu bölüm hazırlanırken kullanılan kaynaklar</h2>
+        <div class="source-list">
+          <a href="https://ataturkansiklopedisi.gov.tr/detay/875/Atat%C3%BCrk%E2%80%99%C3%BCn-E%C4%9Fitim-ve-%C3%96%C4%9Fretim-G%C3%B6rd%C3%BC%C4%9F%C3%BC-Kurumlar" target="_blank" rel="noreferrer"><span>İÇERİK</span><strong>Atatürk'ün eğitim gördüğü kurumlar</strong><small>Atatürk Ansiklopedisi</small></a>
+          <a href="https://ataturkansiklopedisi.gov.tr/detay/243/%C5%9Eemsi-Efendi-Mektebi" target="_blank" rel="noreferrer"><span>İÇERİK</span><strong>Şemsi Efendi Mektebi</strong><small>Atatürk Ansiklopedisi</small></a>
+          <a href="https://turkmaarifansiklopedisi.org.tr/mahalle-mektebi" target="_blank" rel="noreferrer"><span>İÇERİK</span><strong>Mahalle Mektebi</strong><small>Türk Maarif Ansiklopedisi</small></a>
+          <a href="https://commons.wikimedia.org/wiki/File:Thessaloniki.png" target="_blank" rel="noreferrer"><span>GÜNÜMÜZ HARİTASI</span><strong>Selanik'in Yunanistan'daki konumu</strong><small>Wikimedia Commons · CC BY-SA 3.0</small></a>
+          <a href="https://commons.wikimedia.org/wiki/File:European_Turkey_1882.JPG" target="_blank" rel="noreferrer"><span>TARİHÎ HARİTA</span><strong>Avrupa'daki Osmanlı toprakları, 1882</strong><small>Wikimedia Commons · CC BY-SA 3.0</small></a>
+          <a href="https://commons.wikimedia.org/wiki/Category:Z%C3%BCbeyde_Han%C4%B1m" target="_blank" rel="noreferrer"><span>FOTOĞRAF</span><strong>Zübeyde Hanım portresi</strong><small>Wikimedia Commons</small></a>
+          <a href="https://commons.wikimedia.org/wiki/File:Portrait_of_a_volunteer_officer_of_the_Ottoman_Civilian_Battalion.jpg" target="_blank" rel="noreferrer"><span>TARTIŞMALI BELGE</span><strong>Ali Rıza Efendi'ye atfedilen portre</strong><small>Wikimedia Commons · Kamu malı</small></a>
+          <a href="https://commons.wikimedia.org/wiki/Nam%C4%B1k_Kemal" target="_blank" rel="noreferrer"><span>PORTRELER</span><strong>Namık Kemal ve Osmanlı düşünürleri</strong><small>Wikimedia Commons · Kamu malı / açık lisans</small></a>
+          <a href="https://commons.wikimedia.org/wiki/File:Jean-Jacques_Rousseau_(painted_portrait).jpg" target="_blank" rel="noreferrer"><span>PORTRE</span><strong>Jean-Jacques Rousseau</strong><small>Wikimedia Commons · Kamu malı</small></a>
+          <a href="https://commons.wikimedia.org/wiki/File:Montesquieu_1.png" target="_blank" rel="noreferrer"><span>PORTRE</span><strong>Montesquieu</strong><small>Wikimedia Commons · Kamu malı</small></a>
+          <a href="https://ataturkansiklopedisi.gov.tr/detay/84/Ziya-G%C3%B6kalp-" target="_blank" rel="noreferrer"><span>FİKİR DÜNYASI</span><strong>Ziya Gökalp ve Atatürk'e atfedilen söz</strong><small>Atatürk Ansiklopedisi</small></a>
+          <a href="https://ogmmateryal.eba.gov.tr/panel/upload/etkilesimli/kitap/tcinkilaptarihiveataturkculuk/12/unite1/files/basic-html/page9.html" target="_blank" rel="noreferrer"><span>MEB DERS MATERYALİ</span><strong>Tevfik Fikret'in düşünsel etkisi</strong><small>OGM Materyal · T.C. İnkılap Tarihi ve Atatürkçülük</small></a>
+          <a href="https://arsiv.ttk.gov.tr/details?id=11003&materialType=F&query=Atat%C3%BCrk%2C+Mustafa+Kemal." target="_blank" rel="noreferrer"><span>GERÇEK FOTOĞRAF</span><strong>Sofya'da yeniçeri kıyafeti, 1914</strong><small>Türk Tarih Kurumu Arşivi</small></a>
+        </div>
+        <p class="panel-source">Yörüngeden Dünya, sınıf, Selanik, Rüştiye, deneyim ve 1914 portre sahneleri yapay zekâyla üretilmiş temsili canlandırmalardır; tarihî fotoğraf veya belge değildir.</p>
+      </aside>
+
+      <section class="opening" id="opening">
+        <div class="opening-year">1881</div>
+        <div class="opening-copy">
+          <p class="eyebrow">Bir tarih araştırması</p>
+          <h1>Mustafa Kemal<br>hazır bir lider olarak doğmadı.</h1>
+          <p>Onu oluşturan şehirleri, insanları, fikirleri ve krizleri kanıtlarla izle.</p>
+          <button id="startButton">Dosyayı aç <span>→</span></button>
+        </div>
+        <div class="opening-line"><span>1881</span><i></i><span>1914</span></div>
+      </section>
+    </main>
+
+    <div class="profile-panel" id="profilePanel" aria-live="polite">
+      <button class="profile-close" id="profileClose" aria-label="Portreyi kapat">×</button>
+      <p class="eyebrow">Oluşum izi · 01</p>
+      <h2>Çevre, tek başına kader değildir.</h2>
+      <p>Selanik'in dış dünyaya açık ve çok sesli ortamı bir imkân sundu. Bu imkânın Mustafa Kemal üzerindeki etkisini anlamak için eğitim tercihleri ve kişisel kararları da izlemeliyiz.</p>
+      <div class="profile-thread">
+        <span class="thread-dot"></span>
+        <div><small>İlk hipotez</small><strong>Çok kültürlü bir şehirde büyümek, olaylara tek açıdan bakmayan bir düşünce yapısı geliştirmiş olabilir.</strong><p>Çevresel etki · Henüz kesin hüküm değil</p></div>
+      </div>
+      <button data-scene-target="school" class="profile-next">Sonraki kanıt: İlk okul tercihi <span>→</span></button>
+    </div>
+
+    <div class="profile-panel school-profile" id="schoolProfile" aria-live="polite">
+      <button class="profile-close" id="schoolProfileClose" aria-label="Portreyi kapat">×</button>
+      <p class="eyebrow">Oluşum izi · 02</p>
+      <h2>Modern eğitimle ilk temas aile içinde başladı.</h2>
+      <p>Mustafa Kemal'in modern eğitimle tanışması kendi kararıyla değil, ailesinin eğitim konusundaki tercihleriyle başladı. Ancak ileride kendi okul tercihlerini yapması, bu etkinin tek başına yeterli olmadığını gösterecektir.</p>
+      <div class="profile-thread">
+        <span class="thread-dot"></span>
+        <div><small>Gelişen hipotez</small><strong>Ailesinin etkisi önemliydi; zamanla kendi kararlarını verebilen bir birey hâline geldi.</strong><p>Aile ve eğitim çevresi · Sonraki kanıt: kişisel tercih</p></div>
+      </div>
+      <button class="profile-next" data-scene-target="rustiye">Sonraki kanıt: Kendi kararını vermek <span>→</span></button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
