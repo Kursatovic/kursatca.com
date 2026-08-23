@@ -30,6 +30,8 @@ RewriteEngine On
   <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
+  SetEnvIf Request_URI "^/pdf-pro(\.html)?$" is_pdf_pro
+  Header set X-Robots-Tag "noindex, follow" env=is_pdf_pro
 </IfModule>
 
 # Force every public URL variant to one canonical shape:
