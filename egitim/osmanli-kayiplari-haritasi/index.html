@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osmanlı Devleti Toprak Kayıpları - Etkileşimli Harita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #f4eadd;
+            background-image: url('https://www.transparenttextures.com/patterns/old-wall.png');
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #3e2723;
+        }
+        .back-link {
+            align-self: flex-start;
+            margin: 0 0 16px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(93, 64, 55, 0.12);
+            border: 1px solid rgba(93, 64, 55, 0.25);
+            color: #4e342e;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 6px 16px rgba(62, 39, 35, 0.08);
+        }
+        .back-link:hover {
+            background: rgba(93, 64, 55, 0.2);
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #5d4037;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            font-style: italic;
+            color: #6d4c41;
+        }
+        .map-container {
+            position: relative;
+            max-width: 1000px;
+            width: 100%;
+            border: 8px solid #5d4037;
+            border-radius: 4px;
+            overflow: hidden; /* Panellerin taşmasını engeller */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            background-color: #fff;
+        }
+        .map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: sepia(0.2) contrast(1.1);
+        }
+        .marker {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #c0392b, #8e44ad);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 0 rgba(192, 57, 43, 0.6);
+            animation: pulse 2s infinite;
+            z-index: 10;
+            border: 2px solid #fff;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .marker:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            animation: none;
+            background: linear-gradient(135deg, #e74c3c, #9b59b6);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 20;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(192, 57, 43, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0); }
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(62, 39, 35, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            background-color: #fdfbf7;
+            margin: 8% auto;
+            padding: 40px;
+            border: 2px solid #8d6e63;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(141, 110, 99, 0.2);
+            position: relative;
+            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes slideIn {
+            from {opacity: 0; transform: translateY(-50px) scale(0.9);}
+            to {opacity: 1; transform: translateY(0) scale(1);}
+        }
+        .close {
+            color: #8d6e63;
+            float: right;
+            font-size: 36px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 0.8;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #3e2723;
+            text-decoration: none;
+            transform: scale(1.1);
+        }
+        #modalTitle {
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            color: #4e342e;
+            border-bottom: 2px dashed #bcaaa4;
+            padding-bottom: 15px;
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-row {
+            margin: 20px 0;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #5d4037;
+        }
+        .reason-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+        }
+        .reason-somurge { background: linear-gradient(135deg, #d35400, #e67e22); }
+        .reason-milliyet { background: linear-gradient(135deg, #2980b9, #3498db); }
+        .reason-both { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+        
+        #modalDesc {
+            margin-top: 25px;
+            line-height: 1.7;
+            font-size: 1.1em;
+            color: #4e342e;
+            background: rgba(239, 235, 233, 0.6);
+            padding: 20px;
+            border-left: 5px solid #8d6e63;
+            border-radius: 0 8px 8px 0;
+        }
+        .emoji-icon {
+            font-size: 1.2em;
+        }
+
+        /* Side Panels (Özet Panelleri) */
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            z-index: 60;
+            padding: 10px 18px;
+            border: 2px solid white;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+            font-family: 'Lora', serif;
+            transition: transform 0.2s, background 0.3s;
+        }
+        .toggle-btn:hover {
+            transform: scale(1.05);
+        }
+        .btn-left {
+            left: 20px;
+            background: #2980b9;
+            color: white;
+        }
+        .btn-right {
+            right: 20px;
+            background: #d35400;
+            color: white;
+        }
+
+        .side-panel {
+            position: absolute;
+            top: 0;
+            width: 280px;
+            height: 100%;
+            background: rgba(253, 251, 247, 0.95);
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 50;
+            padding: 80px 20px 20px 20px; /* Üstte buton için boşluk */
+            box-sizing: border-box;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .panel-left {
+            left: 0;
+            transform: translateX(-105%);
+            border-right: 5px solid #2980b9;
+        }
+        .panel-right {
+            right: 0;
+            transform: translateX(105%);
+            border-left: 5px solid #d35400;
+        }
+        .side-panel.open {
+            transform: translateX(0);
+        }
+        .side-panel h3 {
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            border-bottom: 2px dashed #bcaaa4;
+            padding-bottom: 10px;
+        }
+        .panel-left h3 { color: #2980b9; }
+        .panel-right h3 { color: #d35400; }
+        
+        .side-panel ul {
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+        .side-panel li b {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: #5d4037;
+            color: white;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 50%;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+        .panel-note {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            background: #f1f2f6;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <a class="back-link" href="/pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.1.0%20Uyanan%20Avrupa.pdf&title=Uyanan%20Avrupa">← Uyanan Avrupa dersine dön</a>
+    <h1>📜 Osmanlı Devleti Toprak Kayıpları</h1>
+    <p class="subtitle">Haritadaki nabız gibi atan noktalara tıklayarak tarihi keşfedin.</p>
+
+    <div class="map-container">
+        
+        <!-- Özet Paneli Butonları -->
+        <button class="toggle-btn btn-left" onclick="togglePanel('left')">👈 Milliyetçilik (Özet)</button>
+        <button class="toggle-btn btn-right" onclick="togglePanel('right')">Sömürgecilik (Özet) 👉</button>
+
+        <!-- Sol Panel (Milliyetçilik) -->
+        <div id="panelLeft" class="side-panel panel-left">
+            <h3>⚔️ Milliyetçilik Etkisi</h3>
+            <p>Milliyetçilik akımıyla, Avrupalı devletlerin de kışkırtması sonucu kaybedilen bölgeler:</p>
+            <ul>
+                <li><b>2</b> Yunanistan (1829)</li>
+                <li><b>5</b> Sırbistan (1878)</li>
+                <li><b>6</b> Romanya (1878)</li>
+                <li><b>8</b> Ortadoğu (Arap İsyanları)</li>
+            </ul>
+        </div>
+
+        <!-- Sağ Panel (Sömürgecilik) -->
+        <div id="panelRight" class="side-panel panel-right">
+            <h3>⚓ Sömürgecilik Etkisi</h3>
+            <p>Avrupalı devletlerin hammadde, pazar arayışı ve stratejik hedeflerle işgal ettikleri bölgeler:</p>
+            <ul>
+                <li><b>1</b> Mısır (1882)</li>
+                <li><b>3</b> Cezayir (1830)</li>
+                <li><b>4</b> Tunus (1881)</li>
+                <li><b>7</b> Trablusgarp (1912)</li>
+                <li><b>8</b> Ortadoğu (Manda Yönetimi)</li>
+            </ul>
+        </div>
+
+
+        <img src="assets/osmanli-kayiplari-haritasi.png" alt="Osmanlı Haritası" class="map-image">
+        
+        <!-- Numaralı İşaretçiler -->
+        <div class="marker" style="left: 67%; top: 88%;" onclick="showInfo(1)">1</div>
+        <div class="marker" style="left: 56.5%; top: 65%;" onclick="showInfo(2)">2</div>
+        <div class="marker" style="left: 23.5%; top: 74%;" onclick="showInfo(3)">3</div>
+        <div class="marker" style="left: 34%; top: 73%;" onclick="showInfo(4)">4</div>
+        <div class="marker" style="left: 54.5%; top: 48%;" onclick="showInfo(5)">5</div>
+        <div class="marker" style="left: 63.5%; top: 44%;" onclick="showInfo(6)">6</div>
+        <div class="marker" style="left: 58%; top: 89%;" onclick="showInfo(7)">7</div>
+        <div class="marker" style="left: 92%; top: 76%;" onclick="showInfo(8)">8</div>
+    </div>
+
+    <!-- Bilgi Penceresi (Modal) -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"><span id="modalIcon">📌</span> <span id="modalName">Bölge Adı</span></h2>
+            
+            <div class="info-row">
+                <span class="emoji-icon">🗓️</span>
+                <span class="info-label">Tarih:</span> 
+                <span id="modalDate" style="font-weight: bold; color: #d35400; font-size: 1.2em;"></span>
+            </div>
+            
+            <div class="info-row">
+                <span class="emoji-icon">🔍</span>
+                <span class="info-label">Kayıp Nedeni:</span> 
+                <span id="modalReason" class="reason-badge"></span>
+            </div>
+            
+            <div id="modalDesc">Açıklama metni burada yer alacak.</div>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            1: { 
+                name: "Mısır", date: "1882", 
+                reason: "Sömürgecilik", reasonClass: "reason-somurge", icon: "⚓",
+                desc: "İngiltere tarafından, özellikle Hindistan sömürge yollarının güvenliğini sağlayan Süveyş Kanalı'nı kontrol altında tutmak amacıyla işgal edildi." 
+            },
+            2: { 
+                name: "Yunanistan", date: "1829", 
+                reason: "Milliyetçilik", reasonClass: "reason-milliyet", icon: "⚔️",
+                desc: "1821'de başlayan isyanın ardından, Avrupalı devletlerin müdahalesi ve Edirne Antlaşması ile Osmanlı'dan ayrılarak bağımsızlığını kazanan ilk Balkan devleti oldu." 
+            },
+            3: { 
+                name: "Cezayir", date: "1830", 
+                reason: "Sömürgecilik", reasonClass: "reason-somurge", icon: "🌍",
+                desc: "Fransa tarafından işgal edildi. Bu olay, Osmanlı Devleti'nin Kuzey Afrika'da kaybettiği ilk toprak parçasıdır." 
+            },
+            4: { 
+                name: "Tunus", date: "1881", 
+                reason: "Sömürgecilik", reasonClass: "reason-somurge", icon: "🌍",
+                desc: "Fransa, daha önce işgal ettiği Cezayir'in güvenliğini ve sınır ihlallerini bahane ederek Tunus'u da sömürgelerine kattı." 
+            },
+            5: { 
+                name: "Sırbistan", date: "1878", 
+                reason: "Milliyetçilik", reasonClass: "reason-milliyet", icon: "⚔️",
+                desc: "1877-1878 Osmanlı-Rus Savaşı (93 Harbi) sonrasında imzalanan Berlin Antlaşması ile Karadağ ve Romanya ile birlikte tam bağımsızlığını kazandı." 
+            },
+            6: { 
+                name: "Romanya", date: "1878", 
+                reason: "Milliyetçilik", reasonClass: "reason-milliyet", icon: "⚔️",
+                desc: "Daha önce iç işlerinde serbest olan Eflak ve Boğdan'ın birleşmesiyle oluşan Romanya, 93 Harbi sonrası Berlin Antlaşması ile bağımsız oldu." 
+            },
+            7: { 
+                name: "Trablusgarp (Libya)", date: "1912", 
+                reason: "Sömürgecilik", reasonClass: "reason-somurge", icon: "⚓",
+                desc: "İtalya'nın hammadde ve pazar arayışı nedeniyle saldırması sonucu çıkan savaşın ardından Uşi Antlaşması ile İtalya'ya bırakıldı. Kuzey Afrika'daki son topraktır." 
+            },
+            8: { 
+                name: "Ortadoğu", date: "1914 - 1918", 
+                reason: "Sömürgecilik ve Milliyetçilik", reasonClass: "reason-both", icon: "📜",
+                desc: "I. Dünya Savaşı'nda İngiltere ve Fransa'nın bölgeyi paylaşma (Sykes-Picot) hedefleri ve kışkırtılan Arap isyanları sonucunda kaybedildi. Bölge manda yönetimlerine girdi." 
+            }
+        };
+
+        const modal = document.getElementById("infoModal");
+        const panelLeft = document.getElementById("panelLeft");
+        const panelRight = document.getElementById("panelRight");
+
+        function showInfo(id) {
+            const info = data[id];
+            if (info) {
+                document.getElementById("modalName").innerText = info.name;
+                document.getElementById("modalIcon").innerText = info.icon;
+                document.getElementById("modalDate").innerText = info.date;
+                
+                const reasonSpan = document.getElementById("modalReason");
+                reasonSpan.innerText = info.reason;
+                reasonSpan.className = "reason-badge " + info.reasonClass;
+                
+                document.getElementById("modalDesc").innerText = info.desc;
+                
+                modal.style.display = "block";
+            }
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+        
+        function togglePanel(side) {
+            if(side === 'left') {
+                panelLeft.classList.toggle('open');
+                // Eğer sağ açıksa kapat
+                if(panelRight.classList.contains('open')) panelRight.classList.remove('open');
+            } else {
+                panelRight.classList.toggle('open');
+                // Eğer sol açıksa kapat
+                if(panelLeft.classList.contains('open')) panelLeft.classList.remove('open');
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

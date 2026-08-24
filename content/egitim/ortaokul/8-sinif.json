@@ -1,7 +1,7 @@
 {
   "sinif": 8,
   "ders": "T.C. İnkılap Tarihi ve Atatürkçülük",
-  "stats": { "unite": 7, "konu": 38 },
+  "stats": { "unite": 7, "konu": 39 },
   "hazineKutusu": {
     "baslik": "Özel Arşiv & Ders Kaynakları",
     "altBaslik": "LGS Hazırlık Süreci İçin Seçilmiş Özel Dökümanlar",
@@ -44,7 +44,63 @@
       "no": 1,
       "baslik": "Bir Kahraman Doğuyor",
       "konular": [
-        { "no": "1.1", "baslik": "Gelişen Avrupa ve Güç Kaybeden Osmanlı Devleti", "badge": "Yakında", "href": "#" },
+        {
+          "no": "8.0.1",
+          "baslik": "Kavramlar",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.0.1%20Kavramlar.pdf&title=Kavramlar",
+          "ogrenmeAlani": "Bir Kahraman Doğuyor",
+          "ozet": "Bu kaynakta 8. sınıf T.C. İnkılap Tarihi ve Atatürkçülük dersinde sık karşılaşacağımız temel kavramları tanırız. Kavramları sadece ezberlenecek kelimeler olarak değil, olayları anlamamızı sağlayan anahtarlar olarak kullanmayı öğreniriz.",
+          "kazanimlar": [
+            "İnkılap tarihi dersinde sık kullanılan temel kavramları açıklar.",
+            "Kavramları tarihî olaylarla ve günlük hayat örnekleriyle ilişkilendirir.",
+            "Kavram bilgisiyle konu anlatımlarını daha kolay takip eder."
+          ],
+          "etiketler": [
+            "8. sınıf inkılap tarihi kavramlar",
+            "inkılap tarihi kavram sözlüğü",
+            "LGS inkılap kavramları",
+            "T.C. İnkılap Tarihi konu anlatımı",
+            "8. sınıf LGS hazırlık",
+            "kavramlar konu anlatımı",
+            "inkılap tarihi özet",
+            "Maarife uygun ders anlatımı",
+            "dijital ders materyali"
+          ]
+        },
+        {
+          "no": "8.1.0",
+          "baslik": "Uyanan Avrupa",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.1.0%20Uyanan%20Avrupa.pdf&title=Uyanan%20Avrupa",
+          "ogrenmeAlani": "Bir Kahraman Doğuyor",
+          "ozet": "Bu derste Avrupa'da yaşanan değişimlerin Osmanlı Devleti'ni nasıl etkilediğini keşfederiz. Coğrafi keşifler, sömürgecilik, milliyetçilik, Sanayi İnkılabı ve Fransız İhtilali gibi gelişmelerin Osmanlı'nın siyasi, ekonomik ve toplumsal yapısına yansımalarını birlikte okuruz.",
+          "kazanimlar": [
+            "Avrupa'daki siyasi, ekonomik ve düşünsel gelişmeleri ana hatlarıyla açıklar.",
+            "Sömürgecilik ve milliyetçilik gibi kavramların Osmanlı Devleti üzerindeki etkilerini ilişkilendirir.",
+            "Osmanlı Devleti'nin güç kaybetme sürecini Avrupa'daki değişimlerle birlikte yorumlar."
+          ],
+          "etiketler": [
+            "8. sınıf uyanan avrupa",
+            "gelişen Avrupa güç kaybeden Osmanlı",
+            "Avrupa'daki gelişmeler ve Osmanlı Devleti",
+            "Fransız İhtilali",
+            "Sanayi İnkılabı",
+            "sömürgecilik",
+            "milliyetçilik",
+            "Osmanlı toprak kayıpları",
+            "LGS inkılap tarihi konu anlatımı",
+            "8. sınıf inkılap tarihi özet",
+            "Maarife uygun ders anlatımı",
+            "dijital ders materyali"
+          ],
+          "spotlight": {
+            "baslik": "Haritayla keşfet",
+            "metin": "Osmanlı Devleti'nin toprak kayıplarını harita üzerinde görmek ister misin? Milliyetçilik ve sömürgecilik etkisini işaretçilere tıklayarak inceleyebilirsin.",
+            "butonMetin": "Etkileşimli haritayı aç",
+            "href": "/egitim/osmanli-kayiplari-haritasi/"
+          }
+        },
         { "no": "1.2", "baslik": "Mustafa Kemal'in Çocukluk Dönemi ve Eğitimi", "badge": "Etkileşimli Ders", "href": "/egitim/bir-liderin-olusumu/" },
         { "no": "1.3", "baslik": "Mustafa Kemal'in Fikir Hayatını Etkileyen Kişiler ve Olaylar", "badge": "Yakında", "href": "#" },
         { "no": "1.4", "baslik": "Mustafa Kemal'in Askerlik Hayatı", "badge": "Yakında", "href": "#" }
