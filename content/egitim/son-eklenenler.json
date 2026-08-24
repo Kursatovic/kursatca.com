@@ -1,5 +1,29 @@
 [
   {
+    "baslik": "7. Sınıf - Geçmişten Günümüze Yerleşme",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/7.3.1%20GE%C3%87M%C4%B0%C5%9ETEN%20G%C3%9CN%C3%9CM%C3%9CZE%20YERLE%C5%9EME.pdf&title=Ge%C3%A7mi%C5%9Ften%20G%C3%BCn%C3%BCm%C3%BCze%20Yerle%C5%9Fme",
+    "renk": "primary"
+  },
+  {
+    "baslik": "7. Sınıf - Türkiye'de Nüfus",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/7.3.2%20%20T%C3%9CRK%C4%B0YE%E2%80%99DE%20N%C3%9CFUS.pdf&title=T%C3%BCrkiye%27de%20N%C3%BCfus",
+    "renk": "secondary"
+  },
+  {
+    "baslik": "7. Sınıf - Ülkemizde Göç",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/7.3.3%20.%20%C3%9CLKEM%C4%B0ZDE%20G%C3%96%C3%87.pdf&title=%C3%9Clkemizde%20G%C3%B6%C3%A7",
+    "renk": "accent"
+  },
+  {
+    "baslik": "7. Sınıf - Yerleşme ve Seyahat Özgürlüğü",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/7.3.4%20B%C4%B0R%20%C3%96ZG%C3%9CRL%C3%9CK%20OLARAK%20YERLE%C5%9EME%20VE%20SEYAHAT.pdf&title=Bir%20%C3%96zg%C3%BCrl%C3%BCk%20Olarak%20Yerle%C5%9Fme%20ve%20Seyahat",
+    "renk": "primary"
+  },
+  {
     "baslik": "8. Sınıf - Kavramlar",
     "sinif": 8,
     "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.0.1%20Kavramlar.pdf&title=Kavramlar",

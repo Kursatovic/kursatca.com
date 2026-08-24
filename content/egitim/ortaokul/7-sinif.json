@@ -7,21 +7,21 @@
   },
   "hazineKutusu": {
     "baslik": "7. Sınıf Genel Kaynaklar",
-    "altBaslik": "İlk iki üniteye ait yeni PDF kaynakları sisteme eklendi.",
+    "altBaslik": "Sınıf boyunca kullanabileceğin PDF ders kaynakları ve konu anlatımları.",
     "bos": false,
     "kaynaklar": [
       {
-        "baslik": "7. Sınıf Yeni PDF Kaynakları",
-        "altBaslik": "Birey, toplum ve iletişim ile Osmanlı Devleti ve kültür konuları.",
+        "baslik": "7. Sınıf PDF Kaynakları",
+        "altBaslik": "Sosyal Bilgiler ünitelerine ait PDF ders kaynakları.",
         "gorsel": "img/ogrenci-calisiyor.jpg",
         "gorselAlt": "Öğrenci ders çalışıyor",
         "ikonTip": "kitap",
         "ikonRenk": "primary",
-        "rozetMetin": "Yeni",
+        "rozetMetin": "PDF Arşivi",
         "rozetRenk": "primary",
         "paragraflar": [
-          "7. sınıf Sosyal Bilgiler dersinin ilk iki ünitesine ait yeni PDF kaynakları sisteme eklenmiştir.",
-          "Aşağıdaki konu listesinden başlığı seçerek ders anlatımı sayfasına geçebilirsiniz."
+          "7. sınıf Sosyal Bilgiler dersine ait PDF kaynakları sisteme eklendikçe bu konu listesinden ulaşabilirsin.",
+          "Başlığı seçerek ders anlatımı sayfasına geçebilir, slaytı görüntüleyebilir ve dilersen indirebilirsin."
         ],
         "butonMetin": "7. Sınıf Konularını Aç",
         "butonHref": "#grade-7"
@@ -36,7 +36,7 @@
         {
           "no": 1,
           "baslik": "İletişimin Günlük Yaşamdaki Yeri - Olumlu İletişim",
-          "badge": "Yeni",
+          "badge": "PDF / Slayt",
           "href": "pdf-pro.html?pdf=Ders+kaynaklar%C4%B1%2F7.+S%C4%B1n%C4%B1f%2F1.+%C3%9CN%C4%B0TE%2F7.1.1-2+%C4%B0LET%C4%B0%C5%9E%C4%B0M%C4%B0N+G%C3%9CNL%C3%9CK+YA%C5%9EAMDAK%C4%B0+YER%C4%B0+-+OLUMLU+%C4%B0LET%C4%B0%C5%9E%C4%B0M.pdf&title=%C4%B0leti%C5%9Fimin+G%C3%BCnl%C3%BCk+Ya%C5%9Famdaki+Yeri+-+Olumlu+%C4%B0leti%C5%9Fim",
           "ogrenmeAlani": "Birlikte Yaşamak",
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/423",
@@ -74,7 +74,7 @@
         {
           "no": 2,
           "baslik": "Medyanın Toplum Hayatına Etkileri ve Medya Özgürlüğü",
-          "badge": "Yeni",
+          "badge": "PDF / Slayt",
           "href": "pdf-pro.html?pdf=Ders+kaynaklar%C4%B1%2F7.+S%C4%B1n%C4%B1f%2F1.+%C3%9CN%C4%B0TE%2F7.1.3-4+MEDYANIN+TOPLUM+HAYATINA+ETK%C4%B0LER%C4%B0+VE+MEDYA+%C3%96ZG%C3%9CRL%C3%9C%C4%9E%C3%9C.pdf&title=Medyan%C4%B1n+Toplum+Hayat%C4%B1na+Etkileri+ve+Medya+%C3%96zg%C3%BCrl%C3%BC%C4%9F%C3%BC",
           "ogrenmeAlani": "Birlikte Yaşamak",
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/423",
@@ -133,7 +133,7 @@
         {
           "no": 1,
           "baslik": "Osmanlı Kuruluş Osman - Orhan Bey",
-          "badge": "Yeni",
+          "badge": "PDF / Slayt",
           "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1%2F7.%20S%C4%B1n%C4%B1f%2F2.%20%C3%9CN%C4%B0TE%2F7.2.1%20Osmanl%C4%B1%20Kurulu%C5%9F%20Osman-%20%20Orhan.pdf&title=Osmanl%C4%B1%20Kurulu%C5%9F%20Osman%20-%20Orhan%20Bey",
           "ogrenmeAlani": "Ortak Mirasımız",
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/425",
@@ -173,7 +173,7 @@
         {
           "no": 2,
           "baslik": "I. Murad - II. Murad",
-          "badge": "Yeni",
+          "badge": "PDF / Slayt",
           "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1%2F7.%20S%C4%B1n%C4%B1f%2F2.%20%C3%9CN%C4%B0TE%2F7.2.2%20I.%20Murad-%20II.%20Murad.pdf&title=I.%20Murad%20-%20II.%20Murad",
           "ogrenmeAlani": "Ortak Mirasımız",
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/425",
@@ -214,7 +214,7 @@
         {
           "no": 3,
           "baslik": "Fatih Sultan Mehmed",
-          "badge": "Yeni",
+          "badge": "PDF / Slayt",
           "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1%2F7.%20S%C4%B1n%C4%B1f%2F2.%20%C3%9CN%C4%B0TE%2F7.2.3%20Fatih%20sultan%20mehmed.pdf&title=Fatih%20Sultan%20Mehmed",
           "ogrenmeAlani": "Ortak Mirasımız",
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/425",
@@ -253,7 +253,7 @@
         {
           "no": 4,
           "baslik": "Yavuz - III. Murad",
-          "badge": "Yeni",
+          "badge": "PDF / Slayt",
           "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1%2F7.%20S%C4%B1n%C4%B1f%2F2.%20%C3%9CN%C4%B0TE%2F7.2.4%20Yavuz%20-%20III.%20Murad%20%20.pdf&title=Yavuz%20-%20III.%20Murad",
           "ogrenmeAlani": "Ortak Mirasımız",
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/425",
@@ -292,7 +292,7 @@
         {
           "no": 5,
           "baslik": "Avrupa’daki Gelişmeler ve Osmanlı Devleti",
-          "badge": "Yeni",
+          "badge": "PDF / Slayt",
           "href": "pdf-pro.html?pdf=Ders+kaynaklar%C4%B1%2F7.+S%C4%B1n%C4%B1f%2F2.+%C3%9CN%C4%B0TE%2F7.2.5+AVRUPA%E2%80%99DAK%C4%B0+GEL%C4%B0%C5%9EMELER+VE+OSMANLI+DEVLET%C4%B0+.pdf&title=Avrupa%E2%80%99daki+Geli%C5%9Fmeler+ve+Osmanl%C4%B1+Devleti",
           "ogrenmeAlani": "Ortak Mirasımız",
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/425",
@@ -332,7 +332,7 @@
         {
           "no": 6,
           "baslik": "Osmanlı'da Değişim Yılları",
-          "badge": "Yeni",
+          "badge": "PDF / Slayt",
           "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1%2F7.%20S%C4%B1n%C4%B1f%2F2.%20%C3%9CN%C4%B0TE%2F7.2.6%20Osmanl%C4%B1'da%20De%C4%9Fi%C5%9Fim%20Y%C4%B1llar%C4%B1.pdf&title=Osmanl%C4%B1'da%20De%C4%9Fi%C5%9Fim%20Y%C4%B1llar%C4%B1",
           "ogrenmeAlani": "Ortak Mirasımız",
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/425",
@@ -373,7 +373,7 @@
         {
           "no": 7,
           "baslik": "Osmanlı Toplum ve Ordu",
-          "badge": "Yeni",
+          "badge": "PDF / Slayt",
           "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1%2F7.%20S%C4%B1n%C4%B1f%2F2.%20%C3%9CN%C4%B0TE%2F7.2.7%20Osmanl%C4%B1%20Toplum%20ve%20ordu.pdf&title=Osmanl%C4%B1%20Toplum%20ve%20Ordu",
           "ogrenmeAlani": "Ortak Mirasımız",
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/425",
@@ -412,7 +412,7 @@
         {
           "no": 8,
           "baslik": "Seyahatnamelerde Osmanlı",
-          "badge": "Yeni",
+          "badge": "PDF / Slayt",
           "href": "pdf-pro.html?pdf=Ders+kaynaklar%C4%B1%2F7.+S%C4%B1n%C4%B1f%2F2.+%C3%9CN%C4%B0TE%2F7.2.8+SEYAHATNAMELERDE+OSMANLI.pdf&title=Seyahatnamelerde+Osmanl%C4%B1",
           "ogrenmeAlani": "Ortak Mirasımız",
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/425",
@@ -471,15 +471,15 @@
         {
           "no": 1,
           "baslik": "Geçmişten Günümüze Yerleşme",
-          "badge": "Yakında",
-          "href": "#",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/7.3.1%20GE%C3%87M%C4%B0%C5%9ETEN%20G%C3%9CN%C3%9CM%C3%9CZE%20YERLE%C5%9EME.pdf&title=Ge%C3%A7mi%C5%9Ften%20G%C3%BCn%C3%BCm%C3%BCze%20Yerle%C5%9Fme",
           "ogrenmeAlani": "Ülkemizde Yerleşme, Nüfus ve Göç",
           "tymmAmac": "Yerleşmenin tarihsel gelişimi, Türkiye nüfusunun özellikleri, göçün neden-sonuçları ve yerleşme-seyahat özgürlüğü üzerinde durulur.",
-          "ozet": "Geçmişten Günümüze Yerleşme konusunda temel kavramları, günlük yaşamla ilişkileri ve sosyal bilgiler dersi içindeki yerini örneklerle ele alacağız.",
+          "ozet": "Yerleşmenin geçmişten günümüze nasıl değiştiğini; doğal çevre, güvenlik, su kaynakları, ulaşım ve ekonomik faaliyetler gibi etkenlerle birlikte inceleriz. İnsanların yaşadığı yerleri seçerken hangi ihtiyaçların belirleyici olduğunu tarihsel örneklerle düşünürüz.",
           "kazanimlar": [
-            "Geçmişten Günümüze Yerleşme konusuna ait temel kavramları tanır.",
-            "Konu ile ilgili neden-sonuç ilişkileri kurar.",
-            "Edindiği bilgileri günlük yaşam ve tarihsel/coğrafi örneklerle ilişkilendirir."
+            "Yerleşmeyi etkileyen doğal ve beşerî faktörleri açıklar.",
+            "Geçmişten günümüze yerleşme biçimlerindeki değişimi örneklerle karşılaştırır.",
+            "Yerleşme tarihini insanların ihtiyaçları ve çevreyle ilişkisi üzerinden yorumlar."
           ],
           "etiketler": [
             "sosyal bilgiler konu anlatımı",
@@ -498,21 +498,25 @@
             "nüfus dağılışı",
             "geçmişten günümüze yerleşme",
             "yerleşme tarihi",
-            "ilk yerleşmeler"
+            "ilk yerleşmeler",
+            "yerleşmeyi etkileyen faktörler",
+            "doğal faktörler",
+            "beşerî faktörler",
+            "7.3.1 sosyal bilgiler"
           ]
         },
         {
           "no": 2,
           "baslik": "Türkiye'de Nüfus",
-          "badge": "Yakında",
-          "href": "#",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/7.3.2%20%20T%C3%9CRK%C4%B0YE%E2%80%99DE%20N%C3%9CFUS.pdf&title=T%C3%BCrkiye%27de%20N%C3%BCfus",
           "ogrenmeAlani": "Ülkemizde Yerleşme, Nüfus ve Göç",
           "tymmAmac": "Yerleşmenin tarihsel gelişimi, Türkiye nüfusunun özellikleri, göçün neden-sonuçları ve yerleşme-seyahat özgürlüğü üzerinde durulur.",
-          "ozet": "Türkiye'de Nüfus konusunda temel kavramları, günlük yaşamla ilişkileri ve sosyal bilgiler dersi içindeki yerini örneklerle ele alacağız.",
+          "ozet": "Türkiye nüfusunun dağılışını, nüfus yoğunluğunu ve nüfusu etkileyen doğal-beşerî faktörleri ele alırız. Harita ve örnekler üzerinden “Nüfus neden bazı yerlerde fazla, bazı yerlerde azdır?” sorusuna cevap ararız.",
           "kazanimlar": [
-            "Türkiye'de Nüfus konusuna ait temel kavramları tanır.",
-            "Konu ile ilgili neden-sonuç ilişkileri kurar.",
-            "Edindiği bilgileri günlük yaşam ve tarihsel/coğrafi örneklerle ilişkilendirir."
+            "Türkiye’de nüfusun dağılışını etkileyen faktörleri açıklar.",
+            "Nüfus yoğunluğu ve nüfus dağılışı kavramlarını ayırt eder.",
+            "Harita ve verilerden yararlanarak Türkiye nüfusunun özelliklerini yorumlar."
           ],
           "etiketler": [
             "sosyal bilgiler konu anlatımı",
@@ -531,21 +535,25 @@
             "nüfus dağılışı",
             "türkiye'de nüfus",
             "Türkiye nüfusu",
-            "nüfus özellikleri"
+            "nüfus özellikleri",
+            "nüfus yoğunluğu",
+            "nüfusu etkileyen faktörler",
+            "doğal ve beşerî faktörler",
+            "7.3.2 sosyal bilgiler"
           ]
         },
         {
           "no": 3,
           "baslik": "Ülkemizde Göç",
-          "badge": "Yakında",
-          "href": "#",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/7.3.3%20.%20%C3%9CLKEM%C4%B0ZDE%20G%C3%96%C3%87.pdf&title=%C3%9Clkemizde%20G%C3%B6%C3%A7",
           "ogrenmeAlani": "Ülkemizde Yerleşme, Nüfus ve Göç",
           "tymmAmac": "Yerleşmenin tarihsel gelişimi, Türkiye nüfusunun özellikleri, göçün neden-sonuçları ve yerleşme-seyahat özgürlüğü üzerinde durulur.",
-          "ozet": "Ülkemizde Göç konusunda temel kavramları, günlük yaşamla ilişkileri ve sosyal bilgiler dersi içindeki yerini örneklerle ele alacağız.",
+          "ozet": "Göçün nedenlerini ve sonuçlarını Türkiye örnekleriyle inceleriz. Ekonomik, sosyal, doğal ve güvenlik gibi nedenlerin insanların yaşam yerlerini değiştirmesinde nasıl etkili olduğunu; göçün şehirler, aileler ve toplum üzerindeki sonuçlarıyla birlikte değerlendiririz.",
           "kazanimlar": [
-            "Ülkemizde Göç konusuna ait temel kavramları tanır.",
-            "Konu ile ilgili neden-sonuç ilişkileri kurar.",
-            "Edindiği bilgileri günlük yaşam ve tarihsel/coğrafi örneklerle ilişkilendirir."
+            "Göçün başlıca nedenlerini örneklerle açıklar.",
+            "İç göç ve dış göç gibi göç türlerini ayırt eder.",
+            "Göçün birey, toplum ve yerleşmeler üzerindeki sonuçlarını değerlendirir."
           ],
           "etiketler": [
             "sosyal bilgiler konu anlatımı",
@@ -564,21 +572,26 @@
             "nüfus dağılışı",
             "ülkemizde göç",
             "göç nedenleri",
-            "göç sonuçları"
+            "göç sonuçları",
+            "iç göç",
+            "dış göç",
+            "kırdan kente göç",
+            "şehirleşme",
+            "7.3.3 sosyal bilgiler"
           ]
         },
         {
           "no": 4,
           "baslik": "Bir Özgürlük Olarak Yerleşme ve Seyahat",
-          "badge": "Yakında",
-          "href": "#",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/7.3.4%20B%C4%B0R%20%C3%96ZG%C3%9CRL%C3%9CK%20OLARAK%20YERLE%C5%9EME%20VE%20SEYAHAT.pdf&title=Bir%20%C3%96zg%C3%BCrl%C3%BCk%20Olarak%20Yerle%C5%9Fme%20ve%20Seyahat",
           "ogrenmeAlani": "Ülkemizde Yerleşme, Nüfus ve Göç",
           "tymmAmac": "Yerleşmenin tarihsel gelişimi, Türkiye nüfusunun özellikleri, göçün neden-sonuçları ve yerleşme-seyahat özgürlüğü üzerinde durulur.",
-          "ozet": "Bir Özgürlük Olarak Yerleşme ve Seyahat konusunda temel kavramları, günlük yaşamla ilişkileri ve sosyal bilgiler dersi içindeki yerini örneklerle ele alacağız.",
+          "ozet": "Yerleşme ve seyahat özgürlüğünü temel haklar bağlamında ele alırız. İnsanların ülke içinde istediği yerde yaşama ve seyahat etme hakkını; bu hakkın kamu güvenliği, sağlık ve kanunlarla nasıl ilişkilendirildiğini örneklerle değerlendiririz.",
           "kazanimlar": [
-            "Bir Özgürlük Olarak Yerleşme ve Seyahat konusuna ait temel kavramları tanır.",
-            "Konu ile ilgili neden-sonuç ilişkileri kurar.",
-            "Edindiği bilgileri günlük yaşam ve tarihsel/coğrafi örneklerle ilişkilendirir."
+            "Yerleşme ve seyahat özgürlüğünün temel haklar içindeki yerini açıklar.",
+            "Bu özgürlüğün günlük yaşamla ilişkisini örneklerle kurar.",
+            "Hak ve özgürlüklerin kanunlar ve toplum düzeniyle ilişkisini değerlendirir."
           ],
           "etiketler": [
             "sosyal bilgiler konu anlatımı",
@@ -597,7 +610,11 @@
             "nüfus dağılışı",
             "bir özgürlük olarak yerleşme ve seyahat",
             "yerleşme hakkı",
-            "seyahat hakkı"
+            "seyahat hakkı",
+            "yerleşme ve seyahat özgürlüğü",
+            "temel hak ve özgürlükler",
+            "anayasal haklar",
+            "7.3.4 sosyal bilgiler"
           ]
         }
       ],
