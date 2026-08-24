@@ -1,5 +1,59 @@
 [
   {
+    "baslik": "7. Sınıf - Yazının ve Bilginin Yolculuğu",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/4.%20%C3%9CN%C4%B0TE/7.4.1%20YAZININ%20VE%20B%C4%B0LG%C4%B0N%C4%B0N%20YOLCULU%C4%9EU%20.pdf&title=Yaz%C4%B1n%C4%B1n%20ve%20Bilginin%20Yolculu%C4%9Fu",
+    "renk": "primary"
+  },
+  {
+    "baslik": "7. Sınıf - Doğu’nun Bilgi Birikimi",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/4.%20%C3%9CN%C4%B0TE/7.4.2%20DO%C4%9EU%E2%80%99NUN%20B%C4%B0LG%C4%B0%20B%C4%B0R%C4%B0K%C4%B0M%C4%B0%20.pdf&title=Do%C4%9Fu%E2%80%99nun%20Bilgi%20Birikimi",
+    "renk": "secondary"
+  },
+  {
+    "baslik": "7. Sınıf - Avrupa’da Yaşanan Gelişmeler",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/4.%20%C3%9CN%C4%B0TE/7.4.3%20AVRUPA%E2%80%99DA%20YA%C5%9EANAN%20GEL%C4%B0%C5%9EMELER.pdf&title=Avrupa%E2%80%99da%20Ya%C5%9Fanan%20Geli%C5%9Fmeler",
+    "renk": "accent"
+  },
+  {
+    "baslik": "7. Sınıf - Özgür Düşünce ve Bilim",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/4.%20%C3%9CN%C4%B0TE/7.4.4%20%C3%96ZG%C3%9CR%20D%C3%9C%C5%9E%C3%9CNCE%20VE%20B%C4%B0L%C4%B0M%20.pdf&title=%C3%96zg%C3%BCr%20D%C3%BC%C5%9F%C3%BCnce%20ve%20Bilim",
+    "renk": "primary"
+  },
+  {
+    "baslik": "7. Sınıf - Üretimde ve Yönetimde Toprak",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/5.%20%C3%9CN%C4%B0TE/7.5.1%20%C3%9CRET%C4%B0MDE%20VE%20Y%C3%96NET%C4%B0MDE%20TOPRAK.pdf&title=%C3%9Cretimde%20ve%20Y%C3%B6netimde%20Toprak",
+    "renk": "secondary"
+  },
+  {
+    "baslik": "7. Sınıf - Teknolojinin Sosyal ve Ekonomik Hayata Etkileri",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/5.%20%C3%9CN%C4%B0TE/7.5.2%20TEKNOLOJ%C4%B0N%C4%B0N%20SOSYAL%20VE%20EKONOM%C4%B0K%20HAYATA%20ETK%C4%B0LER%C4%B0.pdf&title=Teknolojinin%20Sosyal%20ve%20Ekonomik%20Hayata%20Etkileri",
+    "renk": "accent"
+  },
+  {
+    "baslik": "7. Sınıf - Bizim İçin Çalışanlar",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/5.%20%C3%9CN%C4%B0TE/7.5.3%20B%C4%B0Z%C4%B0M%20%C4%B0%C3%87%C4%B0N%20%C3%87ALI%C5%9EANLAR.pdf&title=Bizim%20%C4%B0%C3%A7in%20%C3%87al%C4%B1%C5%9Fanlar",
+    "renk": "primary"
+  },
+  {
+    "baslik": "7. Sınıf - Ahilikten Meslek Odalarına",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/5.%20%C3%9CN%C4%B0TE/7.5.4%20%20AH%C4%B0L%C4%B0KTEN%20MESLEK%20ODALARINA.pdf&title=Ahilikten%20Meslek%20Odalar%C4%B1na",
+    "renk": "secondary"
+  },
+  {
+    "baslik": "7. Sınıf - Mesleki Tercihler",
+    "sinif": 7,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/5.%20%C3%9CN%C4%B0TE/7.5.5%20%20MESLEK%C4%B0%20TERC%C4%B0HLER%C4%B0.pdf&title=Mesleki%20Tercihler",
+    "renk": "accent"
+  },
+  {
     "baslik": "7. Sınıf - Geçmişten Günümüze Yerleşme",
     "sinif": 7,
     "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/7.%20S%C4%B1n%C4%B1f/3.%20%C3%9CN%C4%B0TE/7.3.1%20GE%C3%87M%C4%B0%C5%9ETEN%20G%C3%9CN%C3%9CM%C3%9CZE%20YERLE%C5%9EME.pdf&title=Ge%C3%A7mi%C5%9Ften%20G%C3%BCn%C3%BCm%C3%BCze%20Yerle%C5%9Fme",
