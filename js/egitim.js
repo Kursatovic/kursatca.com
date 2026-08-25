@@ -203,7 +203,7 @@ async function loadRecentItems() {
 
   const rgb = { primary: '124,58,237', secondary: '6,182,212', accent: '255,45,85' };
   
-  grid.innerHTML = veriler.map((item) => {
+  grid.innerHTML = veriler.slice(0, 6).map((item) => {
     const renk = item.renk || 'primary';
     return `
       <a href="${escapeHTML(item.href)}" class="topic-item" style="background:var(--clr-bg-surface);border:1px solid var(--clr-border-glass);border-radius:var(--radius-md);">
