@@ -402,16 +402,411 @@ const HISTORICAL_DAYS = [
   }
 ];
 
+const MATCHING_DATA = [
+  {
+    "id": 1,
+    "date": "30 Ağustos 1922",
+    "title": "Büyük Taarruz",
+    "desc": "Kurtuluş Savaşı'nın askerî safhasını zaferle bitiren Başkomutanlık Meydan Muharebesi"
+  },
+  {
+    "id": 2,
+    "date": "9 Eylül 1922",
+    "title": "İzmir'in Kurtuluşu",
+    "desc": "Türk ordusunun 3 yıllık işgale son vererek Hükümet Konağı'na Türk bayrağını çekmesi"
+  },
+  {
+    "id": 3,
+    "date": "6 Ekim 1923",
+    "title": "İstanbul'un Kurtuluşu",
+    "desc": "Türk ordusunun şehre girişi ve 'Geldikleri gibi giderler!' sözünün hakikate dönüşmesi"
+  },
+  {
+    "id": 4,
+    "date": "13 Ekim 1923",
+    "title": "Ankara'nın Başkent Oluşu",
+    "desc": "İsmet İnönü'nün kanun teklifiyle yeni Türk Devleti'nin idare merkezinin tescillenmesi"
+  },
+  {
+    "id": 5,
+    "date": "29 Ekim 1923",
+    "title": "Cumhuriyetin İlanı",
+    "desc": "'Efendiler, yarın Cumhuriyeti ilan edeceğiz' sözüyle egemenliğin millete devredilmesi"
+  },
+  {
+    "id": 6,
+    "date": "27 Aralık 1919",
+    "title": "Temsil Heyeti Ankara'da",
+    "desc": "Mustafa Kemal Paşa'nın Dikmen sırtlarında Seymenler tarafından coşkuyla karşılanışı"
+  },
+  {
+    "id": 7,
+    "date": "12 Mart 1921",
+    "title": "İstiklâl Marşı'nın Kabulü",
+    "desc": "Mehmet Âkif Ersoy'un ordumuza ithaf ettiği şiirin TBMM'de ayakta alkışlarla kabulü"
+  },
+  {
+    "id": 8,
+    "date": "18 Mart 1915",
+    "title": "Çanakkale Deniz Zaferi",
+    "desc": "Nusret Mayın Gemisi ve Seyit Onbaşı'nın kahramanlığıyla 'Çanakkale Geçilmez' destanı"
+  },
+  {
+    "id": 9,
+    "date": "23 Nisan 1920",
+    "title": "TBMM'nin Açılışı",
+    "desc": "'Egemenlik kayıtsız şartsız milletindir' ilkesi ve çocuklara armağan edilen ilk bayram"
+  },
+  {
+    "id": 10,
+    "date": "19 Mayıs 1919",
+    "title": "Millî Mücadele Başlangıcı",
+    "desc": "Bandırma Vapuru ile Samsun'a çıkış ve 'Ya İstiklâl Ya Ölüm' meşalesinin gençliğe emaneti"
+  }
+];
 
-// State Variables
+const TRUE_FALSE_DATA = [
+  {
+    "id": 1,
+    "statement": "30 Ağustos 1922'de kazanılan Başkomutanlık Meydan Muharebesi, Kurtuluş Savaşı'nın askerî (silahlı mücadele) safhasını sona erdirmiştir.",
+    "isTrue": true,
+    "explanation": "DOĞRU! Büyük Taarruz ile işgal güçleri Anadolu'dan tamamen çıkarılmış ve silahlı mücadele dönemi zaferle kapanmıştır."
+  },
+  {
+    "id": 2,
+    "statement": "Mustafa Kemal Paşa 'Geldikleri gibi giderler!' sözünü 15 Mayıs 1919'da İzmir rıhtımında söylemiştir.",
+    "isTrue": false,
+    "explanation": "YANLIŞ! Mustafa Kemal bu sözü 13 Kasım 1918'de İtilaf donanmasının İstanbul Boğazı'na demirlediğini gördüğünde söylemiştir."
+  },
+  {
+    "id": 3,
+    "statement": "Ankara, 29 Ekim 1923'te Cumhuriyetin ilan edilmesinden 16 gün önce, 13 Ekim 1923'te resmen başkent olmuştur.",
+    "isTrue": true,
+    "explanation": "DOĞRU! İsmet İnönü'nün sunduğu kanun teklifiyle Ankara 13 Ekim 1923'te yeni Türk devletinin başkenti olarak kabul edilmiştir."
+  },
+  {
+    "id": 4,
+    "statement": "Mehmet Âkif Ersoy, İstiklâl Marşı yarışmasındaki 500 liralık para ödülünü şahsi kütüphanesi için harcamıştır.",
+    "isTrue": false,
+    "explanation": "YANLIŞ! Mehmet Âkif para ödülü nedeniyle önce yarışmaya katılmamış, ödülün Dârülmesâi adlı kadın ve çocuk hayır kurumuna bağışlanması şartıyla şiiri yazmıştır."
+  },
+  {
+    "id": 5,
+    "statement": "28 Ekim 1923 akşamı Çankaya Köşkü'nde Mustafa Kemal 'Efendiler, yarın Cumhuriyeti ilan edeceğiz.' demiştir.",
+    "isTrue": true,
+    "explanation": "DOĞRU! 28 Ekim akşamı arkadaşlarıyla yemekte bir araya gelen Mustafa Kemal Paşa bu tarihi müjdeyi vermiştir."
+  },
+  {
+    "id": 6,
+    "statement": "Temsil Heyeti'nin Ankara'yı merkez seçmesinde şehrin Batı Cephesi'ne yakınlığı ve demiryolu-haberleşme ağlarının merkezinde olması etkili olmuştur.",
+    "isTrue": true,
+    "explanation": "DOĞRU! Ankara'nın coğrafi konumu, güvenliği ve Batı Cephesi'ne yakınlığı merkez seçilmesinde belirleyici olmuştur."
+  },
+  {
+    "id": 7,
+    "statement": "18 Mart 1915 Çanakkale Zaferi'nde yaklaşık 215 kg'lık top mermisini tek başına sırtlayan kahraman Mehmetçik Seyit Onbaşı'dır.",
+    "isTrue": true,
+    "explanation": "DOĞRU! Seyit Onbaşı Ocean zırhlısını vuran 215 kg'lık mermiyi tek başına sırtlayarak namluya sürmüştür."
+  },
+  {
+    "id": 8,
+    "statement": "23 Nisan 1920'de TBMM'nin açılmasıyla birlikte Osmanlı saltanatı ve padişahlık yetkileri daha da artırılmıştır.",
+    "isTrue": false,
+    "explanation": "YANLIŞ! Egemenlik tek bir kişiden (padişahtan) alınıp 'Egemenlik kayıtsız şartsız milletindir' ilkesiyle doğrudan millete verilmiştir."
+  },
+  {
+    "id": 9,
+    "statement": "Atatürk kendisine doğum günü sorulduğunda 'Neden 19 Mayıs olmasın?' cevabını vermiştir.",
+    "isTrue": true,
+    "explanation": "DOĞRU! Atatürk, milletin bağımsızlık uyanışını simgeleyen bu günü kendi şahsi doğum günü olarak kabul etmiştir."
+  },
+  {
+    "id": 10,
+    "statement": "9 Eylül 1922'de İzmir'in kurtuluşu, Mudanya Ateşkesi ve Lozan Barış Antlaşması süreçlerinin önünü açmıştır.",
+    "isTrue": true,
+    "explanation": "DOĞRU! 9 Eylül zaferi askerî safhayı bitirerek diplomaside Türk milletinin bağımsızlığının uluslararası alanda tanınmasını sağlamıştır."
+  }
+];
+
+const TEST_QUESTIONS_DATA = [
+  {
+    "id": 1,
+    "topic": "30 Ağustos Zafer Bayramı",
+    "question": "30 Ağustos 1922'de kazanılan Başkomutanlık Meydan Muharebesi'nin Türk tarihindeki en kritik askerî sonucu aşağıdakilerden hangisidir?",
+    "options": [
+      "A) Saltanatın resmen kaldırılması",
+      "B) Kurtuluş Savaşı'nın askerî safhasının kesin zaferle sona ermesi",
+      "C) Amasya Genelgesi'nin yayımlanması",
+      "D) TBMM'nin Ankara'da açılması"
+    ],
+    "correctIndex": 1,
+    "explanation": "30 Ağustos Zaferi, Kurtuluş Savaşı'nın silahlı mücadele (askerî) safhasını kesin zaferle sona erdirmiş ve Türkiye Cumhuriyeti'nin kuruluş yolunu açmıştır."
+  },
+  {
+    "id": 2,
+    "topic": "30 Ağustos Zafer Bayramı",
+    "question": "30 Ağustos 1922'de kazanılan büyük zafere, savaşı bizzat Mustafa Kemal Paşa ateş hattında yönettiği için hangi isim de verilmektedir?",
+    "options": [
+      "A) Çanakkale Boğaz Harbi",
+      "B) I. İnönü Muharebesi",
+      "C) Başkomutanlık Meydan Muharebesi",
+      "D) Sakarya Meydan Muharebesi"
+    ],
+    "correctIndex": 2,
+    "explanation": "Savaşı bizzat Başkomutan Mustafa Kemal Atatürk cephede yönettiği için bu savaşa 'Başkomutanlık Meydan Muharebesi' denir."
+  },
+  {
+    "id": 3,
+    "topic": "İzmir'in Kurtuluşu",
+    "question": "15 Mayıs 1919'da Yunan ordusu tarafından işgal edilen İzmir, Türk ordusunun taarruzu sonucunda hangi tarihte işgalden kurtarılmıştır?",
+    "options": [
+      "A) 19 Mayıs 1919",
+      "B) 26 Ağustos 1922",
+      "C) 9 Eylül 1922",
+      "D) 29 Ekim 1923"
+    ],
+    "correctIndex": 2,
+    "explanation": "26 Ağustos'ta başlayan Büyük Taarruz'un ardından Türk ordusu 9 Eylül 1922'de İzmir'e ulaşarak yaklaşık 3 yıl süren işgale son vermiştir."
+  },
+  {
+    "id": 4,
+    "topic": "İzmir'in Kurtuluşu",
+    "question": "9 Eylül 1922'de İzmir'in kurtarılmasının ardından yeni Türk Devleti'nin bağımsızlığının uluslararası alanda kabul edilmesini sağlayan diplomatik antlaşma hangisidir?",
+    "options": [
+      "A) Sevr Antlaşması",
+      "B) Mondros Ateşkesi",
+      "C) Lozan Barış Antlaşması",
+      "D) Berlin Antlaşması"
+    ],
+    "correctIndex": 2,
+    "explanation": "9 Eylül zaferi ardından önce Mudanya Ateşkesi imzalanmış, ardından Lozan Barış Antlaşması ile yeni Türk Devleti'nin bağımsızlığı uluslararası alanda kabul edilmiştir."
+  },
+  {
+    "id": 5,
+    "topic": "İstanbul'un Kurtarılması",
+    "question": "6 Ekim 1923'te Türk ordusunun İstanbul'a girmesiyle Mustafa Kemal'in 13 Kasım 1918'de söylediği hangi tarihî söz bir hakikate dönüşmüştür?",
+    "options": [
+      "A) 'Geldikleri gibi giderler!'",
+      "B) 'Ordular! İlk hedefiniz Akdeniz'dir, ileri!'",
+      "C) 'Ya istiklâl ya ölüm!'",
+      "D) 'Egemenlik kayıtsız şartsız milletindir.'"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mustafa Kemal Paşa, 13 Kasım 1918'de İtilaf donanmasını Boğaz'da gördüğünde 'Geldikleri gibi giderler!' demiş, 6 Ekim 1923'te bu söz gerçeğe dönüşmüştür."
+  },
+  {
+    "id": 6,
+    "topic": "İstanbul'un Kurtarılması",
+    "question": "İstanbul'daki 4 yılı aşkın süren düşman işgali nasıl son bulmuştur?",
+    "options": [
+      "A) Büyük Taarruz zaferi ve Lozan Antlaşması'nın getirdiği diplomatik üstünlükle işgalcilerin şehri terk etmesiyle",
+      "B) Şehirde aylarca süren kanlı sokak çatışmalarıyla",
+      "C) İşgalci güçlerin 1919'da kendi istekleriyle çekilmesiyle",
+      "D) Cumhuriyet ilan edildikten çok sonra yapılan bir referandumla"
+    ],
+    "correctIndex": 0,
+    "explanation": "İstanbul işgali; Büyük Taarruz'un askerî zaferi ve Lozan Antlaşması'nın getirdiği diplomatik üstünlük sayesinde işgalcilerin Türk bayrağını selamlayarak şehri terk etmesiyle son bulmuştur."
+  },
+  {
+    "id": 7,
+    "topic": "Ankara'nın Başkent Oluşu",
+    "question": "Ankara'nın yeni Türk Devleti'nin başkenti olarak seçilmesinde aşağıdakilerden hangisi etkili OLMAMIŞTIR?",
+    "options": [
+      "A) Anadolu'nun ortasında, işgalden uzak ve güvenli olması",
+      "B) Önemli ulaşım ve haberleşme hatları üzerinde yer alması",
+      "C) Batı Cephesi'ne yakın bir konumda bulunması",
+      "D) Osmanlı padişahının sarayının bu şehirde bulunması"
+    ],
+    "correctIndex": 3,
+    "explanation": "Osmanlı padişahının sarayı İstanbul'daydı. Ankara ise Anadolu'nun ortasında güvenli, stratejik ve halkın direniş merkezi olduğu için başkent seçilmiştir."
+  },
+  {
+    "id": 8,
+    "topic": "Ankara'nın Başkent Oluşu",
+    "question": "Ankara hangi tarihte ve kimin Meclise sunduğu kanun teklifinin kabul edilmesiyle başkent olmuştur?",
+    "options": [
+      "A) 13 Ekim 1923 - İsmet İnönü",
+      "B) 29 Ekim 1923 - Mustafa Kemal",
+      "C) 23 Nisan 1920 - Kazım Karabekir",
+      "D) 27 Aralık 1919 - Fevzi Çakmak"
+    ],
+    "correctIndex": 0,
+    "explanation": "13 Ekim 1923'te İsmet İnönü tarafından Meclise sunulan tek maddelik kanun teklifinin kabulüyle Ankara başkent ilan edilmiştir."
+  },
+  {
+    "id": 9,
+    "topic": "Cumhuriyet Bayramı",
+    "question": "28 Ekim 1923 akşamı Çankaya Köşkü'nde arkadaşlarıyla akşam yemeğinde bir araya gelen Mustafa Kemal hangi tarihî cümleyi kurmuştur?",
+    "options": [
+      "A) 'Hattı müdafaa yoktur, sathı müdafaa vardır.'",
+      "B) 'Efendiler, yarın Cumhuriyeti ilan edeceğiz.'",
+      "C) 'Yolumuz açık, milletimiz muzaffer olsun.'",
+      "D) 'Söz konusu vatansa gerisi teferruattır.'"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mustafa Kemal Paşa 28 Ekim 1923 akşamı Çankaya Köşkü'nde 'Efendiler, yarın Cumhuriyeti ilan edeceğiz.' demiştir."
+  },
+  {
+    "id": 10,
+    "topic": "Cumhuriyet Bayramı",
+    "question": "29 Ekim 1923'te Cumhuriyetin ilan edilmesiyle kurulan yönetim şeklinin en belirgin özelliği hangisidir?",
+    "options": [
+      "A) Egemenliğin kayıtsız şartsız millete ait olduğu, eşitlik ve özgürlük temeline dayanması",
+      "B) Saltanat yetkilerinin bir meclise devredilmesi",
+      "C) Yöneticilerin ömür boyu görevde kalması",
+      "D) Başkentin tekrar İstanbul'a taşınması"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cumhuriyet; egemenliğin kayıtsız şartsız millete ait olduğu, eşitlik ve özgürlük temeline dayanan çağdaş yönetim şeklidir."
+  },
+  {
+    "id": 11,
+    "topic": "Temsil Heyeti'nin Ankara'ya Gelişi",
+    "question": "Erzurum ve Sivas Kongrelerinde tüm yurdu temsil edecek şekilde kurulan Temsil Heyeti Ankara'ya hangi tarihte gelmiştir?",
+    "options": [
+      "A) 19 Mayıs 1919",
+      "B) 27 Aralık 1919",
+      "C) 23 Nisan 1920",
+      "D) 12 Mart 1921"
+    ],
+    "correctIndex": 1,
+    "explanation": "27 Aralık 1919'da Temsil Heyeti üyeleri ile birlikte Ankara'ya gelen Mustafa Kemal Paşa, şehri Millî Mücadele'nin yönetim merkezi yapmıştır."
+  },
+  {
+    "id": 12,
+    "topic": "Temsil Heyeti'nin Ankara'ya Gelişi",
+    "question": "27 Aralık 1919'da Mustafa Kemal Paşa'yı Ankara Dikmen sırtlarında coşkuyla karşılayarak vatanı kurtarma andı içen halk topluluğu kimlerdir?",
+    "options": [
+      "A) Ankara Seymenleri",
+      "B) Sipahiler",
+      "C) Leventler",
+      "D) Akıncılar"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ankara halkı ve Seymenler, Dikmen sırtlarında Mustafa Kemal'i büyük bir coşkuyla karşılayarak Millî Mücadele'ye tam destek vermiştir."
+  },
+  {
+    "id": 13,
+    "topic": "İstiklâl Marşı'nın Kabulü",
+    "question": "Millî marş yarışmasına 724 şiir katılmasına rağmen Mehmet Âkif Ersoy başlangıçta yarışmaya neden katılmayı reddetmiştir?",
+    "options": [
+      "A) Şiir yazmak istemediği için",
+      "B) Yarışmaya 500 liralık para ödülü konulduğu için",
+      "C) Ankara'da bulunmadığı için",
+      "D) Millî Mücadele'yi desteklemediği için"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mehmet Âkif, vatan sevgisinin para ile ölçülemeyeceğini belirterek 500 liralık ödül nedeniyle yarışmaya katılmayı reddetmiş; ödülün hayır kurumuna bağışlanacağı sözüyle ikna olmuştur."
+  },
+  {
+    "id": 14,
+    "topic": "İstiklâl Marşı'nın Kabulü",
+    "question": "Mehmet Âkif Ersoy'un kahraman ordumuza ithaf ettiği İstiklâl Marşı, 12 Mart 1921'de TBMM kürsüsünde kimin tarafından okunmuştur?",
+    "options": [
+      "A) Dönemin Eğitim Bakanı Hamdullah Suphi Bey",
+      "B) İsmet İnönü",
+      "C) Rauf Orbay",
+      "D) Ali Fuat Cebesoy"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dönemin Eğitim Bakanı Hamdullah Suphi Bey'in meclis kürsüsünde okuduğu İstiklâl Marşı, milletvekillerince ayakta coşkuyla alkışlanarak kabul edilmiştir."
+  },
+  {
+    "id": 15,
+    "topic": "Çanakkale Zaferi",
+    "question": "18 Mart 1915 sabahı Çanakkale Boğazı'na saldıran İtilaf donanmasına karşı Boğaz'a sessizce döşediği mayınlarla tarihi değiştiren kahraman gemi hangisidir?",
+    "options": [
+      "A) Bandırma Vapuru",
+      "B) Nusret Mayın Gemisi",
+      "C) Yavuz Zırhlısı",
+      "D) Kartal İstimbotu"
+    ],
+    "correctIndex": 1,
+    "explanation": "Nusret Mayın Gemisi'nin Boğaz'a döşediği mayınlar, 18 Mart deniz savaşının kazanılmasında en kritik rolü oynamıştır."
+  },
+  {
+    "id": 16,
+    "topic": "Çanakkale Zaferi",
+    "question": "Çanakkale Savaşları'nda gösterdiği askeri deha ile ulusal ve uluslararası alanda tanınan Mustafa Kemal hangi unvanla anılmıştır?",
+    "options": [
+      "A) Anafartalar Kahramanı",
+      "B) Şark Fatihi",
+      "C) Edirne Fatihi",
+      "D) Çöl Aslanı"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mustafa Kemal, Çanakkale kara savaşlarındaki zaferleriyle 'Anafartalar Kahramanı' olarak tanınmış ve milletin lideri olma yoluna girmiştir."
+  },
+  {
+    "id": 17,
+    "topic": "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı",
+    "question": "23 Nisan 1920'de Ankara'da TBMM'nin açılmasıyla tüm dünyaya ilan edilen temel ilke hangisidir?",
+    "options": [
+      "A) 'Geldikleri gibi giderler.'",
+      "B) 'Egemenlik kayıtsız şartsız milletindir.'",
+      "C) 'Yurtta sulh, cihanda sulh.'",
+      "D) 'Ordular! İlk hedefiniz Akdeniz'dir.'"
+    ],
+    "correctIndex": 1,
+    "explanation": "TBMM'nin açılışıyla egemenlik tek bir kişiden alınıp 'Egemenlik kayıtsız şartsız milletindir' ilkesiyle doğrudan milletin iradesine teslim edilmiştir."
+  },
+  {
+    "id": 18,
+    "topic": "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı",
+    "question": "Atatürk'ün 23 Nisan gününü 'Bugünün küçükleri, yarının büyükleridir.' diyerek çocuklara armağan etmesinin temel sebebi nedir?",
+    "options": [
+      "A) Çocuklara duyulan sarsılmaz güven ve geleceğin aklın-bilimin ışığında onlar tarafından inşa edileceğine olan inanç",
+      "B) Sadece tatil günü ilan etmek istemesi",
+      "C) Eski gelenekleri devam ettirme arzusu",
+      "D) Mecliste çocukların da oy kullanmasını sağlamak"
+    ],
+    "correctIndex": 0,
+    "explanation": "Atatürk, bağımsız cumhuriyeti koruyacak ve aydınlık geleceğe taşıyacak olanların çocuklar olduğuna inandığı için bu bayramı çocuklara armağan etmiştir."
+  },
+  {
+    "id": 19,
+    "topic": "19 Mayıs Gençlik ve Spor Bayramı",
+    "question": "19 Mayıs 1919'da Mustafa Kemal Paşa'nın Samsun'a ayak basmasıyla başlayan örgütlenme sürecinin sonraki aşamaları hangi seçenekte doğru sıralanmıştır?",
+    "options": [
+      "A) Amasya Genelgesi ➔ Erzurum Kongresi ➔ Sivas Kongresi",
+      "B) Lozan Antlaşması ➔ Mudanya Ateşkesi ➔ Sevr",
+      "C) TBMM'nin Açılışı ➔ Saltanatın Kaldırılması ➔ Cumhuriyet",
+      "D) Sakarya Muharebesi ➔ Büyük Taarruz ➔ İzmir'in Kurtuluşu"
+    ],
+    "correctIndex": 0,
+    "explanation": "19 Mayıs 1919'da başlayan süreç Amasya Genelgesi, Erzurum ve Sivas Kongreleri ile devam eden örgütlenme zincirinin ilk halkasıdır."
+  },
+  {
+    "id": 20,
+    "topic": "19 Mayıs Gençlik ve Spor Bayramı",
+    "question": "Atatürk kendisine doğum günü sorulduğunda neden 'Neden 19 Mayıs olmasın?' cevabını vermiştir?",
+    "options": [
+      "A) Kimlik belgesinde bu tarih yazdığı için",
+      "B) 19 Mayıs'ın Türk milletinin bağımsızlık umutlarının somut adıma dönüştüğü ve millî uyanışın başladığı gün olması sebebiyle",
+      "C) O gün hava çok güzel olduğu için",
+      "D) Samsun şehrini çok sevdiği için"
+    ],
+    "correctIndex": 1,
+    "explanation": "19 Mayıs, esareti kabul etmeyen Türk milletinin yeniden doğuşunu ve bağımsızlık ateşini simgelediği için Atatürk bu günü şahsi doğum günü kabul etmiştir."
+  }
+];
+
+
+// ==========================================
+// STATE VARIABLES
+// ==========================================
 let currentSelectedDayId = HISTORICAL_DAYS[0].id;
 let currentSortMode = "booklet"; // "booklet" or "chrono"
 let currentViewMode = "table"; // "table" or "timeline"
+let currentMainModule = "presentation"; // "presentation" or "assessment"
+let currentAssessmentTab = "matching"; // "matching", "tf", "mc"
 let isSpeaking = false;
 let synth = window.speechSynthesis;
 let currentUtterance = null;
 
-// Render Cards in Table View
+// ==========================================
+// PRESENTATION LOGIC
+// ==========================================
 function renderCards() {
   const container = document.getElementById("cards-grid");
   if (!container) return;
@@ -470,7 +865,6 @@ function renderCards() {
   });
 }
 
-// Render Timeline View
 function renderTimeline() {
   const track = document.getElementById("timeline-track");
   if (!track) return;
@@ -504,7 +898,6 @@ function renderTimeline() {
   });
 }
 
-// Select and Display Day Details
 function selectDay(dayId) {
   currentSelectedDayId = dayId;
   const day = HISTORICAL_DAYS.find(d => d.id === dayId);
@@ -591,7 +984,6 @@ function setDetailImage(imgObj) {
   };
 }
 
-// Lightbox
 function openLightbox(url, title, sub) {
   document.getElementById("lightbox-img").src = url;
   document.getElementById("lightbox-caption").textContent = title;
@@ -638,8 +1030,10 @@ document.getElementById("prev-day-btn").onclick = () => navigateDay(-1);
 document.getElementById("next-day-btn").onclick = () => navigateDay(1);
 
 window.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowLeft") navigateDay(-1);
-  if (e.key === "ArrowRight") navigateDay(1);
+  if (currentMainModule === "presentation") {
+    if (e.key === "ArrowLeft") navigateDay(-1);
+    if (e.key === "ArrowRight") navigateDay(1);
+  }
   if (e.key === "Escape") closeLightbox();
   if (e.key.toLowerCase() === "f") toggleFullscreen();
 });
@@ -657,30 +1051,30 @@ document.getElementById("view-table-btn").onclick = () => {
   currentViewMode = "table";
   document.getElementById("table-view").classList.remove("hidden");
   document.getElementById("timeline-view").classList.add("hidden");
-  document.getElementById("view-table-btn").className = "px-3 py-1.5 rounded-md bg-white text-red-800 font-bold shadow-sm transition flex items-center gap-1.5 border border-slate-200";
-  document.getElementById("view-timeline-btn").className = "px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5";
+  document.getElementById("view-table-btn").className = "px-2.5 py-1.5 rounded-md bg-white text-red-800 font-bold shadow-sm transition flex items-center gap-1 border border-slate-200";
+  document.getElementById("view-timeline-btn").className = "px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition flex items-center gap-1";
 };
 
 document.getElementById("view-timeline-btn").onclick = () => {
   currentViewMode = "timeline";
   document.getElementById("table-view").classList.add("hidden");
   document.getElementById("timeline-view").classList.remove("hidden");
-  document.getElementById("view-timeline-btn").className = "px-3 py-1.5 rounded-md bg-white text-red-800 font-bold shadow-sm transition flex items-center gap-1.5 border border-slate-200";
-  document.getElementById("view-table-btn").className = "px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5";
+  document.getElementById("view-timeline-btn").className = "px-2.5 py-1.5 rounded-md bg-white text-red-800 font-bold shadow-sm transition flex items-center gap-1 border border-slate-200";
+  document.getElementById("view-table-btn").className = "px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition flex items-center gap-1";
 };
 
 document.getElementById("order-booklet-btn").onclick = () => {
   currentSortMode = "booklet";
-  document.getElementById("order-booklet-btn").className = "px-2.5 py-1.5 rounded-md bg-white text-slate-900 font-bold shadow-sm transition border border-slate-200";
-  document.getElementById("order-chrono-btn").className = "px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition";
+  document.getElementById("order-booklet-btn").className = "px-3 py-1 rounded-md bg-white text-slate-900 font-bold shadow-sm transition border border-slate-200";
+  document.getElementById("order-chrono-btn").className = "px-3 py-1 rounded-md text-slate-600 hover:text-slate-900 transition";
   renderCards();
   renderTimeline();
 };
 
 document.getElementById("order-chrono-btn").onclick = () => {
   currentSortMode = "chrono";
-  document.getElementById("order-chrono-btn").className = "px-2.5 py-1.5 rounded-md bg-white text-slate-900 font-bold shadow-sm transition border border-slate-200";
-  document.getElementById("order-booklet-btn").className = "px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition";
+  document.getElementById("order-chrono-btn").className = "px-3 py-1 rounded-md bg-white text-slate-900 font-bold shadow-sm transition border border-slate-200";
+  document.getElementById("order-booklet-btn").className = "px-3 py-1 rounded-md text-slate-600 hover:text-slate-900 transition";
   renderCards();
   renderTimeline();
 };
@@ -715,12 +1109,10 @@ document.getElementById("tts-btn").onclick = () => {
     alert("Tarayıcınız sesli okuma özelliğini desteklemiyor.");
     return;
   }
-
   if (isSpeaking) {
     stopTTS();
     return;
   }
-
   const day = HISTORICAL_DAYS.find(d => d.id === currentSelectedDayId);
   if (!day) return;
 
@@ -734,28 +1126,433 @@ document.getElementById("tts-btn").onclick = () => {
     document.getElementById("tts-icon").textContent = "⏹️";
     document.getElementById("tts-label").textContent = "Durdur";
   };
-
-  currentUtterance.onend = () => {
-    stopTTS();
-  };
-
-  currentUtterance.onerror = () => {
-    stopTTS();
-  };
-
+  currentUtterance.onend = () => { stopTTS(); };
+  currentUtterance.onerror = () => { stopTTS(); };
   synth.speak(currentUtterance);
 };
 
-// Initial Render
+
+
+// ==========================================
+// ASSESSMENT & QUIZ LOGIC
+// ==========================================
+
+// Module Navigation (Presentation vs Assessment)
+const navPresBtn = document.getElementById("nav-presentation-btn");
+const navAssBtn = document.getElementById("nav-assessment-btn");
+const presContainer = document.getElementById("presentation-container");
+const assContainer = document.getElementById("assessment-container");
+const searchContainer = document.getElementById("search-container");
+const viewModeToggles = document.getElementById("view-mode-toggles");
+
+function switchMainModule(mod) {
+  currentMainModule = mod;
+  if (mod === "presentation") {
+    presContainer.classList.remove("hidden");
+    assContainer.classList.add("hidden");
+    if (searchContainer) searchContainer.classList.remove("hidden");
+    if (viewModeToggles) viewModeToggles.classList.remove("hidden");
+
+    navPresBtn.className = "px-4 py-2 rounded-lg bg-red-700 text-white shadow-md transition flex items-center gap-1.5 font-bold";
+    navAssBtn.className = "px-4 py-2 rounded-lg text-slate-700 hover:text-red-700 transition flex items-center gap-1.5 font-bold";
+  } else {
+    stopTTS();
+    presContainer.classList.add("hidden");
+    assContainer.classList.remove("hidden");
+    if (searchContainer) searchContainer.classList.add("hidden");
+    if (viewModeToggles) viewModeToggles.classList.add("hidden");
+
+    navAssBtn.className = "px-4 py-2 rounded-lg bg-red-700 text-white shadow-md transition flex items-center gap-1.5 font-bold";
+    navPresBtn.className = "px-4 py-2 rounded-lg text-slate-700 hover:text-red-700 transition flex items-center gap-1.5 font-bold";
+
+    switchAssessmentTab(currentAssessmentTab);
+  }
+}
+
+if (navPresBtn) navPresBtn.onclick = () => switchMainModule("presentation");
+if (navAssBtn) navAssBtn.onclick = () => switchMainModule("assessment");
+
+// Sub-tabs in Assessment Module
+const tabMatchingBtn = document.getElementById("tab-matching-btn");
+const tabTfBtn = document.getElementById("tab-tf-btn");
+const tabMcBtn = document.getElementById("tab-mc-btn");
+const actMatchingCard = document.getElementById("act-matching-card");
+const actTfCard = document.getElementById("act-tf-card");
+const actMcCard = document.getElementById("act-mc-card");
+
+function switchAssessmentTab(tab) {
+  currentAssessmentTab = tab;
+  [actMatchingCard, actTfCard, actMcCard].forEach(c => c && c.classList.add("hidden"));
+  [tabMatchingBtn, tabTfBtn, tabMcBtn].forEach(b => {
+    if (b) b.className = "px-3.5 py-2 rounded-lg text-slate-600 hover:text-red-700 transition flex items-center gap-1.5 font-bold";
+  });
+
+  if (tab === "matching") {
+    actMatchingCard.classList.remove("hidden");
+    tabMatchingBtn.className = "px-3.5 py-2 rounded-lg bg-white text-red-800 font-extrabold shadow-sm transition border border-slate-200 flex items-center gap-1.5";
+    initMatchingGame();
+  } else if (tab === "tf") {
+    actTfCard.classList.remove("hidden");
+    tabTfBtn.className = "px-3.5 py-2 rounded-lg bg-white text-red-800 font-extrabold shadow-sm transition border border-slate-200 flex items-center gap-1.5";
+    initTrueFalse();
+  } else if (tab === "mc") {
+    actMcCard.classList.remove("hidden");
+    tabMcBtn.className = "px-3.5 py-2 rounded-lg bg-white text-red-800 font-extrabold shadow-sm transition border border-slate-200 flex items-center gap-1.5";
+    initMultipleChoice();
+  }
+}
+
+if (tabMatchingBtn) tabMatchingBtn.onclick = () => switchAssessmentTab("matching");
+if (tabTfBtn) tabTfBtn.onclick = () => switchAssessmentTab("tf");
+if (tabMcBtn) tabMcBtn.onclick = () => switchAssessmentTab("mc");
+
+// ------------------------------------------
+// 1. MATCHING GAME LOGIC
+// ------------------------------------------
+let matchSelectedLeft = null;
+let matchedPairsCount = 0;
+
+function initMatchingGame() {
+  matchedPairsCount = 0;
+  matchSelectedLeft = null;
+  document.getElementById("match-counter").textContent = "0";
+  document.getElementById("matching-win-banner").classList.add("hidden");
+
+  const leftList = document.getElementById("matching-left-list");
+  const rightList = document.getElementById("matching-right-list");
+  if (!leftList || !rightList) return;
+
+  leftList.innerHTML = "";
+  rightList.innerHTML = "";
+
+  // Left items: chronological
+  const leftItems = [...MATCHING_DATA];
+  leftItems.forEach(item => {
+    const btn = document.createElement("button");
+    btn.id = `match-left-${item.id}`;
+    btn.className = "w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:border-red-600 transition shadow-sm flex items-center justify-between group";
+    btn.innerHTML = `
+      <div class="flex items-center gap-2.5">
+        <span class="w-6 h-6 rounded-md bg-red-100 text-red-800 flex items-center justify-center font-bold text-xs">${item.id}</span>
+        <div>
+          <span class="text-xs font-extrabold text-red-800 uppercase block leading-tight">${item.date}</span>
+          <span class="text-sm font-bold text-slate-900 leading-tight">${item.title}</span>
+        </div>
+      </div>
+      <span class="text-slate-400 group-hover:text-red-700 font-bold text-sm">➔</span>
+    `;
+    btn.onclick = () => handleMatchLeftClick(item.id);
+    leftList.appendChild(btn);
+  });
+
+  // Right items: shuffled
+  const rightItems = [...MATCHING_DATA].sort(() => Math.random() - 0.5);
+  rightItems.forEach(item => {
+    const btn = document.createElement("button");
+    btn.id = `match-right-${item.id}`;
+    btn.className = "w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:border-red-600 transition shadow-sm flex items-start gap-2.5 group";
+    btn.innerHTML = `
+      <span class="mt-0.5 text-slate-300 font-bold text-xs">✦</span>
+      <p class="text-xs sm:text-sm font-medium text-slate-800 leading-snug">${item.desc}</p>
+    `;
+    btn.onclick = () => handleMatchRightClick(item.id);
+    rightList.appendChild(btn);
+  });
+}
+
+function handleMatchLeftClick(id) {
+  matchSelectedLeft = id;
+  MATCHING_DATA.forEach(item => {
+    const el = document.getElementById(`match-left-${item.id}`);
+    if (el && !el.disabled) {
+      if (item.id === id) {
+        el.className = "w-full text-left p-3 rounded-xl border-2 border-red-700 bg-red-50/80 shadow-md ring-2 ring-red-600/20 flex items-center justify-between";
+      } else {
+        el.className = "w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:border-red-600 transition shadow-sm flex items-center justify-between group";
+      }
+    }
+  });
+}
+
+function handleMatchRightClick(targetId) {
+  if (matchSelectedLeft === null) {
+    alert("Lütfen önce sol sütundan eşleştirmek istediğiniz tarihî günü seçin.");
+    return;
+  }
+
+  const leftBtn = document.getElementById(`match-left-${matchSelectedLeft}`);
+  const rightBtn = document.getElementById(`match-right-${targetId}`);
+
+  if (matchSelectedLeft === targetId) {
+    // CORRECT MATCH!
+    matchedPairsCount++;
+    document.getElementById("match-counter").textContent = matchedPairsCount;
+
+    leftBtn.className = "w-full text-left p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-950 font-bold shadow-sm flex items-center justify-between opacity-80 cursor-default";
+    leftBtn.innerHTML += ` <span class="text-emerald-600 font-extrabold">✔️ Eşleşti</span>`;
+    leftBtn.disabled = true;
+
+    rightBtn.className = "w-full text-left p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-950 font-bold shadow-sm flex items-start gap-2.5 opacity-80 cursor-default";
+    rightBtn.innerHTML = ` <span class="text-emerald-600 font-extrabold text-sm">✔️</span> ` + rightBtn.innerHTML;
+    rightBtn.disabled = true;
+
+    // HAREKET: Eşleşen iki kartı listelerin en altına taşı (Aşağı insinler)
+    const leftList = document.getElementById("matching-left-list");
+    const rightList = document.getElementById("matching-right-list");
+    if (leftList && rightList) {
+      leftList.appendChild(leftBtn);
+      rightList.appendChild(rightBtn);
+    }
+
+    matchSelectedLeft = null;
+
+    if (matchedPairsCount === MATCHING_DATA.length) {
+      document.getElementById("matching-win-banner").classList.remove("hidden");
+    }
+  } else {
+    // WRONG MATCH
+    leftBtn.classList.add("shake-error");
+    rightBtn.classList.add("shake-error");
+    setTimeout(() => {
+      leftBtn.classList.remove("shake-error");
+      rightBtn.classList.remove("shake-error");
+      handleMatchLeftClick(matchSelectedLeft);
+    }, 500);
+  }
+}
+
+document.getElementById("match-reset-btn").onclick = initMatchingGame;
+
+// ------------------------------------------
+// 2. TRUE / FALSE QUIZ LOGIC
+// ------------------------------------------
+let tfCurrentIndex = 0;
+let tfCorrectCount = 0;
+let tfWrongCount = 0;
+
+function initTrueFalse() {
+  tfCurrentIndex = 0;
+  tfCorrectCount = 0;
+  tfWrongCount = 0;
+  document.getElementById("tf-correct-score").textContent = "0";
+  document.getElementById("tf-wrong-score").textContent = "0";
+  document.getElementById("tf-question-box").classList.remove("hidden");
+  document.getElementById("tf-finish-box").classList.add("hidden");
+  renderTrueFalseQuestion();
+}
+
+function renderTrueFalseQuestion() {
+  const q = TRUE_FALSE_DATA[tfCurrentIndex];
+  document.getElementById("tf-counter").textContent = tfCurrentIndex + 1;
+  document.getElementById("tf-statement-text").textContent = q.statement;
+  document.getElementById("tf-feedback-box").classList.add("hidden");
+
+  const btnTrue = document.getElementById("tf-btn-true");
+  const btnFalse = document.getElementById("tf-btn-false");
+  btnTrue.disabled = false;
+  btnFalse.disabled = false;
+
+  // Yeni soruda üst ve alt sonraki butonlarını gizle
+  const tfTopBtn = document.getElementById("tf-next-btn-top");
+  const tfBotBtn = document.getElementById("tf-next-btn");
+  if (tfTopBtn) tfTopBtn.classList.add("hidden");
+  if (tfBotBtn) tfBotBtn.classList.add("hidden");
+  btnTrue.className = "py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-base sm:text-lg shadow-md transition flex items-center justify-center gap-2 border border-emerald-500";
+  btnFalse.className = "py-4 px-6 rounded-xl bg-rose-600 hover:bg-rose-700 active:scale-95 text-white font-extrabold text-base sm:text-lg shadow-md transition flex items-center justify-center gap-2 border border-rose-500";
+}
+
+function handleTrueFalseAnswer(userChoice) {
+  const q = TRUE_FALSE_DATA[tfCurrentIndex];
+  const isCorrect = (userChoice === q.isTrue);
+
+  const btnTrue = document.getElementById("tf-btn-true");
+  const btnFalse = document.getElementById("tf-btn-false");
+  btnTrue.disabled = true;
+  btnFalse.disabled = true;
+
+  const fbBox = document.getElementById("tf-feedback-box");
+  const fbStatus = document.getElementById("tf-feedback-status");
+  const fbExpl = document.getElementById("tf-feedback-explanation");
+
+  if (isCorrect) {
+    tfCorrectCount++;
+    document.getElementById("tf-correct-score").textContent = tfCorrectCount;
+    fbBox.className = "rounded-xl p-5 border-2 border-emerald-400 bg-emerald-50 max-w-2xl mx-auto w-full transition-all shadow-sm";
+    fbStatus.innerHTML = `<span class="text-xl">🎉</span> <span class="text-emerald-800">Tebrikler, Doğru Cevap!</span>`;
+  } else {
+    tfWrongCount++;
+    document.getElementById("tf-wrong-score").textContent = tfWrongCount;
+    fbBox.className = "rounded-xl p-5 border-2 border-rose-400 bg-rose-50 max-w-2xl mx-auto w-full transition-all shadow-sm";
+    fbStatus.innerHTML = `<span class="text-xl">⚠️</span> <span class="text-rose-800">Yanlış Cevap! (Doğrusu: ${q.isTrue ? 'DOĞRU' : 'YANLIŞ'})</span>`;
+  }
+
+  fbExpl.textContent = q.explanation;
+  fbBox.classList.remove("hidden");
+
+  // Cevap verilince üst ve alt sonraki butonlarını görünür yap
+  const tfTopBtn = document.getElementById("tf-next-btn-top");
+  const tfBotBtn = document.getElementById("tf-next-btn");
+  if (tfTopBtn) tfTopBtn.classList.remove("hidden");
+  if (tfBotBtn) tfBotBtn.classList.remove("hidden");
+}
+
+document.getElementById("tf-btn-true").onclick = () => handleTrueFalseAnswer(true);
+document.getElementById("tf-btn-false").onclick = () => handleTrueFalseAnswer(false);
+function advanceTfQuestion() {
+  tfCurrentIndex++;
+  if (tfCurrentIndex < TRUE_FALSE_DATA.length) {
+    renderTrueFalseQuestion();
+  } else {
+    document.getElementById("tf-question-box").classList.add("hidden");
+    const finishBox = document.getElementById("tf-finish-box");
+    finishBox.classList.remove("hidden");
+    document.getElementById("tf-finish-summary").textContent = `10 soruda ${tfCorrectCount} Doğru ve ${tfWrongCount} Yanlış yaptınız. Başarı Oranı: %${Math.round((tfCorrectCount / 10) * 100)}`;
+  }
+}
+const tfTopNextBtn = document.getElementById("tf-next-btn-top");
+const tfBotNextBtn = document.getElementById("tf-next-btn");
+if (tfTopNextBtn) tfTopNextBtn.onclick = advanceTfQuestion;
+if (tfBotNextBtn) tfBotNextBtn.onclick = advanceTfQuestion;
+document.getElementById("tf-reset-btn").onclick = initTrueFalse;
+document.getElementById("tf-restart-btn").onclick = initTrueFalse;
+
+
+
+// ------------------------------------------
+// 3. 20 MULTIPLE CHOICE TEST LOGIC
+// ------------------------------------------
+let mcCurrentIndex = 0;
+let mcCorrectCount = 0;
+let mcWrongCount = 0;
+
+function initMultipleChoice() {
+  mcCurrentIndex = 0;
+  mcCorrectCount = 0;
+  mcWrongCount = 0;
+  document.getElementById("mc-score-correct").textContent = "0";
+  document.getElementById("mc-score-wrong").textContent = "0";
+  document.getElementById("mc-question-stage").classList.remove("hidden");
+  document.getElementById("mc-final-stage").classList.add("hidden");
+  renderTestQuestion();
+}
+
+function renderTestQuestion() {
+  const q = TEST_QUESTIONS_DATA[mcCurrentIndex];
+  document.getElementById("mc-counter-text").textContent = mcCurrentIndex + 1;
+  document.getElementById("mc-topic-badge").textContent = q.topic;
+  document.getElementById("mc-question-title").textContent = q.question;
+
+  const pct = Math.round(((mcCurrentIndex + 1) / TEST_QUESTIONS_DATA.length) * 100);
+  document.getElementById("mc-progress-bar").style.width = `${pct}%`;
+
+  const optList = document.getElementById("mc-options-list");
+  optList.innerHTML = "";
+  document.getElementById("mc-explanation-box").classList.add("hidden");
+
+  // Yeni soruda üst ve alt sonraki butonlarını gizle
+  const mcTopNextBtn = document.getElementById("mc-next-question-btn");
+  const mcBotNextBtn = document.getElementById("mc-next-question-btn-bottom");
+  if (mcTopNextBtn) mcTopNextBtn.classList.add("hidden");
+  if (mcBotNextBtn) mcBotNextBtn.classList.add("hidden");
+
+  q.options.forEach((optText, optIdx) => {
+    const btn = document.createElement("button");
+    btn.className = "w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-red-600 hover:bg-red-50/40 font-bold text-xs sm:text-sm text-slate-900 transition shadow-sm flex items-start gap-2.5";
+    btn.innerHTML = `<span class="mt-0.5 text-red-700 font-extrabold">•</span> <span>${optText}</span>`;
+    btn.onclick = () => handleSelectOption(optIdx);
+    optList.appendChild(btn);
+  });
+}
+
+function handleSelectOption(chosenIdx) {
+  const q = TEST_QUESTIONS_DATA[mcCurrentIndex];
+  const isCorrect = (chosenIdx === q.correctIndex);
+
+  const optButtons = document.getElementById("mc-options-list").children;
+  for (let i = 0; i < optButtons.length; i++) {
+    optButtons[i].disabled = true;
+    if (i === q.correctIndex) {
+      optButtons[i].className = "w-full text-left p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50 text-emerald-950 font-bold text-xs sm:text-sm shadow-md flex items-start gap-2.5";
+      optButtons[i].innerHTML = `<span class="text-emerald-700 font-extrabold text-base">✔️</span> ` + optButtons[i].innerHTML;
+    } else if (i === chosenIdx && !isCorrect) {
+      optButtons[i].className = "w-full text-left p-4 rounded-xl border-2 border-rose-600 bg-rose-50 text-rose-950 font-bold text-xs sm:text-sm shadow-md flex items-start gap-2.5";
+      optButtons[i].innerHTML = `<span class="text-rose-700 font-extrabold text-base">❌</span> ` + optButtons[i].innerHTML;
+    } else {
+      optButtons[i].className = "w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-400 font-medium text-xs sm:text-sm opacity-60 flex items-start gap-2.5";
+    }
+  }
+
+  const expBox = document.getElementById("mc-explanation-box");
+  const statusInd = document.getElementById("mc-status-indicator");
+  const expText = document.getElementById("mc-explanation-text");
+
+  if (isCorrect) {
+    mcCorrectCount++;
+    document.getElementById("mc-score-correct").textContent = mcCorrectCount;
+    statusInd.innerHTML = `<span class="text-xl">🎉</span> <span class="text-emerald-800">Harika, Doğru Seçenek!</span>`;
+    expBox.className = "bg-emerald-50/90 border-2 border-emerald-300 rounded-xl p-5 shadow-sm";
+  } else {
+    mcWrongCount++;
+    document.getElementById("mc-score-wrong").textContent = mcWrongCount;
+    statusInd.innerHTML = `<span class="text-xl">💡</span> <span class="text-rose-800">Yanlış Seçenek!</span>`;
+    expBox.className = "bg-amber-50/90 border-2 border-amber-300 rounded-xl p-5 shadow-sm";
+  }
+
+  expText.textContent = q.explanation;
+  expBox.classList.remove("hidden");
+
+  // Şık seçilince üst ve alt sonraki butonlarını göster (Üstteki buton hemen dikkat çeker)
+  const mcTopNextBtn = document.getElementById("mc-next-question-btn");
+  const mcBotNextBtn = document.getElementById("mc-next-question-btn-bottom");
+  if (mcTopNextBtn) mcTopNextBtn.classList.remove("hidden");
+  if (mcBotNextBtn) mcBotNextBtn.classList.remove("hidden");
+}
+
+function advanceMcQuestion() {
+  mcCurrentIndex++;
+  if (mcCurrentIndex < TEST_QUESTIONS_DATA.length) {
+    renderTestQuestion();
+  } else {
+    document.getElementById("mc-question-stage").classList.add("hidden");
+    const finalStage = document.getElementById("mc-final-stage");
+    finalStage.classList.remove("hidden");
+
+    const total = TEST_QUESTIONS_DATA.length;
+    const scorePct = Math.round((mcCorrectCount / total) * 100);
+
+    document.getElementById("mc-final-correct").textContent = mcCorrectCount;
+    document.getElementById("mc-final-wrong").textContent = mcWrongCount;
+    document.getElementById("mc-final-score").textContent = `%${scorePct}`;
+
+    let msg = "";
+    if (scorePct >= 90) {
+      msg = "🎖️ Mükemmel Başarı! Millî Mücadele ve Belirli Günler konusuna tam anlamıyla hâkimsiniz. Tebrik ederiz!";
+    } else if (scorePct >= 70) {
+      msg = "👏 Çok Başarılı! Konunun büyük kısmını çok iyi kavramışsınız. Birkaç detayı tekrar ederek 20'de 20 yapabilirsiniz.";
+    } else {
+      msg = "📚 Güzel Gayret! Sunum tablosundaki tarihî günleri ve açıklamaları tekrar inceleyerek testi yeniden deneyebilirsiniz.";
+    }
+    document.getElementById("mc-final-feedback-msg").textContent = msg;
+  }
+}
+const mcTopNextBtnAction = document.getElementById("mc-next-question-btn");
+const mcBotNextBtnAction = document.getElementById("mc-next-question-btn-bottom");
+if (mcTopNextBtnAction) mcTopNextBtnAction.onclick = advanceMcQuestion;
+if (mcBotNextBtnAction) mcBotNextBtnAction.onclick = advanceMcQuestion;
+
+document.getElementById("mc-reset-btn").onclick = initMultipleChoice;
+document.getElementById("mc-final-restart-btn").onclick = initMultipleChoice;
+
+// ==========================================
+// INITIAL RENDER
+// ==========================================
 renderCards();
 renderTimeline();
 selectDay("30_agustos");
 
 /* Three.js Background Implementation (Harmonious Ivory & Crimson Palette) */
 (function initThreeJsBackground() {
-  if (typeof THREE === 'undefined') {
-    return;
-  }
+  if (typeof THREE === 'undefined') return;
 
   const canvas = document.getElementById("bg-canvas");
   if (!canvas) return;
@@ -835,20 +1632,15 @@ selectDay("30_agustos");
 
   function animate() {
     requestAnimationFrame(animate);
-
     targetX += (mouseX - targetX) * 0.03;
     targetY += (mouseY - targetY) * 0.03;
-
     particleSystem.rotation.y += 0.0006;
     particleSystem.rotation.x += 0.0003;
-
     ringMesh.rotation.z += 0.0015;
     ringMesh.rotation.y += 0.0008;
-
     camera.position.x = targetX * 8;
     camera.position.y = -targetY * 8;
     camera.lookAt(scene.position);
-
     renderer.render(scene, camera);
   }
   animate();
