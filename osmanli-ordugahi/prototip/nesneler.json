@@ -1,0 +1,2760 @@
+{
+  "surum": 23,
+  "gruplar": [
+    {
+      "anahtar": "gemiler",
+      "ad": "Gemiler",
+      "kayitlar": [
+        {
+          "anahtar": "kadirga",
+          "ad": "Kadırga",
+          "tur": "Kürekli savaş gemisi",
+          "kisaTanim": "İnce ve uzun gövdeli, kürekle hızlı manevra yapan; gerektiğinde yelken de açan Akdeniz savaş gemisidir.",
+          "somutVeri": "Klasik bir kadırga yaklaşık 41–42 metreydi; 25 oturakta 49 kürek ve yaklaşık 330 kişilik mürettebat taşıyabilirdi.",
+          "kullananBirlikler": [
+            "tersane",
+            "kaptaniDerya",
+            "levend",
+            "denizAzabi",
+            "kurekci"
+          ],
+          "modelYolu": "../3d/Denizciler/osmanli-kadirgasi/osmanli-kadirgasi-1550-1600-tripo-v1.glb",
+          "yayginYanlis": "Kadırga yalnız yelkenle giden iri bir gemi değildir; asıl hareket gücü kürekçilerdi.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş ve baş topu",
+              "tur": "Gemi önü",
+              "aciklama": "Baş, geminin suyu yardığı ön bölümüdür. Bazı savaş gemilerinde ileriye ateş eden toplar burada yer alırdı.",
+              "position": "0.44906m 0.12991m 0.00994m",
+              "normal": "-0.20904m 0.97679m 0.04669m",
+              "cameraTarget": "0.44906m 0.12991m 0.00994m",
+              "cameraOrbit": "55deg 76deg 1.73659m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:31:03.732Z"
+            },
+            {
+              "ad": "Kıç bölümü",
+              "tur": "Komuta ve yön",
+              "aciklama": "Kıç, geminin arka bölümüdür. Komuta yeri, süsleme ve fener gibi ayırt edici ayrıntılar burada görülebilirdi.",
+              "position": "-0.344m 0.152m 0.047m",
+              "normal": "0.452m 0.887m 0.095m",
+              "cameraTarget": "-0.349m 0.142m 0.046m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direk ve yelken",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Yelken rüzgârı hareket gücüne çevirirdi. Kürekli gemiler de uygun havada yelken açabilirdi.",
+              "position": "-0.011m 0.36m 0.01m",
+              "normal": "-0.863m -0.344m 0.369m",
+              "cameraTarget": "-0m 0.364m 0.006m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kürek sıraları",
+              "tur": "İnsan gücü",
+              "aciklama": "Kürekler gemiyi rüzgâr olmasa bile hareket ettirirdi. Düzenli tempo, çok sayıda kürekçinin birlikte çalışmasını gerektirirdi.",
+              "position": "-0.019m 0.056m 0.144m",
+              "normal": "-0.984m 0.137m -0.114m",
+              "cameraTarget": "-0.007m 0.055m 0.145m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Dümen",
+              "tur": "Yön verme",
+              "aciklama": "Dümen geminin yönünü değiştirmeye yarardı. Dalgada ve savaş manevrasında deneyimli kullanım çok önemliydi.",
+              "position": "-0.464m 0.079m 0.012m",
+              "normal": "0.869m 0.428m -0.247m",
+              "cameraTarget": "-0.474m 0.074m 0.015m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Güverte ve savaş alanı",
+              "tur": "Mürettebat alanı",
+              "aciklama": "Denizciler, askerler ve araçlar güvertede görev yerlerine dağılırdı. Alan dar olduğu için düzen ve iş bölümü gerekliydi.",
+              "position": "0.02055m 0.08277m 0.00393m",
+              "normal": "0.0375m 0.99887m 0.02914m",
+              "cameraTarget": "0.02055m 0.08277m 0.00393m",
+              "cameraOrbit": "55deg 76deg 1.73659m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:31:08.410Z"
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "kalyon",
+          "ad": "Kalyon",
+          "tur": "Yelkenli savaş gemisi",
+          "kisaTanim": "Yüksek bordalı, üç direkli ve top gücü yüksek yelkenli savaş gemisidir; XVII. yüzyılın sonlarına doğru Osmanlı filosunda ağırlık kazandı.",
+          "somutVeri": "Osmanlı donanmasında kalyon düzenine kalıcı geçiş 1682’den sonra hızlandı.",
+          "kullananBirlikler": [
+            "tersane",
+            "kaptaniDerya",
+            "levend"
+          ],
+          "modelYolu": "../3d/Denizciler/osmanli-kalyonu-1682-1700/osmanli-kalyonu-1682-1700-tripo-v1.glb",
+          "yayginYanlis": "XVI. yüzyılın bütün Osmanlı savaşlarını kalyonlarla göstermek yanlıştır; klasik çağda kadırga filosu belirleyiciydi.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            },
+            {
+              "baslik": "Kalyoncu",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "2001",
+              "url": "https://islamansiklopedisi.org.tr/kalyoncu",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş ve baş topu",
+              "tur": "Gemi önü",
+              "aciklama": "Baş, geminin suyu yardığı ön bölümüdür. Bazı savaş gemilerinde ileriye ateş eden toplar burada yer alırdı.",
+              "position": "-0.375m 0.255m 0.071m",
+              "normal": "0.64m 0.638m -0.427m",
+              "cameraTarget": "-0.382m 0.247m 0.076m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç bölümü",
+              "tur": "Komuta ve yön",
+              "aciklama": "Kıç, geminin arka bölümüdür. Komuta yeri, süsleme ve fener gibi ayırt edici ayrıntılar burada görülebilirdi.",
+              "position": "0.469m 0.251m 0.066m",
+              "normal": "0.561m 0.813m 0.157m",
+              "cameraTarget": "0.462m 0.242m 0.064m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direk ve yelken",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Yelken rüzgârı hareket gücüne çevirirdi. Kürekli gemiler de uygun havada yelken açabilirdi.",
+              "position": "0.016m 0.471m 0.004m",
+              "normal": "-0.745m 0.654m 0.129m",
+              "cameraTarget": "0.025m 0.463m 0.002m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Dümen",
+              "tur": "Yön verme",
+              "aciklama": "Dümen geminin yönünü değiştirmeye yarardı. Dalgada ve savaş manevrasında deneyimli kullanım çok önemliydi.",
+              "position": "0.414m 0.097m -0.003m",
+              "normal": "0.986m -0.093m -0.139m",
+              "cameraTarget": "0.402m 0.098m -0.002m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Güverte ve savaş alanı",
+              "tur": "Mürettebat alanı",
+              "aciklama": "Denizciler, askerler ve araçlar güvertede görev yerlerine dağılırdı. Alan dar olduğu için düzen ve iş bölümü gerekliydi.",
+              "position": "-0.03037m 0.15512m 0.00799m",
+              "normal": "0.01145m 0.99973m 0.0203m",
+              "cameraTarget": "-0.03037m 0.15512m 0.00799m",
+              "cameraOrbit": "-6.14238deg 67.07129deg 1.23479m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:31:27.433Z"
+            }
+          ],
+          "donemAnahtari": "donusum",
+          "donemAdi": "Dönüşüm dönemi",
+          "donemAraligi": "1600–1700"
+        },
+        {
+          "anahtar": "bastarda",
+          "ad": "Baştarda",
+          "tur": "Büyük kürekli komuta gemisi",
+          "kisaTanim": "Kadırgadan daha büyük ve gösterişli, çok sayıda kürekçi ve savaşçı taşıyabilen komuta gemisidir.",
+          "somutVeri": "Paşa baştardası yaklaşık 53–55 metreye ulaşabilir, 800 kadar kişi taşıyabilir ve kıçındaki üç fenerle ayırt edilirdi.",
+          "kullananBirlikler": [
+            "tersane",
+            "kaptaniDerya",
+            "levend",
+            "kurekci"
+          ],
+          "modelYolu": "../3d/Denizciler/osmanli-bastardasi-komuta-gemisi/pasa-bastardasi-komuta-gemisi-1550-1600-tripo-v2.glb",
+          "yayginYanlis": "Baştarda, kadırganın yalnız süslü bir kopyası değildir; daha büyük gövdesi ve komuta göreviyle ayrılır.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş ve baş topu",
+              "tur": "Gemi önü",
+              "aciklama": "Baş, geminin suyu yardığı ön bölümüdür. Bazı savaş gemilerinde ileriye ateş eden toplar burada yer alırdı.",
+              "position": "-0.404m 0.14m 0.082m",
+              "normal": "-0.457m 0.734m 0.502m",
+              "cameraTarget": "-0.399m 0.131m 0.076m",
+              "cameraOrbit": "-42deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç bölümü",
+              "tur": "Komuta ve yön",
+              "aciklama": "Kıç, geminin arka bölümüdür. Komuta yeri, süsleme ve fener gibi ayırt edici ayrıntılar burada görülebilirdi.",
+              "position": "0.453m 0.183m 0.07m",
+              "normal": "0.515m 0.753m 0.409m",
+              "cameraTarget": "0.447m 0.174m 0.065m",
+              "cameraOrbit": "52deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direk ve yelken",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Yelken rüzgârı hareket gücüne çevirirdi. Kürekli gemiler de uygun havada yelken açabilirdi.",
+              "position": "0.09m 0.302m 0.026m",
+              "normal": "0.434m -0.15m 0.888m",
+              "cameraTarget": "0.084m 0.304m 0.015m",
+              "cameraOrbit": "26deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kürek sıraları",
+              "tur": "İnsan gücü",
+              "aciklama": "Kürekler gemiyi rüzgâr olmasa bile hareket ettirirdi. Düzenli tempo, çok sayıda kürekçinin birlikte çalışmasını gerektirirdi.",
+              "position": "0.016m 0.054m 0.142m",
+              "normal": "-0.593m 0.639m 0.49m",
+              "cameraTarget": "0.024m 0.046m 0.136m",
+              "cameraOrbit": "-50deg 76deg 0.58m"
+            },
+            {
+              "ad": "Dümen",
+              "tur": "Yön verme",
+              "aciklama": "Dümen geminin yönünü değiştirmeye yarardı. Dalgada ve savaş manevrasında deneyimli kullanım çok önemliydi.",
+              "position": "0.459m 0.147m 0.018m",
+              "normal": "0.921m 0.389m 0.026m",
+              "cameraTarget": "0.448m 0.142m 0.018m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Güverte ve savaş alanı",
+              "tur": "Mürettebat alanı",
+              "aciklama": "Denizciler, askerler ve araçlar güvertede görev yerlerine dağılırdı. Alan dar olduğu için düzen ve iş bölümü gerekliydi.",
+              "position": "-0.07143m 0.07778m 0.00911m",
+              "normal": "0.01396m 0.9999m 0m",
+              "cameraTarget": "-0.07143m 0.07778m 0.00911m",
+              "cameraOrbit": "34.48139deg 22.81582deg 1.33817m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:31:40.178Z"
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "firkate",
+          "ad": "Firkate",
+          "tur": "Hızlı kürekli tekne",
+          "kisaTanim": "Haber taşıma, keşif ve kıyı görevlerinde kullanılan küçük, hafif ve hızlı kürekli teknedir.",
+          "somutVeri": "Firkate 10–17 oturaklı olabilirdi; savaşta 80–100 kadar levend taşıyan örnekleri vardı.",
+          "kullananBirlikler": [
+            "kaptaniDerya",
+            "levend",
+            "kurekci"
+          ],
+          "modelYolu": "../3d/Denizciler/Firkate/osmanli-firkatesi-haber-teknesi-1550-1600-tripo-v1.glb",
+          "yayginYanlis": "Firkateyi yüksek bordalı büyük bir okyanus yelkenlisi gibi göstermek yanlıştır.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş ve baş topu",
+              "tur": "Gemi önü",
+              "aciklama": "Baş, geminin suyu yardığı ön bölümüdür. Bazı savaş gemilerinde ileriye ateş eden toplar burada yer alırdı.",
+              "position": "-0.408m 0.191m 0.024m",
+              "normal": "-0.074m 0.977m 0.201m",
+              "cameraTarget": "-0.408m 0.179m 0.022m",
+              "cameraOrbit": "-20deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç bölümü",
+              "tur": "Komuta ve yön",
+              "aciklama": "Kıç, geminin arka bölümüdür. Komuta yeri, süsleme ve fener gibi ayırt edici ayrıntılar burada görülebilirdi.",
+              "position": "0.418m 0.125m 0.04m",
+              "normal": "0.479m 0.76m 0.44m",
+              "cameraTarget": "0.412m 0.116m 0.035m",
+              "cameraOrbit": "47deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direk ve yelken",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Yelken rüzgârı hareket gücüne çevirirdi. Kürekli gemiler de uygun havada yelken açabilirdi.",
+              "position": "-0.004m 0.427m 0.018m",
+              "normal": "-0.279m 0.289m 0.916m",
+              "cameraTarget": "-0m 0.423m 0.007m",
+              "cameraOrbit": "-17deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kürek sıraları",
+              "tur": "İnsan gücü",
+              "aciklama": "Kürekler gemiyi rüzgâr olmasa bile hareket ettirirdi. Düzenli tempo, çok sayıda kürekçinin birlikte çalışmasını gerektirirdi.",
+              "position": "-0.032m 0.074m 0.157m",
+              "normal": "0.085m 0.896m 0.435m",
+              "cameraTarget": "-0.033m 0.064m 0.152m",
+              "cameraOrbit": "11deg 76deg 0.58m"
+            },
+            {
+              "ad": "Dümen",
+              "tur": "Yön verme",
+              "aciklama": "Dümen geminin yönünü değiştirmeye yarardı. Dalgada ve savaş manevrasında deneyimli kullanım çok önemliydi.",
+              "position": "0.442m 0.164m 0.001m",
+              "normal": "-0.903m 0.424m 0.072m",
+              "cameraTarget": "0.453m 0.159m -0m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Güverte ve savaş alanı",
+              "tur": "Mürettebat alanı",
+              "aciklama": "Denizciler, askerler ve araçlar güvertede görev yerlerine dağılırdı. Alan dar olduğu için düzen ve iş bölümü gerekliydi.",
+              "position": "-0.12004m 0.08127m 0.00113m",
+              "normal": "0.06576m 0.99782m 0.00562m",
+              "cameraTarget": "-0.12004m 0.08127m 0.00113m",
+              "cameraOrbit": "-1.03945deg 49.60201deg 1.47422m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:31:46.982Z"
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "kalite",
+          "ad": "Kalite (Kalyata)",
+          "tur": "Orta boy kürekli savaş gemisi",
+          "kisaTanim": "Kadırgadan küçük, firkateden büyük; keşif, koruma ve savaş görevlerinde kullanılan kürekli gemidir.",
+          "somutVeri": "Kalyata yaklaşık 32–36 metre uzunluğunda ve 19–24 oturaklı olabilirdi.",
+          "kullananBirlikler": [
+            "tersane",
+            "levend",
+            "denizAzabi",
+            "kurekci"
+          ],
+          "modelYolu": "../3d/Denizciler/osmanli-kalyatasi/osmanli-kalyatasi-1550-1600-tripo-v1.glb",
+          "yayginYanlis": "Kalyata, kadırganın başka adı değildir; boyutu ve oturak sayısı daha küçüktür.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş ve baş topu",
+              "tur": "Gemi önü",
+              "aciklama": "Baş, geminin suyu yardığı ön bölümüdür. Bazı savaş gemilerinde ileriye ateş eden toplar burada yer alırdı.",
+              "position": "0.373m 0.103m 0.04m",
+              "normal": "0.168m 0.467m 0.868m",
+              "cameraTarget": "0.371m 0.097m 0.03m",
+              "cameraOrbit": "11deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç bölümü",
+              "tur": "Komuta ve yön",
+              "aciklama": "Kıç, geminin arka bölümüdür. Komuta yeri, süsleme ve fener gibi ayırt edici ayrıntılar burada görülebilirdi.",
+              "position": "-0.406m 0.138m 0.051m",
+              "normal": "0.395m 0.917m 0.051m",
+              "cameraTarget": "-0.411m 0.126m 0.05m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direk ve yelken",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Yelken rüzgârı hareket gücüne çevirirdi. Kürekli gemiler de uygun havada yelken açabilirdi.",
+              "position": "-0.01m 0.399m -0.003m",
+              "normal": "-0.454m -0.278m -0.847m",
+              "cameraTarget": "-0.005m 0.403m 0.007m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kürek sıraları",
+              "tur": "İnsan gücü",
+              "aciklama": "Kürekler gemiyi rüzgâr olmasa bile hareket ettirirdi. Düzenli tempo, çok sayıda kürekçinin birlikte çalışmasını gerektirirdi.",
+              "position": "0.048m 0.046m 0.17m",
+              "normal": "-0.47m -0.65m -0.597m",
+              "cameraTarget": "0.054m 0.054m 0.178m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Dümen",
+              "tur": "Yön verme",
+              "aciklama": "Dümen geminin yönünü değiştirmeye yarardı. Dalgada ve savaş manevrasında deneyimli kullanım çok önemliydi.",
+              "position": "-0.492m 0.108m 0.039m",
+              "normal": "-0.977m -0.135m 0.166m",
+              "cameraTarget": "-0.48m 0.109m 0.037m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Güverte ve savaş alanı",
+              "tur": "Mürettebat alanı",
+              "aciklama": "Denizciler, askerler ve araçlar güvertede görev yerlerine dağılırdı. Alan dar olduğu için düzen ve iş bölümü gerekliydi.",
+              "position": "-0.07088m 0.05172m -0.01128m",
+              "normal": "0.02746m 0.99961m -0.00478m",
+              "cameraTarget": "-0.07088m 0.05172m -0.01128m",
+              "cameraOrbit": "-1.03945deg 49.60201deg 1.4652m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:31:53.112Z"
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "mavna",
+          "ad": "Mavna",
+          "tur": "Ağır kürekli savaş gemisi",
+          "kisaTanim": "Geniş gövdeli, çok sayıda kürekçi ve savaşçı taşıyan ağır kürekli savaş gemisidir.",
+          "somutVeri": "Bir Osmanlı mavnası yaklaşık 49 metre, 26 oturak ve 600 kişilik mürettebata ulaşabiliyordu.",
+          "kullananBirlikler": [
+            "tersane",
+            "kaptaniDerya",
+            "levend",
+            "kurekci"
+          ],
+          "modelYolu": "../3d/Denizciler/Mavna/mavna-1550-1600-tripo-v1.glb",
+          "modelVaryantlari": [
+            {
+              "ad": "Ağır savaş mavnası",
+              "modelYolu": "../3d/Denizciler/Mavna/mavna-1550-1600-tripo-v1.glb",
+              "noktalar": [
+                {
+                  "ad": "Baş ve baş topu",
+                  "tur": "Gemi önü",
+                  "aciklama": "Baş, geminin suyu yardığı ön bölümüdür. Bazı savaş gemilerinde ileriye ateş eden toplar burada yer alırdı.",
+                  "position": "0.087m 0.135m -0.363m",
+                  "normal": "0.983m 0.163m -0.087m",
+                  "cameraTarget": "0.076m 0.133m -0.362m",
+                  "cameraOrbit": "55deg 76deg 0.58m"
+                },
+                {
+                  "ad": "Kıç bölümü",
+                  "tur": "Komuta ve yön",
+                  "aciklama": "Kıç, geminin arka bölümüdür. Komuta yeri, süsleme ve fener gibi ayırt edici ayrıntılar burada görülebilirdi.",
+                  "position": "0.062m 0.209m 0.45m",
+                  "normal": "0.36m 0.913m 0.191m",
+                  "cameraTarget": "0.058m 0.198m 0.448m",
+                  "cameraOrbit": "55deg 76deg 0.58m"
+                },
+                {
+                  "ad": "Direk ve yelken",
+                  "tur": "Rüzgâr gücü",
+                  "aciklama": "Yelken rüzgârı hareket gücüne çevirirdi. Kürekli gemiler de uygun havada yelken açabilirdi.",
+                  "position": "0.042m 0.325m 0.037m",
+                  "normal": "-0.359m 0.756m -0.547m",
+                  "cameraTarget": "0.047m 0.316m 0.044m",
+                  "cameraOrbit": "-55deg 76deg 0.58m"
+                },
+                {
+                  "ad": "Dümen",
+                  "tur": "Yön verme",
+                  "aciklama": "Dümen geminin yönünü değiştirmeye yarardı. Dalgada ve savaş manevrasında deneyimli kullanım çok önemliydi.",
+                  "position": "0.051m 0.116m 0.469m",
+                  "normal": "0.578m -0.408m 0.707m",
+                  "cameraTarget": "0.044m 0.121m 0.46m",
+                  "cameraOrbit": "39deg 76deg 0.58m"
+                },
+                {
+                  "ad": "Güverte ve savaş alanı",
+                  "tur": "Mürettebat alanı",
+                  "aciklama": "Denizciler, askerler ve araçlar güvertede görev yerlerine dağılırdı. Alan dar olduğu için düzen ve iş bölümü gerekliydi.",
+                  "position": "0.0217m 0.13393m 0.01965m",
+                  "normal": "0.24529m 0.96263m -0.11476m",
+                  "cameraTarget": "0.0217m 0.13393m 0.01965m",
+                  "cameraOrbit": "55deg 76deg 1.20644m",
+                  "koordinatKaynak": "manual_surface_pick",
+                  "koordinatOnayTarihi": "2026-09-15T12:32:01.320Z"
+                }
+              ]
+            },
+            {
+              "ad": "Alternatif model",
+              "modelYolu": "../3d/Denizciler/osmanli-mavnasi-agir-savas-gemisi/osmanli-mavnasi-agir-savas-gemisi-1550-1600-tripo-v1.glb",
+              "noktalar": [
+                {
+                  "ad": "Baş ve baş topu",
+                  "tur": "Gemi önü",
+                  "aciklama": "Baş, geminin suyu yardığı ön bölümüdür. Bazı savaş gemilerinde ileriye ateş eden toplar burada yer alırdı.",
+                  "position": "0.087m 0.135m -0.363m",
+                  "normal": "0.983m 0.163m -0.087m",
+                  "cameraTarget": "0.076m 0.133m -0.362m",
+                  "cameraOrbit": "55deg 76deg 0.58m"
+                },
+                {
+                  "ad": "Kıç bölümü",
+                  "tur": "Komuta ve yön",
+                  "aciklama": "Kıç, geminin arka bölümüdür. Komuta yeri, süsleme ve fener gibi ayırt edici ayrıntılar burada görülebilirdi.",
+                  "position": "0.062m 0.209m 0.45m",
+                  "normal": "0.36m 0.913m 0.191m",
+                  "cameraTarget": "0.058m 0.198m 0.448m",
+                  "cameraOrbit": "55deg 76deg 0.58m"
+                },
+                {
+                  "ad": "Direk ve yelken",
+                  "tur": "Rüzgâr gücü",
+                  "aciklama": "Yelken rüzgârı hareket gücüne çevirirdi. Kürekli gemiler de uygun havada yelken açabilirdi.",
+                  "position": "0.042m 0.325m 0.037m",
+                  "normal": "-0.359m 0.756m -0.547m",
+                  "cameraTarget": "0.047m 0.316m 0.044m",
+                  "cameraOrbit": "-55deg 76deg 0.58m"
+                },
+                {
+                  "ad": "Dümen",
+                  "tur": "Yön verme",
+                  "aciklama": "Dümen geminin yönünü değiştirmeye yarardı. Dalgada ve savaş manevrasında deneyimli kullanım çok önemliydi.",
+                  "position": "0.051m 0.116m 0.469m",
+                  "normal": "0.578m -0.408m 0.707m",
+                  "cameraTarget": "0.044m 0.121m 0.46m",
+                  "cameraOrbit": "39deg 76deg 0.58m"
+                },
+                {
+                  "ad": "Güverte ve savaş alanı",
+                  "tur": "Mürettebat alanı",
+                  "aciklama": "Denizciler, askerler ve araçlar güvertede görev yerlerine dağılırdı. Alan dar olduğu için düzen ve iş bölümü gerekliydi.",
+                  "position": "0.04767m 0.11225m -0.01554m",
+                  "normal": "-0.00874m 0.99993m 0.00751m",
+                  "cameraTarget": "0.04767m 0.11225m -0.01554m",
+                  "cameraOrbit": "4.3391deg 56.97792deg 1.36353m",
+                  "koordinatKaynak": "manual_surface_pick",
+                  "koordinatOnayTarihi": "2026-09-15T12:32:11.221Z"
+                }
+              ]
+            }
+          ],
+          "yayginYanlis": "Buradaki mavna, günümüzdeki motorsuz yük teknesiyle aynı biçimde düşünülmemelidir.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş ve baş topu",
+              "tur": "Gemi önü",
+              "aciklama": "Baş, geminin suyu yardığı ön bölümüdür. Bazı savaş gemilerinde ileriye ateş eden toplar burada yer alırdı.",
+              "position": "0.087m 0.135m -0.363m",
+              "normal": "0.983m 0.163m -0.087m",
+              "cameraTarget": "0.076m 0.133m -0.362m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç bölümü",
+              "tur": "Komuta ve yön",
+              "aciklama": "Kıç, geminin arka bölümüdür. Komuta yeri, süsleme ve fener gibi ayırt edici ayrıntılar burada görülebilirdi.",
+              "position": "0.062m 0.209m 0.45m",
+              "normal": "0.36m 0.913m 0.191m",
+              "cameraTarget": "0.058m 0.198m 0.448m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direk ve yelken",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Yelken rüzgârı hareket gücüne çevirirdi. Kürekli gemiler de uygun havada yelken açabilirdi.",
+              "position": "0.042m 0.325m 0.037m",
+              "normal": "-0.359m 0.756m -0.547m",
+              "cameraTarget": "0.047m 0.316m 0.044m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Dümen",
+              "tur": "Yön verme",
+              "aciklama": "Dümen geminin yönünü değiştirmeye yarardı. Dalgada ve savaş manevrasında deneyimli kullanım çok önemliydi.",
+              "position": "0.051m 0.116m 0.469m",
+              "normal": "0.578m -0.408m 0.707m",
+              "cameraTarget": "0.044m 0.121m 0.46m",
+              "cameraOrbit": "39deg 76deg 0.58m"
+            },
+            {
+              "ad": "Güverte ve savaş alanı",
+              "tur": "Mürettebat alanı",
+              "aciklama": "Denizciler, askerler ve araçlar güvertede görev yerlerine dağılırdı. Alan dar olduğu için düzen ve iş bölümü gerekliydi.",
+              "position": "0.00769m 0.11462m -0.0685m",
+              "normal": "0m 0.99998m -0.00685m",
+              "cameraTarget": "0.00769m 0.11462m -0.0685m",
+              "cameraOrbit": "-97.89673deg 53.09587deg 1.20644m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:31:57.149Z"
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "goke",
+          "ad": "Göke",
+          "tur": "Erken dönem büyük savaş gemisi",
+          "kisaTanim": "Yüksek bordalı, hem kürek hem yelken kullanabilen çok büyük bir savaş gemisidir; II. Bayezid devrindeki deniz büyümesini gösterir.",
+          "somutVeri": "TDV kaydı, Kemal Reis için yapılan iki gökenin yaklaşık 2.500 tonluk büyük gemiler olduğunu bildirir.",
+          "kullananBirlikler": [
+            "tersane",
+            "kaptaniDerya",
+            "levend",
+            "kurekci"
+          ],
+          "modelYolu": "../3d/Denizciler/Göke — erken dönem deniz devi/osmanli-gokesi-kemal-reis-1495-1520-tripo-v1.glb",
+          "yayginYanlis": "Gökeyi XVII. yüzyıl kalyonuyla aynı gemi saymak yanlıştır; bu, daha erken bir dönemin kürek ve yelkeni birlikte kullanan büyük gemisidir.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş bodoslaması",
+              "tur": "Gemi önü",
+              "aciklama": "Baş bodoslaması geminin suyu yaran ön omurgasıdır. Büyük gövdenin dalgada ilerlemesine yardım eder.",
+              "position": "-0.408m 0.22m 0.099m",
+              "normal": "-0.814m 0.318m 0.487m",
+              "cameraTarget": "-0.398m 0.216m 0.093m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Yüksek borda",
+              "tur": "Gövde koruması",
+              "aciklama": "Borda, su çizgisinin üstündeki yan gövdedir. Gökenin yüksek bordası onu küçük kürekli teknelerden ayıran önemli bir özelliktir.",
+              "position": "0.004m 0.136m 0.128m",
+              "normal": "0.097m 0.449m 0.888m",
+              "cameraTarget": "0.003m 0.13m 0.118m",
+              "cameraOrbit": "6deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direkler ve yelkenler",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Yelkenler uzun yolculuklarda rüzgârı kullanırdı. Göke yalnız küreğe bağlı kalmadan açık denizde yol alabilirdi.",
+              "position": "-0.034m 0.403m 0.03m",
+              "normal": "0.247m 0.941m 0.233m",
+              "cameraTarget": "-0.037m 0.392m 0.027m",
+              "cameraOrbit": "47deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kürek sıraları",
+              "tur": "İnsan gücü",
+              "aciklama": "Kürekler rüzgâr yetersizken gemiye hareket ve manevra sağlardı. Bu kadar büyük bir gemide kürekçiler aynı ritimde çalışmak zorundaydı.",
+              "position": "-0.012m 0.183m 0.182m",
+              "normal": "-0.171m -0.833m 0.526m",
+              "cameraTarget": "-0.01m 0.193m 0.175m",
+              "cameraOrbit": "-18deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç ve dümen",
+              "tur": "Yön verme",
+              "aciklama": "Kıç geminin arka bölümüdür. Dümen burada suyu yönlendirerek büyük gövdenin rotasını değiştirirdi.",
+              "position": "0.392m 0.289m 0.057m",
+              "normal": "-0.628m 0.684m -0.371m",
+              "cameraTarget": "0.4m 0.28m 0.062m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Güverte ve savaş alanı",
+              "tur": "Mürettebat alanı",
+              "aciklama": "Denizciler ve savaşçılar güvertede farklı görev yerlerine dağılırdı. Yüksek yapı gözetleme ve savunma için alan sağlardı.",
+              "position": "-0.13839m 0.14984m 0.0011m",
+              "normal": "0.0962m 0.99534m 0.006m",
+              "cameraTarget": "-0.13839m 0.14984m 0.0011m",
+              "cameraOrbit": "4.41401deg 57.12772deg 1.39206m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:32:15.385Z"
+            }
+          ],
+          "donemAnahtari": "erken",
+          "donemAdi": "Erken dönem",
+          "donemAraligi": "1400–1520"
+        },
+        {
+          "anahtar": "sayka",
+          "ad": "Tuna Şaykası",
+          "tur": "Nehir savaş teknesi",
+          "kisaTanim": "Tuna ve çevresindeki sığ sularda kullanılan, geniş ve düz tabanlı küçük savaş teknesidir.",
+          "somutVeri": "30 Aralık 1567 tarihli bir hüküm Tuna için 100 geminin hazır tutulmasını istedi; şaykalar nehir savunmasında kullanılan tekne türlerindendi.",
+          "kullananBirlikler": [
+            "tersane",
+            "kaptaniDerya",
+            "levend",
+            "denizAzabi",
+            "kurekci"
+          ],
+          "modelYolu": "../3d/Denizciler/osmanli-tuna-saykasi/osmanli-tuna-saykasi-1550-1600-tripo-v1.glb",
+          "yayginYanlis": "Şaykayı açık deniz için yapılmış yüksek bordalı bir kalyon gibi düşünmek yanlıştır; düz tabanı sığ nehirlerde hareket etmeye uygundu.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            },
+            {
+              "baslik": "Tuna",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "2012",
+              "url": "https://islamansiklopedisi.org.tr/tuna",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Alçak baş",
+              "tur": "Nehir gövdesi",
+              "aciklama": "Alçak baş, teknenin sığ suda rahat ilerlemesine yardım eder. Açık deniz gemilerindeki kadar yüksek bir ön yapı yoktur.",
+              "position": "0.087m 0.175m -0.348m",
+              "normal": "0.789m 0.572m -0.224m",
+              "cameraTarget": "0.077m 0.168m -0.345m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Geniş ve düz tabanlı gövde",
+              "tur": "Sığ su uyumu",
+              "aciklama": "Geniş, düz taban teknenin nehirde dengeli kalmasını sağlar. Derin omurgalı büyük gemilerin giremediği yerlere yaklaşabilir.",
+              "position": "0.141m 0.077m 0.023m",
+              "normal": "0.991m -0.058m -0.122m",
+              "cameraTarget": "0.129m 0.078m 0.024m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direk ve yelken",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Uygun rüzgârda yelken kürekçilere yardım ederdi. Nehir akıntısı değiştiği için tekne birden fazla hareket yöntemine ihtiyaç duyardı.",
+              "position": "0.101m 0.349m 0.126m",
+              "normal": "0.206m -0.936m 0.286m",
+              "cameraTarget": "0.099m 0.36m 0.122m",
+              "cameraOrbit": "36deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kürek sıraları",
+              "tur": "Manevra gücü",
+              "aciklama": "Kürekler dar nehir yatağında hızlı yön değiştirmeyi sağlardı. Mürettebat kıyıya yaklaşırken kürek temposunu birlikte ayarlardı.",
+              "position": "0.141m 0.077m 0.023m",
+              "normal": "0.991m -0.058m -0.122m",
+              "cameraTarget": "0.129m 0.078m 0.024m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç ve dümen",
+              "tur": "Yön verme",
+              "aciklama": "Dümen tekneyi akıntıya karşı doğru hatta tutmaya yardım eder. Kıç bölümü yön veren denizcinin çalışma yeridir.",
+              "position": "0.089m 0.183m 0.376m",
+              "normal": "0.125m 0.977m 0.172m",
+              "cameraTarget": "0.088m 0.171m 0.374m",
+              "cameraOrbit": "36deg 76deg 0.58m"
+            },
+            {
+              "ad": "Açık savaş güvertesi",
+              "tur": "Mürettebat alanı",
+              "aciklama": "Açık güverte askerlerin kıyıyı ve nehir yolunu görebilmesini sağlardı. Alan küçük olduğundan herkesin görevi belirliydi.",
+              "position": "0.00471m 0.09696m 0.00786m",
+              "normal": "0.11744m 0.99304m 0.00939m",
+              "cameraTarget": "0.00471m 0.09696m 0.00786m",
+              "cameraOrbit": "-95.42983deg 53.09584deg 1.52834m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:32:24.121Z"
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "karamursel",
+          "ad": "Karamürsel",
+          "tur": "Küçük kıyı ve nakliye teknesi",
+          "kisaTanim": "Osmanlıların erken çektiri türlerinden doğan, zamanla yakın mesafeli yük ve insan taşımada kullanılan küçük teknedir.",
+          "somutVeri": "TDV kaydı Karamürsel'i ilk Osmanlı çektirisi olarak anar; daha sonra tahıl ve kereste taşımak için de kullanıldığını belirtir.",
+          "kullananBirlikler": [
+            "tersane",
+            "levend",
+            "kurekci"
+          ],
+          "modelYolu": "../3d/Denizciler/osmanli-karamursel-nakliye-teknesi/osmanli-karamursel-nakliye-teknesi-1550-1600-tripo-v1.glb",
+          "yayginYanlis": "Karamürsel büyük toplarla dolu bir savaş kalyonu değildir; küçük gövdesi kıyı ve nakliye işlerine uygundu.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş",
+              "tur": "Tekne önü",
+              "aciklama": "Baş teknenin suyu yardığı ön bölümdür. Küçük gövde kıyıya ve iskeleye yaklaşmayı kolaylaştırır.",
+              "position": "0.287m 0.203m 0.072m",
+              "normal": "0.98m -0.129m 0.153m",
+              "cameraTarget": "0.275m 0.204m 0.07m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Güvertesiz taşıma gövdesi",
+              "tur": "Yük alanı",
+              "aciklama": "Açık gövde tahıl, kereste ve başka yüklerin yerleştirilmesine alan bırakır. Yük dengeli dağılmazsa teknenin dengesi bozulabilir.",
+              "position": "0.009m 0.153m 0.126m",
+              "normal": "0.003m 0.823m 0.567m",
+              "cameraTarget": "0.009m 0.143m 0.119m",
+              "cameraOrbit": "0deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direk ve latin yelkeni",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Üçgen biçimli latin yelkeni farklı rüzgâr yönlerinde kullanılabilir. Küçük mürettebat uzun yolda rüzgârdan yararlanırdı.",
+              "position": "-0.009m 0.373m -0.007m",
+              "normal": "0.257m 0.097m -0.962m",
+              "cameraTarget": "-0.012m 0.371m 0.004m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç",
+              "tur": "Arka bölüm",
+              "aciklama": "Kıç, yük düzeni ile yön verme işinin birleştiği arka bölümdür. Denizci buradan teknenin hareketini izlerdi.",
+              "position": "-0.398m 0.167m 0.023m",
+              "normal": "0.259m 0.937m -0.234m",
+              "cameraTarget": "-0.401m 0.156m 0.026m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Dümen",
+              "tur": "Yön verme",
+              "aciklama": "Dümen kıyı, iskele ve dar geçitlerde teknenin rotasını değiştirir. Küçük teknede hızlı tepki vermek önemlidir.",
+              "position": "-0.477m 0.135m 0.007m",
+              "normal": "-0.926m -0.323m 0.197m",
+              "cameraTarget": "-0.466m 0.139m 0.004m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "barca",
+          "ad": "Barça",
+          "tur": "Ağır nakliye ve savaş gemisi",
+          "kisaTanim": "İki ya da üç direkli, düz tabanlı, hem ticaret ve nakliye hem de savaşta kullanılabilen yelkenli gemidir.",
+          "somutVeri": "XV. yüzyıl sonuna ait büyük bir barça örneğinde 83 top kaydedilmiştir; bu sayı bütün barçaların aynı olduğu anlamına gelmez.",
+          "kullananBirlikler": [
+            "tersane",
+            "kaptaniDerya",
+            "levend"
+          ],
+          "modelYolu": "../3d/Denizciler/Barça/osmanli-barca-agir-nakliye-savas-gemisi-1550-1600-tripo-v1.glb",
+          "yayginYanlis": "Barça yalnız yük taşıyan silahsız bir tekne değildi; bazı örnekleri savaş için güçlü biçimde donatıldı.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş ve baş güvertesi",
+              "tur": "Gemi önü",
+              "aciklama": "Baş geminin dalgaya giren ön bölümüdür. Baş güvertesi gözetleme ve çalışma alanı sunar.",
+              "position": "-0.45708m 0.2653m -0.02192m",
+              "normal": "0.0494m 0.82181m -0.56762m",
+              "cameraTarget": "-0.45708m 0.2653m -0.02192m",
+              "cameraOrbit": "-121.43953deg 70.17686deg 1.90149m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:32:39.175Z"
+            },
+            {
+              "ad": "Geniş yük gövdesi",
+              "tur": "Taşıma alanı",
+              "aciklama": "Geniş gövde asker, erzak ve ağır yük taşımaya uygundur. Düz taban liman ve kıyı yaklaşmalarında avantaj sağlayabilir.",
+              "position": "0.065m 0.242m 0.205m",
+              "normal": "0.359m -0.356m -0.863m",
+              "cameraTarget": "0.06m 0.246m 0.216m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direkler ve yelkenler",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "İki ya da üç direk geminin farklı rüzgârlardan yararlanmasını sağlar. Yelken düzeni uzun yol taşımasına uygundur.",
+              "position": "-0.018m 0.477m 0.028m",
+              "normal": "-0.899m 0.096m 0.428m",
+              "cameraTarget": "-0.007m 0.476m 0.023m",
+              "cameraOrbit": "-55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Toplar ve lombarlar",
+              "tur": "Savaş donanımı",
+              "aciklama": "Toplar gövde yanındaki açıklıklardan ateş edebilirdi. Her barça aynı sayıda top taşımazdı.",
+              "position": "-0.013m 0.198m 0.158m",
+              "normal": "0.078m 0.995m 0.057m",
+              "cameraTarget": "-0.014m 0.186m 0.157m",
+              "cameraOrbit": "54deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç ve dümen",
+              "tur": "Yön verme",
+              "aciklama": "Kıçta yön verme ve gemiyi yönetme işleri toplanırdı. Dümen ağır gövdenin rotasını değiştirirdi.",
+              "position": "0.44m 0.231m 0.106m",
+              "normal": "0.138m -0.733m 0.667m",
+              "cameraTarget": "0.439m 0.24m 0.098m",
+              "cameraOrbit": "12deg 76deg 0.58m"
+            },
+            {
+              "ad": "Ana güverte",
+              "tur": "Çalışma alanı",
+              "aciklama": "Güverte denizcilerin yelken, yük ve savaş görevlerini yürüttüğü alandır. Nakliye yükü ile savaş düzeni birlikte planlanırdı.",
+              "position": "0.05227m 0.22349m 0.00611m",
+              "normal": "0.04803m 0.99885m -0.00068m",
+              "cameraTarget": "0.05227m 0.22349m 0.00611m",
+              "cameraOrbit": "58.37508deg 45.0072deg 1.90149m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:32:46.705Z"
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "burton",
+          "ad": "Burton",
+          "tur": "Orta büyüklükte yelkenli savaş gemisi",
+          "kisaTanim": "XVII. yüzyıl ortalarında savaş, asker ve erzak taşıma görevlerinde kullanılan yelkenli gemi türüdür.",
+          "somutVeri": "TDV kaydına göre burtonlar 40–50 kadar top taşıyabiliyordu ve Girit seferleri sırasında asker ile erzak naklinde de kullanıldı.",
+          "kullananBirlikler": [
+            "tersane",
+            "kaptaniDerya",
+            "levend"
+          ],
+          "modelYolu": "../3d/Denizciler/Burton/osmanli-burtonu-girit-savasi-1645-1669-tripo-v1.glb",
+          "yayginYanlis": "Burtonu yalnız savaşan bir top platformu sanmak eksiktir; seferde asker ve erzak taşıma görevi de üstlenebilirdi.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş",
+              "tur": "Gemi önü",
+              "aciklama": "Baş geminin dalgayı karşılayan ön bölümüdür. Yüksek yapı açık denizde suyun güverteye çıkmasını azaltmaya yardım eder.",
+              "position": "0.069m 0.207m 0.336m",
+              "normal": "0.363m 0.396m 0.843m",
+              "cameraTarget": "0.064m 0.202m 0.326m",
+              "cameraOrbit": "23deg 76deg 0.58m"
+            },
+            {
+              "ad": "Yüksek borda",
+              "tur": "Gövde koruması",
+              "aciklama": "Yüksek borda geminin yan duvarıdır. Uzun seferde mürettebatı ve taşınan yükü dalgadan korur.",
+              "position": "0.103m 0.185m 0.002m",
+              "normal": "0.916m 0.186m 0.357m",
+              "cameraTarget": "0.092m 0.183m -0.002m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Direkler ve yelkenler",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Çok direkli yelken düzeni büyük gövdeyi rüzgârla hareket ettirir. Yelkenleri yönetmek kalabalık ve eğitimli bir ekip ister.",
+              "position": "0.019m 0.417m -0.018m",
+              "normal": "0.953m -0.146m -0.265m",
+              "cameraTarget": "0.007m 0.418m -0.015m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Top bataryası",
+              "tur": "Savaş donanımı",
+              "aciklama": "Yan toplar aynı bordadan ateş gücü oluştururdu. Kaynaklardaki 40–50 top bilgisi gemi türüne ait genel bir aralıktır.",
+              "position": "0.103m 0.185m 0.002m",
+              "normal": "0.916m 0.186m 0.357m",
+              "cameraTarget": "0.092m 0.183m -0.002m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç ve dümen",
+              "tur": "Komuta ve yön",
+              "aciklama": "Kıç geminin yönetildiği arka bölümdür. Dümen rüzgâr ve dalga değişirken rotayı korumaya yardım eder.",
+              "position": "0.049m 0.213m -0.355m",
+              "normal": "0.118m 0.357m -0.927m",
+              "cameraTarget": "0.048m 0.209m -0.343m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Ana güverte",
+              "tur": "Sefer alanı",
+              "aciklama": "Güverte savaşın yanında asker ve erzak taşıma işleri için de kullanılırdı. Bu nedenle geçiş yollarının açık tutulması önemliydi.",
+              "position": "0.02484m 0.15943m 0.03917m",
+              "normal": "0m 0.9957m -0.09259m",
+              "cameraTarget": "0.02484m 0.15943m 0.03917m",
+              "cameraOrbit": "58.20534deg 45.9123deg 1.21671m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:32:53.964Z"
+            }
+          ],
+          "donemAnahtari": "donusum",
+          "donemAdi": "Dönüşüm dönemi",
+          "donemAraligi": "1600–1700"
+        },
+        {
+          "anahtar": "kapak-karaka",
+          "ad": "Kapak (Karaka)",
+          "tur": "İki güverteli ağır kalyon",
+          "kisaTanim": "İki sıra top güvertesi bulunan, yüksek bordalı ve çok sayıda savaşçı ile denizci taşıyan ağır yelkenli savaş gemisidir.",
+          "somutVeri": "Kapak sınıfı gemiler yaklaşık 33–45 metre uzunluğa, 80–110 topa ve savaşçılarla birlikte yaklaşık 800 kişilik mürettebata ulaşabiliyordu.",
+          "kullananBirlikler": [
+            "tersane",
+            "kaptaniDerya",
+            "levend"
+          ],
+          "modelYolu": "../3d/Denizciler/KapakKaraka/osmanli-kapak-karaka-kalyonu-1682-1700-tripo-v1.glb",
+          "yayginYanlis": "Kapak ya da karakayı klasik XVI. yüzyıl kadırga filosunun ana gemisi gibi göstermek yanlıştır; bu ağır tip dönüşüm dönemine aittir.",
+          "kaynaklar": [
+            {
+              "baslik": "Gemi",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "1996",
+              "url": "https://islamansiklopedisi.org.tr/gemi",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "gemiler",
+          "noktalar": [
+            {
+              "ad": "Baş",
+              "tur": "Gemi önü",
+              "aciklama": "Baş yüksek gövdenin dalgayı karşılayan ön bölümüdür. Buradaki yapı gözetleme ve çalışma alanı sağlar.",
+              "position": "0.065m 0.175m 0.384m",
+              "normal": "0.98m 0.034m 0.194m",
+              "cameraTarget": "0.053m 0.174m 0.382m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Çift top güvertesi",
+              "tur": "Ateş gücü",
+              "aciklama": "Topların iki sıra hâlinde yerleşmesi aynı bordada güçlü ateş kurulmasını sağlar. Bu düzen gemiyi ağır ve kalabalık bir savaş aracına dönüştürür.",
+              "position": "0.09929m 0.11892m -0.07889m",
+              "normal": "0.98636m 0.15602m -0.05239m",
+              "cameraTarget": "0.09929m 0.11892m -0.07889m",
+              "cameraOrbit": "55deg 76deg 1.34793m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:33:12.096Z"
+            },
+            {
+              "ad": "Direkler ve yelkenler",
+              "tur": "Rüzgâr gücü",
+              "aciklama": "Büyük yelkenler ağır gövdeyi hareket ettirir. Çok sayıdaki halat ve yelken ancak düzenli bir güverte ekibiyle yönetilebilir.",
+              "position": "0.016m 0.446m -0.084m",
+              "normal": "-0.358m 0.372m 0.856m",
+              "cameraTarget": "0.02m 0.442m -0.095m",
+              "cameraOrbit": "-23deg 76deg 0.58m"
+            },
+            {
+              "ad": "Yüksek borda",
+              "tur": "Gövde koruması",
+              "aciklama": "Yüksek borda açık deniz dalgalarına karşı koruma sağlar. Aynı zamanda birden fazla güverteye yer açar.",
+              "position": "0.132m 0.116m 0.02m",
+              "normal": "0.993m 0.062m 0.1m",
+              "cameraTarget": "0.12m 0.115m 0.019m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Kıç ve dümen",
+              "tur": "Komuta ve yön",
+              "aciklama": "Yüksek kıç yapısı komuta ve seyir işlerinin merkezidir. Dümen büyük geminin yönünü değiştirmek için kullanılır.",
+              "position": "0.087m 0.208m -0.433m",
+              "normal": "0.008m -0.039m -0.999m",
+              "cameraTarget": "0.087m 0.208m -0.421m",
+              "cameraOrbit": "55deg 76deg 0.58m"
+            },
+            {
+              "ad": "Üst güverte",
+              "tur": "Mürettebat alanı",
+              "aciklama": "Üst güverte yelken yönetimi, gözetleme ve savaş görevlerini bir araya getirir. Kalabalık mürettebatın çarpışmadan çalışması için görev düzeni gerekir.",
+              "position": "-0.03617m 0.2442m -0.35819m",
+              "normal": "0.00296m 0.99994m -0.01041m",
+              "cameraTarget": "-0.03617m 0.2442m -0.35819m",
+              "cameraOrbit": "-60.2408deg 56.97792deg 1.34793m",
+              "koordinatKaynak": "manual_surface_pick",
+              "koordinatOnayTarihi": "2026-09-15T12:33:16.244Z"
+            }
+          ],
+          "donemAnahtari": "donusum",
+          "donemAdi": "Dönüşüm dönemi",
+          "donemAraligi": "1600–1700"
+        }
+      ]
+    },
+    {
+      "anahtar": "silahlar",
+      "ad": "Silah ve teçhizat",
+      "kayitlar": [
+        {
+          "anahtar": "kilic",
+          "ad": "Kılıç",
+          "tur": "Kesici silah",
+          "kisaTanim": "Tek veya çift ağızlı çeşitleri bulunan yakın dövüş silahıdır; Osmanlı örneklerinde düz ve eğri biçimler görülür.",
+          "somutVeri": "Topkapı Sarayı’ndaki Fâtih Sultan Mehmed’e ait bir kılıç 126,5 santimetre uzunluğundadır.",
+          "kullananBirlikler": [
+            "yeniceri",
+            "kapikuluSipahi",
+            "silahdar",
+            "sipahi",
+            "akinci",
+            "deli",
+            "levend"
+          ],
+          "yayginYanlis": "Her Osmanlı kılıcı aynı derecede eğri ve aynı boyda değildi.",
+          "kaynaklar": [
+            {
+              "baslik": "Kılıç",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "2022",
+              "url": "https://islamansiklopedisi.org.tr/kilic",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "silahlar",
+          "modelVaryantlari": [
+            {
+              "ad": "Klasik süvari kılıcı",
+              "modelYolu": "../3d/Nesneler/Kılıç/Klasik Osmanlı süvari kılıcı.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Namlu",
+                  "tur": "Kesici bölüm",
+                  "aciklama": "Çelik namlu kesme ve savunma hareketlerinde kullanılan ana bölümdür. Biçimi ve eğriliği döneme göre değişebilir.",
+                  "position": "0.4197m 0.1574m -0.0015m",
+                  "normal": "0.0031m -0.0272m 0.9996m",
+                  "cameraTarget": "0.4197m 0.1574m -0.0015m",
+                  "cameraOrbit": "-45deg 80deg 0.44m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:48:12.024Z"
+                },
+                {
+                  "ad": "Kabza",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Kabza silahın güvenli ve dengeli tutulmasını sağlar. El koruması ve süsleme her örnekte aynı değildir.",
+                  "position": "-0.37984m 0.60895m 0.00932m",
+                  "normal": "-0.52299m -0.59108m 0.61409m",
+                  "cameraTarget": "-0.37984m 0.60895m 0.00932m",
+                  "cameraOrbit": "-45deg 80deg 2.24458m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:48:09.993Z"
+                },
+                {
+                  "ad": "Kın",
+                  "tur": "Taşıma bölümü",
+                  "aciklama": "Kın keskin namluyu taşırken korur. Kemer bağlantısı silahın yürürken erişilebilir kalmasını sağlar.",
+                  "position": "-0.04961m 0.1803m 0.03588m",
+                  "normal": "-0.03298m -0.02392m 0.99917m",
+                  "cameraTarget": "-0.04961m 0.1803m 0.03588m",
+                  "cameraOrbit": "-45deg 80deg 2.24458m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:48:16.929Z"
+                }
+              ]
+            },
+            {
+              "ad": "Osmanlı palası",
+              "modelYolu": "../3d/Nesneler/Kılıç/Osmanlı pala kılıcı.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Namlu",
+                  "tur": "Kesici bölüm",
+                  "aciklama": "Çelik namlu kesme ve savunma hareketlerinde kullanılan ana bölümdür. Biçimi ve eğriliği döneme göre değişebilir.",
+                  "position": "0.3133m 0.1537m -0.0672m",
+                  "normal": "0.1875m -0.0384m 0.9815m",
+                  "cameraTarget": "0.3133m 0.1537m -0.0672m",
+                  "cameraOrbit": "45deg 80deg 0.44m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:49:54.338Z"
+                },
+                {
+                  "ad": "Kabza",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Kabza silahın güvenli ve dengeli tutulmasını sağlar. El koruması ve süsleme her örnekte aynı değildir.",
+                  "position": "-0.34553m 0.56907m 0.06259m",
+                  "normal": "0.55823m 0.01759m 0.8295m",
+                  "cameraTarget": "-0.34553m 0.56907m 0.06259m",
+                  "cameraOrbit": "45deg 80deg 2.05043m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:49:27.661Z"
+                },
+                {
+                  "ad": "Kın",
+                  "tur": "Taşıma bölümü",
+                  "aciklama": "Kın keskin namluyu taşırken korur. Kemer bağlantısı silahın yürürken erişilebilir kalmasını sağlar.",
+                  "position": "-0.06223m 0.20143m 0.10462m",
+                  "normal": "0.15528m 0.30665m 0.93907m",
+                  "cameraTarget": "-0.06223m 0.20143m 0.10462m",
+                  "cameraOrbit": "45deg 80deg 2.05043m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:49:52.305Z"
+                }
+              ]
+            },
+            {
+              "ad": "Tören kılıcı",
+              "modelYolu": "../3d/Nesneler/Kılıç/Tören kılıcı.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Namlu",
+                  "tur": "Kesici bölüm",
+                  "aciklama": "Çelik namlu kesme ve savunma hareketlerinde kullanılan ana bölümdür. Biçimi ve eğriliği döneme göre değişebilir.",
+                  "position": "0.4202m 0.1235m -0.0307m",
+                  "normal": "0.1361m 0.6169m 0.7752m",
+                  "cameraTarget": "0.4202m 0.1235m -0.0307m",
+                  "cameraOrbit": "45deg 80deg 0.44m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:49:59.868Z"
+                },
+                {
+                  "ad": "Kabza",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Kabza silahın güvenli ve dengeli tutulmasını sağlar. El koruması ve süsleme her örnekte aynı değildir.",
+                  "position": "-0.32361m 0.34246m -0.04179m",
+                  "normal": "-0.18475m 0.18354m 0.9655m",
+                  "cameraTarget": "-0.32361m 0.34246m -0.04179m",
+                  "cameraOrbit": "45deg 80deg 2.0737m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:50:04.998Z"
+                },
+                {
+                  "ad": "Kın",
+                  "tur": "Taşıma bölümü",
+                  "aciklama": "Kın keskin namluyu taşırken korur. Kemer bağlantısı silahın yürürken erişilebilir kalmasını sağlar.",
+                  "position": "0.12843m 0.07299m 0.11073m",
+                  "normal": "0.05428m 0.58818m 0.80691m",
+                  "cameraTarget": "0.12843m 0.07299m 0.11073m",
+                  "cameraOrbit": "45deg 80deg 2.0737m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:50:15.816Z"
+                }
+              ]
+            }
+          ],
+          "noktalar": [
+            {
+              "ad": "Namlu",
+              "tur": "Kesici bölüm",
+              "aciklama": "Çelik namlu kesme ve savunma hareketlerinde kullanılan ana bölümdür. Biçimi ve eğriliği döneme göre değişebilir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Kabza",
+              "tur": "Tutuş bölümü",
+              "aciklama": "Kabza silahın güvenli ve dengeli tutulmasını sağlar. El koruması ve süsleme her örnekte aynı değildir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Kın",
+              "tur": "Taşıma bölümü",
+              "aciklama": "Kın keskin namluyu taşırken korur. Kemer bağlantısı silahın yürürken erişilebilir kalmasını sağlar.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "yatagan",
+          "ad": "Yatağan",
+          "tur": "Kesici silah",
+          "kisaTanim": "İçe doğru kıvrılan namlusu ve kabzasıyla ayırt edilen kısa kesici silahtır; Osmanlı silah çeşitlerinden biridir.",
+          "somutVeri": "Yatağanlar özellikle XVIII–XIX. yüzyıl örnekleriyle tanınır; klasik döneme yerleştirirken tarihleme gerekir.",
+          "kullananBirlikler": [
+            "yeniceri"
+          ],
+          "yayginYanlis": "Her klasik dönem Yeniçerisinin beline yatağan takmak doğru değildir; müze örneğinin tarihi kontrol edilmelidir.",
+          "kaynaklar": [
+            {
+              "baslik": "Kılıç",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "2022",
+              "url": "https://islamansiklopedisi.org.tr/kilic",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "silahlar",
+          "modelVaryantlari": [
+            {
+              "ad": "Sade yatağan",
+              "modelYolu": "../3d/Nesneler/Yatağan/Ahşap kabzalı sade yatağan.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "İçe kıvrılan namlu",
+                  "tur": "Kesici bölüm",
+                  "aciklama": "Yatağanın namlusu uca doğru içe kıvrılan görünümüyle ayırt edilir. Müze örneklerinin çoğu daha geç yüzyıllara tarihlenir.",
+                  "position": "-0.33108m 0.00514m 0.02111m",
+                  "normal": "-0.03599m -0.66843m 0.7429m",
+                  "cameraTarget": "-0.33108m 0.00514m 0.02111m",
+                  "cameraOrbit": "45deg 80deg 3.95156m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:28:05.100Z"
+                },
+                {
+                  "ad": "Kulaklı kabza",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Kabzanın iki yana açılan başı ele dayanak verir. Malzeme ve bezeme sahibine göre değişebilir.",
+                  "position": "0.36054m 0.53747m 0.01991m",
+                  "normal": "0.45597m -0.78029m 0.42807m",
+                  "cameraTarget": "0.36054m 0.53747m 0.01991m",
+                  "cameraOrbit": "45deg 80deg 2.23554m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:28:31.293Z"
+                },
+                {
+                  "ad": "Kın",
+                  "tur": "Taşıma bölümü",
+                  "aciklama": "Kın namluyu ve taşıyan kişiyi korur. Yatağan kemerde taşınabilir.",
+                  "position": "-0.03359m 0.10378m 0.03646m",
+                  "normal": "-0.0145m 0.01316m 0.99981m",
+                  "cameraTarget": "-0.03359m 0.10378m 0.03646m",
+                  "cameraOrbit": "45deg 80deg 2.23554m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:28:36.883Z"
+                }
+              ]
+            },
+            {
+              "ad": "İşlemeli yatağan",
+              "modelYolu": "../3d/Nesneler/Yatağan/İşlemeli yatağan.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "İçe kıvrılan namlu",
+                  "tur": "Kesici bölüm",
+                  "aciklama": "Yatağanın namlusu uca doğru içe kıvrılan görünümüyle ayırt edilir. Müze örneklerinin çoğu daha geç yüzyıllara tarihlenir.",
+                  "position": "-0.3894m 0.1670m -0.0306m",
+                  "normal": "-0.3012m 0.7663m -0.5676m",
+                  "cameraTarget": "-0.3894m 0.1670m -0.0306m",
+                  "cameraOrbit": "-135deg 80deg 0.44m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:51:52.596Z"
+                },
+                {
+                  "ad": "Kulaklı kabza",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Kabzanın iki yana açılan başı ele dayanak verir. Malzeme ve bezeme sahibine göre değişebilir.",
+                  "position": "0.3421m 0.50224m -0.07418m",
+                  "normal": "0.00746m -0.23489m -0.97199m",
+                  "cameraTarget": "0.3421m 0.50224m -0.07418m",
+                  "cameraOrbit": "-135deg 80deg 2.08111m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:28:58.067Z"
+                },
+                {
+                  "ad": "Kın",
+                  "tur": "Taşıma bölümü",
+                  "aciklama": "Kın namluyu ve taşıyan kişiyi korur. Yatağan kemerde taşınabilir.",
+                  "position": "-0.06185m 0.11338m 0.02344m",
+                  "normal": "0.04972m -0.17317m -0.98364m",
+                  "cameraTarget": "-0.06185m 0.11338m 0.02344m",
+                  "cameraOrbit": "-135deg 80.32263deg 2.08111m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:29:03.511Z"
+                }
+              ]
+            },
+            {
+              "ad": "Kulaklı yatağan",
+              "modelYolu": "../3d/Nesneler/Yatağan/Klasik kulaklı yatağan.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "İçe kıvrılan namlu",
+                  "tur": "Kesici bölüm",
+                  "aciklama": "Yatağanın namlusu uca doğru içe kıvrılan görünümüyle ayırt edilir. Müze örneklerinin çoğu daha geç yüzyıllara tarihlenir.",
+                  "position": "0.4066m 0.1108m -0.1129m",
+                  "normal": "-0.2336m -0.7926m -0.5632m",
+                  "cameraTarget": "0.4066m 0.1108m -0.1129m",
+                  "cameraOrbit": "180deg 80deg 0.44m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:51:56.210Z"
+                },
+                {
+                  "ad": "Kulaklı kabza",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Kabzanın iki yana açılan başı ele dayanak verir. Malzeme ve bezeme sahibine göre değişebilir.",
+                  "position": "-0.38704m 0.3328m -0.00082m",
+                  "normal": "0.23081m 0.57723m 0.78328m",
+                  "cameraTarget": "-0.38704m 0.3328m -0.00082m",
+                  "cameraOrbit": "382.47829deg 84.31723deg 2.04838m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:29:52.906Z"
+                },
+                {
+                  "ad": "Kın",
+                  "tur": "Taşıma bölümü",
+                  "aciklama": "Kın namluyu ve taşıyan kişiyi korur. Yatağan kemerde taşınabilir.",
+                  "position": "0.14768m 0.05647m 0.0423m",
+                  "normal": "-0.17104m -0.46244m -0.87m",
+                  "cameraTarget": "0.14768m 0.05647m 0.0423m",
+                  "cameraOrbit": "180deg 80deg 2.04838m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:30:03.466Z"
+                }
+              ]
+            }
+          ],
+          "noktalar": [
+            {
+              "ad": "İçe kıvrılan namlu",
+              "tur": "Kesici bölüm",
+              "aciklama": "Yatağanın namlusu uca doğru içe kıvrılan görünümüyle ayırt edilir. Müze örneklerinin çoğu daha geç yüzyıllara tarihlenir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Kulaklı kabza",
+              "tur": "Tutuş bölümü",
+              "aciklama": "Kabzanın iki yana açılan başı ele dayanak verir. Malzeme ve bezeme sahibine göre değişebilir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Kın",
+              "tur": "Taşıma bölümü",
+              "aciklama": "Kın namluyu ve taşıyan kişiyi korur. Yatağan kemerde taşınabilir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "gurz",
+          "ad": "Gürz ve bozdoğan",
+          "tur": "Vurucu silah ve rütbe işareti",
+          "kisaTanim": "Metal veya güçlendirilmiş başı olan vurucu silahtır; savaş aracının yanında makam ve tören işareti olarak da kullanılabildi.",
+          "somutVeri": "Osmanlı sarayında gürz taşıyan görevliler ve süvari sınıfları bulunuyordu.",
+          "kullananBirlikler": [
+            "kapikuluSipahi",
+            "silahdar",
+            "deli"
+          ],
+          "yayginYanlis": "Gürz yalnız dev boyutlu, iki elle kullanılan bir fantezi silahı değildi.",
+          "kaynaklar": [
+            {
+              "baslik": "Gürz",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "başvuru kaynağı",
+              "url": "https://islamansiklopedisi.org.tr/gurz",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "silahlar",
+          "modelVaryantlari": [
+            {
+              "ad": "Dilimli bozdoğan",
+              "modelYolu": "../3d/Nesneler/Gürz ve bozdoğan/Dilimli bozdoğan.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Vurucu baş",
+                  "tur": "Ana bölüm",
+                  "aciklama": "Ağırlaştırılmış baş darbenin etkisini artırır. Biçimi sade küreden dilimli örneklere kadar değişebilir.",
+                  "position": "0.28886m 0.56212m -0.38069m",
+                  "normal": "-0.84867m 0.52282m -0.08011m",
+                  "cameraTarget": "0.28886m 0.56212m -0.38069m",
+                  "cameraOrbit": "185.74183deg 75.68277deg 2.616m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:50:24.806Z"
+                },
+                {
+                  "ad": "Sap",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Sap silahın dengeli savrulmasını sağlar. Uzunluğu kullanım biçimine göre değişir.",
+                  "position": "-0.067m 0.26925m 0.12049m",
+                  "normal": "0.71022m -0.09549m 0.69748m",
+                  "cameraTarget": "-0.067m 0.26925m 0.12049m",
+                  "cameraOrbit": "0deg 80deg 2.616m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:50:34.753Z"
+                },
+                {
+                  "ad": "Bilek bağı veya topuz",
+                  "tur": "Güvenlik ayrıntısı",
+                  "aciklama": "Bazı örneklerde elde tutmayı kolaylaştıran bir bağ ya da sap sonu bulunur. Gürz tören işareti olarak da kullanılabilirdi.",
+                  "position": "0.3624m 0.23015m 0.14278m",
+                  "normal": "-0.22246m 0.2702m 0.93675m",
+                  "cameraTarget": "0.3624m 0.23015m 0.14278m",
+                  "cameraOrbit": "-49.21651deg 96.83719deg 2.616m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:50:49.069Z"
+                }
+              ]
+            },
+            {
+              "ad": "Küresel başlı gürz",
+              "modelYolu": "../3d/Nesneler/Gürz ve bozdoğan/Küresel başlı gürz.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Vurucu baş",
+                  "tur": "Ana bölüm",
+                  "aciklama": "Ağırlaştırılmış baş darbenin etkisini artırır. Biçimi sade küreden dilimli örneklere kadar değişebilir.",
+                  "position": "-0.47015m 0.50071m -0.03897m",
+                  "normal": "-0.89213m 0.42602m -0.15039m",
+                  "cameraTarget": "-0.47015m 0.50071m -0.03897m",
+                  "cameraOrbit": "-100.59157deg 70.0703deg 1.8979m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:50:55.911Z"
+                },
+                {
+                  "ad": "Sap",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Sap silahın dengeli savrulmasını sağlar. Uzunluğu kullanım biçimine göre değişir.",
+                  "position": "0.22099m 0.17491m -0.04642m",
+                  "normal": "0.25437m 0.50867m -0.82252m",
+                  "cameraTarget": "0.22099m 0.17491m -0.04642m",
+                  "cameraOrbit": "135deg 80deg 1.8979m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:51:04.900Z"
+                },
+                {
+                  "ad": "Bilek bağı veya topuz",
+                  "tur": "Güvenlik ayrıntısı",
+                  "aciklama": "Bazı örneklerde elde tutmayı kolaylaştıran bir bağ ya da sap sonu bulunur. Gürz tören işareti olarak da kullanılabilirdi.",
+                  "position": "0.29299m 0.01898m 0.03409m",
+                  "normal": "0.35174m 0.12915m -0.92715m",
+                  "cameraTarget": "0.29299m 0.01898m 0.03409m",
+                  "cameraOrbit": "135deg 80deg 1.8979m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:51:08.938Z"
+                }
+              ]
+            },
+            {
+              "ad": "Tören gürzü",
+              "modelYolu": "../3d/Nesneler/Gürz ve bozdoğan/Tören gürzü.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Vurucu baş",
+                  "tur": "Ana bölüm",
+                  "aciklama": "Ağırlaştırılmış baş darbenin etkisini artırır. Biçimi sade küreden dilimli örneklere kadar değişebilir.",
+                  "position": "-0.31482m 0.86751m 0.07239m",
+                  "normal": "-0.73922m 0.64296m 0.2004m",
+                  "cameraTarget": "-0.31482m 0.86751m 0.07239m",
+                  "cameraOrbit": "297.75972deg 48.78482deg 2.24382m",
+                  "koordinatKaynak": "manual_surface_pick",
+                  "koordinatOnayTarihi": "2026-09-14T07:51:19.556Z"
+                },
+                {
+                  "ad": "Sap",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Sap silahın dengeli savrulmasını sağlar. Uzunluğu kullanım biçimine göre değişir.",
+                  "position": "-0.02857m 0.37356m 0.03757m",
+                  "normal": "-0.42985m -0.2055m 0.8792m",
+                  "cameraTarget": "-0.02857m 0.37356m 0.03757m",
+                  "cameraOrbit": "297.75972deg 48.78482deg 2.24382m",
+                  "koordinatKaynak": "manual_surface_pick",
+                  "koordinatOnayTarihi": "2026-09-14T07:51:31.265Z"
+                },
+                {
+                  "ad": "Bilek bağı veya topuz",
+                  "tur": "Güvenlik ayrıntısı",
+                  "aciklama": "Bazı örneklerde elde tutmayı kolaylaştıran bir bağ ya da sap sonu bulunur. Gürz tören işareti olarak da kullanılabilirdi.",
+                  "position": "0.23664m 0.08049m 0.04016m",
+                  "normal": "0.52634m -0.04331m 0.84917m",
+                  "cameraTarget": "0.23664m 0.08049m 0.04016m",
+                  "cameraOrbit": "394.48514deg 72.52961deg 4.1377m",
+                  "koordinatKaynak": "manual_surface_pick",
+                  "koordinatOnayTarihi": "2026-09-14T07:51:41.023Z"
+                }
+              ]
+            }
+          ],
+          "noktalar": [
+            {
+              "ad": "Vurucu baş",
+              "tur": "Ana bölüm",
+              "aciklama": "Ağırlaştırılmış baş darbenin etkisini artırır. Biçimi sade küreden dilimli örneklere kadar değişebilir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Sap",
+              "tur": "Tutuş bölümü",
+              "aciklama": "Sap silahın dengeli savrulmasını sağlar. Uzunluğu kullanım biçimine göre değişir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Bilek bağı veya topuz",
+              "tur": "Güvenlik ayrıntısı",
+              "aciklama": "Bazı örneklerde elde tutmayı kolaylaştıran bir bağ ya da sap sonu bulunur. Gürz tören işareti olarak da kullanılabilirdi.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "mizrak",
+          "ad": "Mızrak ve kargı",
+          "tur": "Saplı delici silah",
+          "kisaTanim": "Uzun bir ahşap sapın ucundaki metal temrenle kullanılan delici silahtır; süvari için erişim ve hücum üstünlüğü sağlardı.",
+          "somutVeri": "Osmanlı metinlerinde mızrak yanında kargı, kostaniçe ve cirit gibi farklı ad ve türler geçer.",
+          "kullananBirlikler": [
+            "kapikuluSipahi",
+            "silahdar",
+            "sipahi",
+            "cebelu",
+            "akinci",
+            "deli"
+          ],
+          "yayginYanlis": "Bütün uzun saplı silahları tek biçimli Avrupa şövalye mızrağı gibi göstermek yanlıştır.",
+          "kaynaklar": [
+            {
+              "baslik": "Mızrak",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "başvuru kaynağı",
+              "url": "https://islamansiklopedisi.org.tr/mizrak",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "silahlar",
+          "modelVaryantlari": [
+            {
+              "ad": "Cirit",
+              "modelYolu": "../3d/Nesneler/Mızrak ve kargı/Cirit.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Temren",
+                  "tur": "Delici uç",
+                  "aciklama": "Metal temren mızrağın hedefe temas eden bölümüdür. Uç biçimleri göreve ve döneme göre değişebilir.",
+                  "position": "-0.4078m 0.0492m 0.2063m",
+                  "normal": "-0.0646m -0.5397m 0.8394m",
+                  "cameraTarget": "-0.4078m 0.0492m 0.2063m",
+                  "cameraOrbit": "-45deg 80deg 0.44m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:52:02.704Z"
+                },
+                {
+                  "ad": "Uzun sap",
+                  "tur": "Erişim bölümü",
+                  "aciklama": "Ahşap sap süvariye uzaktan erişim sağlar. Denge noktası hücum sırasında kontrolü kolaylaştırır.",
+                  "position": "0.08838m 0.02586m 0.19378m",
+                  "normal": "0.00408m -0.27956m 0.96012m",
+                  "cameraTarget": "0.08838m 0.02586m 0.19378m",
+                  "cameraOrbit": "-45deg 80deg 2.06886m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:52:11.046Z"
+                },
+                {
+                  "ad": "Dip kısmı",
+                  "tur": "Denge ayrıntısı",
+                  "aciklama": "Sapın alt bölümü taşıma ve denge için önemlidir. Her mızrak aynı uzunlukta değildir.",
+                  "position": "0.38579m 0.0146m 0.17705m",
+                  "normal": "-0.02491m -0.92922m -0.36868m",
+                  "cameraTarget": "0.38579m 0.0146m 0.17705m",
+                  "cameraOrbit": "230.87129deg 140.00955deg 2.06886m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:30:39.363Z"
+                }
+              ]
+            },
+            {
+              "ad": "Piyade mızrağı",
+              "modelYolu": "../3d/Nesneler/Mızrak ve kargı/Osmanlı piyade mızrağı.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Temren",
+                  "tur": "Delici uç",
+                  "aciklama": "Metal temren mızrağın hedefe temas eden bölümüdür. Uç biçimleri göreve ve döneme göre değişebilir.",
+                  "position": "-0.35319m 0.71068m -0.18416m",
+                  "normal": "-0.20002m 0.16211m 0.96629m",
+                  "cameraTarget": "-0.35319m 0.71068m -0.18416m",
+                  "cameraOrbit": "44.78473deg 80deg 2.21484m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:31:08.980Z"
+                },
+                {
+                  "ad": "Uzun sap",
+                  "tur": "Erişim bölümü",
+                  "aciklama": "Ahşap sap süvariye uzaktan erişim sağlar. Denge noktası hücum sırasında kontrolü kolaylaştırır.",
+                  "position": "0.12044m 0.31766m 0.05217m",
+                  "normal": "0.42117m 0.71598m 0.55676m",
+                  "cameraTarget": "0.12044m 0.31766m 0.05217m",
+                  "cameraOrbit": "45deg 80deg 2.21484m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:31:08.139Z"
+                },
+                {
+                  "ad": "Dip kısmı",
+                  "tur": "Denge ayrıntısı",
+                  "aciklama": "Sapın alt bölümü taşıma ve denge için önemlidir. Her mızrak aynı uzunlukta değildir.",
+                  "position": "0.45342m 0.05424m 0.21348m",
+                  "normal": "0.43214m 0.76371m 0.47959m",
+                  "cameraTarget": "0.45342m 0.05424m 0.21348m",
+                  "cameraOrbit": "45deg 80deg 2.21484m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:31:06.770Z"
+                }
+              ]
+            },
+            {
+              "ad": "Süvari kargısı",
+              "modelYolu": "../3d/Nesneler/Mızrak ve kargı/Süvari kargısı.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Temren",
+                  "tur": "Delici uç",
+                  "aciklama": "Metal temren mızrağın hedefe temas eden bölümüdür. Uç biçimleri göreve ve döneme göre değişebilir.",
+                  "position": "0.40326m 0.58464m -0.0437m",
+                  "normal": "0.47368m -0.52788m -0.70497m",
+                  "cameraTarget": "0.40326m 0.58464m -0.0437m",
+                  "cameraOrbit": "148.84379deg 76.54622deg 1.99269m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:31:32.237Z"
+                },
+                {
+                  "ad": "Uzun sap",
+                  "tur": "Erişim bölümü",
+                  "aciklama": "Ahşap sap süvariye uzaktan erişim sağlar. Denge noktası hücum sırasında kontrolü kolaylaştırır.",
+                  "position": "-0.01037m 0.30914m -0.00437m",
+                  "normal": "0.2312m -0.13228m 0.96387m",
+                  "cameraTarget": "-0.01037m 0.30914m -0.00437m",
+                  "cameraOrbit": "-45deg 80.34651deg 3.6746m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:31:41.969Z"
+                },
+                {
+                  "ad": "Dip kısmı",
+                  "tur": "Denge ayrıntısı",
+                  "aciklama": "Sapın alt bölümü taşıma ve denge için önemlidir. Her mızrak aynı uzunlukta değildir.",
+                  "position": "-0.47033m 0.0207m 0.00248m",
+                  "normal": "-0.48487m 0.24324m 0.84008m",
+                  "cameraTarget": "-0.47033m 0.0207m 0.00248m",
+                  "cameraOrbit": "-45deg 80deg 1.99269m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:31:48.641Z"
+                }
+              ]
+            }
+          ],
+          "noktalar": [
+            {
+              "ad": "Temren",
+              "tur": "Delici uç",
+              "aciklama": "Metal temren mızrağın hedefe temas eden bölümüdür. Uç biçimleri göreve ve döneme göre değişebilir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Uzun sap",
+              "tur": "Erişim bölümü",
+              "aciklama": "Ahşap sap süvariye uzaktan erişim sağlar. Denge noktası hücum sırasında kontrolü kolaylaştırır.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Dip kısmı",
+              "tur": "Denge ayrıntısı",
+              "aciklama": "Sapın alt bölümü taşıma ve denge için önemlidir. Her mızrak aynı uzunlukta değildir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "kalkan",
+          "ad": "Kalkan",
+          "tur": "Savunma teçhizatı",
+          "kisaTanim": "Ok, kılıç ve mızrak darbelerine karşı kullanılan savunma aracıdır; Osmanlı örneklerinde söğüt veya incir çubuğundan örülmüş türler de vardır.",
+          "somutVeri": "Örgü kalkanlar deri, iplik ve metal parçalarla güçlendirilebiliyordu.",
+          "kullananBirlikler": [
+            "kapikuluSipahi",
+            "sipahi",
+            "cebelu",
+            "akinci",
+            "deli",
+            "azap"
+          ],
+          "yayginYanlis": "Her kalkan ağır, bütünüyle metal ve Avrupa şövalye kalkanı biçiminde değildi.",
+          "kaynaklar": [
+            {
+              "baslik": "Kalkan",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "2001",
+              "url": "https://islamansiklopedisi.org.tr/kalkan",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "silahlar",
+          "modelVaryantlari": [
+            {
+              "ad": "Çelik kalkan",
+              "modelYolu": "../3d/Nesneler/Kalkan/Çelik kalkan.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Kalkan yüzü",
+                  "tur": "Koruma alanı",
+                  "aciklama": "Geniş yüz ok ve darbeyi karşılamaya yardım eder. Örgü, deri ve metal parçalar birlikte kullanılabilir.",
+                  "position": "-0.27585m 0.3158m 0.11219m",
+                  "normal": "-0.36185m 0.08711m 0.92816m",
+                  "cameraTarget": "-0.27585m 0.3158m 0.11219m",
+                  "cameraOrbit": "-37.79013deg 79.13658deg 2.15026m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:32:02.369Z"
+                },
+                {
+                  "ad": "Göbek",
+                  "tur": "Güçlendirme",
+                  "aciklama": "Ortadaki metal bölüm darbeyi dağıtmaya ve eli korumaya yardım edebilir. Bütün kalkanlarda aynı büyüklükte değildir.",
+                  "position": "0.1371m 0.40379m -0.01477m",
+                  "normal": "0.68401m -0.26938m 0.67791m",
+                  "cameraTarget": "0.1371m 0.40379m -0.01477m",
+                  "cameraOrbit": "90deg 80deg 2.15026m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:32:11.795Z"
+                },
+                {
+                  "ad": "Tutamak",
+                  "tur": "Taşıma bölümü",
+                  "aciklama": "Arka taraftaki tutamak kalkana yön vermeyi sağlar. Kayışlar kola destek olabilir.",
+                  "position": "0.38962m 0.16521m 0.09413m",
+                  "normal": "0.69021m -0.1743m 0.7023m",
+                  "cameraTarget": "0.38962m 0.16521m 0.09413m",
+                  "cameraOrbit": "90deg 80deg 2.15026m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:32:20.854Z"
+                }
+              ]
+            },
+            {
+              "ad": "Örgü kalkan",
+              "modelYolu": "../3d/Nesneler/Kalkan/Hasır örgülü Osmanlı kalkanı.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Kalkan yüzü",
+                  "tur": "Koruma alanı",
+                  "aciklama": "Geniş yüz ok ve darbeyi karşılamaya yardım eder. Örgü, deri ve metal parçalar birlikte kullanılabilir.",
+                  "position": "-0.30392m 0.30324m 0.11367m",
+                  "normal": "0.25133m 0.05442m 0.96637m",
+                  "cameraTarget": "-0.30392m 0.30324m 0.11367m",
+                  "cameraOrbit": "-4.95047deg 51.93799deg 2.15032m",
+                  "koordinatKaynak": "manual_surface_pick",
+                  "koordinatOnayTarihi": "2026-09-14T07:32:34.207Z"
+                },
+                {
+                  "ad": "Göbek",
+                  "tur": "Güçlendirme",
+                  "aciklama": "Ortadaki metal bölüm darbeyi dağıtmaya ve eli korumaya yardım edebilir. Bütün kalkanlarda aynı büyüklükte değildir.",
+                  "position": "0.3332m 0.31526m -0.07887m",
+                  "normal": "0.69038m 0.46944m -0.55045m",
+                  "cameraTarget": "0.3332m 0.31526m -0.07887m",
+                  "cameraOrbit": "120.68101deg 75.25103deg 2.15032m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:32:47.348Z"
+                },
+                {
+                  "ad": "Tutamak",
+                  "tur": "Taşıma bölümü",
+                  "aciklama": "Arka taraftaki tutamak kalkana yön vermeyi sağlar. Kayışlar kola destek olabilir.",
+                  "position": "-0.24438m 0.27925m -0.00771m",
+                  "normal": "-0.37864m -0.1335m -0.91586m",
+                  "cameraTarget": "-0.24438m 0.27925m -0.00771m",
+                  "cameraOrbit": "-90.29342deg 80deg 2.15032m",
+                  "koordinatKaynak": "manual_surface_pick",
+                  "koordinatOnayTarihi": "2026-09-14T07:32:58.144Z"
+                }
+              ]
+            },
+            {
+              "ad": "Tören kalkanı",
+              "modelYolu": "../3d/Nesneler/Kalkan/Tören kalkanı.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Kalkan yüzü",
+                  "tur": "Koruma alanı",
+                  "aciklama": "Geniş yüz ok ve darbeyi karşılamaya yardım eder. Örgü, deri ve metal parçalar birlikte kullanılabilir.",
+                  "position": "-0.30508m 0.23709m 0.12642m",
+                  "normal": "0.32706m -0.02934m 0.94455m",
+                  "cameraTarget": "-0.30508m 0.23709m 0.12642m",
+                  "cameraOrbit": "-24.37805deg 85.18067deg 2.15371m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:36:15.893Z"
+                },
+                {
+                  "ad": "Göbek",
+                  "tur": "Güçlendirme",
+                  "aciklama": "Ortadaki metal bölüm darbeyi dağıtmaya ve eli korumaya yardım edebilir. Bütün kalkanlarda aynı büyüklükte değildir.",
+                  "position": "-0.17223m 0.26861m 0.11839m",
+                  "normal": "0.41102m -0.90732m 0.08853m",
+                  "cameraTarget": "-0.17223m 0.26861m 0.11839m",
+                  "cameraOrbit": "49.8784deg 92.08822deg 2.15371m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:36:24.174Z"
+                },
+                {
+                  "ad": "Tutamak",
+                  "tur": "Taşıma bölümü",
+                  "aciklama": "Arka taraftaki tutamak kalkana yön vermeyi sağlar. Kayışlar kola destek olabilir.",
+                  "position": "-0.17228m 0.27221m -0.06567m",
+                  "normal": "-0.24437m 0.21643m -0.94522m",
+                  "cameraTarget": "-0.17228m 0.27221m -0.06567m",
+                  "cameraOrbit": "-161.66608deg 61.43591deg 2.63846m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:36:50.890Z"
+                }
+              ]
+            }
+          ],
+          "noktalar": [
+            {
+              "ad": "Kalkan yüzü",
+              "tur": "Koruma alanı",
+              "aciklama": "Geniş yüz ok ve darbeyi karşılamaya yardım eder. Örgü, deri ve metal parçalar birlikte kullanılabilir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Göbek",
+              "tur": "Güçlendirme",
+              "aciklama": "Ortadaki metal bölüm darbeyi dağıtmaya ve eli korumaya yardım edebilir. Bütün kalkanlarda aynı büyüklükte değildir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Tutamak",
+              "tur": "Taşıma bölümü",
+              "aciklama": "Arka taraftaki tutamak kalkana yön vermeyi sağlar. Kayışlar kola destek olabilir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "kompozit-yay",
+          "ad": "Kompozit yay",
+          "tur": "Uzak mesafe silahı",
+          "kisaTanim": "Ağaç, boynuz ve sinir gibi farklı malzemelerin tutkalla birleştirilmesiyle yapılan güçlü ve kısa yaydır.",
+          "somutVeri": "1478 tarihli bir donanma kaydında 18 sandık ok ve 822 yay anılır.",
+          "kullananBirlikler": [
+            "yeniceri",
+            "kapikuluSipahi",
+            "sipahi",
+            "cebelu",
+            "akinci",
+            "azap"
+          ],
+          "yayginYanlis": "Osmanlı yayı tek parça düz bir tahta yay değildir; malzeme ve yapım tekniği karmaşıktır.",
+          "kaynaklar": [
+            {
+              "baslik": "Ok",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "2007",
+              "url": "https://islamansiklopedisi.org.tr/ok",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "silahlar",
+          "modelVaryantlari": [
+            {
+              "ad": "Klasik kompozit yay",
+              "modelYolu": "../3d/Nesneler/Kompozit yay/Klasik Osmanlı kompozit yayı.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Yay kolları",
+                  "tur": "Enerji bölümü",
+                  "aciklama": "Ağaç, boynuz ve sinir katmanları gerildiğinde enerji depolar. Kısa kıvrımlı biçim at üzerinde kullanımı kolaylaştırır.",
+                  "position": "-0.22626m 0.68245m 0.05974m",
+                  "normal": "-0.05989m 0.02136m 0.99798m",
+                  "cameraTarget": "-0.22626m 0.68245m 0.05974m",
+                  "cameraOrbit": "0deg 80deg 1.59268m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:37:04.011Z"
+                },
+                {
+                  "ad": "Kiriş",
+                  "tur": "Germe bölümü",
+                  "aciklama": "Kiriş çekildiğinde yay kolları gerilir ve bırakılınca oku hızlandırır. Kullanılmadığında yay dikkatle korunurdu.",
+                  "position": "-0.13335m 0.0712m 0.00104m",
+                  "normal": "0.73901m -0.09398m 0.66711m",
+                  "cameraTarget": "-0.13335m 0.0712m 0.00104m",
+                  "cameraOrbit": "0deg 80deg 1.59268m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:37:14.879Z"
+                },
+                {
+                  "ad": "Kabza",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Orta bölüm yayın dengeli tutulmasını sağlar. Nişan sırasında el burada sabit kalır.",
+                  "position": "-0.2366m 0.47989m 0.03937m",
+                  "normal": "0.27765m 0.05426m 0.95915m",
+                  "cameraTarget": "-0.2366m 0.47989m 0.03937m",
+                  "cameraOrbit": "0deg 80deg 1.59268m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:37:24.940Z"
+                }
+              ]
+            },
+            {
+              "ad": "Menzil yayı",
+              "modelYolu": "../3d/Nesneler/Kompozit yay/Menzil yayı.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Yay kolları",
+                  "tur": "Enerji bölümü",
+                  "aciklama": "Ağaç, boynuz ve sinir katmanları gerildiğinde enerji depolar. Kısa kıvrımlı biçim at üzerinde kullanımı kolaylaştırır.",
+                  "position": "-0.43622m 0.43523m -0.15667m",
+                  "normal": "-0.15454m 0.45724m 0.87582m",
+                  "cameraTarget": "-0.43622m 0.43523m -0.15667m",
+                  "cameraOrbit": "0deg 80.43172deg 2.25593m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:39:00.231Z"
+                },
+                {
+                  "ad": "Kiriş",
+                  "tur": "Germe bölümü",
+                  "aciklama": "Kiriş çekildiğinde yay kolları gerilir ve bırakılınca oku hızlandırır. Kullanılmadığında yay dikkatle korunurdu.",
+                  "position": "0.46624m 0.40252m -0.18638m",
+                  "normal": "0.54256m -0.75703m -0.36406m",
+                  "cameraTarget": "0.46624m 0.40252m -0.18638m",
+                  "cameraOrbit": "156.71562deg 94.24687deg 4.16003m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:38:59.092Z"
+                },
+                {
+                  "ad": "Kabza",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Orta bölüm yayın dengeli tutulmasını sağlar. Nişan sırasında el burada sabit kalır.",
+                  "position": "0.05801m 0.21931m -0.1416m",
+                  "normal": "0.19223m -0.25861m -0.94666m",
+                  "cameraTarget": "0.05801m 0.21931m -0.1416m",
+                  "cameraOrbit": "143.3322deg 79.56827deg 2.25593m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:38:58.319Z"
+                }
+              ]
+            },
+            {
+              "ad": "Yay, sadak ve tirkeş",
+              "modelYolu": "../3d/Nesneler/Kompozit yay/Yay, sadak ve tirkeş takımı.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Yay kolları",
+                  "tur": "Enerji bölümü",
+                  "aciklama": "Ağaç, boynuz ve sinir katmanları gerildiğinde enerji depolar. Kısa kıvrımlı biçim at üzerinde kullanımı kolaylaştırır.",
+                  "position": "0.08797m 0.26483m -0.00352m",
+                  "normal": "-0.50502m -0.02445m -0.86276m",
+                  "cameraTarget": "0.08797m 0.26483m -0.00352m",
+                  "cameraOrbit": "-201.81641deg 80.86343deg 2.28082m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:38:45.571Z"
+                },
+                {
+                  "ad": "Kiriş",
+                  "tur": "Germe bölümü",
+                  "aciklama": "Kiriş çekildiğinde yay kolları gerilir ve bırakılınca oku hızlandırır. Kullanılmadığında yay dikkatle korunurdu.",
+                  "position": "0.07329m 0.05673m -0.01569m",
+                  "normal": "-0.28001m -0.13739m -0.95012m",
+                  "cameraTarget": "0.07329m 0.05673m -0.01569m",
+                  "cameraOrbit": "-187.1378deg 77.84138deg 2.28082m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:38:43.235Z"
+                },
+                {
+                  "ad": "Kabza",
+                  "tur": "Tutuş bölümü",
+                  "aciklama": "Orta bölüm yayın dengeli tutulmasını sağlar. Nişan sırasında el burada sabit kalır.",
+                  "position": "-0.0622m 0.38548m -0.01097m",
+                  "normal": "-0.92644m -0.01716m -0.37604m",
+                  "cameraTarget": "-0.0622m 0.38548m -0.01097m",
+                  "cameraOrbit": "-154.75851deg 66.18485deg 2.28082m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:38:54.943Z"
+                }
+              ]
+            }
+          ],
+          "noktalar": [
+            {
+              "ad": "Yay kolları",
+              "tur": "Enerji bölümü",
+              "aciklama": "Ağaç, boynuz ve sinir katmanları gerildiğinde enerji depolar. Kısa kıvrımlı biçim at üzerinde kullanımı kolaylaştırır.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Kiriş",
+              "tur": "Germe bölümü",
+              "aciklama": "Kiriş çekildiğinde yay kolları gerilir ve bırakılınca oku hızlandırır. Kullanılmadığında yay dikkatle korunurdu.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Kabza",
+              "tur": "Tutuş bölümü",
+              "aciklama": "Orta bölüm yayın dengeli tutulmasını sağlar. Nişan sırasında el burada sabit kalır.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "tufek",
+          "ad": "Fitilli tüfek",
+          "tur": "Ateşli silah",
+          "kisaTanim": "Barutu fitilli ateşleme düzeneğiyle tutuşturan erken ateşli silahtır; nişan, doldurma ve barut güvenliği birlikte öğrenilirdi.",
+          "somutVeri": "1552 tarihli bir hüküm Yeniçerilerin haftada bir tüfek talimi yapmasını zorunlu kıldı.",
+          "kullananBirlikler": [
+            "yeniceri",
+            "sekbanSarica",
+            "levend",
+            "azap"
+          ],
+          "yayginYanlis": "Fitilli tüfeği çakmaklı tüfek veya modern tüfek gibi göstermek anakronizmdir.",
+          "kaynaklar": [
+            {
+              "baslik": "Tüfek",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "2012",
+              "url": "https://islamansiklopedisi.org.tr/tufek",
+              "tur": "ansiklopedi maddesi"
+            },
+            {
+              "baslik": "Yeniçeri",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "2013",
+              "url": "https://islamansiklopedisi.org.tr/yeniceri",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "silahlar",
+          "modelVaryantlari": [
+            {
+              "ad": "Mekanizma yakın görünüm",
+              "modelYolu": "../3d/Nesneler/Fitilli tüfek/Fitilli tüfek mekanizması yakın görünüm.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Namlu",
+                  "tur": "Atış bölümü",
+                  "aciklama": "Uzun namlu barut gazının mermiyi ileri itmesini sağlar. Atıştan sonra temizlenmesi gerekir.",
+                  "position": "0.48661m 0.62859m -0.09773m",
+                  "normal": "0.10299m -0.66099m -0.74329m",
+                  "cameraTarget": "0.48661m 0.62859m -0.09773m",
+                  "cameraOrbit": "125.53079deg 82.59035deg 2.23101m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:39:59.364Z"
+                },
+                {
+                  "ad": "Fitil mekanizması",
+                  "tur": "Ateşleme düzeni",
+                  "aciklama": "Yanan fitil tetik düzeniyle baruta yaklaştırılır. Yağmur ve açık alev önemli risk oluşturur.",
+                  "position": "0.26937m 0.32479m 0.12447m",
+                  "normal": "0.67036m -0.18622m 0.71829m",
+                  "cameraTarget": "0.26937m 0.32479m 0.12447m",
+                  "cameraOrbit": "-291.5141deg 82.59033deg 2.23101m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:39:58.324Z"
+                },
+                {
+                  "ad": "Dipçik",
+                  "tur": "Omuz desteği",
+                  "aciklama": "Ahşap dipçik silahın omuzda dengelenmesine yardım eder. Erken tüfeklerin biçimi modern tüfeklerle aynı değildir.",
+                  "position": "-0.41831m 0.40749m -0.05501m",
+                  "normal": "-0.69524m 0.1606m 0.70061m",
+                  "cameraTarget": "-0.41831m 0.40749m -0.05501m",
+                  "cameraOrbit": "-45deg 80deg 2.23101m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:39:56.392Z"
+                },
+                {
+                  "ad": "Harbi ve barut kapları",
+                  "tur": "Doldurma donanımı",
+                  "aciklama": "Harbi namludaki yükü yerleştirmeye yarar, kaplar ölçülü barut taşır. Doldurma sırası eğitim gerektirir.",
+                  "position": "0.22834m 0.25894m 0.11235m",
+                  "normal": "-0.05591m -0.04113m 0.99759m",
+                  "cameraTarget": "0.22834m 0.25894m 0.11235m",
+                  "cameraOrbit": "59.47709deg 83.66961deg 2.23101m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:39:54.381Z"
+                }
+              ]
+            },
+            {
+              "ad": "Süslemeli yeniçeri tüfeği",
+              "modelYolu": "../3d/Nesneler/Fitilli tüfek/Süslemeli yeniçeri tüfeği.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Namlu",
+                  "tur": "Atış bölümü",
+                  "aciklama": "Uzun namlu barut gazının mermiyi ileri itmesini sağlar. Atıştan sonra temizlenmesi gerekir.",
+                  "position": "0.45943m 0.36825m -0.18322m",
+                  "normal": "-0.08317m 0.12177m -0.98907m",
+                  "cameraTarget": "0.45943m 0.36825m -0.18322m",
+                  "cameraOrbit": "-160.37096deg 61.00415deg 2.195m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:40:14.394Z"
+                },
+                {
+                  "ad": "Fitil mekanizması",
+                  "tur": "Ateşleme düzeni",
+                  "aciklama": "Yanan fitil tetik düzeniyle baruta yaklaştırılır. Yağmur ve açık alev önemli risk oluşturur.",
+                  "position": "-0.17261m 0.27183m -0.12828m",
+                  "normal": "0.06186m -0.14454m 0.98756m",
+                  "cameraTarget": "-0.17261m 0.27183m -0.12828m",
+                  "cameraOrbit": "-24.37802deg 84.74895deg 2.195m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:40:26.793Z"
+                },
+                {
+                  "ad": "Dipçik",
+                  "tur": "Omuz desteği",
+                  "aciklama": "Ahşap dipçik silahın omuzda dengelenmesine yardım eder. Erken tüfeklerin biçimi modern tüfeklerle aynı değildir.",
+                  "position": "-0.48775m 0.09815m -0.18125m",
+                  "normal": "-0.77048m 0.16461m 0.61584m",
+                  "cameraTarget": "-0.48775m 0.09815m -0.18125m",
+                  "cameraOrbit": "-90deg 80deg 2.195m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:40:31.417Z"
+                },
+                {
+                  "ad": "Harbi ve barut kapları",
+                  "tur": "Doldurma donanımı",
+                  "aciklama": "Harbi namludaki yükü yerleştirmeye yarar, kaplar ölçülü barut taşır. Doldurma sırası eğitim gerektirir.",
+                  "position": "0.11665m 0.09331m 0.13346m",
+                  "normal": "-0.76771m 0.49178m 0.41082m",
+                  "cameraTarget": "0.11665m 0.09331m 0.13346m",
+                  "cameraOrbit": "-90deg 80deg 2.195m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:40:37.935Z"
+                }
+              ]
+            },
+            {
+              "ad": "Uzun fitilli tüfek",
+              "modelYolu": "../3d/Nesneler/Fitilli tüfek/Uzun Osmanlı fitilli tüfeği.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Namlu",
+                  "tur": "Atış bölümü",
+                  "aciklama": "Uzun namlu barut gazının mermiyi ileri itmesini sağlar. Atıştan sonra temizlenmesi gerekir.",
+                  "position": "0.4685m 0.1259m -0.3456m",
+                  "normal": "-0.5263m -0.3581m -0.7712m",
+                  "cameraTarget": "0.4685m 0.1259m -0.3456m",
+                  "cameraOrbit": "180deg 80deg 0.44m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:40:44.342Z"
+                },
+                {
+                  "ad": "Fitil mekanizması",
+                  "tur": "Ateşleme düzeni",
+                  "aciklama": "Yanan fitil tetik düzeniyle baruta yaklaştırılır. Yağmur ve açık alev önemli risk oluşturur.",
+                  "position": "-0.17606m 0.17157m 0.14642m",
+                  "normal": "0.75827m 0.05107m 0.64994m",
+                  "cameraTarget": "-0.17606m 0.17157m 0.14642m",
+                  "cameraOrbit": "353.55284deg 66.18488deg 2.54775m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:40:55.416Z"
+                },
+                {
+                  "ad": "Dipçik",
+                  "tur": "Omuz desteği",
+                  "aciklama": "Ahşap dipçik silahın omuzda dengelenmesine yardım eder. Erken tüfeklerin biçimi modern tüfeklerle aynı değildir.",
+                  "position": "-0.37831m 0.12661m 0.27956m",
+                  "normal": "0.56457m 0.2619m 0.78273m",
+                  "cameraTarget": "-0.37831m 0.12661m 0.27956m",
+                  "cameraOrbit": "366.07282deg 86.47585deg 2.54775m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:41:03.946Z"
+                },
+                {
+                  "ad": "Harbi ve barut kapları",
+                  "tur": "Doldurma donanımı",
+                  "aciklama": "Harbi namludaki yükü yerleştirmeye yarar, kaplar ölçülü barut taşır. Doldurma sırası eğitim gerektirir.",
+                  "position": "0.20804m 0.07959m 0.19227m",
+                  "normal": "0.43853m -0.13357m -0.88874m",
+                  "cameraTarget": "0.20804m 0.07959m 0.19227m",
+                  "cameraOrbit": "109.62907deg 56.25521deg 2.54775m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:41:12.439Z"
+                }
+              ]
+            }
+          ],
+          "noktalar": [
+            {
+              "ad": "Namlu",
+              "tur": "Atış bölümü",
+              "aciklama": "Uzun namlu barut gazının mermiyi ileri itmesini sağlar. Atıştan sonra temizlenmesi gerekir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Fitil mekanizması",
+              "tur": "Ateşleme düzeni",
+              "aciklama": "Yanan fitil tetik düzeniyle baruta yaklaştırılır. Yağmur ve açık alev önemli risk oluşturur.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Dipçik",
+              "tur": "Omuz desteği",
+              "aciklama": "Ahşap dipçik silahın omuzda dengelenmesine yardım eder. Erken tüfeklerin biçimi modern tüfeklerle aynı değildir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Harbi ve barut kapları",
+              "tur": "Doldurma donanımı",
+              "aciklama": "Harbi namludaki yükü yerleştirmeye yarar, kaplar ölçülü barut taşır. Doldurma sırası eğitim gerektirir.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        },
+        {
+          "anahtar": "top-turleri",
+          "ad": "Top türleri",
+          "tur": "Ateşli kuşatma ve meydan silahı",
+          "kisaTanim": "Top sözü tek bir büyüklüğü anlatmaz; ağır kuşatma toplarından daha hareketli meydan ve kale toplarına kadar farklı türleri kapsar.",
+          "somutVeri": "Kaynaklarda balyemez, şâhî, darbzen, kolunburna, prangı, şakaloz ve başka adlarla farklı top sınıfları geçer.",
+          "kullananBirlikler": [
+            "topcu",
+            "topArabacilari"
+          ],
+          "yayginYanlis": "Bütün Osmanlı toplarını 1453’teki dev kuşatma topları kadar büyük göstermek yanlıştır.",
+          "kaynaklar": [
+            {
+              "baslik": "Top",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "2012",
+              "url": "https://islamansiklopedisi.org.tr/top",
+              "tur": "ansiklopedi maddesi"
+            },
+            {
+              "baslik": "Tophâne",
+              "kurum": "TDV İslâm Ansiklopedisi",
+              "tarih": "2012",
+              "url": "https://islamansiklopedisi.org.tr/tophane",
+              "tur": "ansiklopedi maddesi"
+            }
+          ],
+          "durum": "tam",
+          "kayitTuru": "nesne",
+          "grup": "silahlar",
+          "modelVaryantlari": [
+            {
+              "ad": "Büyük kuşatma topu",
+              "modelYolu": "../3d/Nesneler/Top türleri/Büyük kuşatma topu.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Namlu",
+                  "tur": "Atış bölümü",
+                  "aciklama": "Metal namlu barut gazını ve gülleyi yönlendirir. Boyut ve çap topun görevine göre değişirdi.",
+                  "position": "-0.42436m 0.37263m -0.0752m",
+                  "normal": "0.02482m 0.25307m 0.96713m",
+                  "cameraTarget": "-0.42436m 0.37263m -0.0752m",
+                  "cameraOrbit": "-54.72811deg 68.77518deg 2.21444m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:41:37.407Z"
+                },
+                {
+                  "ad": "Kundak veya top arabası",
+                  "tur": "Taşıyıcı düzen",
+                  "aciklama": "Ahşap taşıyıcı namluyu destekler ve hareket ettirmeye yardım eder. Her top aynı büyüklükte bir arabaya sahip değildi.",
+                  "position": "0.10233m 0.04662m 0.31874m",
+                  "normal": "0.98951m 0.00851m 0.14424m",
+                  "cameraTarget": "0.10233m 0.04662m 0.31874m",
+                  "cameraOrbit": "45deg 80.2555deg 2.21444m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:41:50.379Z"
+                },
+                {
+                  "ad": "Tekerlekler",
+                  "tur": "Hareket bölümü",
+                  "aciklama": "Tekerlekler topun mevzi değiştirmesini kolaylaştırır. Ağır topların taşınması ayrı bir ekip ve çekim gücü isterdi.",
+                  "position": "0.28075m 0.08674m 0.19074m",
+                  "normal": "0.09899m 0.00787m 0.99506m",
+                  "cameraTarget": "0.28075m 0.08674m 0.19074m",
+                  "cameraOrbit": "45deg 80deg 2.21444m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:41:56.739Z"
+                },
+                {
+                  "ad": "Ateşleme deliği",
+                  "tur": "Ateşleme bölümü",
+                  "aciklama": "Barut yükü bu küçük açıklıktan ateşlenirdi. Topçu ekip güvenliğini sağlamak için sırayla çalışırdı.",
+                  "position": "0.28368m 0.38958m -0.02183m",
+                  "normal": "0.31604m -0.23913m 0.91811m",
+                  "cameraTarget": "0.28368m 0.38958m -0.02183m",
+                  "cameraOrbit": "45deg 80deg 2.21444m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:42:04.129Z"
+                }
+              ]
+            },
+            {
+              "ad": "Şahi topu",
+              "modelYolu": "../3d/Nesneler/Top türleri/Şahi topu.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Namlu",
+                  "tur": "Atış bölümü",
+                  "aciklama": "Metal namlu barut gazını ve gülleyi yönlendirir. Boyut ve çap topun görevine göre değişirdi.",
+                  "position": "-0.39406m 0.37339m -0.21083m",
+                  "normal": "-0.07552m -0.75394m 0.65259m",
+                  "cameraTarget": "-0.39406m 0.37339m -0.21083m",
+                  "cameraOrbit": "286.96667deg 93.81514deg 2.20814m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:42:34.044Z"
+                },
+                {
+                  "ad": "Kundak veya top arabası",
+                  "tur": "Taşıyıcı düzen",
+                  "aciklama": "Ahşap taşıyıcı namluyu destekler ve hareket ettirmeye yardım eder. Her top aynı büyüklükte bir arabaya sahip değildi.",
+                  "position": "0.13093m 0.2097m -0.08574m",
+                  "normal": "0.02365m -0.00952m 0.99968m",
+                  "cameraTarget": "0.13093m 0.2097m -0.08574m",
+                  "cameraOrbit": "29.22776deg 66.61658deg 2.20814m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:42:54.947Z"
+                },
+                {
+                  "ad": "Tekerlekler",
+                  "tur": "Hareket bölümü",
+                  "aciklama": "Tekerlekler topun mevzi değiştirmesini kolaylaştırır. Ağır topların taşınması ayrı bir ekip ve çekim gücü isterdi.",
+                  "position": "0.32151m 0.1093m -0.34761m",
+                  "normal": "-0.00854m -0.00639m -0.99994m",
+                  "cameraTarget": "0.32151m 0.1093m -0.34761m",
+                  "cameraOrbit": "135deg 80deg 2.20814m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:42:59.102Z"
+                },
+                {
+                  "ad": "Ateşleme deliği",
+                  "tur": "Ateşleme bölümü",
+                  "aciklama": "Barut yükü bu küçük açıklıktan ateşlenirdi. Topçu ekip güvenliğini sağlamak için sırayla çalışırdı.",
+                  "position": "0.03796m 0.41709m -0.19507m",
+                  "normal": "0.07279m -0.33579m 0.93912m",
+                  "cameraTarget": "0.03796m 0.41709m -0.19507m",
+                  "cameraOrbit": "9.80017deg 73.02558deg 4.07191m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:43:13.781Z"
+                }
+              ]
+            },
+            {
+              "ad": "Donanma topu",
+              "modelYolu": "../3d/Nesneler/Top türleri/Donanma topu.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Namlu",
+                  "tur": "Atış bölümü",
+                  "aciklama": "Metal namlu barut gazını ve gülleyi yönlendirir. Boyut ve çap topun görevine göre değişirdi.",
+                  "position": "0.4043m 0.2977m -0.1809m",
+                  "normal": "0.9995m 0.0232m 0.0233m",
+                  "cameraTarget": "0.4043m 0.2977m -0.1809m",
+                  "cameraOrbit": "90deg 80deg 0.44m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:43:23.595Z"
+                },
+                {
+                  "ad": "Kundak veya top arabası",
+                  "tur": "Taşıyıcı düzen",
+                  "aciklama": "Ahşap taşıyıcı namluyu destekler ve hareket ettirmeye yardım eder. Her top aynı büyüklükte bir arabaya sahip değildi.",
+                  "position": "-0.03219m 0.24912m -0.05311m",
+                  "normal": "-0.0092m 0.78698m 0.61691m",
+                  "cameraTarget": "-0.03219m 0.24912m -0.05311m",
+                  "cameraOrbit": "29.127deg 80deg 1.97239m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:43:29.671Z"
+                },
+                {
+                  "ad": "Tekerlekler",
+                  "tur": "Hareket bölümü",
+                  "aciklama": "Tekerlekler topun mevzi değiştirmesini kolaylaştırır. Ağır topların taşınması ayrı bir ekip ve çekim gücü isterdi.",
+                  "position": "0.1851m 0.0953m 0.02343m",
+                  "normal": "-0.02418m 0.0136m 0.99962m",
+                  "cameraTarget": "0.1851m 0.0953m 0.02343m",
+                  "cameraOrbit": "24.80974deg 89.92965deg 1.97239m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:43:36.424Z"
+                },
+                {
+                  "ad": "Ateşleme deliği",
+                  "tur": "Ateşleme bölümü",
+                  "aciklama": "Barut yükü bu küçük açıklıktan ateşlenirdi. Topçu ekip güvenliğini sağlamak için sırayla çalışırdı.",
+                  "position": "-0.2967m 0.45961m -0.17057m",
+                  "normal": "0.00485m 0.99921m 0.03939m",
+                  "cameraTarget": "-0.2967m 0.45961m -0.17057m",
+                  "cameraOrbit": "-40.38046deg 44.16698deg 1.97239m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:44:12.861Z"
+                }
+              ]
+            },
+            {
+              "ad": "Saha topu",
+              "modelYolu": "../3d/Nesneler/Top türleri/Saha topu.glb",
+              "noktalarHazir": false,
+              "noktalar": [
+                {
+                  "ad": "Namlu",
+                  "tur": "Atış bölümü",
+                  "aciklama": "Metal namlu barut gazını ve gülleyi yönlendirir. Boyut ve çap topun görevine göre değişirdi.",
+                  "position": "-0.35624m 0.37355m -0.09337m",
+                  "normal": "-0.95044m 0.24767m 0.18793m",
+                  "cameraTarget": "-0.35624m 0.37355m -0.09337m",
+                  "cameraOrbit": "-103.76099deg 64.88968deg 1.79637m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:44:46.741Z"
+                },
+                {
+                  "ad": "Kundak veya top arabası",
+                  "tur": "Taşıyıcı düzen",
+                  "aciklama": "Ahşap taşıyıcı namluyu destekler ve hareket ettirmeye yardım eder. Her top aynı büyüklükte bir arabaya sahip değildi.",
+                  "position": "0.07879m 0.17674m -0.06456m",
+                  "normal": "0.24771m -0.06092m 0.96692m",
+                  "cameraTarget": "0.07879m 0.17674m -0.06456m",
+                  "cameraOrbit": "0deg 80deg 1.79637m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:44:45.846Z"
+                },
+                {
+                  "ad": "Tekerlekler",
+                  "tur": "Hareket bölümü",
+                  "aciklama": "Tekerlekler topun mevzi değiştirmesini kolaylaştırır. Ağır topların taşınması ayrı bir ekip ve çekim gücü isterdi.",
+                  "position": "-0.11266m 0.16907m 0.15837m",
+                  "normal": "0.2388m -0.00344m 0.97106m",
+                  "cameraTarget": "-0.11266m 0.16907m 0.15837m",
+                  "cameraOrbit": "0deg 80deg 1.79637m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:45:10.565Z"
+                },
+                {
+                  "ad": "Ateşleme deliği",
+                  "tur": "Ateşleme bölümü",
+                  "aciklama": "Barut yükü bu küçük açıklıktan ateşlenirdi. Topçu ekip güvenliğini sağlamak için sırayla çalışırdı.",
+                  "position": "0.07814m 0.33593m -0.15654m",
+                  "normal": "0.15962m 0.98675m -0.02898m",
+                  "cameraTarget": "0.07814m 0.33593m -0.15654m",
+                  "cameraOrbit": "-70.3709deg 14.80977deg 1.79637m",
+                  "koordinatKaynak": "reviewed_candidate",
+                  "koordinatOnayTarihi": "2026-09-14T07:45:48.882Z"
+                }
+              ]
+            }
+          ],
+          "noktalar": [
+            {
+              "ad": "Namlu",
+              "tur": "Atış bölümü",
+              "aciklama": "Metal namlu barut gazını ve gülleyi yönlendirir. Boyut ve çap topun görevine göre değişirdi.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Kundak veya top arabası",
+              "tur": "Taşıyıcı düzen",
+              "aciklama": "Ahşap taşıyıcı namluyu destekler ve hareket ettirmeye yardım eder. Her top aynı büyüklükte bir arabaya sahip değildi.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Tekerlekler",
+              "tur": "Hareket bölümü",
+              "aciklama": "Tekerlekler topun mevzi değiştirmesini kolaylaştırır. Ağır topların taşınması ayrı bir ekip ve çekim gücü isterdi.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            },
+            {
+              "ad": "Ateşleme deliği",
+              "tur": "Ateşleme bölümü",
+              "aciklama": "Barut yükü bu küçük açıklıktan ateşlenirdi. Topçu ekip güvenliğini sağlamak için sırayla çalışırdı.",
+              "position": "",
+              "normal": "",
+              "cameraTarget": "",
+              "cameraOrbit": ""
+            }
+          ],
+          "donemAnahtari": "klasik",
+          "donemAdi": "Klasik dönem",
+          "donemAraligi": "1520–1600"
+        }
+      ]
+    }
+  ]
+}

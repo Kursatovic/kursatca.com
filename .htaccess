@@ -20,12 +20,16 @@ RewriteEngine On
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType model/gltf-binary "access plus 1 year"
   ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
 <IfModule mod_headers.c>
-  <FilesMatch "\.(css|js|png|jpe?g|webp|svg|woff2)$">
+  <FilesMatch "\.(css|js|png|jpe?g|webp|svg|woff2|glb)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(json)$">
+    Header set Cache-Control "no-cache"
   </FilesMatch>
   <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache"
@@ -33,6 +37,12 @@ RewriteEngine On
   SetEnvIf Request_URI "^/pdf-pro(\.html)?$" is_pdf_pro
   Header set X-Robots-Tag "noindex, follow" env=is_pdf_pro
 </IfModule>
+
+# Interactive Ottoman encampment assets. Explicit types keep JSON UTF-8 and
+# 3D models compatible with model-viewer on Hostinger/Apache.
+AddType application/json .json
+AddCharset UTF-8 .json
+AddType model/gltf-binary .glb
 
 # Force every public URL variant to one canonical shape:
 # https://kursatca.com/...

@@ -1,0 +1,44 @@
+:root{
+  color-scheme:light;
+  --atlas-cobalt:#123f78;
+  --atlas-coral:#96372f;
+  --atlas-turquoise:#005b59;
+  --atlas-pistachio:#355c27;
+  --atlas-gold:#9a741c;
+  --atlas-ivory:#f3f2ed;
+  --atlas-paper:#fffefa;
+  --atlas-ink:#171b20;
+  --atlas-muted:#3e4852;
+  --atlas-line:rgba(18,63,120,.24);
+}
+*{box-sizing:border-box}
+.skip-link{position:fixed;z-index:1000;left:12px;top:8px;transform:translateY(-160%);padding:9px 13px;border-radius:7px;background:#fff;color:#123f78;font-weight:800;text-decoration:none;box-shadow:0 3px 14px #0004}
+.skip-link:focus{transform:none}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #f2c14e;outline-offset:3px}
+.secondary-page{margin:0;min-height:100vh;background:var(--atlas-ivory);color:var(--atlas-ink);font:14px/1.45 "Segoe UI",Arial,sans-serif}
+.secondary-page::before{content:"";position:fixed;z-index:0;inset:0;background:url("../gorseller/arayuz/met-iznik-17.190.2086-seamless-kobalt.webp") repeat;background-size:520px;opacity:.06;pointer-events:none}
+.secondary-header{position:sticky;z-index:30;top:0;min-height:62px;padding:8px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:3px solid var(--atlas-gold);background:var(--atlas-cobalt);color:#fff}
+.secondary-heading{min-width:max-content}
+.secondary-brand{display:inline-block;color:#fff!important;font-size:12px;font-weight:800;text-decoration:none}
+.secondary-title{margin:3px 0 0!important;color:#fff;font:700 23px/1.08 Georgia,"Times New Roman",serif!important}
+.secondary-nav{display:flex;justify-content:flex-end;align-items:center;gap:6px;flex-wrap:wrap}
+.secondary-nav a,.secondary-nav button{min-height:34px;padding:7px 9px;border:1px solid rgba(255,255,255,.58);border-radius:7px;background:rgba(255,255,255,.08);color:#fff!important;font:700 12px/1 "Segoe UI",Arial,sans-serif;text-decoration:none;cursor:pointer}
+.secondary-nav a:hover,.secondary-nav button:hover,.secondary-nav a[aria-current="page"]{background:#fff;color:var(--atlas-cobalt)!important}
+.secondary-main{position:relative;z-index:1}
+.secondary-page.dark-theme{color-scheme:dark;--atlas-ivory:#09110f;--atlas-paper:#121b17;--atlas-ink:#f5efe1;--atlas-muted:#c2c9c4;--atlas-line:rgba(255,255,255,.2);background:#09110f;color:#f5efe1}
+.secondary-page.dark-theme::before{opacity:.018;filter:grayscale(1)}
+.secondary-page.dark-theme .secondary-header{background:#0c1411}
+.secondary-page.dark-theme main,.secondary-page.dark-theme .scene,.secondary-page.dark-theme .institution,.secondary-page.dark-theme .filter,.secondary-page.dark-theme .methodology article,.secondary-page.dark-theme .branch,.secondary-page.dark-theme .category,.secondary-page.dark-theme .branch-title,.secondary-page.dark-theme .leaf{color:var(--atlas-ink)}
+.page-org .secondary-header{height:auto}
+.page-org .secondary-main{height:calc(100vh - 67px);padding:9px 12px 12px;display:grid;grid-template-rows:auto minmax(0,1fr);gap:8px;overflow:hidden}
+.page-org .chart{min-height:0}
+.page-legend{justify-content:center;margin:0}
+.page-schemas .page-intro{grid-column:1/-1;margin:0;padding:10px 12px;border-left:8px solid var(--atlas-turquoise);border-radius:8px;background:var(--atlas-paper);color:var(--atlas-muted)}
+.secondary-page.dark-theme .scene,.secondary-page.dark-theme .institution,.secondary-page.dark-theme .filter,.secondary-page.dark-theme .methodology article,.secondary-page.dark-theme .branch,.secondary-page.dark-theme .category,.secondary-page.dark-theme .branch-title,.secondary-page.dark-theme .leaf,.secondary-page.dark-theme .type>h2,.secondary-page.dark-theme .page-intro{background:#121b17;border-color:#405048;color:#f5efe1}
+.secondary-page.dark-theme .scene>p,.secondary-page.dark-theme .caption,.secondary-page.dark-theme .intro,.secondary-page.dark-theme .meta,.secondary-page.dark-theme .used,.secondary-page.dark-theme .methodology p{color:#c2c9c4}
+.secondary-page.dark-theme .institution h3,.secondary-page.dark-theme .methodology h2,.secondary-page.dark-theme .source a,.secondary-page.dark-theme .sources a,.secondary-page.dark-theme .sources b,.secondary-page.dark-theme .filter label{color:#8fd5e0}
+.secondary-page.dark-theme .filter select{background:#0b1210;color:#f5efe1;border-color:#536159}
+.secondary-page.dark-theme .leaf em{background:#26332d;color:#eef5f0}
+@media(max-width:850px){.secondary-header{position:static;align-items:flex-start;flex-direction:column;padding:11px 14px}.secondary-heading{min-width:0}.secondary-nav{justify-content:flex-start}.secondary-nav a,.secondary-nav button{min-height:40px}.secondary-page::before{background-size:360px}}
+@media(max-width:900px){.page-org .secondary-main{height:auto;overflow:visible}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.skip-link{transition:none}}

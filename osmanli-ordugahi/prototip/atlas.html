@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Osmanlı Ordugâhı</title><link rel="icon" href="data:,">
+  <script type="module" src="./vendor/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="./atlas.css?surum=45">
+  <link rel="stylesheet" href="./sayfa-standardi.css?surum=38">
+</head>
+<body>
+  <a class="skip-link" href="#atlasMain">Ana içeriğe geç</a>
+  <header class="top">
+    <div class="brand-wrap"><div class="brand">Osmanlı Ordugâhı</div><div class="method-wrap"><button class="method-info" id="methodInfo" type="button" aria-expanded="false" aria-controls="methodPopover" aria-label="Modellerin nasıl hazırlandığını açıkla" title="Modeller nasıl hazırlandı?"><span class="method-info-icon" aria-hidden="true">i</span></button><div class="method-popover" id="methodPopover" role="note" hidden><b>Modeller nasıl hazırlandı?</b><br>Dönemin yazılı ve görsel kaynakları incelendi; ardından öğretim amacıyla üç boyutlu yorumlar üretildi. Modeller tarihî birer fotoğraf değil, kaynaklara dayanan yeniden canlandırmalardır.</div></div></div>
+    <nav class="top-links" aria-label="Ordugâh araçları"><button id="aboutOpen" type="button">Hakkında</button><a id="treeLink" href="./teskilat.html?surum=44">Teşkilat şeması</a><a id="sourcesLink" href="./kaynakca.html?surum=44">Kaynakça</a><a id="objectsLink" href="./atlas.html?tur=nesne&amp;grup=gemiler&amp;surum=44">Nesneler</a><button id="compareOpen" type="button">İki birliği karşılaştır</button><a id="schemasLink" href="./semalar.html?surum=44">Şematik anlatımlar</a><a class="tripo-credit" href="https://studio.tripo3d.ai/?utm_source=creator_invite&amp;utm_medium=linkcopy&amp;utm_campaign=0FSSQI&amp;utm_content=10176103" target="_blank" rel="noopener noreferrer" aria-label="3B modellerin üretildiği Tripo AI sitesini yeni sekmede aç">3B modeller · Tripo AI ↗</a><button id="themeToggle" type="button" aria-pressed="false">Koyu tema</button></nav>
+    <div class="period-picker" id="periodPicker" aria-label="Dönem seçimi"></div>
+  </header>
+  <main class="layout" id="atlasMain">
+    <aside class="rail card">
+      <span class="label">Kara ve deniz kuvvetleri</span><h2>Askerî birlikler</h2>
+      <div class="branch-tabs" id="branchTabs" role="tablist" aria-label="Ordugâh kayıt türü filtresi"></div><div id="unitList"></div>
+       <div class="tree-wrap"><span class="label">Teşkilattaki yeri</span><ol class="tree" id="tree"></ol></div>
+    </aside>
+    <section class="workspace">
+      <div class="top-row">
+        <div class="visual-stack"><section class="viewer card">
+          <div class="heading"><span class="label" id="className"></span><h1 id="unitName"></h1><p>Döndür · Yakınlaştır · Numaraları seç</p></div><button class="hotspot-toggle" id="hotspotToggle" type="button" aria-pressed="true">Numaraları gizle</button>
+          <model-viewer id="model" camera-controls shadow-intensity="1.1" exposure="1.08" environment-image="neutral" camera-orbit="25deg 76deg 2.15m" field-of-view="30deg"></model-viewer><img class="reference-image" id="referenceImage" alt="" hidden><div class="model-loading-cover" id="modelLoadingCover" hidden><img id="modelLoadingImage" alt=""><span>Yeni görünüm hazırlanıyor…</span></div>
+           <section class="no-model-panel" id="noModelPanel" hidden><article class="no-model-card"><span class="label" id="noModelLabel"></span><h2 id="noModelTitle"></h2><p id="noModelText"></p></article></section>
+          <div class="model-error" id="modelError" role="alert" hidden>Bu 3B model yüklenemedi. Dosyanın yerinde olduğunu kontrol edip sayfayı yenileyin.</div>
+          <div class="model-variants" id="modelVariants" aria-label="3B model görünümü" hidden></div>
+          <article class="pop card" id="popup" aria-live="polite"><button class="popclose" id="popupClose" aria-label="Açıklamayı kapat">×</button><div class="pophead"><div class="pnum" id="popupNumber"></div><div><span class="label" id="popupKind"></span><h2 id="popupTitle"></h2></div></div><p id="popupText"></p><details class="trust-details" id="trustDetails"><summary>Kaynak güveni</summary><p id="popupTrust"></p></details></article>
+          <section class="edit-panel" id="editPanel" hidden><div class="edit-head" id="editDrag"><h2>Nokta konumu editörü</h2><button type="button" class="edit-toggle" id="editToggle" aria-label="Editör panelini küçült">−</button></div><div id="editBody"><p>Önce noktayı seçin, sonra model yüzeyine tıklayın. Modeli sürükleyerek döndürmek ölçüm oluşturmaz. Yakınlaştırma için önce kamerayı parçaya yaklaştırın, sonra tıklayın.</p><label class="edit-label" for="editPoint">Ölçülecek nokta</label><select class="edit-select" id="editPoint"></select><div class="edit-measurements" id="editMeasurements"></div><div class="edit-actions"><button class="copy" id="copyEdit">Tümünü kopyala</button><button class="clear" id="clearEdit">Listeyi temizle</button><span class="edit-status" id="editStatus"></span></div></div></section>
+        </section></div><aside class="side card">
+          <h1 class="side-unit-name" id="sideUnitName"></h1>
+          <div class="tags"><span class="tag" id="typeTag"></span><span class="tag" id="armyTag"></span></div><h2 id="profileTitle"></h2><div class="sub" id="profileSub"></div>
+          <div class="facts"><div class="fact" id="incomeFact"><small>Gelir / geçim</small><b id="income"></b><span class="fact-trust" id="incomeTrust"></span></div><div class="fact" id="roleFact"><small>Ana görev</small><b id="role"></b><span class="fact-trust" id="roleTrust"></span></div></div>
+          <section class="section" id="whoSection"><span class="label" id="whoLabel">Kısaca</span><p id="who"></p></section><div class="number-line" id="numberLine" hidden><span id="numberLabel">Belgeden bir rakam</span><b id="numberText"></b></div><section class="section object-users" id="objectUsersSection" hidden><span class="label">Kullanan birlikler</span><div class="object-user-list" id="objectUsers"></div></section>
+          <section class="equipment-panel" id="equipmentSection"><span class="label">Teçhizat noktaları</span><div class="equipment" id="equipment"></div></section>
+          <article class="misconception" id="misconceptionCard"><span class="label">Yaygın yanlış</span><h3 id="wrongTitle"></h3><p id="wrong"></p></article>
+        </aside>
+      </div>
+      <section class="deck"><article class="info card" id="trainingCard"><span class="label">Yetişme ve hizmet</span><h3 id="trainingTitle"></h3><p id="training"></p></article></section>
+    </section>
+  </main>
+  <section class="welcome-overlay" id="welcomeOverlay" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" hidden>
+    <article class="welcome-panel">
+      <header class="welcome-head"><div><span class="welcome-kicker">ETKİLEŞİMLİ ÖĞRENME DENEYİMİ</span><h2 id="welcomeTitle">Osmanlı Ordugâhı’na hoş geldiniz</h2><p>Osmanlı askerî dünyasını yalnızca okumak yerine; birlikleri, gemileri ve teçhizatı üç boyutlu modeller üzerinde keşfedin.</p></div><button class="welcome-close" id="welcomeClose" type="button" aria-label="Tanıtımı kapat">×</button></header>
+      <div class="welcome-grid">
+        <section><span class="welcome-step">01</span><h3>Bu proje nedir?</h3><p>Öğrenciler için hazırlanan etkileşimli bir tarih öğrenme alanıdır. Askerî teşkilatı, dönemin insanlarını ve kullanılan araçları birbiriyle ilişkilendirir.</p></section>
+        <section><span class="welcome-step">02</span><h3>Amacımız</h3><p>Ezberlenecek adlar sunmak değil; bir askerin nerede yetiştiğini, görevini, geçimini ve teçhizatını kanıta dayalı, anlaşılır ve merak uyandıran bir anlatıyla göstermek.</p></section>
+        <section><span class="welcome-step">03</span><h3>Nasıl dolaşılır?</h3><p>Soldan bir birlik ya da nesne seçin. Modeli döndürüp yakınlaştırın; numaralara basarak parçaları inceleyin. Üst menüden teşkilatı görün, karşılaştırma yapın ve kaynakçaya ulaşın.</p></section>
+        <section><span class="welcome-step">04</span><h3>Kaynak ve sınırlar</h3><p>Modeller tarihî fotoğraf değildir. Yazılı ve görsel kaynaklara dayanarak öğretim amacıyla yeniden canlandırılmıştır. Bilgilerin künyeleri ayrı Kaynakça sayfasında açıkça gösterilir.</p></section>
+      </div>
+      <footer class="welcome-actions"><a href="./kaynakca.html?surum=44">Kaynak yaklaşımını incele</a><button id="welcomeStart" type="button">Keşfetmeye başla</button></footer>
+    </article>
+  </section>
+  <section class="comparison-overlay" id="compareOverlay" role="dialog" aria-modal="true" aria-labelledby="compareTitle" hidden><div class="comparison-panel"><header class="compare-head"><div><span class="label">FARKLARI GÖR</span><h2 id="compareTitle">İki birliği karşılaştır</h2></div><button class="compare-close" id="compareClose" type="button" aria-label="Karşılaştırmayı kapat">×</button></header><div class="compare-selects"><label>Birinci birlik<select id="compareA"></select></label><label>İkinci birlik<select id="compareB"></select></label></div><div class="compare-names"><span>Alan</span><span id="compareAName"></span><span id="compareBName"></span></div><div id="compareRows"></div></div></section>
+  <script src="./atlas-donem.js?surum=44"></script>
+</body>
+</html>
