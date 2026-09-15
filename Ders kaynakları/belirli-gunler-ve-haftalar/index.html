@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belirli Gün ve Haftalar | Etkileşimli Sınıf Sunumu ve Test Alanı</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+
+  <!-- Three.js Library -->
+  <script src="./assets/three.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --primary-crimson: #991b1b;
+      --primary-red: #b91c1c;
+      --accent-gold: #b45309;
+      --bg-page: #f8f9fc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text-heading: #0f172a;
+      --text-body: #1e293b;
+      --text-muted: #475569;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-body);
+      overflow-x: hidden;
+      margin: 0;
+      user-select: none;
+    }
+
+    .font-serif-title {
+      font-family: 'Cinzel', Georgia, serif;
+    }
+
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .edu-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.875rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .edu-card:hover {
+      border-color: #b91c1c;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -4px rgba(185, 28, 28, 0.12), 0 4px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .edu-card.active-day {
+      background: #fffdfc;
+      border: 2px solid #b91c1c;
+      box-shadow: 0 8px 24px -2px rgba(185, 28, 28, 0.18), 0 0 0 3px rgba(185, 28, 28, 0.1);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #edf2f7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #991b1b;
+    }
+
+    .historical-quote-box {
+      border-left: 5px solid #991b1b;
+      background: #fef2f2;
+      padding: 1.15rem 1.4rem;
+      border-radius: 0 0.875rem 0.875rem 0;
+      border-top: 1px solid #fee2e2;
+      border-right: 1px solid #fee2e2;
+      border-bottom: 1px solid #fee2e2;
+    }
+
+    @keyframes shakeAnimation {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+    .shake-error {
+      animation: shakeAnimation 0.4s ease-in-out;
+      border-color: #ef4444 !important;
+      background-color: #fee2e2 !important;
+    }
+
+    .text-scale-large #detail-text-body p {
+      font-size: 1.25rem !important;
+      line-height: 2 !important;
+    }
+    .text-scale-large h2 {
+      font-size: 2.35rem !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col relative antialiased">
+  <canvas id="bg-canvas"></canvas>
+
+  <header class="relative z-10 border-b border-slate-200 bg-white/95 backdrop-blur-md sticky top-0 px-4 sm:px-8 py-3 flex flex-wrap items-center justify-between gap-4 shadow-sm">
+    <div class="flex items-center space-x-3.5">
+      <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-red-700 to-red-500 flex items-center justify-center shadow-md shadow-red-700/20 text-white font-bold text-xl border border-red-400">
+        🇹🇷
+      </div>
+      <div>
+        <div class="flex items-center gap-2.5">
+          <h1 class="font-serif-title font-extrabold text-base sm:text-lg tracking-wide text-slate-900">
+            T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK
+          </h1>
+          <span class="hidden md:inline-block px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider bg-red-100 text-red-800 border border-red-200 rounded-md">
+            Belirli Gün ve Haftalar
+          </span>
+        </div>
+        <p class="text-xs text-slate-500 font-semibold mt-0.5">
+          Ortaokul Sosyal Bilgiler Ders Sunumu & Millî Mücadele Arşivi (2026 - 2027)
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-slate-100 p-1 rounded-xl border border-slate-300 flex items-center gap-1 text-xs font-bold shadow-sm">
+      <button id="nav-presentation-btn" class="px-4 py-2 rounded-lg bg-red-700 text-white shadow-md transition flex items-center gap-1.5">
+        <span>📖</span> Konu Anlatımı & Tablo
+      </button>
+      <button id="nav-assessment-btn" class="px-4 py-2 rounded-lg text-slate-700 hover:text-red-700 transition flex items-center gap-1.5">
+        <span>📝</span> Öğrendiklerimizi Test Edelim
+      </button>
+    </div>
+
+    <div class="flex items-center flex-wrap gap-2.5">
+      <div id="search-container" class="relative hidden xl:block">
+        <input 
+          id="search-input" 
+          type="text" 
+          placeholder="Tarih veya olay ara..." 
+          class="bg-slate-50 text-xs text-slate-800 placeholder-slate-400 pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:border-red-600 focus:bg-white focus:outline-none w-48 transition font-medium"
+        />
+        <svg class="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      </div>
+
+      <div id="view-mode-toggles" class="bg-slate-100 p-1 rounded-lg border border-slate-300 flex items-center text-xs font-semibold">
+        <button id="view-table-btn" class="px-2.5 py-1.5 rounded-md bg-white text-red-800 font-bold shadow-sm transition flex items-center gap-1 border border-slate-200">
+          <span>📋</span> Tablo
+        </button>
+        <button id="view-timeline-btn" class="px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition flex items-center gap-1">
+          <span>⏱️</span> Zaman Tüneli
+        </button>
+      </div>
+
+      <div class="flex items-center bg-slate-100 rounded-lg border border-slate-300 text-xs font-bold">
+        <button id="font-decrease-btn" class="px-2.5 py-1.5 text-slate-700 hover:text-red-700 transition" title="Yazıyı küçült">A-</button>
+        <button id="font-increase-btn" class="px-2.5 py-1.5 text-slate-700 hover:text-red-700 transition border-l border-slate-300" title="Yazıyı büyüt (Akıllı Tahta için)">A+</button>
+      </div>
+
+      <button id="fullscreen-btn" class="px-3.5 py-2 bg-red-700 hover:bg-red-800 active:scale-95 text-white rounded-lg text-xs font-bold shadow-md shadow-red-700/20 flex items-center gap-1.5 transition">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+        <span>Sunum Modu</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="relative z-10 flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col gap-6">
+
+    <!-- MODULE 1: LESSON PRESENTATION & TIMELINE -->
+    <div id="presentation-container" class="flex flex-col gap-6 transition-all duration-300">
+      
+      <!-- Order Switcher Bar -->
+      <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-extrabold text-slate-700">Sıralama Seçeneği:</span>
+          <div class="bg-slate-100 p-1 rounded-lg border border-slate-300 flex items-center text-xs font-semibold">
+            <button id="order-booklet-btn" class="px-3 py-1 rounded-md bg-white text-slate-900 font-bold shadow-sm transition border border-slate-200" title="Kitapçıktaki ders anlatım sırası">
+              📚 Kitapçık Sırası
+            </button>
+            <button id="order-chrono-btn" class="px-3 py-1 rounded-md text-slate-600 hover:text-slate-900 transition" title="Tarihsel kronolojik sıra">
+              ⏱️ Kronolojik (1915 - 1923)
+            </button>
+          </div>
+        </div>
+        <span id="items-counter" class="text-xs text-slate-700 font-bold bg-slate-50 px-3 py-1 rounded-lg border border-slate-200">
+          10 Gün Listelendi
+        </span>
+      </div>
+
+      <!-- View Mode 1: Table -->
+      <section id="table-view" class="transition-all duration-300">
+        <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5"></div>
+      </section>
+
+      <!-- View Mode 2: Timeline -->
+      <section id="timeline-view" class="hidden transition-all duration-300">
+        <div class="relative overflow-x-auto pb-4 pt-6 bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+          <div id="timeline-track" class="flex items-center min-w-[1100px] relative px-6 gap-5"></div>
+        </div>
+      </section>
+
+      <!-- Selected Day Detail Stage -->
+      <section id="detail-stage" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl relative overflow-hidden transition-all duration-300">
+        <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-800 via-red-600 to-amber-600"></div>
+
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-200">
+          <div class="flex items-center gap-3">
+            <span id="detail-badge-order" class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-red-100 text-red-800 border border-red-300">
+              1. BÖLÜM
+            </span>
+            <span id="detail-date" class="font-serif-title text-base sm:text-lg font-extrabold text-red-800 tracking-wider">
+              30 AĞUSTOS 1922
+            </span>
+            <span id="detail-tag" class="hidden sm:inline-block px-3 py-1 text-xs rounded-lg bg-slate-100 text-slate-700 font-bold border border-slate-200">
+              Millî Mücadele Dönemi
+            </span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button id="tts-btn" class="px-4 py-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-800 border border-red-300 text-xs font-bold flex items-center gap-2 transition active:scale-95 shadow-sm" title="Metni sınıfa sesli oku">
+              <span id="tts-icon">🔊</span>
+              <span id="tts-label">Sesli Oku</span>
+            </button>
+            <button id="prev-day-btn" class="px-3.5 py-2 bg-slate-50 hover:bg-slate-100 text-slate-800 rounded-lg text-xs font-bold border border-slate-300 transition flex items-center gap-1 active:scale-95 shadow-sm">
+              <span>◀</span> <span class="hidden sm:inline">Önceki</span>
+            </button>
+            <button id="next-day-btn" class="px-4 py-2 bg-red-700 hover:bg-red-800 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 active:scale-95 shadow-md shadow-red-700/20">
+              <span class="hidden sm:inline">Sonraki</span> <span>▶</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-9 pt-6">
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            <div class="relative group rounded-xl overflow-hidden border-2 border-slate-200 bg-slate-50 shadow-md aspect-[4/3] flex items-center justify-center">
+              <img id="detail-main-img" src="./assets/images/30_agustos_kocatepe.jpg" alt="Tarihi Görsel" class="w-full h-full object-cover transition duration-500 group-hover:scale-105 cursor-pointer" />
+              <div id="img-zoom-trigger" class="absolute inset-0 bg-slate-900/65 opacity-0 group-hover:opacity-100 transition-all duration-200 flex flex-col items-center justify-center cursor-pointer p-4 text-center">
+                <div class="w-12 h-12 rounded-full bg-red-700 text-white flex items-center justify-center text-xl shadow-lg mb-2">🔍</div>
+                <span class="text-xs font-extrabold text-white uppercase tracking-wider">Büyük Ekranda İncele (Zoom)</span>
+                <p id="zoom-img-title-hint" class="text-[11px] text-slate-200 mt-1 max-w-xs font-medium"></p>
+              </div>
+              <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-md border border-slate-300 text-[11px] font-extrabold text-red-800 flex items-center gap-1.5 shadow-md">
+                <span>🏛️</span> Orijinal Tarihî Belge / Fotoğraf
+              </div>
+            </div>
+
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs flex items-start gap-2.5">
+              <span class="text-red-700 text-base font-bold">ℹ️</span>
+              <div>
+                <p id="detail-img-caption" class="font-bold text-slate-900 leading-snug">Etem Temel'in Kocatepe fotoğrafı.</p>
+                <p id="detail-img-source" class="text-[11px] text-slate-500 font-semibold mt-1">Kaynak: Türk Tarih Kurumu</p>
+              </div>
+            </div>
+
+            <div>
+              <span class="text-[11px] font-extrabold text-slate-600 uppercase tracking-wider block mb-2">İlgili Orijinal Arşiv Görselleri:</span>
+              <div id="detail-thumbs-container" class="flex gap-2.5 overflow-x-auto pb-1"></div>
+            </div>
+
+            <div class="mt-2 bg-amber-50 p-4 sm:p-5 rounded-xl border-2 border-amber-300 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xs font-extrabold text-amber-900 uppercase tracking-wider flex items-center gap-1.5">
+                  <span>💬</span> Sınıfa Sor! (Tartışma ve Düşünme Sorusu)
+                </h3>
+                <button id="toggle-hint-btn" class="text-xs text-red-700 hover:text-red-900 underline font-extrabold">Cevap İpucunu Göster</button>
+              </div>
+              <p id="detail-discussion-question" class="text-sm sm:text-base font-bold text-slate-900 leading-snug"></p>
+              <div id="detail-discussion-hint" class="hidden mt-3 p-3 bg-white rounded-lg text-xs sm:text-sm text-slate-800 border border-amber-300 shadow-sm leading-relaxed"></div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 flex flex-col gap-5">
+            <div>
+              <h2 id="detail-title" class="font-serif-title text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-tight">30 AĞUSTOS ZAFER BAYRAMI</h2>
+              <div class="h-1.5 w-24 bg-red-700 rounded-full mt-2"></div>
+            </div>
+
+            <div id="detail-text-body" class="space-y-4 text-base leading-relaxed text-slate-800 font-medium"></div>
+
+            <div id="detail-quote-box" class="historical-quote-box my-1">
+              <p id="detail-quote-text" class="text-base sm:text-lg text-red-950 font-bold italic"></p>
+              <span id="detail-quote-author" class="block text-xs text-red-800 mt-1.5 font-sans not-italic font-extrabold"></span>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-5 border border-slate-200 shadow-sm">
+              <h3 class="text-xs font-extrabold text-red-800 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <span>🎯</span> Tarihî Önemi & Ders Kazanımları (Öğrencilerin Not Alacağı Noktalar)
+              </h3>
+              <ul id="detail-takeaways" class="space-y-2.5 text-sm text-slate-800 font-semibold"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- MODULE 2: ASSESSMENT & QUIZ ACTIVITIES -->
+    <div id="assessment-container" class="hidden flex flex-col gap-6 transition-all duration-300">
+      
+      <!-- Sub-tabs Selector -->
+      <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-bold text-xl shadow-sm">🎯</div>
+          <div>
+            <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Sınıf İçi Ölçme ve Değerlendirme Alanı</h2>
+            <p class="text-xs text-slate-500 font-medium">Öğrendiklerinizi pekiştirmek için aşağıdaki 3 etkinlikten birini seçin.</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-100 p-1.5 rounded-xl border border-slate-300 flex flex-wrap items-center gap-1.5 text-xs font-bold">
+          <button id="tab-matching-btn" class="px-3.5 py-2 rounded-lg bg-white text-red-800 font-extrabold shadow-sm transition border border-slate-200 flex items-center gap-1.5">
+            <span>🧩</span> 1. Eşleştirme Oyunu
+          </button>
+          <button id="tab-tf-btn" class="px-3.5 py-2 rounded-lg text-slate-600 hover:text-red-700 transition flex items-center gap-1.5">
+            <span>⚖️</span> 2. Doğru / Yanlış (10 Soru)
+          </button>
+          <button id="tab-mc-btn" class="px-3.5 py-2 rounded-lg text-slate-600 hover:text-red-700 transition flex items-center gap-1.5">
+            <span>📋</span> 3. 20 Soruluk Çoktan Seçmeli Test
+          </button>
+        </div>
+      </div>
+
+      <!-- ACTIVITY 1: MATCHING GAME -->
+      <section id="act-matching-card" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl flex flex-col gap-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+          <div>
+            <h3 class="font-serif-title font-extrabold text-lg sm:text-xl text-slate-900 flex items-center gap-2">
+              <span class="text-red-700">🧩</span> Tarih ve Olay Eşleştirme Etkinliği
+            </h3>
+            <p class="text-xs text-slate-600 font-medium mt-1">Sol sütundan bir tarihî günü seçin, ardından sağ sütundaki doğru açıklamasıyla eşleştirin.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-bold bg-red-50 text-red-800 px-3 py-1.5 rounded-lg border border-red-200">
+              Eşleşen: <b id="match-counter" class="text-sm text-red-900">0</b> / 10
+            </span>
+            <button id="match-reset-btn" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold border border-slate-300 transition flex items-center gap-1">
+              <span>🔄</span> Yeniden Başlat
+            </button>
+          </div>
+        </div>
+
+        <div id="matching-win-banner" class="hidden bg-emerald-50 border-2 border-emerald-500 rounded-2xl p-6 text-center shadow-lg">
+          <span class="text-4xl block mb-2">🎉</span>
+          <h4 class="text-xl font-extrabold text-emerald-900">Tebrikler! Tüm Eşleştirmeleri Doğru Yaptınız!</h4>
+          <p class="text-sm text-emerald-700 font-medium mt-1">10 tarihî günün anlamını ve kronolojisini eksiksiz kavradınız.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          <div class="flex flex-col gap-2.5">
+            <span class="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-1">1. Tarihî Günler (Seçiniz)</span>
+            <div id="matching-left-list" class="flex flex-col gap-2"></div>
+          </div>
+          <div class="flex flex-col gap-2.5">
+            <span class="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-1">2. Tarihî Önemi ve Anlamı (Eşleştiriniz)</span>
+            <div id="matching-right-list" class="flex flex-col gap-2"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACTIVITY 2: TRUE / FALSE QUIZ -->
+      <section id="act-tf-card" class="hidden bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl flex flex-col gap-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+          <div>
+            <h3 class="font-serif-title font-extrabold text-lg sm:text-xl text-slate-900 flex items-center gap-2">
+              <span class="text-red-700">⚖️</span> Doğru / Yanlış Bilgi Testi
+            </h3>
+            <p class="text-xs text-slate-600 font-medium mt-1">Aşağıdaki ifadenin doğru mu yoksa yanlış mı olduğuna karar verin.</p>
+          </div>
+          <div class="flex items-center gap-3 text-xs font-bold">
+            <span class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg border border-slate-300">Soru: <b id="tf-counter" class="text-slate-900">1</b> / 10</span>
+            <span class="bg-emerald-50 text-emerald-800 px-3 py-1.5 rounded-lg border border-emerald-200">Doğru: <b id="tf-correct-score">0</b></span>
+            <span class="bg-rose-50 text-rose-800 px-3 py-1.5 rounded-lg border border-rose-200">Yanlış: <b id="tf-wrong-score">0</b></span>
+            <button id="tf-reset-btn" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold border border-slate-300 transition"><span>🔄</span> Başa Dön</button>
+          </div>
+        </div>
+
+        <div id="tf-question-box" class="flex flex-col gap-6 py-4">
+          <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-6 sm:p-8 text-center shadow-sm relative">
+            <div class="flex items-center justify-between mb-3 border-b border-slate-200 pb-2.5">
+              <span class="text-xs font-extrabold uppercase tracking-widest text-red-800">İfadeyi Değerlendiriniz:</span>
+              <button id="tf-next-btn-top" class="hidden px-4 py-2 rounded-xl bg-red-700 hover:bg-red-800 text-white font-extrabold text-xs sm:text-sm shadow-md transition flex items-center gap-1.5 animate-pulse active:scale-95">
+                <span>Sonraki Soru</span> <span>▶</span>
+              </button>
+            </div>
+            <p id="tf-statement-text" class="text-base sm:text-xl font-bold text-slate-900 leading-relaxed max-w-3xl mx-auto"></p>
+          </div>
+
+          <div id="tf-buttons-row" class="grid grid-cols-2 gap-4 max-w-xl mx-auto w-full">
+            <button id="tf-btn-true" class="py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-base sm:text-lg shadow-md transition flex items-center justify-center gap-2 border border-emerald-500">
+              <span>✔️</span> DOĞRU
+            </button>
+            <button id="tf-btn-false" class="py-4 px-6 rounded-xl bg-rose-600 hover:bg-rose-700 active:scale-95 text-white font-extrabold text-base sm:text-lg shadow-md transition flex items-center justify-center gap-2 border border-rose-500">
+              <span>❌</span> YANLIŞ
+            </button>
+          </div>
+
+          <div id="tf-feedback-box" class="hidden rounded-xl p-5 border-2 max-w-2xl mx-auto w-full transition-all">
+            <div id="tf-feedback-status" class="font-extrabold text-sm sm:text-base flex items-center gap-2 mb-1.5"></div>
+            <p id="tf-feedback-explanation" class="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed"></p>
+            <div class="mt-4 flex justify-end">
+              <button id="tf-next-btn" class="px-5 py-2 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center gap-1.5">
+                <span>Sonraki Soru</span> <span>▶</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="tf-finish-box" class="hidden bg-slate-50 border-2 border-slate-300 rounded-2xl p-8 text-center max-w-xl mx-auto w-full">
+          <span class="text-5xl block mb-3">🎓</span>
+          <h4 class="text-2xl font-black text-slate-900 mb-2">Doğru / Yanlış Testi Tamamlandı!</h4>
+          <p id="tf-finish-summary" class="text-base font-bold text-slate-700 mb-6"></p>
+          <button id="tf-restart-btn" class="px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white rounded-xl font-bold shadow-md transition">Testi Yeniden Başlat</button>
+        </div>
+      </section>
+
+      <!-- ACTIVITY 3: 20 MULTIPLE CHOICE TEST -->
+      <section id="act-mc-card" class="hidden bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl flex flex-col gap-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+          <div>
+            <h3 class="font-serif-title font-extrabold text-lg sm:text-xl text-slate-900 flex items-center gap-2">
+              <span class="text-red-700">📋</span> 20 Soruluk Çoktan Seçmeli Değerlendirme Testi
+            </h3>
+            <p class="text-xs text-slate-600 font-medium mt-1">LGS ve ders müfredatına tam uyumlu 20 soruluk kazanım tarama testi.</p>
+          </div>
+          <div class="flex items-center gap-3 text-xs font-bold">
+            <span class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg border border-slate-300">Soru: <b id="mc-counter-text" class="text-slate-900">1</b> / 20</span>
+            <span class="bg-emerald-50 text-emerald-800 px-3 py-1.5 rounded-lg border border-emerald-200">Doğru: <b id="mc-score-correct">0</b></span>
+            <span class="bg-rose-50 text-rose-800 px-3 py-1.5 rounded-lg border border-rose-200">Yanlış: <b id="mc-score-wrong">0</b></span>
+            <button id="mc-reset-btn" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold border border-slate-300 transition"><span>🔄</span> Baştan Başla</button>
+          </div>
+        </div>
+
+        <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+          <div id="mc-progress-bar" class="bg-gradient-to-r from-red-700 to-amber-600 h-full transition-all duration-300" style="width: 5%;"></div>
+        </div>
+
+        <div id="mc-question-stage" class="flex flex-col gap-6 py-2">
+          <div class="bg-slate-50 p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+              <span id="mc-topic-badge" class="inline-block px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-red-100 text-red-800 border border-red-300">
+                30 AĞUSTOS ZAFER BAYRAMI
+              </span>
+              <!-- NEXT QUESTION BUTTON PLACED AT THE TOP FOR EASY SMARTBOARD ACCESS -->
+              <button id="mc-next-question-btn" class="hidden px-5 py-2.5 rounded-xl bg-red-700 hover:bg-red-800 text-white font-extrabold text-xs sm:text-sm shadow-md transition flex items-center gap-2 active:scale-95 animate-pulse">
+                <span>Sonraki Soru</span> <span>▶</span>
+              </button>
+            </div>
+            <h4 id="mc-question-title" class="text-base sm:text-xl font-extrabold text-slate-900 leading-snug"></h4>
+          </div>
+
+          <div id="mc-options-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5"></div>
+
+          <div id="mc-explanation-box" class="hidden bg-amber-50/90 border-2 border-amber-300 rounded-xl p-5 shadow-sm">
+            <div id="mc-status-indicator" class="font-extrabold text-sm sm:text-base mb-1 flex items-center gap-2"></div>
+            <p id="mc-explanation-text" class="text-xs sm:text-sm font-semibold text-slate-800 leading-relaxed"></p>
+            <div class="mt-4 flex justify-end">
+              <button id="mc-next-question-btn-bottom" class="px-5 py-2 rounded-lg bg-red-700 hover:bg-red-800 text-white font-extrabold text-xs sm:text-sm shadow-md transition flex items-center gap-1.5">
+                <span>Sonraki Soru</span> <span>▶</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="mc-final-stage" class="hidden bg-white border-2 border-slate-200 rounded-2xl p-8 sm:p-10 text-center max-w-2xl mx-auto w-full shadow-2xl">
+          <span class="text-6xl block mb-3">🏆</span>
+          <span class="text-xs font-extrabold tracking-widest uppercase text-red-700 block mb-1">Millî Mücadele ve Atatürkçülük</span>
+          <h4 class="text-2xl sm:text-3xl font-black text-slate-900 mb-3">Sınıf Başarı Raporu</h4>
+          <div class="my-6 p-6 bg-slate-50 rounded-2xl border border-slate-200 flex flex-wrap justify-around items-center gap-4">
+            <div>
+              <span class="text-xs text-slate-500 font-bold block">TOPLAM SORU</span>
+              <span class="text-2xl font-black text-slate-800">20</span>
+            </div>
+            <div>
+              <span class="text-xs text-emerald-600 font-bold block">DOĞRU</span>
+              <span id="mc-final-correct" class="text-3xl font-black text-emerald-600">0</span>
+            </div>
+            <div>
+              <span class="text-xs text-rose-600 font-bold block">YANLIŞ</span>
+              <span id="mc-final-wrong" class="text-3xl font-black text-rose-600">0</span>
+            </div>
+            <div>
+              <span class="text-xs text-red-700 font-bold block">BAŞARI PUANI</span>
+              <span id="mc-final-score" class="text-3xl font-black text-red-700">%0</span>
+            </div>
+          </div>
+          <p id="mc-final-feedback-msg" class="text-base font-bold text-slate-800 mb-6"></p>
+          <button id="mc-final-restart-btn" class="px-7 py-3 bg-red-700 hover:bg-red-800 text-white font-extrabold rounded-xl shadow-lg transition active:scale-95">
+            Testi Baştan Başlat
+          </button>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl hidden flex flex-col p-4 sm:p-8 items-center justify-center">
+    <button id="lightbox-close-btn" class="absolute top-5 right-5 text-white hover:text-red-400 p-2 rounded-full bg-slate-800 hover:bg-slate-700 transition text-lg w-10 h-10 flex items-center justify-center font-bold shadow-lg">✕</button>
+    <div class="max-w-5xl w-full flex flex-col items-center max-h-[90vh]">
+      <img id="lightbox-img" src="" alt="Büyük Görsel" class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl border-2 border-white/20" />
+      <div class="text-center mt-4 max-w-2xl bg-white p-4 rounded-xl shadow-xl">
+        <h4 id="lightbox-caption" class="text-base font-extrabold text-slate-900"></h4>
+        <p id="lightbox-sub" class="text-xs text-slate-600 font-medium mt-1"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="relative z-10 border-t border-slate-200 bg-white py-3.5 text-center text-xs text-slate-600 font-medium">
+    <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-3">
+        <span class="font-bold text-slate-800">💡 <b>Klavye Kısayolları:</b></span>
+        <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-300 text-slate-700 font-mono">◀ Sol Ok: Önceki</span>
+        <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-300 text-slate-700 font-mono">▶ Sağ Ok: Sonraki</span>
+        <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-300 text-slate-700 font-mono">F: Tam Ekran</span>
+        <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-300 text-slate-700 font-mono">ESC: Kapat</span>
+      </div>
+      <div>
+        <span class="font-bold text-red-800">Sosyal Bilgiler & İnkılap Tarihi Akıllı Tahta Eğitimi</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
