@@ -488,8 +488,8 @@ body::after {
   animation: pulse-dot 2s ease-in-out infinite;
 }
 .nav-logo > span:not(.dot) {
-  /* Flex boşluğu sadece nokta ile kelime arasında kalsın. */
-  margin-left: -8px;
+  /* “kursatca.com” tek bir sözcük işareti gibi okunmalı. */
+  margin-left: -12px;
 }
 @keyframes pulse-dot {
   0%, 100% { transform: scale(1); opacity: 1; }
