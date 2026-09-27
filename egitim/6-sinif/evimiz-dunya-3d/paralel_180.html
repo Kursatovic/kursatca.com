@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>180 Paralel Somutlaştırma Laboratuvarı | Evimiz Dünya</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        space: {
+                            950: '#04060d',
+                            900: '#080c1a',
+                            800: '#0f172a',
+                            700: '#1e293b',
+                            600: '#334155'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js & OrbitControls -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        * { box-sizing: border-box; user-select: none; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #060914;
+            color: #f8fafc;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        h1, h2, h3, h4, .font-heading { font-family: 'Outfit', sans-serif; }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+        }
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: rgba(8, 12, 26, 0.6); }
+        .custom-scroll::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.3); border-radius: 9999px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.6); }
+    </style>
+</head>
+<body class="flex flex-col h-screen w-screen overflow-hidden bg-space-950 text-slate-100">
+
+    <!-- TOP HEADER -->
+    <header class="h-16 px-4 py-2 border-b border-white/10 glass-panel flex items-center justify-between z-30 shrink-0">
+        <div class="flex items-center space-x-3">
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
+                <span class="text-2xl">🌐</span>
+            </div>
+            <div>
+                <div class="flex items-center space-x-2">
+                    <h1 class="text-lg md:text-xl font-black tracking-tight bg-gradient-to-r from-white via-purple-200 to-indigo-300 bg-clip-text text-transparent">
+                        180 Paralel Somutlaştırma Laboratuvarı
+                    </h1>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">MEB 6. Sınıf Özel</span>
+                </div>
+                <p class="text-xs text-slate-300 font-medium hidden sm:block">
+                    Ekvator'un Kuzeyinde 90, Güneyinde 90 Olmak Üzere Toplam 180 Paralel Dairesi
+                </p>
+            </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex items-center space-x-2">
+            <!-- Focus Turkey -->
+            <button id="btn-focus-turkey" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-red-600/30 text-red-200 border border-red-500/40 hover:bg-red-600 hover:text-white transition flex items-center space-x-1.5 shadow">
+                <span>🇹🇷</span>
+                <span class="hidden md:inline">Türkiye Kuşağı (36°-42°K)</span>
+            </button>
+
+            <!-- Return to Main Lab -->
+            <a href="index.html" class="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white transition flex items-center space-x-1.5 shadow-lg shadow-cyan-600/20 cursor-pointer">
+                <span>⬅️</span>
+                <span>Ana Laboratuvara Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN WORKSPACE -->
+    <main class="flex-1 flex flex-col md:flex-row overflow-hidden relative">
+
+        <!-- 3D GLOBE CANVAS VIEWPORT -->
+        <div id="canvas-container" class="w-full md:w-3/5 h-1/2 md:h-full relative overflow-hidden bg-black flex items-center justify-center">
+            
+            <!-- Floating Overlay Top Controls -->
+            <div class="absolute top-3 left-3 right-3 z-10 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+                <!-- Density Selector Pills -->
+                <div class="flex flex-wrap gap-1.5 pointer-events-auto">
+                    <button id="btn-density-1" class="density-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white border border-indigo-400 shadow cursor-pointer transition">
+                        🌐 1'er Derece (180 Paralel)
+                    </button>
+                    <button id="btn-density-5" class="density-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-space-800 text-slate-300 border border-white/10 hover:border-indigo-400 cursor-pointer transition">
+                        📏 5'er Derece (36)
+                    </button>
+                    <button id="btn-density-10" class="density-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-space-800 text-slate-300 border border-white/10 hover:border-indigo-400 cursor-pointer transition">
+                        📖 10'ar Derece (18)
+                    </button>
+                </div>
+
+                <!-- Hemispheres Toggle Buttons -->
+                <div class="flex gap-1.5 pointer-events-auto bg-space-900/80 p-1 rounded-xl border border-white/10 backdrop-blur-md">
+                    <button id="btn-hemi-all" class="hemi-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-600 text-white border border-purple-400">Tümü (180)</button>
+                    <button id="btn-hemi-north" class="hemi-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-transparent text-slate-300 hover:text-white">Kuzey (90)</button>
+                    <button id="btn-hemi-south" class="hemi-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-transparent text-slate-300 hover:text-white">Güney (90)</button>
+                </div>
+            </div>
+
+            <!-- Hover / Active Parallel Info Overlay (Bottom Left) -->
+            <div id="hover-parallel-hud" class="absolute bottom-3 left-3 z-10 glass-panel px-4 py-2.5 rounded-2xl text-xs flex items-center space-x-3 pointer-events-none border border-cyan-500/40">
+                <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center font-bold text-base">
+                    📍
+                </div>
+                <div>
+                    <span id="hud-lat-title" class="font-extrabold text-white text-sm block">0° Ekvator (Başlangıç Paraleli)</span>
+                    <span id="hud-lat-details" class="text-slate-300 font-mono text-[11px]">Çevre: 40.075 km | Ekvator'a Uzaklık: 0 km</span>
+                </div>
+            </div>
+
+            <!-- 3D Controls Help (Bottom Right) -->
+            <div class="absolute bottom-3 right-3 z-10 pointer-events-none hidden sm:flex items-center space-x-2 text-xs text-slate-300 bg-space-900/80 px-3 py-1.5 rounded-lg border border-white/10">
+                <span>🖱️ Sürükle: Döndür | Tekerlek: Yakınlaş | Çizgileri Canlı İncele</span>
+            </div>
+        </div>
+
+        <!-- RIGHT CONTROL & EXPLANATION PANEL -->
+        <div class="w-full md:w-2/5 h-1/2 md:h-full glass-panel border-t md:border-t-0 md:border-l border-white/10 p-5 overflow-y-auto custom-scroll flex flex-col space-y-5 z-20">
+
+            <!-- STATS COUNTER CARD (BÜYÜK CANLI SAYAÇ) -->
+            <div class="p-4 rounded-2xl glass-card border-2 border-indigo-500/40 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-indigo-300 uppercase tracking-wider flex items-center space-x-1.5">
+                        <span>📊</span> <span>Canlı Paralel Sayacı</span>
+                    </span>
+                    <span id="stat-total-badge" class="font-mono text-xl font-black bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 px-3 py-0.5 rounded-lg">
+                        180 Paralel
+                    </span>
+                </div>
+
+                <!-- 3 Pillars Stats Grid -->
+                <div class="grid grid-cols-3 gap-2 text-center">
+                    <div class="bg-blue-950/60 p-2.5 rounded-xl border border-blue-500/30">
+                        <span class="text-[10px] text-blue-300 block font-semibold">KUZEY PARALELİ</span>
+                        <span id="count-north" class="font-mono text-2xl font-black text-blue-400">90</span>
+                        <span class="text-[9px] text-slate-400 block font-mono">1°K ➔ 90°K</span>
+                    </div>
+                    <div class="bg-red-950/60 p-2.5 rounded-xl border border-red-500/30">
+                        <span class="text-[10px] text-red-300 block font-semibold">EKVATOR (BAŞLANGIÇ)</span>
+                        <span class="font-mono text-2xl font-black text-red-400">0°</span>
+                        <span class="text-[9px] text-slate-400 block font-mono">1 Adet (En Uzun)</span>
+                    </div>
+                    <div class="bg-emerald-950/60 p-2.5 rounded-xl border border-emerald-500/30">
+                        <span class="text-[10px] text-emerald-300 block font-semibold">GÜNEY PARALELİ</span>
+                        <span id="count-south" class="font-mono text-2xl font-black text-emerald-400">90</span>
+                        <span class="text-[9px] text-slate-400 block font-mono">1°G ➔ 90°G</span>
+                    </div>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-space-950 text-xs text-slate-300 font-medium leading-relaxed border border-white/5 flex items-start space-x-2">
+                    <span class="text-base text-amber-400">💡</span>
+                    <span><strong>Önemli Kural:</strong> 90° Kuzey ve 90° Güney paralelleri çember değil, birer <strong>nokta</strong> halindedir (Kutup Noktaları).</span>
+                </div>
+            </div>
+
+            <!-- LIVE BUILD ANIMATION (CANLI 1'DEN 180'E SAYIM & ÇİZİM SİMÜLASYONU) -->
+            <div class="p-4 rounded-2xl glass-card space-y-3 border border-purple-500/30">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-white text-sm flex items-center space-x-2">
+                        <span>🎬</span> <span>Canlı Çizim & Sayım Simülasyonu</span>
+                    </h3>
+                    <span id="anim-status-pill" class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">Hazır</span>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Ekvator'dan (0°) başlayıp kutuplara doğru paralellerin 1'er 1'er nasıl çizildiğini ve 180'e nasıl ulaştığını sınıfta canlı izleyin!
+                </p>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-space-900 rounded-full h-3 p-0.5 border border-white/10 overflow-hidden">
+                    <div id="anim-progress-bar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-75" style="width: 100%;"></div>
+                </div>
+
+                <div class="flex items-center space-x-2 pt-1">
+                    <button id="btn-start-anim" class="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs shadow-lg transition flex items-center justify-center space-x-1.5 cursor-pointer">
+                        <span id="anim-btn-icon">▶️</span> <span id="anim-btn-text">1'den 180'e Canlı Çizimi Başlat</span>
+                    </button>
+                    <button id="btn-reset-anim" class="px-3.5 py-2.5 rounded-xl bg-space-800 hover:bg-space-700 text-slate-300 text-xs font-bold border border-white/10 transition cursor-pointer">
+                        Sıfırla 🔄
+                    </button>
+                </div>
+            </div>
+
+            <!-- LATITUDE LENGTH & CIRCUMFERENCE EXPLORER SLIDER (KUTUPLARA DOĞRU KÜÇÜLME CETVELİ) -->
+            <div class="p-4 rounded-2xl glass-card space-y-3.5 border border-cyan-500/30">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-white text-sm flex items-center space-x-2">
+                        <span>📏</span> <span>Paralel Boyu & Mesafe Hesaplayıcı</span>
+                    </h3>
+                    <span id="slider-degree-badge" class="font-mono text-sm font-black text-cyan-300 bg-cyan-500/20 px-2.5 py-0.5 rounded-lg border border-cyan-500/40">
+                        40° Kuzey
+                    </span>
+                </div>
+
+                <p class="text-xs text-slate-300">
+                    Kaydırıcıyı hareket ettirin; çember boyunun kutuplara doğru nasıl daraldığını ve Ekvator'a olan kuş uçuşu mesafesini canlı görün:
+                </p>
+
+                <input id="lat-slider" type="range" min="0" max="90" value="40" class="w-full h-2.5 bg-space-800 rounded-lg appearance-none cursor-pointer accent-cyan-400">
+
+                <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+                    <span>0° Ekvator (En Uzun)</span>
+                    <span>45° Orta Kuşak</span>
+                    <span>90° Kutup (Nokta)</span>
+                </div>
+
+                <!-- Live Calculated Card -->
+                <div class="grid grid-cols-2 gap-2 text-xs pt-1">
+                    <div class="bg-black/50 p-2.5 rounded-xl border border-white/10">
+                        <span class="text-[10px] text-slate-400 block">Çember Çevre Uzunluğu:</span>
+                        <span id="calc-circumference" class="font-mono font-bold text-cyan-300 text-sm">30.698 km</span>
+                        <span id="calc-ratio" class="text-[10px] text-slate-400 block mt-0.5">%76,6 genişlik</span>
+                    </div>
+                    <div class="bg-black/50 p-2.5 rounded-xl border border-white/10">
+                        <span class="text-[10px] text-slate-400 block">Ekvator'a Kuş Uçuşu Mesafe:</span>
+                        <span id="calc-distance" class="font-mono font-bold text-emerald-300 text-sm">4.440 km</span>
+                        <span class="text-[10px] text-slate-400 block mt-0.5 font-mono">40 × 111 km</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TÜRKİYE KUŞAĞI (36°-42°K) SOMUTLAŞTIRMASI -->
+            <div class="p-4 rounded-2xl glass-panel border border-red-500/30 space-y-2 bg-gradient-to-br from-red-950/30 to-space-900">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-red-300 flex items-center space-x-1.5">
+                        <span>🇹🇷</span> <span>180 Paralel İçinde Türkiye Kuşağı</span>
+                    </span>
+                    <button id="btn-highlight-turkey-card" class="px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-500 text-white font-bold text-[11px] transition shadow cursor-pointer">
+                        Küreye Odakla ➔
+                    </button>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Türkiye, 180 paralelin Kuzey Yarım Küre'deki <strong>36° ile 42°</strong> paralelleri arasında yer alır. Toplamda ülkemizden <strong>6 paralel dairesi</strong> geçer ve en kuzeyi ile en güneyi arası $6 \times 111 = 666\text{ km}$'dir.
+                </p>
+            </div>
+
+            <!-- CORE RULES CHEAT SHEET -->
+            <div class="p-3.5 rounded-2xl bg-space-900/60 border border-white/10 text-xs text-slate-300 space-y-1.5">
+                <h4 class="font-bold text-white text-xs uppercase tracking-wider text-purple-300 mb-1">
+                    📌 Paralellerin 5 Temel Kuralı:
+                </h4>
+                <p>1. Başlangıç paraleli <strong>Ekvator (0°)</strong>'dur ve en büyük paraleldir.</p>
+                <p>2. 90 Kuzey + 90 Güney = <strong>180 paralel</strong> vardır.</p>
+                <p>3. Ardışık iki paralel arası mesafe her yerde sabittir: <strong>111 km</strong>.</p>
+                <p>4. Dünya'nın şekli (geoit) sebebiyle çember boyları kutuplara doğru küçülür.</p>
+                <p>5. 90° paralelleri çember değil, birer <strong>nokta</strong> halindedir.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- THREE.JS SCENE LOGIC -->
+    <script>
+        // --- 3D SCENE SETUP ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(0, 0, 3.6);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 2.0;
+        controls.maxDistance = 6.0;
+
+        // Lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+        scene.add(ambientLight);
+        const sunLight = new THREE.DirectionalLight(0xffffff, 1.2);
+        sunLight.position.set(10, 5, 10);
+        scene.add(sunLight);
+
+        // Starfield
+        const starGeo = new THREE.BufferGeometry();
+        const starCount = 1200;
+        const starPos = new Float32Array(starCount * 3);
+        for (let i = 0; i < starCount * 3; i += 3) {
+            starPos[i] = (Math.random() - 0.5) * 80;
+            starPos[i+1] = (Math.random() - 0.5) * 80;
+            starPos[i+2] = (Math.random() - 0.5) * 80;
+        }
+        starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+        const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.06, transparent: true, opacity: 0.65 });
+        scene.add(new THREE.Points(starGeo, starMat));
+
+        // Earth Root & Spin Group
+        const RADIUS = 1.35;
+        const earthRoot = new THREE.Group();
+        // 23°27' Axial Tilt
+        earthRoot.rotation.z = (23.45 * Math.PI) / 180;
+        scene.add(earthRoot);
+
+        const earthSpinGroup = new THREE.Group();
+        earthRoot.add(earthSpinGroup);
+
+        // Texture Loader
+        const texLoader = new THREE.TextureLoader();
+        texLoader.setCrossOrigin('anonymous');
+        const earthTex = texLoader.load('https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/textures/planets/earth_atmos_2048.jpg');
+        const earthMat = new THREE.MeshStandardMaterial({
+            map: earthTex,
+            roughness: 0.8,
+            metalness: 0.1
+        });
+        const earthMesh = new THREE.Mesh(new THREE.SphereGeometry(RADIUS, 64, 64), earthMat);
+        earthSpinGroup.add(earthMesh);
+
+        // Axis Line & Poles
+        const axisPts = [new THREE.Vector3(0, -RADIUS * 1.25, 0), new THREE.Vector3(0, RADIUS * 1.25, 0)];
+        const axisGeo = new THREE.BufferGeometry().setFromPoints(axisPts);
+        const axisMat = new THREE.LineDashedMaterial({ color: 0x94a3b8, dashSize: 0.08, gapSize: 0.05 });
+        const axisLine = new THREE.Line(axisGeo, axisMat);
+        axisLine.computeLineDistances();
+        earthSpinGroup.add(axisLine);
+
+        // Pole Points (90°K and 90°G)
+        const poleGeo = new THREE.SphereGeometry(0.035, 16, 16);
+        const northPole = new THREE.Mesh(poleGeo, new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+        northPole.position.set(0, RADIUS * 1.015, 0);
+        earthSpinGroup.add(northPole);
+
+        const southPole = new THREE.Mesh(poleGeo, new THREE.MeshBasicMaterial({ color: 0xf59e0b }));
+        southPole.position.set(0, -RADIUS * 1.015, 0);
+        earthSpinGroup.add(southPole);
+
+        // Group for 180 Parallels
+        const parallelsGroup = new THREE.Group();
+        earthSpinGroup.add(parallelsGroup);
+
+        // Helper: Convert Lat to Vector3
+        function latLonToVector3(lat, lon, r = RADIUS * 1.01) {
+            const phi = (90 - lat) * (Math.PI / 180);
+            const theta = (lon + 180) * (Math.PI / 180);
+            return new THREE.Vector3(
+                -r * Math.sin(phi) * Math.cos(theta),
+                r * Math.cos(phi),
+                r * Math.sin(phi) * Math.sin(theta)
+            );
+        }
+
+        // Helper: Create single latitude circle
+        function createLatitudeCircle(lat, colorHex, linewidth = 2, isEquator = false) {
+            const segments = 128;
+            const r = (isEquator ? RADIUS * 1.025 : RADIUS * 1.015) * Math.cos((lat * Math.PI) / 180);
+            const y = (isEquator ? RADIUS * 1.025 : RADIUS * 1.015) * Math.sin((lat * Math.PI) / 180);
+
+            const pts = [];
+            for (let i = 0; i <= segments; i++) {
+                const theta = (i / segments) * Math.PI * 2;
+                pts.push(new THREE.Vector3(r * Math.cos(theta), y, r * Math.sin(theta)));
+            }
+
+            const geo = new THREE.BufferGeometry().setFromPoints(pts);
+            const mat = new THREE.LineBasicMaterial({
+                color: colorHex,
+                linewidth: linewidth,
+                transparent: true,
+                opacity: isEquator ? 1.0 : 0.75
+            });
+            const line = new THREE.LineLoop(geo, mat);
+            line.userData = { lat: lat, isEquator: isEquator };
+            return line;
+        }
+
+        // Active highlighted circle (e.g. from slider)
+        let activeHighlightMesh = null;
+        function highlightSingleLatitude(lat) {
+            if (activeHighlightMesh) {
+                earthSpinGroup.remove(activeHighlightMesh);
+                activeHighlightMesh.geometry.dispose();
+                activeHighlightMesh.material.dispose();
+                activeHighlightMesh = null;
+            }
+
+            const circle = createLatitudeCircle(lat, 0x06b6d4, 4, false);
+            circle.material.opacity = 1.0;
+            activeHighlightMesh = circle;
+            earthSpinGroup.add(activeHighlightMesh);
+        }
+
+        // --- RENDER PARALLELS SYSTEM ---
+        let currentDensity = 1; // 1, 5, 10
+        let currentHemisphere = 'all'; // 'all', 'north', 'south'
+        let parallelMeshes = [];
+
+        function renderParallels(step = 1, hemi = 'all', maxLatCap = 90) {
+            // Clear existing
+            while (parallelsGroup.children.length > 0) {
+                const child = parallelsGroup.children[0];
+                parallelsGroup.remove(child);
+                if (child.geometry) child.geometry.dispose();
+                if (child.material) child.material.dispose();
+            }
+            parallelMeshes = [];
+
+            // 1. Equator (0°) is always included if 'all' or active
+            const eqCircle = createLatitudeCircle(0, 0xef4444, 4, true);
+            parallelsGroup.add(eqCircle);
+            parallelMeshes.push({ lat: 0, mesh: eqCircle });
+
+            // 2. North Parallels (1 to maxLatCap)
+            if (hemi === 'all' || hemi === 'north') {
+                for (let lat = step; lat <= Math.min(89, maxLatCap); lat += step) {
+                    // Highlight Turkey latitudes in red/amber (36 to 42)
+                    const isTurkey = lat >= 36 && lat <= 42;
+                    const isTropic = lat === 23;
+                    const isPolarCircle = lat === 66;
+
+                    let color = 0x38bdf8; // Default North Cyan/Blue
+                    if (isTurkey) color = 0xf43f5e; // Turkey Rose
+                    else if (isTropic || isPolarCircle) color = 0xfacc15; // Yellow
+
+                    const circle = createLatitudeCircle(lat, color, isTurkey ? 3.5 : 1.5);
+                    parallelsGroup.add(circle);
+                    parallelMeshes.push({ lat: lat, mesh: circle });
+                }
+            }
+
+            // 3. South Parallels (-1 to -maxLatCap)
+            if (hemi === 'all' || hemi === 'south') {
+                for (let lat = -step; lat >= Math.max(-89, -maxLatCap); lat -= step) {
+                    const isTropic = lat === -23;
+                    const isPolarCircle = lat === -66;
+                    let color = 0x10b981; // South Emerald
+                    if (isTropic || isPolarCircle) color = 0xfacc15;
+
+                    const circle = createLatitudeCircle(lat, color, 1.5);
+                    parallelsGroup.add(circle);
+                    parallelMeshes.push({ lat: lat, mesh: circle });
+                }
+            }
+
+            updateStatsCounts();
+        }
+
+        function updateStatsCounts() {
+            let northCount = 0;
+            let southCount = 0;
+            parallelMeshes.forEach(p => {
+                if (p.lat > 0) northCount++;
+                else if (p.lat < 0) southCount++;
+            });
+
+            // At 90° points, there are 90 in each if full step=1
+            const displayedNorth = currentDensity === 1 ? 90 : northCount;
+            const displayedSouth = currentDensity === 1 ? 90 : southCount;
+            const displayedTotal = displayedNorth + displayedSouth;
+
+            document.getElementById('count-north').innerText = displayedNorth;
+            document.getElementById('count-south').innerText = displayedSouth;
+            document.getElementById('stat-total-badge').innerText = `${displayedTotal} Paralel`;
+        }
+
+        // Initial 180 parallels render
+        renderParallels(1, 'all');
+        highlightSingleLatitude(40);
+
+        // --- ANIMATION / LIVE BUILD SIMULATION ---
+        let animTimer = null;
+        let animCurrentDegree = 0;
+        let isAnimating = false;
+
+        const btnStartAnim = document.getElementById('btn-start-anim');
+        const btnResetAnim = document.getElementById('btn-reset-anim');
+        const animStatusPill = document.getElementById('anim-status-pill');
+        const animProgressBar = document.getElementById('anim-progress-bar');
+        const animBtnText = document.getElementById('anim-btn-text');
+        const animBtnIcon = document.getElementById('anim-btn-icon');
+
+        function startLiveAnimation() {
+            if (isAnimating) {
+                // Pause
+                clearInterval(animTimer);
+                isAnimating = false;
+                animBtnText.innerText = 'Devam Et';
+                animBtnIcon.innerText = '▶️';
+                animStatusPill.innerText = 'Duraklatıldı';
+                animStatusPill.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30';
+                return;
+            }
+
+            if (animCurrentDegree >= 89) {
+                animCurrentDegree = 0;
+            }
+
+            isAnimating = true;
+            animBtnText.innerText = 'Duraklat';
+            animBtnIcon.innerText = '⏸️';
+            animStatusPill.innerText = 'Canlı Çiziliyor...';
+            animStatusPill.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-green-500/20 text-green-300 border border-green-500/30 animate-pulse';
+
+            animTimer = setInterval(() => {
+                animCurrentDegree++;
+                renderParallels(1, currentHemisphere, animCurrentDegree);
+                
+                const percent = Math.min(100, Math.round((animCurrentDegree / 89) * 100));
+                animProgressBar.style.width = `${percent}%`;
+
+                if (animCurrentDegree >= 89) {
+                    clearInterval(animTimer);
+                    isAnimating = false;
+                    animBtnText.innerText = 'Yeniden Başlat';
+                    animBtnIcon.innerText = '🔄';
+                    animStatusPill.innerText = 'Tamamlandı! (180 Paralel)';
+                    animStatusPill.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30';
+                    if (window.confetti) {
+                        window.confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+                    }
+                }
+            }, 60);
+        }
+
+        btnStartAnim.addEventListener('click', startLiveAnimation);
+        btnResetAnim.addEventListener('click', () => {
+            if (animTimer) clearInterval(animTimer);
+            isAnimating = false;
+            animCurrentDegree = 0;
+            animProgressBar.style.width = '100%';
+            animBtnText.innerText = "1'den 180'e Canlı Çizimi Başlat";
+            animBtnIcon.innerText = '▶️';
+            animStatusPill.innerText = 'Hazır';
+            animStatusPill.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30';
+            renderParallels(currentDensity, currentHemisphere);
+        });
+
+        // --- DENSITY BUTTONS ---
+        const densityBtns = [
+            { id: 'btn-density-1', step: 1 },
+            { id: 'btn-density-5', step: 5 },
+            { id: 'btn-density-10', step: 10 }
+        ];
+
+        densityBtns.forEach(d => {
+            document.getElementById(d.id).addEventListener('click', function() {
+                currentDensity = d.step;
+                densityBtns.forEach(o => {
+                    const el = document.getElementById(o.id);
+                    el.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-400');
+                    el.classList.add('bg-space-800', 'text-slate-300', 'border-white/10');
+                });
+                this.classList.remove('bg-space-800', 'text-slate-300', 'border-white/10');
+                this.classList.add('bg-indigo-600', 'text-white', 'border-indigo-400');
+                renderParallels(currentDensity, currentHemisphere);
+            });
+        });
+
+        // --- HEMISPHERE BUTTONS ---
+        const hemiBtns = [
+            { id: 'btn-hemi-all', val: 'all' },
+            { id: 'btn-hemi-north', val: 'north' },
+            { id: 'btn-hemi-south', val: 'south' }
+        ];
+
+        hemiBtns.forEach(h => {
+            document.getElementById(h.id).addEventListener('click', function() {
+                currentHemisphere = h.val;
+                hemiBtns.forEach(o => {
+                    const el = document.getElementById(o.id);
+                    el.classList.remove('bg-purple-600', 'text-white', 'border-purple-400');
+                    el.classList.add('bg-space-800', 'text-slate-300', 'border-white/10');
+                });
+                this.classList.remove('bg-space-800', 'text-slate-300', 'border-white/10');
+                this.classList.add('bg-purple-600', 'text-white', 'border-purple-400');
+                renderParallels(currentDensity, currentHemisphere);
+            });
+        });
+
+        // --- SLIDER (LATITUDE EXPLORER) ---
+        const slider = document.getElementById('lat-slider');
+        const sliderBadge = document.getElementById('slider-degree-badge');
+        const calcCircumference = document.getElementById('calc-circumference');
+        const calcRatio = document.getElementById('calc-ratio');
+        const calcDistance = document.getElementById('calc-distance');
+        const hudTitle = document.getElementById('hud-lat-title');
+        const hudDetails = document.getElementById('hud-lat-details');
+
+        function updateSliderExplorer(val) {
+            const deg = Number(val);
+            sliderBadge.innerText = `${deg}° Kuzey`;
+
+            // Earth Equator circumference: ~40.075 km
+            const cosVal = Math.cos((deg * Math.PI) / 180);
+            const circum = Math.round(40075 * cosVal);
+            const ratio = (cosVal * 100).toFixed(1);
+            const dist = deg * 111;
+
+            calcCircumference.innerText = `${circum.toLocaleString('tr-TR')} km`;
+            calcRatio.innerText = `%${ratio} genişlik (Ekvator'a göre)`;
+            calcDistance.innerText = `${dist.toLocaleString('tr-TR')} km`;
+
+            hudTitle.innerText = `${deg}° Kuzey Paraleli`;
+            hudDetails.innerText = `Çevre: ${circum.toLocaleString('tr-TR')} km | Ekvator'a: ${dist.toLocaleString('tr-TR')} km`;
+
+            highlightSingleLatitude(deg);
+        }
+
+        slider.addEventListener('input', (e) => updateSliderExplorer(e.target.value));
+
+        // --- FOCUS TURKEY BUTTONS ---
+        function focusOnTurkey() {
+            highlightSingleLatitude(39);
+            // Smooth camera transition to Turkey
+            const startPos = camera.position.clone();
+            const endPos = new THREE.Vector3(0.5, 1.2, 2.6);
+            const startTime = performance.now();
+            function anim(now) {
+                const p = Math.min(1.0, (now - startTime) / 900);
+                camera.position.lerpVectors(startPos, endPos, p);
+                controls.target.set(0, 0.4, 0);
+                if (p < 1.0) requestAnimationFrame(anim);
+            }
+            requestAnimationFrame(anim);
+            slider.value = 39;
+            updateSliderExplorer(39);
+        }
+
+        document.getElementById('btn-focus-turkey').addEventListener('click', focusOnTurkey);
+        document.getElementById('btn-highlight-turkey-card').addEventListener('click', focusOnTurkey);
+
+        // --- ANIMATION LOOP ---
+        function animate() {
+            requestAnimationFrame(animate);
+            earthSpinGroup.rotation.y += 0.001;
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            const w = container.clientWidth;
+            const h = container.clientHeight;
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            renderer.setSize(w, h);
+        });
+    </script>
+</body>
+</html>

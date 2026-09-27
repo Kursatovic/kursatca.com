@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enlemin Sonuçları | İnteraktif Coğrafya Laboratuvarı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #04060d;
+    --panel: rgba(15, 23, 42, 0.78);
+    --panel-2: rgba(30, 41, 59, 0.8);
+    --line: rgba(255, 255, 255, 0.12);
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --cyan: #38bdf8;
+    --pink: #f472b6;
+    --amber: #fbbf24;
+    --green: #34d399;
+    --red: #f87171;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(56, 189, 248, 0.12), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(168, 85, 247, 0.10), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  h1, h2, h3 { font-family: Outfit, Inter, sans-serif; margin: 0; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+
+  /* Üst bar */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: linear-gradient(90deg, rgba(4,6,13,0.35), rgba(4,6,13,0.8)), url('g%C3%B6rsel/header_bg_web.jpg') center / cover no-repeat !important;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px 16px;
+    background: rgba(8, 12, 26, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .brand-icon {
+    width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.3);
+  }
+  .brand h1 { font-size: 20px; line-height: 1.15; }
+  .brand p { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); }
+  .nav-links { display: flex; gap: 8px; flex-shrink: 0; }
+  .nav-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 12px; border-radius: 12px;
+    font-size: 13px; font-weight: 700; text-decoration: none; color: #e2e8f0;
+    background: var(--panel-2); border: 1px solid var(--line);
+    transition: all .2s;
+  }
+  .nav-link:hover { border-color: var(--cyan); color: var(--cyan); }
+  .nav-link.primary { background: linear-gradient(135deg, #0284c7, #2563eb); border-color: #38bdf8; color: #fff; }
+
+  main { max-width: 1400px; margin: 0 auto; padding: 18px 16px 40px; }
+
+  .layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 16px;
+  }
+  .card-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+  .card-title h2 { font-size: 17px; }
+  .eyebrow {
+    display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--amber); background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.25);
+    padding: 3px 9px; border-radius: 6px;
+  }
+
+  /* Diyagram */
+  .diagram-wrap { position: sticky; top: 80px; }
+  #diagram { width: 100%; height: auto; display: block; }
+  .inset-title { margin: 10px 0 4px; font-size: 13px; font-weight: 700; color: #cbd5e1; }
+  #inset { width: 100%; height: auto; display: block; background: rgba(2, 6, 23, 0.55); border: 1px solid var(--line); border-radius: 14px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 5px; }
+
+  /* Kontroller */
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .seg button {
+    padding: 9px 6px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel-2);
+    font-weight: 700; font-size: 13px; line-height: 1.25;
+  }
+  .seg button small { display: block; font-weight: 500; color: var(--muted); font-size: 11px; }
+  .seg button.active { background: linear-gradient(135deg, #b45309, #d97706); border-color: var(--amber); color: #fff; }
+  .seg button.active small { color: #fde68a; }
+
+  .point-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; margin-top: 12px; }
+  .point-badge {
+    width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+    font-weight: 800; font-family: Outfit, sans-serif; color: #04060d; border: 2px solid transparent;
+  }
+  .point-badge.a { background: var(--cyan); }
+  .point-badge.b { background: var(--pink); }
+  .point-row.selected .point-badge { border-color: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.15); }
+  .lat-value { font-family: "Fira Code", monospace; font-weight: 700; min-width: 74px; text-align: right; }
+  input[type=range] { width: 100%; accent-color: var(--cyan); }
+  .point-row.b input[type=range] { accent-color: var(--pink); }
+  .point-row.off { opacity: .4; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .chip {
+    padding: 6px 10px; border-radius: 999px; font-size: 12.5px; font-weight: 600;
+    border: 1px solid var(--line); background: rgba(30, 41, 59, 0.6);
+  }
+  .chip:hover { border-color: var(--cyan); color: var(--cyan); }
+  .chip.special { border-color: rgba(248, 113, 113, 0.5); color: #fecaca; }
+  .hint { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+  .toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+
+  /* Sonuç tablosu */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 9px 8px; border-bottom: 1px solid rgba(255,255,255,0.07); text-align: left; vertical-align: top; }
+  th { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; }
+  td.num { font-family: "Fira Code", monospace; font-weight: 700; white-space: nowrap; }
+  td.a { color: var(--cyan); }
+  td.b { color: var(--pink); }
+  td .sub { display: block; font-family: Inter, sans-serif; font-weight: 500; font-size: 11.5px; color: var(--muted); white-space: normal; }
+  td.cmp { font-size: 12.5px; color: #cbd5e1; }
+  .row-label { font-weight: 600; }
+  .row-label span { display: block; font-size: 11.5px; color: var(--muted); font-weight: 500; }
+  .b-col.hidden { display: none; }
+
+  .insight {
+    margin-top: 12px; padding: 12px 14px; border-radius: 14px;
+    background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3);
+    font-size: 14px;
+  }
+  .insight strong { color: var(--cyan); }
+
+  /* Sonuç kartları */
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 18px; }
+  .res-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 14px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .res-card h3 { font-size: 15.5px; display: flex; align-items: center; gap: 8px; }
+  .res-card p { margin: 0; font-size: 13.5px; color: #cbd5e1; flex: 1; }
+  .res-card button {
+    align-self: flex-start; margin-top: 4px; padding: 5px 10px; border-radius: 10px; font-size: 12px; font-weight: 700;
+    border: 1px solid rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.12); color: var(--cyan);
+  }
+  .res-card button:hover { background: rgba(56, 189, 248, 0.25); }
+  .section-head { margin-top: 26px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .section-head h2 { font-size: 21px; }
+  .section-head p { margin: 0; color: var(--muted); font-size: 13.5px; }
+
+  @media (max-width: 1023px) {
+    .layout { grid-template-columns: 1fr; }
+    .diagram-wrap { position: static; }
+  }
+  @media (max-width: 640px) {
+    .brand p, .nav-link .long { display: none; }
+    .brand h1 { font-size: 17px; }
+    .seg button { font-size: 12px; }
+    th, td { padding: 8px 5px; }
+    table { font-size: 13px; }
+    td.num { white-space: normal; }
+    /* Telefonda karşılaştırma sütunu gizlenir; alttaki yorum kutusu aynı bilgiyi verir */
+    th:nth-child(4), td.cmp { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img class="brand-icon" src="g%C3%B6rsel/enlem_ikon_web.png" alt="">
+    <div>
+      <h1>Enlemin Sonuçları</h1>
+      <p>Enlem değişince güneş açısı, gölge, gündüz süresi ve iklim nasıl değişir?</p>
+    </div>
+  </div>
+  <nav class="nav-links">
+    <a class="nav-link" href="index.html#modul-2">← <span class="long">Paraleller</span></a>
+    <a class="nav-link primary" href="index.html#modul-4"><span class="long">Sonraki: Meridyenler</span> →</a>
+  </nav>
+</header>
+
+<main>
+  <div class="layout">
+    <!-- SOL: DİYAGRAM -->
+    <section class="card diagram-wrap">
+      <div class="card-title">
+        <h2>Öğle Vakti Dünya'nın Kesiti</h2>
+        <span class="eyebrow" id="date-eyebrow">21 Haziran</span>
+      </div>
+      <svg id="diagram" viewBox="0 20 560 420" role="img" aria-label="Güneş ışınlarının farklı enlemlere geliş açısını gösteren Dünya kesiti"></svg>
+      <div class="inset-title">🔍 Yakından bakış: Öğle vakti 1 m'lik çubuğun gölgesi</div>
+      <svg id="inset" viewBox="0 0 560 190" role="img" aria-label="A ve B noktalarındaki çubukların gölge boylarının karşılaştırması"></svg>
+      <div class="legend">
+        <span><i style="background:#fbbf24"></i>Güneş ışınları</span>
+        <span><i style="background:#ef4444"></i>Ekvator</span>
+        <span><i style="background:#f59e0b;opacity:.7"></i>Dönenceler</span>
+        <span><i style="background:#67e8f9;opacity:.7"></i>Kutup daireleri</span>
+        <span><i style="background:#e2e8f0"></i>1 m çubuk ve gölgesi</span>
+      </div>
+    </section>
+
+    <!-- SAĞ: KONTROLLER + SONUÇLAR -->
+    <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+      <section class="card">
+        <div class="card-title"><h2>1. Tarihi Seç</h2></div>
+        <div class="seg" id="date-seg">
+          <button data-dec="0">21 Mart<small>23 Eylül · Ekinoks</small></button>
+          <button data-dec="23.45" class="active">21 Haziran<small>Yaz gündönümü (K.Y.K.)</small></button>
+          <button data-dec="-23.45">21 Aralık<small>Kış gündönümü (K.Y.K.)</small></button>
+        </div>
+        <p class="hint" id="dec-hint"></p>
+
+        <div class="card-title" style="margin-top:16px">
+          <h2>2. Noktaları Yerleştir</h2>
+          <label class="toggle"><input type="checkbox" id="b-toggle" checked> B noktasıyla karşılaştır</label>
+        </div>
+        <div class="point-row a selected" id="row-a">
+          <button class="point-badge a" data-select="a" title="Hazır konumları A'ya uygula">A</button>
+          <input type="range" id="lat-a" min="-90" max="90" step="1" value="36" aria-label="A noktasının enlemi">
+          <span class="lat-value" id="lat-a-val"></span>
+        </div>
+        <div class="point-row b" id="row-b">
+          <button class="point-badge b" data-select="b" title="Hazır konumları B'ye uygula">B</button>
+          <input type="range" id="lat-b" min="-90" max="90" step="1" value="42" aria-label="B noktasının enlemi">
+          <span class="lat-value" id="lat-b-val"></span>
+        </div>
+        <div class="chips" id="chips">
+          <button class="chip special" data-a="36" data-b="42">🇹🇷 Anamur ↔ Sinop</button>
+          <button class="chip" data-lat="0">Quito (Ekvator) 0°</button>
+          <button class="chip" data-lat="1">Singapur 1° K</button>
+          <button class="chip" data-lat="30">Kahire 30° K</button>
+          <button class="chip" data-lat="39">Ankara 39° K</button>
+          <button class="chip" data-lat="60">Oslo 60° K</button>
+          <button class="chip" data-lat="-34">Sidney 34° G</button>
+          <button class="chip" data-lat="-54">Ushuaia 54° G</button>
+          <button class="chip" data-lat="90">Kuzey Kutbu 90° K</button>
+        </div>
+        <p class="hint">Hazır konumlar seçili noktaya (<span id="sel-name">A</span>) uygulanır. Değiştirmek için A / B dairesine tıklayın.</p>
+      </section>
+
+      <section class="card">
+        <div class="card-title"><h2>3. Sonuçları Karşılaştır</h2></div>
+        <table>
+          <thead>
+            <tr><th>Özellik</th><th>A</th><th class="b-col">B</th><th class="b-col">Karşılaştırma</th></tr>
+          </thead>
+          <tbody id="result-body"></tbody>
+        </table>
+        <div class="insight" id="insight"></div>
+      </section>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Enlemin Sonuçları</h2>
+    <p>Ekvator'dan kutuplara gidildikçe… Her kartta "Kürede Dene" ile örneği yukarıda görebilirsiniz.</p>
+  </div>
+  <div class="results-grid">
+    <div class="res-card">
+      <h3>📐 Güneş ışınlarının geliş açısı küçülür</h3>
+      <p>Işınlar Ekvator çevresine dike yakın, kutuplara doğru ise giderek daha eğik gelir. Eğik gelen ışın daha geniş alana yayılır ve daha az ısıtır.</p>
+      <button data-demo='{"dec":0,"a":0,"b":60}'>Kürede Dene</button>
+    </div>
+    <div class="res-card">
+      <h3>🌡️ Sıcaklık azalır, iklim kuşakları oluşur</h3>
+      <p>Sıcak kuşak (0°–23°27'), ılıman kuşak (23°27'–66°33') ve soğuk kuşak (66°33'–90°) enlemin sonucudur.</p>
+      <button data-demo='{"dec":0,"a":10,"b":75}'>Kürede Dene</button>
+    </div>
+    <div class="res-card">
+      <h3>📏 Cisimlerin gölge boyu uzar</h3>
+      <p>Aynı gün ve saatte, güneş ışınlarının dik geldiği yerden uzaklaştıkça öğle gölgesi uzar. Sinop'ta gölge Anamur'dan daha uzundur.</p>
+      <button data-demo='{"dec":23.45,"a":36,"b":42}'>Kürede Dene</button>
+    </div>
+    <div class="res-card">
+      <h3>🌓 Gece-gündüz süre farkı artar</h3>
+      <p>Ekvator'da gece ve gündüz her zaman ~12 saattir. Kutuplara gidildikçe fark büyür, kutup dairelerinin ötesinde 24 saat gündüz veya gece yaşanır.</p>
+      <button data-demo='{"dec":-23.45,"a":0,"b":80}'>Kürede Dene</button>
+    </div>
+    <div class="res-card">
+      <h3>🏃 Çizgisel hız azalır</h3>
+      <p>Paraleller kısaldıkça Dünya'nın dönüşündeki çizgisel hız azalır: Ekvator'da ~1670 km/sa, kutuplarda 0 km/sa.</p>
+      <button data-demo='{"dec":0,"a":0,"b":90}'>Kürede Dene</button>
+    </div>
+    <div class="res-card">
+      <h3>🏔️ Kalıcı kar sınırı alçalır</h3>
+      <p>Sıcaklık azaldığı için kalıcı karların başladığı yükselti Ekvator'dan kutuplara doğru düşer; kutuplarda deniz seviyesine iner.</p>
+      <button data-demo='{"dec":0,"a":5,"b":65}'>Kürede Dene</button>
+    </div>
+    <div class="res-card">
+      <h3>🌳 Bitki örtüsü kuşaklara ayrılır</h3>
+      <p>Ekvator'da yağmur ormanları, orta enlemlerde karışık ve iğne yapraklı ormanlar, kutuplara yakın yerlerde tundra görülür.</p>
+      <button data-demo='{"dec":0,"a":2,"b":70}'>Kürede Dene</button>
+    </div>
+    <div class="res-card">
+      <h3>🌊 Okyanus suları soğur</h3>
+      <p>Deniz suyu sıcaklığı Ekvator'dan kutuplara azalır; kutup denizlerinde sular donar, buzullar oluşur.</p>
+      <button data-demo='{"dec":0,"a":0,"b":85}'>Kürede Dene</button>
+    </div>
+  </div>
+</main>
+
+<script>
+(() => {
+  const TILT = 23.45; // 23°27'
+  const state = { dec: 23.45, a: 36, b: 42, showB: true, selected: 'a' };
+
+  const $ = id => document.getElementById(id);
+  const svg = $('diagram');
+  const NS = 'http://www.w3.org/2000/svg';
+  const rad = d => d * Math.PI / 180;
+  const deg = r => r * 180 / Math.PI;
+  const fmt = (n, d = 0) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+  function latLabel(lat) {
+    if (lat === 0) return '0° (Ekv.)';
+    return `${Math.abs(lat)}° ${lat > 0 ? 'K' : 'G'}`;
+  }
+  function degMin(v) {
+    const d = Math.floor(v + 1e-9);
+    const m = Math.round((v - d) * 60);
+    return m === 60 ? `${d + 1}°` : (m ? `${d}°${String(m).padStart(2, '0')}'` : `${d}°`);
+  }
+
+  // --- HESAPLAMALAR ---
+  function compute(lat, dec) {
+    const noonAlt = 90 - Math.abs(lat - dec); // öğle güneş yükseklik açısı
+    let shadow = null;
+    if (noonAlt > 0 && noonAlt < 89.999) shadow = 1 / Math.tan(rad(noonAlt));
+    else if (noonAlt >= 89.999) shadow = 0;
+
+    let shadowDir = '—';
+    if (noonAlt > 0) shadowDir = lat > dec ? 'Kuzeye' : lat < dec ? 'Güneye' : 'Gölge yok';
+
+    // Gündüz süresi: cos H = -tan φ · tan δ
+    const x = -Math.tan(rad(lat)) * Math.tan(rad(dec));
+    let day;
+    if (dec === 0) day = 12;
+    else if (x <= -1) day = 24;
+    else if (x >= 1) day = 0;
+    else day = 2 * deg(Math.acos(x)) / 15;
+
+    const cosL = Math.cos(rad(lat));
+    const speed = Math.max(0, 1670 * cosL);
+    const circ = Math.max(0, 40076 * cosL);
+
+    const al = Math.abs(lat);
+    let zone;
+    if (al <= TILT) zone = { name: 'Sıcak kuşak', icon: '🔥', color: '#f87171' };
+    else if (al < 90 - TILT) zone = { name: 'Ilıman kuşak', icon: '🌤️', color: '#34d399' };
+    else zone = { name: 'Soğuk kuşak', icon: '❄️', color: '#67e8f9' };
+
+    // Kalıcı kar sınırı: genel eğilim için yaklaşık değerler
+    const snowTable = [[0, 4800], [20, 4600], [30, 4000], [40, 3300], [50, 2600], [60, 1500], [70, 600], [80, 150], [90, 0]];
+    let snow = 0;
+    for (let i = 0; i < snowTable.length - 1; i++) {
+      const [l1, s1] = snowTable[i], [l2, s2] = snowTable[i + 1];
+      if (al >= l1 && al <= l2) { snow = s1 + (s2 - s1) * (al - l1) / (l2 - l1); break; }
+    }
+    return { noonAlt, shadow, shadowDir, day, speed, circ, zone, snow };
+  }
+
+  function dayText(h) {
+    if (h >= 24) return '24 saat gündüz';
+    if (h <= 0) return '24 saat gece';
+    const hh = Math.floor(h), mm = Math.round((h - hh) * 60);
+    return mm === 60 ? `${hh + 1} sa 00 dk` : `${hh} sa ${String(mm).padStart(2, '0')} dk`;
+  }
+
+  // --- DİYAGRAM ---
+  const CX = 250, CY = 235, R = 158;
+  // Işınlar sağdan yatay gelir; enlem φ olan nokta, merkezden (φ - δ) açısıyla yer alır.
+  const pos = (theta, r = R) => [CX + r * Math.cos(rad(theta)), CY - r * Math.sin(rad(theta))];
+
+  function el(tag, attrs, parent = svg) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    parent.appendChild(e);
+    return e;
+  }
+  function text(x, y, str, attrs = {}) {
+    const t = el('text', Object.assign({ x, y, fill: '#e2e8f0', 'font-size': 13, 'font-family': 'Inter, sans-serif', 'font-weight': 600 }, attrs));
+    t.textContent = str;
+    return t;
+  }
+
+  function drawParallel(lat, dec, color, dash, width = 1.6) {
+    const [x1, y1] = pos(lat - dec);
+    const [x2, y2] = pos(180 - lat - dec);
+    el('line', { x1, y1, x2, y2, stroke: color, 'stroke-width': width, 'stroke-dasharray': dash || 'none', opacity: dash ? 0.75 : 1 });
+  }
+
+  function drawPoint(lat, dec, color, label) {
+    const theta = lat - dec;
+    const noonAlt = 90 - Math.abs(theta);
+    const [px, py] = pos(theta);
+    const nx = Math.cos(rad(theta)), ny = -Math.sin(rad(theta)); // dışa doğru normal
+    const tx = -Math.sin(rad(theta)), ty = -Math.cos(rad(theta)); // artan θ yönünde teğet
+    const STICK = 30;
+    const g = el('g', {});
+
+    // Ufuk çizgisi (teğet)
+    el('line', { x1: px - tx * 70, y1: py - ty * 70, x2: px + tx * 70, y2: py + ty * 70, stroke: color, 'stroke-width': 1.2, opacity: 0.35, 'stroke-dasharray': '4 4' }, g);
+
+    const top = [px + nx * STICK, py + ny * STICK];
+    if (noonAlt > 0) {
+      // Gölge: güneşin tersine doğru, teğet boyunca
+      const len = noonAlt >= 89.999 ? 0 : Math.min(STICK / Math.tan(rad(noonAlt)), 150);
+      const dir = theta > 0 ? 1 : -1;
+      const tip = [px + tx * len * dir, py + ty * len * dir];
+      // Çubuk tepesinden geçip gölge ucuna inen ışın
+      const far = [top[0] + 600, top[1]];
+      el('line', { x1: far[0], y1: far[1], x2: top[0], y2: top[1], stroke: '#fbbf24', 'stroke-width': 1.4, opacity: 0.9 }, g);
+      el('line', { x1: top[0], y1: top[1], x2: tip[0], y2: tip[1], stroke: '#fbbf24', 'stroke-width': 1.4, 'stroke-dasharray': '3 3', opacity: 0.9 }, g);
+      if (len > 0.5) el('line', { x1: px, y1: py, x2: tip[0], y2: tip[1], stroke: '#0f172a', 'stroke-width': 6, 'stroke-linecap': 'round', opacity: 0.85 }, g);
+      if (len > 0.5) el('line', { x1: px, y1: py, x2: tip[0], y2: tip[1], stroke: color, 'stroke-width': 3, 'stroke-linecap': 'round', opacity: 0.55 }, g);
+    }
+    // Çubuk
+    el('line', { x1: px, y1: py, x2: top[0], y2: top[1], stroke: '#e2e8f0', 'stroke-width': 3, 'stroke-linecap': 'round' }, g);
+    el('circle', { cx: px, cy: py, r: 6, fill: color, stroke: '#04060d', 'stroke-width': 2 }, g);
+
+    // Etiket
+    const lx = px + nx * (STICK + 14) - tx * 14, ly = py + ny * (STICK + 14) - ty * 14 + 5;
+    const lbl = label;
+    text(lx, ly, lbl, { fill: color, 'font-size': 14, 'font-weight': 800, 'text-anchor': 'middle', stroke: '#04060d', 'stroke-width': 4, 'paint-order': 'stroke' });
+  }
+
+  function draw() {
+    const dec = state.dec;
+    svg.innerHTML = '';
+    const defs = el('defs', {});
+    defs.innerHTML = `
+      <radialGradient id="ocean" cx="62%" cy="45%" r="70%">
+        <stop offset="0%" stop-color="#1d4ed8"/><stop offset="70%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#0b1a45"/>
+      </radialGradient>
+      <linearGradient id="night" x1="0" x2="1">
+        <stop offset="0%" stop-color="#020617" stop-opacity=".82"/><stop offset="100%" stop-color="#020617" stop-opacity=".55"/>
+      </linearGradient>
+      <clipPath id="earthClip"><circle cx="${CX}" cy="${CY}" r="${R}"/></clipPath>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/>
+      </marker>`;
+
+    // Güneş ışınları (arka plan)
+    for (let y = CY - R + 14; y <= CY + R - 14; y += 28) {
+      el('line', { x1: 548, y1: y, x2: CX + Math.sqrt(Math.max(0, R * R - (y - CY) ** 2)) + 8, y2: y, stroke: '#fbbf24', 'stroke-width': 1.2, opacity: 0.3, 'marker-end': 'url(#arrow)' });
+    }
+    text(548, 28, 'GÜNEŞ IŞINLARI →', { fill: '#fbbf24', 'font-size': 12, 'font-weight': 800, 'text-anchor': 'end', 'letter-spacing': '1' });
+
+    // Dünya + gece tarafı
+    el('circle', { cx: CX, cy: CY, r: R, fill: 'url(#ocean)' });
+    el('rect', { x: CX - R, y: CY - R, width: R, height: 2 * R, fill: 'url(#night)', 'clip-path': 'url(#earthClip)' });
+    el('circle', { cx: CX, cy: CY, r: R, fill: 'none', stroke: '#93c5fd', 'stroke-width': 1.5, opacity: 0.6 });
+    text(CX - R + 18, CY + R - 10, 'GECE', { fill: '#64748b', 'font-size': 11, 'font-weight': 800, 'letter-spacing': '2' });
+    text(CX + R - 58, CY + R - 10, 'GÜNDÜZ', { fill: '#fde68a', 'font-size': 11, 'font-weight': 800, 'letter-spacing': '2', opacity: 0.8 });
+
+    // Özel paraleller
+    drawParallel(TILT, dec, '#f59e0b', '6 5');
+    drawParallel(-TILT, dec, '#f59e0b', '6 5');
+    drawParallel(90 - TILT, dec, '#67e8f9', '6 5');
+    drawParallel(-(90 - TILT), dec, '#67e8f9', '6 5');
+    drawParallel(0, dec, '#ef4444', null, 2.4);
+
+    // Eksen
+    const [nx1, ny1] = pos(90 - dec, R + 26), [sx1, sy1] = pos(-90 - dec, R + 26);
+    el('line', { x1: nx1, y1: ny1, x2: sx1, y2: sy1, stroke: '#e2e8f0', 'stroke-width': 1.5, opacity: 0.7 });
+    const [nl, nly] = pos(90 - dec, R + 40), [sl, sly] = pos(-90 - dec, R + 40);
+    text(nl, nly + 5, 'K', { 'text-anchor': 'middle', 'font-weight': 800 });
+    text(sl, sly + 5, 'G', { 'text-anchor': 'middle', 'font-weight': 800 });
+
+    // Işınların dik geldiği yer
+    const [dx, dy] = pos(0);
+    el('circle', { cx: dx, cy: dy, r: 5, fill: '#fbbf24' });
+    const subsolar = dec === 0 ? 'Ekvator' : `23°27' ${dec > 0 ? 'K' : 'G'}`;
+    text(dx - 12, dy + 4, `☀ Dik geliş: ${subsolar}`, { fill: '#fde68a', 'font-size': 11.5, 'text-anchor': 'end', stroke: '#0b1a45', 'stroke-width': 3, 'paint-order': 'stroke' });
+
+    // Çizgi etiketleri (sol taraf, gece yüzü)
+    const labelAt = (lat, str, color) => {
+      const [x, y] = pos(180 - lat - dec, R + 6);
+      text(x - 4, y + 4, str, { fill: color, 'font-size': 11, 'text-anchor': 'end', 'font-weight': 700 });
+    };
+    labelAt(0, 'Ekvator', '#fca5a5');
+    labelAt(TILT, 'Yengeç D.', '#fcd34d');
+    labelAt(-TILT, 'Oğlak D.', '#fcd34d');
+    labelAt(90 - TILT, 'K. Kutup D.', '#a5f3fc');
+    labelAt(-(90 - TILT), 'G. Kutup D.', '#a5f3fc');
+
+    if (state.showB) drawPoint(state.b, dec, '#f472b6', 'B');
+    drawPoint(state.a, dec, '#38bdf8', 'A');
+  }
+
+  // --- YAKIN BAKIŞ: GÖLGE KARŞILAŞTIRMASI ---
+  const inset = $('inset');
+  function drawInset() {
+    inset.innerHTML = '';
+    const pts = [['A', state.a, '#38bdf8']];
+    if (state.showB) pts.push(['B', state.b, '#f472b6']);
+    const W = 560 / pts.length, GROUND = 158, STICK = 64, MAXSH = W - 90;
+    pts.forEach(([label, lat, color], i) => {
+      const x0 = i * W;
+      const r = compute(lat, state.dec);
+      if (i > 0) el('line', { x1: x0, y1: 12, x2: x0, y2: 178, stroke: 'rgba(255,255,255,0.1)' }, inset);
+      el('text', { x: x0 + 14, y: 24, fill: color, 'font-size': 14, 'font-weight': 800, 'font-family': 'Outfit, sans-serif' }, inset).textContent = `${label} · ${latLabel(lat)}`;
+      const sx = x0 + W - 40; // çubuğun yeri (güneş sağdan gelir, gölge sola düşer)
+      el('line', { x1: x0 + 12, y1: GROUND, x2: x0 + W - 12, y2: GROUND, stroke: '#475569', 'stroke-width': 2 }, inset);
+      if (r.noonAlt <= 0) {
+        el('text', { x: x0 + W / 2, y: 100, fill: '#94a3b8', 'font-size': 14, 'font-weight': 700, 'text-anchor': 'middle' }, inset).textContent = '🌑 Güneş doğmaz (kutup gecesi)';
+        el('line', { x1: sx, y1: GROUND, x2: sx, y2: GROUND - STICK, stroke: '#e2e8f0', 'stroke-width': 4, 'stroke-linecap': 'round' }, inset);
+        return;
+      }
+      const h = rad(r.noonAlt);
+      const real = STICK / Math.tan(h);
+      const len = Math.min(real, MAXSH);
+      const tipX = sx - len;
+      // Işın: sağ üstten çubuk tepesine, oradan gölge ucuna
+      const ext = 70;
+      el('line', { x1: sx + ext * Math.cos(h), y1: GROUND - STICK - ext * Math.sin(h), x2: tipX, y2: GROUND, stroke: '#fbbf24', 'stroke-width': 1.6, 'stroke-dasharray': '5 4' }, inset);
+      if (len > 0.5) el('line', { x1: sx, y1: GROUND, x2: tipX, y2: GROUND, stroke: color, 'stroke-width': 7, 'stroke-linecap': 'round', opacity: 0.8 }, inset);
+      el('line', { x1: sx, y1: GROUND, x2: sx, y2: GROUND - STICK, stroke: '#e2e8f0', 'stroke-width': 4, 'stroke-linecap': 'round' }, inset);
+      el('circle', { cx: sx + ext * Math.cos(h), cy: GROUND - STICK - ext * Math.sin(h), r: 9, fill: '#fbbf24' }, inset);
+      // Açı yayı
+      if (len > 34) {
+        const ar = 26;
+        el('path', { d: `M ${tipX + ar} ${GROUND} A ${ar} ${ar} 0 0 0 ${tipX + ar * Math.cos(h)} ${GROUND - ar * Math.sin(h)}`, fill: 'none', stroke: '#fde68a', 'stroke-width': 1.5 }, inset);
+      }
+      el('text', { x: Math.max(x0 + 60, tipX - 10), y: GROUND - 12, fill: '#fde68a', 'font-size': 12.5, 'font-weight': 700, 'text-anchor': 'end' }, inset).textContent = `${fmt(r.noonAlt, 1)}°`;
+      const shTxt = r.shadow === 0 ? 'Gölge oluşmaz' : `Gölge: ${r.shadow > 50 ? '> 50' : fmt(r.shadow, 2)} m`;
+      el('text', { x: x0 + 14, y: 180, fill: color, 'font-size': 12.5, 'font-weight': 700, 'font-family': 'Fira Code, monospace' }, inset).textContent = shTxt + (real > MAXSH ? '  (ölçek dışı ←)' : '');
+    });
+  }
+
+  // --- TABLO ---
+  function cmp(va, vb, bigger, smaller, eps = 0.05) {
+    if (va == null || vb == null) return '—';
+    if (Math.abs(va - vb) < eps) return 'Eşit';
+    return va > vb ? `A ${bigger}` : `B ${bigger}`;
+  }
+
+  function render() {
+    const A = compute(state.a, state.dec);
+    const B = compute(state.b, state.dec);
+    const showB = state.showB;
+
+    $('lat-a-val').textContent = latLabel(state.a);
+    $('lat-b-val').textContent = latLabel(state.b);
+    $('row-b').classList.toggle('off', !showB);
+    document.querySelectorAll('.b-col').forEach(e => e.classList.toggle('hidden', !showB));
+
+    const altCell = r => r.noonAlt > 0 ? `${fmt(r.noonAlt, 1)}°` : 'Güneş doğmaz';
+    const shCell = r => r.shadow == null ? '—' : r.shadow === 0 ? '0 m' : r.shadow > 50 ? '> 50 m' : `${fmt(r.shadow, 2)} m`;
+    const rows = [
+      ['Öğle güneş açısı', 'Işınların yere geliş açısı', altCell(A), altCell(B), cmp(A.noonAlt, B.noonAlt, 'daha büyük')],
+      ['1 m çubuğun gölgesi', 'Öğle vakti', `${shCell(A)}<span class="sub">${A.shadowDir}</span>`, `${shCell(B)}<span class="sub">${B.shadowDir}</span>`,
+        (A.shadow == null || B.shadow == null) ? '—' : cmp(A.shadow, B.shadow, 'daha uzun', '', 0.005)],
+      ['Gündüz süresi', 'Bu tarihte', dayText(A.day), dayText(B.day), cmp(A.day, B.day, 'daha uzun', '', 0.02)],
+      ['Çizgisel hız', 'Dönüş hızı', `${fmt(A.speed)} km/sa`, `${fmt(B.speed)} km/sa`, cmp(A.speed, B.speed, 'daha hızlı', '', 1)],
+      ['Paralel çevresi', 'Çemberin uzunluğu', `${fmt(A.circ)} km`, `${fmt(B.circ)} km`, cmp(A.circ, B.circ, 'daha uzun', '', 1)],
+      ['Matematik iklim', 'Enleme göre kuşak', `${A.zone.icon} ${A.zone.name}`, `${B.zone.icon} ${B.zone.name}`,
+        A.zone.name === B.zone.name ? 'Aynı kuşak' : 'Farklı kuşak'],
+      ['Kalıcı kar sınırı', 'Yaklaşık, genel eğilim', `~${fmt(Math.round(A.snow / 100) * 100)} m`, `~${fmt(Math.round(B.snow / 100) * 100)} m`,
+        cmp(A.snow, B.snow, 'daha yüksek', '', 50)],
+    ];
+    $('result-body').innerHTML = rows.map(([label, sub, a, b, c]) => `
+      <tr>
+        <td class="row-label">${label}<span>${sub}</span></td>
+        <td class="num a">${a}</td>
+        <td class="num b b-col ${showB ? '' : 'hidden'}">${b}</td>
+        <td class="cmp b-col ${showB ? '' : 'hidden'}">${c}</td>
+      </tr>`).join('');
+
+    // Kısa yorum
+    let msg;
+    if (!showB) {
+      msg = A.noonAlt <= 0
+        ? `<strong>A</strong> noktasında bu tarihte güneş hiç doğmaz: <strong>kutup gecesi</strong> yaşanır.`
+        : `<strong>A</strong> noktasında öğle güneşi <strong>${fmt(A.noonAlt, 1)}°</strong> açıyla gelir. Işınların dik geldiği paralelden uzaklaştıkça bu açı küçülür, gölge uzar.`;
+    } else {
+      const far = Math.abs(state.a - state.dec) > Math.abs(state.b - state.dec) ? 'A' : 'B';
+      const near = far === 'A' ? 'B' : 'A';
+      if (Math.abs(Math.abs(state.a - state.dec) - Math.abs(state.b - state.dec)) < 0.01) {
+        msg = `A ve B, ışınların dik geldiği paralele <strong>eşit uzaklıkta</strong>; öğle güneş açıları ve gölge boyları aynıdır.`;
+      } else {
+        msg = `<strong>${far}</strong> noktası ışınların dik geldiği paralele daha uzak. Bu yüzden ${far} noktasında güneş açısı daha <strong>küçük</strong>, gölge daha <strong>uzun</strong>; ${near} noktası ise daha fazla ısınır.`;
+      }
+      if (Math.abs(state.a) !== Math.abs(state.b) && state.dec !== 0) {
+        const longer = A.day > B.day ? 'A' : 'B';
+        msg += ` Gündüz, <strong>${longer}</strong> noktasında daha uzundur.`;
+      } else if (state.dec === 0) {
+        msg += ` Ekinoks tarihinde her yerde gece ve gündüz <strong>eşittir (12 saat)</strong>.`;
+      }
+    }
+    $('insight').innerHTML = '💡 ' + msg;
+
+    const names = { '0': '21 Mart / 23 Eylül', '23.45': '21 Haziran', '-23.45': '21 Aralık' };
+    $('date-eyebrow').textContent = names[String(state.dec)];
+    $('dec-hint').innerHTML = state.dec === 0
+      ? "Güneş ışınları öğle vakti <strong>Ekvator'a</strong> dik gelir. Bütün yerlerde gece-gündüz eşittir."
+      : state.dec > 0
+        ? "Güneş ışınları öğle vakti <strong>Yengeç Dönencesi'ne (23°27' K)</strong> dik gelir. Kuzey Yarım Küre'de en uzun gündüz yaşanır."
+        : "Güneş ışınları öğle vakti <strong>Oğlak Dönencesi'ne (23°27' G)</strong> dik gelir. Kuzey Yarım Küre'de en kısa gündüz yaşanır.";
+
+    draw();
+    drawInset();
+  }
+
+  // --- ETKİLEŞİM ---
+  $('date-seg').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    document.querySelectorAll('#date-seg button').forEach(b => b.classList.toggle('active', b === btn));
+    state.dec = parseFloat(btn.dataset.dec);
+    render();
+  });
+  $('lat-a').addEventListener('input', e => { state.a = +e.target.value; select('a'); render(); });
+  $('lat-b').addEventListener('input', e => { state.b = +e.target.value; select('b'); render(); });
+  $('b-toggle').addEventListener('change', e => { state.showB = e.target.checked; if (!state.showB) select('a'); render(); });
+
+  function select(p) {
+    if (p === 'b' && !state.showB) return;
+    state.selected = p;
+    $('row-a').classList.toggle('selected', p === 'a');
+    $('row-b').classList.toggle('selected', p === 'b');
+    $('sel-name').textContent = p.toUpperCase();
+  }
+  document.querySelectorAll('[data-select]').forEach(b => b.addEventListener('click', () => select(b.dataset.select)));
+
+  function setLat(p, v) {
+    state[p] = v;
+    $('lat-' + p).value = v;
+  }
+  function setDec(dec) {
+    state.dec = dec;
+    document.querySelectorAll('#date-seg button').forEach(b => b.classList.toggle('active', parseFloat(b.dataset.dec) === dec));
+  }
+
+  $('chips').addEventListener('click', e => {
+    const c = e.target.closest('.chip');
+    if (!c) return;
+    if (c.dataset.a != null) {
+      setLat('a', +c.dataset.a); setLat('b', +c.dataset.b);
+      state.showB = true; $('b-toggle').checked = true;
+    } else {
+      setLat(state.selected, +c.dataset.lat);
+    }
+    render();
+  });
+
+  document.querySelectorAll('[data-demo]').forEach(btn => btn.addEventListener('click', () => {
+    const d = JSON.parse(btn.dataset.demo);
+    setDec(d.dec); setLat('a', d.a); setLat('b', d.b);
+    state.showB = true; $('b-toggle').checked = true;
+    render();
+    document.querySelector('.layout').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }));
+
+  render();
+})();
+</script>
+</body>
+</html>

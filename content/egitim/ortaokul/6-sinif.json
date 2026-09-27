@@ -3,7 +3,7 @@
   "ders": "Sosyal Bilgiler",
   "stats": {
     "unite": 6,
-    "konu": 18
+    "konu": 19
   },
   "hazineKutusu": {
     "baslik": "6. Sınıf Genel Kaynaklar",
@@ -315,6 +315,34 @@
             "Özbekistan",
             "Türkmenistan",
             "kültürel bağ"
+          ]
+        },
+        {
+          "no": 4,
+          "baslik": "Etkileşimli 3D Dünya Laboratuvarı: Paraleller ve Enlemler",
+          "badge": "3D • Yeni",
+          "href": "egitim/6-sinif/evimiz-dunya-3d/",
+          "ogrenmeAlani": "Evimiz Dünya",
+          "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/418",
+          "tymmAmac": "Türkiye’nin, kıtaların ve okyanusların konum özellikleri; doğal ve beşerî çevre ilişkileri; Türkiye’nin Türk dünyasıyla kültürel iş birlikleri incelenir.",
+          "ozet": "Döndürülebilen 3D Dünya üzerinde paralelleri, enlemleri, Ekvator’u ve enlemin sonuçlarını keşfederiz. Kısa görevler ve anlık geri bildirimlerle konum bilgisini harita ezberinden çıkarıp gözlem yaparak öğreniriz.",
+          "kazanimlar": [
+            "Paralel ve enlem kavramlarını 3D Dünya modeli üzerinde gösterir.",
+            "Ekvator’a göre konumun sıcaklık, gölge boyu ve gece-gündüz süresiyle ilişkisini gözlemler.",
+            "Türkiye’nin matematik konumunu keşfeder ve yorumlar."
+          ],
+          "etiketler": [
+            "6. sınıf sosyal bilgiler",
+            "Evimiz Dünya",
+            "etkileşimli 3D dünya",
+            "paraleller ve enlemler",
+            "matematik konum",
+            "AI destekli eğitim",
+            "yapay zekâ destekli eğitim",
+            "coğrafya laboratuvarı",
+            "Three.js",
+            "Ekvator",
+            "Türkiye'nin konumu"
           ]
         }
       ],
