@@ -34,8 +34,11 @@ RewriteEngine On
   <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
-  SetEnvIf Request_URI "^/pdf-pro(\.html)?$" is_pdf_pro
-  Header set X-Robots-Tag "noindex, follow" env=is_pdf_pro
+  SetEnvIf Request_URI "^/(pdf-pro|pdf-viewer)(\.html)?$" is_pdf_viewer
+  SetEnvIf Request_URI "^/(blog/yazi-sablonu|egitim/konu-sablonu|egitim/uluslararasi-kuruluslar-eski|yapay-zeka/yazi-sablonu)(\.html)?$" is_non_public_page
+  SetEnvIf Request_URI "^/osmanli-ordugahi/prototip/" is_non_public_page
+  Header set X-Robots-Tag "noindex, follow" env=is_pdf_viewer
+  Header set X-Robots-Tag "noindex, follow" env=is_non_public_page
 </IfModule>
 
 # Interactive Ottoman encampment assets. Explicit types keep JSON UTF-8 and
@@ -53,6 +56,10 @@ RewriteRule ^egitim\.html$ https://kursatca.com/egitim [L,NE,R=301]
 RewriteRule ^yapay-zeka\.html$ https://kursatca.com/yapay-zeka [L,NE,R=301]
 RewriteRule ^blog\.html$ https://kursatca.com/blog [L,NE,R=301]
 RewriteRule ^hakkimda\.html$ https://kursatca.com/hakkimda [L,NE,R=301]
+
+# Retire old duplicate pages in favor of their current public URLs.
+RewriteRule ^egitim_restore(?:\.html)?$ https://kursatca.com/egitim [L,NE,R=301]
+RewriteRule ^ziggurat(?:\.html)?$ https://kursatca.com/ziggurat2 [L,NE,R=301]
 
 # Redirect old kuresel-baglantilar-atolyesi to new location
 RewriteRule ^egitim/kuresel-baglantilar-atolyesi\.html$ https://kursatca.com/egitim/kuresel-baglantilar/ [L,NE,R=301]
