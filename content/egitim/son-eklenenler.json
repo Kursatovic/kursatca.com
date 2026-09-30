@@ -1,5 +1,35 @@
 [
   {
+    "baslik": "8. Sınıf - Mustafa Kemal'in Çocukluk Dönemi ve Eğitimi",
+    "sinif": 8,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.0.4%20Musta%20Kemal%27in%20E%C4%9Fitim%20Hayat%C4%B1%20ve%20%C3%87ocukluk%20D%C3%B6nemi.pdf&title=Mustafa%20Kemal%27in%20%C3%87ocukluk%20D%C3%B6nemi%20ve%20E%C4%9Fitimi",
+    "renk": "primary"
+  },
+  {
+    "baslik": "8. Sınıf - Osmanlı Devleti'nde Fikir Akımları",
+    "sinif": 8,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.0.3%20Osmanl%C4%B1%20Fikir%20Ak%C4%B1mlar%C4%B1.pdf&title=Osmanl%C4%B1%20Devleti%27nde%20Fikir%20Ak%C4%B1mlar%C4%B1",
+    "renk": "secondary"
+  },
+  {
+    "baslik": "8. Sınıf - Mustafa Kemal'in Askerlik Hayatı",
+    "sinif": 8,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/Mustafa%20Kemal%20Askeri%20kariyeri.pdf&title=Mustafa%20Kemal%27in%20Askerlik%20Hayat%C4%B1",
+    "renk": "accent"
+  },
+  {
+    "baslik": "8. Sınıf - I. Dünya Savaşı (1914-1918)",
+    "sinif": 8,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.1.1%20I.%20D%C3%BCnya%20Sava%C5%9F%C4%B1.pdf&title=I.%20D%C3%BCnya%20Sava%C5%9F%C4%B1%20%281914-1918%29",
+    "renk": "primary"
+  },
+  {
+    "baslik": "8. Sınıf - I. Dünya Savaşı'nda Osmanlı Devleti",
+    "sinif": 8,
+    "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.1.1.%20I.%20D%C3%BCnya%20sava%C5%9F%C4%B1%20Cepheler.pdf&title=I.%20D%C3%BCnya%20Sava%C5%9F%C4%B1%27nda%20Osmanl%C4%B1%20Devleti%20ve%20Cepheler",
+    "renk": "secondary"
+  },
+  {
     "baslik": "6. Sınıf - Etkileşimli 3D Dünya Laboratuvarı",
     "sinif": 6,
     "href": "egitim/6-sinif/evimiz-dunya-3d/",

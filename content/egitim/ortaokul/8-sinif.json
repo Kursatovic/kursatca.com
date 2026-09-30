@@ -101,17 +101,131 @@
             "href": "/egitim/osmanli-kayiplari-haritasi/"
           }
         },
-        { "no": "1.2", "baslik": "Mustafa Kemal'in Çocukluk Dönemi ve Eğitimi", "badge": "Etkileşimli Ders", "href": "/egitim/bir-liderin-olusumu/" },
-        { "no": "1.3", "baslik": "Mustafa Kemal'in Fikir Hayatını Etkileyen Kişiler ve Olaylar", "badge": "Yakında", "href": "#" },
-        { "no": "1.4", "baslik": "Mustafa Kemal'in Askerlik Hayatı", "badge": "Yakında", "href": "#" }
+        {
+          "no": "1.2",
+          "baslik": "Mustafa Kemal'in Çocukluk Dönemi ve Eğitimi",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.0.4%20Musta%20Kemal%27in%20E%C4%9Fitim%20Hayat%C4%B1%20ve%20%C3%87ocukluk%20D%C3%B6nemi.pdf&title=Mustafa%20Kemal%27in%20%C3%87ocukluk%20D%C3%B6nemi%20ve%20E%C4%9Fitimi",
+          "ogrenmeAlani": "Bir Kahraman Doğuyor",
+          "ozet": "Bu kaynakta Mustafa Kemal'in çocukluk çevresini, öğrenim gördüğü okulları ve bu eğitim yolculuğunun kişiliğine yaptığı katkıları inceleriz. Amaç, hayatındaki bilgileri sıralamak değil; yaşadığı çevrenin ve aldığı eğitimin onun düşünme, karar verme ve sorumluluk alma biçimini nasıl etkilediğini kavramaktır.",
+          "kazanimlar": [
+            "Mustafa Kemal'in çocukluk dönemi ile eğitim hayatındaki önemli aşamaları kronolojik olarak açıklar.",
+            "Selanik'in sosyal ve kültürel ortamının Mustafa Kemal'in yetişmesine etkisini yorumlar.",
+            "Farklı okul deneyimlerinin Mustafa Kemal'in kişilik özelliklerine katkısını örneklerle ilişkilendirir."
+          ],
+          "etiketler": [
+            "8. sınıf Mustafa Kemal'in çocukluk dönemi ve eğitimi",
+            "Mustafa Kemal'in eğitim hayatı",
+            "Mustafa Kemal'in okuduğu okullar",
+            "Selanik ve Mustafa Kemal",
+            "8. sınıf inkılap tarihi konu anlatımı",
+            "LGS inkılap tarihi",
+            "Bir Kahraman Doğuyor",
+            "dijital ders materyali"
+          ],
+          "spotlight": {
+            "baslik": "Etkileşimli dersle keşfet",
+            "metin": "Slayttaki bilgileri zaman, mekân ve karar noktalarıyla birlikte keşfetmek için Mustafa Kemal'in oluşum yolculuğuna geç. Her bölüm, neden önemli sorusunu düşündürecek şekilde tasarlandı.",
+            "butonMetin": "Etkileşimli dersi aç",
+            "href": "/egitim/bir-liderin-olusumu/"
+          }
+        },
+        {
+          "no": "1.3",
+          "baslik": "Osmanlı Devleti'nde Fikir Akımları",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.0.3%20Osmanl%C4%B1%20Fikir%20Ak%C4%B1mlar%C4%B1.pdf&title=Osmanl%C4%B1%20Devleti%27nde%20Fikir%20Ak%C4%B1mlar%C4%B1",
+          "ogrenmeAlani": "Bir Kahraman Doğuyor",
+          "ozet": "Bu derste Osmanlı Devleti'nin dağılmasını önlemek için ortaya çıkan Osmanlıcılık, İslamcılık, Türkçülük ve Batıcılık akımlarını ele alırız. Her akımın hangi soruna çözüm aradığını, savunduğu fikri ve neden kalıcı bir çözüm üretemediğini karşılaştırırız.",
+          "kazanimlar": [
+            "Osmanlı Devleti'nde ortaya çıkan başlıca fikir akımlarını tanır.",
+            "Fikir akımlarının amaçlarını ve savundukları çözüm önerilerini karşılaştırır.",
+            "Osmanlı Devleti'nin dağılma sürecinde fikir akımlarının etkisini neden-sonuç ilişkisiyle yorumlar."
+          ],
+          "etiketler": [
+            "8. sınıf Osmanlı Devleti'nde fikir akımları",
+            "Osmanlıcılık İslamcılık Türkçülük Batıcılık",
+            "Osmanlı fikir akımları konu anlatımı",
+            "LGS inkılap tarihi",
+            "Bir Kahraman Doğuyor",
+            "8. sınıf inkılap tarihi özet",
+            "dijital ders materyali"
+          ]
+        },
+        {
+          "no": "1.4",
+          "baslik": "Mustafa Kemal'in Askerlik Hayatı",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/Mustafa%20Kemal%20Askeri%20kariyeri.pdf&title=Mustafa%20Kemal%27in%20Askerlik%20Hayat%C4%B1",
+          "ogrenmeAlani": "Bir Kahraman Doğuyor",
+          "ozet": "Bu kaynakta Mustafa Kemal'in askerî görevlerini, görev yerlerinde karşılaştığı sorunları ve edindiği deneyimleri inceleriz. Onun askerlik hayatını yalnızca görev listesi olarak değil, liderlik, teşkilatçılık ve stratejik düşünme becerilerinin oluştuğu bir süreç olarak okuruz.",
+          "kazanimlar": [
+            "Mustafa Kemal'in askerlik hayatındaki önemli görev yerlerini ve olayları açıklar.",
+            "Askerlik görevlerinin Mustafa Kemal'in liderlik ve teşkilatçılık özelliklerine katkısını yorumlar.",
+            "Mustafa Kemal'in askerî deneyimleri ile Millî Mücadele'deki rolü arasında ilişki kurar."
+          ],
+          "etiketler": [
+            "8. sınıf Mustafa Kemal'in askerlik hayatı",
+            "Mustafa Kemal askerî kariyeri",
+            "Trablusgarp Balkan Savaşları Çanakkale",
+            "Mustafa Kemal'in görev yerleri",
+            "LGS inkılap tarihi",
+            "Bir Kahraman Doğuyor",
+            "8. sınıf inkılap tarihi konu anlatımı",
+            "dijital ders materyali"
+          ]
+        }
       ]
     },
     {
       "no": 2,
       "baslik": "Millî Uyanış: Yurdumuzun İşgaline Tepkiler",
       "konular": [
-        { "no": "2.1", "baslik": "I. Dünya Savaşı (1914-1918)", "badge": "Yakında", "href": "#" },
-        { "no": "2.2", "baslik": "I. Dünya Savaşı'nda Osmanlı Devleti", "badge": "Yakında", "href": "#" },
+        {
+          "no": "2.1",
+          "baslik": "I. Dünya Savaşı (1914-1918)",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.1.1%20I.%20D%C3%BCnya%20Sava%C5%9F%C4%B1.pdf&title=I.%20D%C3%BCnya%20Sava%C5%9F%C4%B1%20%281914-1918%29",
+          "ogrenmeAlani": "Millî Uyanış: Yurdumuzun İşgaline Tepkiler",
+          "ozet": "Bu derste I. Dünya Savaşı'nın nedenlerini, bloklaşmayı ve savaşın dünya üzerindeki sonuçlarını inceleriz. Savaşın yalnız cephelerde yaşanan bir mücadele olmadığını; devletlerin siyasi, ekonomik ve toplumsal dengelerini değiştiren büyük bir kırılma olduğunu kavrarız.",
+          "kazanimlar": [
+            "I. Dünya Savaşı'nın genel nedenlerini açıklar.",
+            "İttifak ve İtilaf Devletlerini ayırt eder.",
+            "Savaşın dünya siyasi haritası ve Osmanlı Devleti üzerindeki sonuçlarını yorumlar."
+          ],
+          "etiketler": [
+            "8. sınıf I. Dünya Savaşı",
+            "I. Dünya Savaşı nedenleri ve sonuçları",
+            "İttifak Devletleri İtilaf Devletleri",
+            "8. sınıf inkılap tarihi konu anlatımı",
+            "Millî Uyanış Yurdumuzun İşgaline Tepkiler",
+            "LGS inkılap tarihi",
+            "dijital ders materyali"
+          ]
+        },
+        {
+          "no": "2.2",
+          "baslik": "I. Dünya Savaşı'nda Osmanlı Devleti",
+          "badge": "PDF / Slayt",
+          "href": "pdf-pro.html?pdf=Ders%20kaynaklar%C4%B1/8.%20S%C4%B1n%C4%B1f/8.1.1.%20I.%20D%C3%BCnya%20sava%C5%9F%C4%B1%20Cepheler.pdf&title=I.%20D%C3%BCnya%20Sava%C5%9F%C4%B1%27nda%20Osmanl%C4%B1%20Devleti%20ve%20Cepheler",
+          "ogrenmeAlani": "Millî Uyanış: Yurdumuzun İşgaline Tepkiler",
+          "ozet": "Bu kaynakta Osmanlı Devleti'nin I. Dünya Savaşı'na katılma nedenlerini ve savaştığı cepheleri inceleriz. Cepheleri yalnız isimleriyle değil, açılış nedenleri, mücadele biçimi ve sonuçlarıyla birlikte değerlendiririz.",
+          "kazanimlar": [
+            "Osmanlı Devleti'nin I. Dünya Savaşı'na katılma nedenlerini açıklar.",
+            "Osmanlı Devleti'nin savaştığı cepheleri taarruz, savunma ve yardım cepheleri olarak sınıflandırır.",
+            "Cephelerde yaşanan gelişmelerin Osmanlı Devleti'nin geleceğine etkisini yorumlar."
+          ],
+          "etiketler": [
+            "8. sınıf I. Dünya Savaşı'nda Osmanlı Devleti",
+            "Osmanlı Devleti'nin savaştığı cepheler",
+            "taarruz savunma yardım cepheleri",
+            "Çanakkale Kafkas Kanal Irak Filistin cepheleri",
+            "8. sınıf inkılap tarihi konu anlatımı",
+            "Millî Uyanış Yurdumuzun İşgaline Tepkiler",
+            "LGS inkılap tarihi",
+            "dijital ders materyali"
+          ]
+        },
         { "no": "2.3", "baslik": "Mondros Ateşkes Antlaşması'nın İmzalanması ve Uygulanması", "badge": "Yakında", "href": "#" },
         { "no": "2.4", "baslik": "Kuvâ-yı Millîye Hareketi ve Cemiyetler", "badge": "Yakında", "href": "#" },
         { "no": "2.5", "baslik": "Millî Mücadele'nin Hazırlık Dönemi", "badge": "Yakında", "href": "#" },
