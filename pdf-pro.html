@@ -14,6 +14,7 @@
   
   <!-- PDF.js Kütüphanesi -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="js/shared/heart-wave-loader.js?v=1.0.0" defer></script>
   
   <style>
     /* Pro Viewer Özel Stilleri */
@@ -725,7 +726,7 @@
         <!-- CANVAS ALANI -->
         <div class="pro-canvas-container" id="canvas-container">
           <div class="loading-overlay" id="loading-overlay">
-            <div class="spinner"></div>
+            <heart-wave-loader style="--heart-loader-size: 76px;"></heart-wave-loader>
             <div>PDF Yükleniyor...</div>
           </div>
           <div id="pdf-wrapper">
