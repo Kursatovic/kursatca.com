@@ -256,6 +256,12 @@
           "tymmUrl": "https://tymm.meb.gov.tr/sosyal-bilgiler-dersi/unite/418",
           "tymmAmac": "Türkiye’nin, kıtaların ve okyanusların konum özellikleri; doğal ve beşerî çevre ilişkileri; Türkiye’nin Türk dünyasıyla kültürel iş birlikleri incelenir.",
           "ozet": "Ülkemizdeki iklim, yer şekilleri ve su kaynakları gibi doğal özelliklerle nüfus, yerleşme, tarım, sanayi ve ulaşım gibi beşerî özellikler arasındaki ilişkiyi inceleriz.",
+          "spotlight": {
+            "baslik": "Etkileşimli keşif: 3B Yeryüzü Şekilleri ve Yaşam Atlası",
+            "metin": "Dağ, ova, plato, vadi, akarsu ve göl gibi yeryüzü şekillerini incele; bunların insan yaşamını ve yerleşmeyi nasıl etkilediğini keşfet.",
+            "butonMetin": "3B atlası aç",
+            "href": "/egitim/6-sinif/yeryuzu-sekilleri/"
+          },
           "kazanimlar": [
             "Ülkemizdeki doğal ve beşerî çevre özelliklerini belirler.",
             "Doğal ve beşerî çevre özellikleri arasındaki ilişkiyi açıklar.",
