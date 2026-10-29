@@ -1,0 +1,2850 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3B Yeryüzü Şekilleri ve Yaşam Atlası</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+    * { box-sizing: border-box; }
+    html, body {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0;
+      height: 100%;
+    }
+
+    canvas { touch-action: none; outline: none; }
+
+    input[type="range"] {
+      accent-color: #0284c7;
+      height: 7px;
+      border-radius: 999px;
+    }
+
+    .leaflet-container {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 14px !important;
+    }
+
+    /* İnce kaydırma çubuğu */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* Dar ekran (telefon, küçük tablet): tek sütun, liste üstte yatay şerit */
+    @media (max-width: 1023px) {
+      html, body { height: auto !important; overflow: auto !important; }
+      #appBody { flex-direction: column; overflow: visible !important; }
+      #appBody > main { overflow: visible !important; }
+      #sidebarPanel { width: 100% !important; overflow: visible !important; }
+      #landformList { flex-direction: row !important; overflow-x: auto; padding-bottom: 4px; }
+      #landformList .lf-btn { width: auto !important; flex: 0 0 auto; }
+      #stepPanel1 > div:first-child { min-height: 520px; }
+      #turkeyMap { min-height: 360px; }
+      header nav { order: 3; width: 100%; overflow-x: auto; }
+      header nav button { flex: 0 0 auto; white-space: nowrap; }
+    }
+
+    /* Yazdırma: yalnızca çıkış kartı */
+    @media print {
+      header, #sidebarPanel, #stepPanel1, #stepPanel2, #stepPanel3, #stepPanel4, #stepPanel5, #imageLightboxModal { display: none !important; }
+      html, body { height: auto !important; overflow: visible !important; background: #fff !important; }
+      #appBody, #appBody > main { overflow: visible !important; display: block !important; }
+    }
+  </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden select-none">
+
+  <!-- ÜST BAŞLIK ÇUBUĞU (TEK SAYFAYA SIĞAN KOMPAKT YAPI) -->
+  <header class="bg-white border-b border-slate-200 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 shrink-0 shadow-xs z-20">
+    <div class="flex items-center gap-2.5">
+      <!-- Sol Tablo Gizle / Göster Düğmesi -->
+      <button id="btnToggleSidebar" class="px-3 py-1.5 rounded-lg border border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-sm flex items-center gap-1.5 cursor-pointer transition" title="Sol Menüyü Gizle / Göster">
+        <span>☰</span>
+        <span id="sidebarBtnText">Sol Menüyü Gizle</span>
+      </button>
+
+      <div class="w-8 h-8 rounded-lg bg-sky-600 text-white flex items-center justify-center font-extrabold text-sm shadow-xs">
+        3B
+      </div>
+      <div>
+        <h1 class="text-base font-extrabold text-slate-900 leading-tight">
+          Yeryüzü Şekilleri ve Yaşam Etkileşimli Atlası
+        </h1>
+      </div>
+    </div>
+
+    <!-- ORTA: ADIM SEÇİCİ SEKMELER -->
+    <nav class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
+      <button data-step="1" class="step-tab-btn py-1.5 px-3 rounded-lg font-extrabold text-sm transition cursor-pointer flex items-center gap-1.5 bg-sky-600 text-white shadow-xs">
+        <span>1.</span> 3B Model ve Yaşam
+      </button>
+      <button data-step="2" class="step-tab-btn py-1.5 px-3 rounded-lg font-bold text-sm transition cursor-pointer flex items-center gap-1.5 text-slate-700 hover:bg-white">
+        <span>2.</span> Haritada Bul
+      </button>
+      <button data-step="3" class="step-tab-btn py-1.5 px-3 rounded-lg font-bold text-sm transition cursor-pointer flex items-center gap-1.5 text-slate-700 hover:bg-white">
+        <span>3.</span> Yerleşim Yeri Seç
+      </button>
+      <button data-step="4" class="step-tab-btn py-1.5 px-3 rounded-lg font-bold text-sm transition cursor-pointer flex items-center gap-1.5 text-slate-700 hover:bg-white">
+        <span>4.</span> Karşılaştır ve Test Et
+      </button>
+      <button data-step="5" class="step-tab-btn py-1.5 px-3 rounded-lg font-bold text-sm transition cursor-pointer flex items-center gap-1.5 text-slate-700 hover:bg-white">
+        <span>5.</span> İnsan ve Doğa
+      </button>
+      <button data-step="6" class="step-tab-btn py-1.5 px-3 rounded-lg font-bold text-sm transition cursor-pointer flex items-center gap-1.5 text-slate-700 hover:bg-white">
+        <span>6.</span> İklim
+      </button>
+    </nav>
+
+    <!-- SAĞ: GÖREV SAYACI VE TAM EKRAN -->
+    <div class="flex items-center gap-2">
+      <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-lg font-bold text-sm">
+        Tamamlanan Görev: <span id="completedTaskCount">0</span> / <span id="taskTotal">11</span>
+      </div>
+      <button id="btnFullscreen" class="px-3 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold text-sm flex items-center gap-1 cursor-pointer transition" title="Tam Ekran Modu">
+        <span>⛶</span>
+        <span id="fullscreenBtnText">Tam Ekran</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ANA GÖVDE (TEK EKRANA SIĞAN ESNEK YAPI) -->
+  <div id="appBody" class="flex-1 flex overflow-hidden p-3 gap-3 max-w-[1920px] w-full mx-auto">
+
+    <!-- SOL MENÜ: YERYÜZÜ ŞEKİLLERİ LİSTESİ (GİZLENEBİLİR) -->
+    <aside id="sidebarPanel" class="w-56 shrink-0 bg-white border border-slate-200 rounded-xl p-3 flex flex-col gap-2 shadow-xs overflow-y-auto transition-all">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2 px-1">
+        <h2 class="text-sm font-extrabold uppercase tracking-wider text-slate-600">Yeryüzü Şekilleri</h2>
+        <span id="visitedBadge" class="text-sm font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md">1 / 10</span>
+      </div>
+
+      <div id="landformList" class="flex flex-col gap-1.5 flex-1">
+        <!-- JS ile doldurulur -->
+      </div>
+    </aside>
+
+    <!-- SAĞ ANA ALAN -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+
+      <!-- ==================================================================== -->
+      <!-- ADIM 1: 3B SAHNE + OLUŞUM + GERÇEK GÖRSEL + İNSAN YAŞAMI + MİNİ GÖREV -->
+      <!-- ==================================================================== -->
+      <section id="stepPanel1" class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-3 overflow-y-auto lg:overflow-hidden">
+        
+        <!-- SOL SÜTUN (7 SÜTUN): 3B MODEL VE OLUŞUM SÜRECİ -->
+        <div class="lg:col-span-7 bg-white border border-slate-200 rounded-xl p-3.5 flex flex-col gap-2.5 shadow-xs overflow-hidden">
+          <!-- Başlık, Nüfus Rozeti ve Açı Sıfırlama -->
+          <div class="flex flex-wrap items-center justify-between gap-2 shrink-0">
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <h2 id="titleStep1" class="text-xl font-extrabold text-slate-900">Delta Ovası</h2>
+              <span id="nufusBadge" class="text-sm font-bold px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">
+                Nüfus genellikle yoğun
+              </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-slate-500 hidden sm:inline">Fareyle çevir ve yakınlaştır</span>
+              <button id="btnResetCamera" class="px-2.5 py-1 rounded-lg border border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-sm cursor-pointer transition">
+                Açıyı Sıfırla
+              </button>
+            </div>
+          </div>
+
+          <!-- 3B Sahne (Esnek Yükseklik, Tek Ekrana Sığar) -->
+          <div class="relative flex-1 min-h-[260px] rounded-xl overflow-hidden border border-slate-300 bg-[#dbeafe] cursor-grab active:cursor-grabbing">
+            <div id="threeMount" class="w-full h-full"></div>
+            <div id="labelsOverlay" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+          </div>
+
+          <!-- Oluşum Süreci Kontrolü -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-1.5 shrink-0">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <button id="btnPlayFormation" class="px-3.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-sm cursor-pointer transition shadow-xs">
+                  ▶ Oluşumu Oynat
+                </button>
+                <span class="text-sm font-extrabold text-slate-700">Nasıl Oluşur?</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <button data-fstage="0.1" class="fstage-btn px-2.5 py-1 rounded-md border border-slate-300 bg-white font-bold text-sm text-slate-700 hover:bg-slate-100 cursor-pointer">
+                  1. Başlangıç
+                </button>
+                <button data-fstage="0.55" class="fstage-btn px-2.5 py-1 rounded-md border border-slate-300 bg-white font-bold text-sm text-slate-700 hover:bg-slate-100 cursor-pointer">
+                  2. Gelişim
+                </button>
+                <button data-fstage="1.0" class="fstage-btn px-2.5 py-1 rounded-md border border-sky-600 bg-sky-50 font-bold text-sm text-sky-800 cursor-pointer">
+                  3. Son Hali
+                </button>
+              </div>
+            </div>
+
+            <input id="sliderFormation" type="range" min="10" max="100" value="100" class="w-full cursor-pointer" />
+
+            <p id="formationStepText" class="text-sm text-slate-800 font-semibold bg-white border border-slate-200 rounded-lg px-3 py-2"></p>
+          </div>
+        </div>
+
+        <!-- SAĞ SÜTUN (5 SÜTUN): GERÇEK GÖRSEL + TANIM + İNSAN YAŞAMI + MİNİ GÖREV -->
+        <div class="lg:col-span-5 flex flex-col gap-2.5 overflow-y-auto pr-0.5">
+          
+          <!-- Gerçek Coğrafi Görsel Kartı (Tüm 10 şekil için - Tıklayınca Büyür!) -->
+          <div id="photoCardTrigger" class="group bg-white border border-slate-200 hover:border-sky-400 rounded-xl p-3 shadow-xs shrink-0 cursor-zoom-in transition">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-sm font-extrabold uppercase tracking-wider text-slate-500">Gerçek Görünüm</span>
+              <span class="text-sm text-sky-700 font-bold bg-sky-50 px-2 py-0.5 rounded-md border border-sky-200 group-hover:bg-sky-600 group-hover:text-white transition">
+                🔍 Büyütmek için tıkla
+              </span>
+            </div>
+            <div class="relative overflow-hidden rounded-lg border border-slate-200 bg-slate-100">
+              <img id="landformPhoto" src="" alt="Yeryüzü Şekli Görseli" class="w-full h-36 sm:h-40 object-cover group-hover:scale-[1.03] transition duration-300" />
+            </div>
+            <p id="landformPhotoCaption" class="text-sm text-slate-600 font-medium mt-1.5"></p>
+          </div>
+
+          <!-- Kısa Tanım ve Tek Kavram -->
+          <div class="bg-white border border-slate-200 rounded-xl p-3 shadow-xs flex flex-col gap-2 shrink-0">
+            <div>
+              <span class="text-sm font-extrabold uppercase tracking-wider text-sky-700">Nedir?</span>
+              <p id="shortDefinition" class="text-sm text-slate-800 font-semibold mt-0.5 leading-snug"></p>
+            </div>
+            <div class="bg-sky-50/70 border border-sky-200 rounded-lg px-3 py-2">
+              <span class="text-sm font-extrabold text-sky-800">Anahtar Kavram — </span>
+              <span id="singleTermTitle" class="text-sm font-extrabold text-slate-900"></span>:
+              <span id="singleTermDesc" class="text-sm text-slate-700 font-medium"></span>
+            </div>
+          </div>
+
+          <!-- İnsanların Yaşamını Nasıl Etkiler? (yeryuzu-6-sinif.html'den) -->
+          <div class="bg-blue-50/90 border border-blue-200 rounded-xl p-3 shadow-xs shrink-0">
+            <h3 class="text-sm font-extrabold uppercase tracking-wider text-blue-800 mb-1">
+              👥 İnsanların Yaşamını Nasıl Etkiler?
+            </h3>
+            <p id="humanImpactText" class="text-sm sm:text-base text-slate-800 font-medium leading-snug"></p>
+          </div>
+
+          <!-- Mini Gözlem Görevi -->
+          <div class="bg-amber-50/90 border border-amber-200 rounded-xl p-3 shadow-xs flex flex-col gap-1.5 shrink-0">
+            <span class="text-sm font-extrabold uppercase tracking-wider text-amber-800">🎯 Mini Gözlem Görevi</span>
+            <p id="step1TaskPrompt" class="text-sm sm:text-base font-bold text-slate-900"></p>
+            <div id="step1TaskChoices" class="grid grid-cols-1 gap-1.5 mt-0.5"></div>
+            <p id="step1TaskFeedback" class="hidden text-sm font-bold mt-1 p-2 rounded-lg"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- ADIM 2: TÜRKİYE HARİTASI VE HARİTADA BULMA GÖREVİ (İSİMLER GİZLİ!)   -->
+      <!-- ==================================================================== -->
+      <section id="stepPanel2" class="hidden flex-1 bg-white border border-slate-200 rounded-xl p-3.5 flex-col gap-2.5 shadow-xs overflow-hidden">
+        <!-- Üst Başlık ve Harita Kontrolleri -->
+        <div class="flex flex-wrap items-center justify-between gap-2 shrink-0">
+          <div class="flex items-center gap-3 flex-wrap">
+            <h2 id="titleStep2Map" class="text-lg font-extrabold text-slate-900">Türkiye'de Nerelerde Görülür?</h2>
+            <span class="text-sm bg-amber-100 text-amber-900 font-bold px-2.5 py-1 rounded-lg border border-amber-300">
+              İpucu: Görev sırasında haritadaki isimler gizlidir! Doğru noktayı bulduğunda açılır.
+            </span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button id="btnToggleMapNames" class="px-2.5 py-1 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold text-sm cursor-pointer">
+              İsimleri Göster
+            </button>
+            <button data-tile="sat" class="tile-btn px-2.5 py-1 rounded-lg bg-sky-600 text-white font-bold text-sm cursor-pointer">
+              Uydu
+            </button>
+            <button data-tile="topo" class="tile-btn px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold text-sm cursor-pointer">
+              Fiziki
+            </button>
+            <button id="btnResetMap" class="px-2.5 py-1 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 font-bold text-sm cursor-pointer">
+              Tüm Türkiye
+            </button>
+          </div>
+        </div>
+
+        <!-- HARİTA GÖREVİ BANDI -->
+        <div class="bg-sky-50 border border-sky-200 rounded-xl px-3.5 py-2 flex flex-wrap items-center justify-between gap-2 shrink-0">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-md bg-sky-600 text-white font-extrabold text-sm uppercase shrink-0">Harita Görevi</span>
+            <p id="mapTaskQuestion" class="text-sm sm:text-base font-extrabold text-slate-900"></p>
+          </div>
+          <div id="mapTaskStatus" class="text-sm font-extrabold px-3 py-1 rounded-lg bg-white border border-sky-200 text-sky-800 shrink-0">
+            Haritadaki ? işaretli noktalardan doğru olana tıkla!
+          </div>
+        </div>
+
+        <!-- GERÇEK TÜRKİYE HARİTASI -->
+        <div class="flex-1 min-h-[240px] rounded-xl overflow-hidden border border-slate-300 shadow-inner">
+          <div id="turkeyMap" class="w-full h-full"></div>
+        </div>
+
+        <!-- TÜRKİYE ÖRNEKLERİ KARTLARI (Görev çözülene kadar isimler gizli) -->
+        <div id="turkeyCardsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-2.5 shrink-0">
+          <!-- JS ile doldurulur -->
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- ADIM 3: YERLEŞİM YERİ SEÇ (BU AİLE NEREYE YERLEŞMELİ?)               -->
+      <!-- ==================================================================== -->
+      <section id="stepPanel3" class="hidden flex-1 bg-white border border-slate-200 rounded-xl p-4 flex-col gap-3 shadow-xs overflow-y-auto">
+        <div class="flex flex-wrap items-center justify-between gap-2 shrink-0 border-b border-slate-100 pb-2.5">
+          <div>
+            <span class="text-sm font-extrabold uppercase tracking-wider text-orange-600">Görev · Yerleşim Yeri Seç</span>
+            <h2 class="text-xl font-extrabold text-slate-900">Bu aile nereye yerleşmeli?</h2>
+            <p class="text-sm sm:text-base text-slate-600">Altı aile yeni bir yerde hayat kuracak. Her ailenin ihtiyacını oku ve sağdaki yer şekillerinden en uygun olanı seç.</p>
+          </div>
+          <div id="settleDots" class="flex items-center gap-1.5"></div>
+        </div>
+
+        <div class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+          <!-- Sol: Aile / Karakter Kartı -->
+          <div id="personaCard" class="lg:col-span-5 bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-3">
+            <!-- JS ile doldurulur -->
+          </div>
+
+          <!-- Sağ: 6 Yeryüzü Şekli Seçim Kartları -->
+          <div id="settleTiles" class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <!-- JS ile doldurulur -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- ADIM 4: KARIŞTIRILAN İKİLİLER VE 10 GÖRSELLİ DEĞERLENDİRME TESTİ     -->
+      <!-- ==================================================================== -->
+      <section id="stepPanel4" class="hidden flex-1 bg-white border border-slate-200 rounded-xl p-4 flex-col gap-3 shadow-xs overflow-y-auto">
+        
+        <!-- Üst Bölüm: Bu Şekille En Çok Karıştırılan İkili -->
+        <div class="bg-amber-50/80 border border-amber-200 rounded-xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-2 shrink-0">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-md bg-amber-600 text-white font-extrabold text-sm uppercase shrink-0">Karıştırma!</span>
+            <p id="comparePairText" class="text-sm sm:text-base text-slate-800 font-semibold"></p>
+          </div>
+        </div>
+
+        <!-- Alt Bölüm: 10 Soruluk Görsel Değerlendirme Testi -->
+        <div class="flex-1 flex flex-col gap-3 justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 shrink-0">
+            <div>
+              <h2 class="text-lg font-extrabold text-slate-900">Görsel ve Kavramsal Değerlendirme Testi (11 Soru)</h2>
+              <p class="text-sm text-slate-600">Görsele bakarak doğru cevabı seç; yanlış cevaplarda neden yanlış olduğunu incele.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span id="quizCounterBadge" class="px-3 py-1 rounded-lg bg-sky-50 border border-sky-200 text-sky-800 font-extrabold text-sm">
+                Soru 1 / 10
+              </span>
+              <span id="quizScoreBadge" class="px-3 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 font-extrabold text-sm">
+                Doğru: 0
+              </span>
+            </div>
+          </div>
+
+          <!-- Soru Gövdesi (Gerçek Görsel + Soru Metni + Şıklar) -->
+          <div class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-center bg-slate-50 border border-slate-200 rounded-xl p-4">
+            <!-- Soru Görseli (10 Sorunun Tümü Gerçek Görselli - Tıklayınca Büyür!) -->
+            <div class="lg:col-span-5 flex flex-col gap-1.5">
+              <div id="quizPhotoTrigger" class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-slate-300 bg-white shadow-xs">
+                <img id="quizImageEl" src="" alt="Soru Görseli" class="w-full h-56 sm:h-64 object-cover group-hover:scale-[1.03] transition duration-300" />
+                <span class="absolute bottom-2 right-2 text-sm font-bold px-2.5 py-1 rounded-lg bg-slate-900/75 text-white backdrop-blur-xs">
+                  🔍 Büyüt
+                </span>
+              </div>
+            </div>
+
+            <!-- Soru Metni ve Seçenekler -->
+            <div class="lg:col-span-7 flex flex-col gap-3">
+              <p id="quizQuestionText" class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug"></p>
+              <div id="quizOptionsList" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+              <div id="quizExplanationBox" class="hidden text-sm sm:text-base font-semibold p-3 rounded-xl leading-relaxed"></div>
+
+              <div class="flex items-center justify-between pt-1">
+                <button id="btnPrevQuiz" class="px-3.5 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 font-bold text-sm text-slate-700 cursor-pointer">
+                  ← Önceki Soru
+                </button>
+                <button id="btnNextQuiz" class="px-4 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-sm cursor-pointer shadow-xs">
+                  Sonraki Soru →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- ADIM 5: İNSAN VE DOĞA SINIFLAMA ETKİNLİĞİ (SB.6.2.2)                  -->
+      <!-- ==================================================================== -->
+      <section id="stepPanel5" class="hidden flex-1 bg-white border border-slate-200 rounded-xl p-4 flex-col gap-3 shadow-xs overflow-y-auto">
+        <div class="shrink-0 border-b border-slate-100 pb-2.5">
+          <span class="text-sm font-extrabold uppercase tracking-wider text-orange-600">Görev · İnsan ve Doğa</span>
+          <h2 class="text-xl font-extrabold text-slate-900">Kim kimi etkiliyor?</h2>
+          <p class="text-sm sm:text-base text-slate-600">Doğa insanların yaşamını etkiler; insanlar da yaptıklarıyla doğayı değiştirir. Her cümleyi oku ve hangi gruba girdiğine karar ver.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
+          <div class="flex flex-col gap-3">
+            <div id="sortCard" class="min-h-[150px] bg-slate-50 border border-slate-200 rounded-xl p-5 flex items-center justify-center text-center text-lg sm:text-xl font-extrabold text-slate-900"></div>
+            <div id="sortBtns" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button data-side="d" class="px-4 py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-base font-extrabold cursor-pointer transition">Doğa insanı etkiliyor</button>
+              <button data-side="i" class="px-4 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-base font-extrabold cursor-pointer transition">İnsan doğayı etkiliyor</button>
+            </div>
+            <div id="sortFb"></div>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+            <h3 class="text-base font-extrabold text-slate-900 mb-2">Sınıflama Tablom</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div><h4 class="text-base font-extrabold text-sky-700 mb-1">Doğa → İnsan</h4><ul id="colD" class="list-disc pl-5 text-sm sm:text-base text-slate-800 space-y-1"></ul></div>
+              <div><h4 class="text-base font-extrabold text-orange-700 mb-1">İnsan → Doğa</h4><ul id="colI" class="list-disc pl-5 text-sm sm:text-base text-slate-800 space-y-1"></ul></div>
+            </div>
+          </div>
+        </div>
+        <div id="sortEnd" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-4">
+          <h3 class="text-base font-extrabold text-amber-900 mb-1">Sınıfça tartışın</h3>
+          <p class="text-sm sm:text-base text-slate-800">Yaşadığınız yerde insanların doğayı olumsuz etkilediği bir örnek var mı? Bunu önlemek için siz ne yapabilirsiniz? Çöp atmamak, ağaç dikmek, suyu kirletmemek gibi küçük davranışlar da doğal çevreyi korur.</p>
+        </div>
+      </section>
+
+      <!-- ==================================================================== -->
+      <!-- ADIM 6: İKLİM (HAVA DURUMU-İKLİM, TÜRKİYE'NİN İKLİMLERİ, YAŞAMA ETKİSİ) -->
+      <!-- ==================================================================== -->
+      <section id="stepPanel6" class="hidden flex-1 bg-white border border-slate-200 rounded-xl p-4 flex-col gap-3 shadow-xs overflow-y-auto">
+        <div class="shrink-0 border-b border-slate-100 pb-2.5">
+          <span class="text-sm font-extrabold uppercase tracking-wider text-orange-600">Doğal Çevre · İklim</span>
+          <h2 class="text-xl font-extrabold text-slate-900">Türkiye'nin İklimi ve Yaşamımız</h2>
+          <p class="text-sm sm:text-base text-slate-600">Yer şekilleri gibi iklim de insanların nerede ve nasıl yaşadığını etkiler. Dört bölümü sırayla aç.</p>
+        </div>
+
+        <div id="climTabs" class="flex flex-wrap gap-2 shrink-0">
+          <button data-ctab="1" class="clim-tab px-3.5 py-2 rounded-xl border-2 font-extrabold text-sm sm:text-base cursor-pointer transition">1. Hava Durumu mu, İklim mi?</button>
+          <button data-ctab="2" class="clim-tab px-3.5 py-2 rounded-xl border-2 font-extrabold text-sm sm:text-base cursor-pointer transition">2. Türkiye'nin İklimleri</button>
+          <button data-ctab="3" class="clim-tab px-3.5 py-2 rounded-xl border-2 font-extrabold text-sm sm:text-base cursor-pointer transition">3. Grafikten İklimi Bul</button>
+          <button data-ctab="4" class="clim-tab px-3.5 py-2 rounded-xl border-2 font-extrabold text-sm sm:text-base cursor-pointer transition">4. İklim ve Yaşam</button>
+        </div>
+
+        <!-- 1. Hava durumu mu iklim mi -->
+        <div id="climPane1" class="clim-pane flex flex-col gap-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-sky-50 border border-sky-200 rounded-xl p-3.5">
+              <h3 class="text-base font-extrabold text-sky-800 mb-1">Hava Durumu</h3>
+              <p class="text-sm sm:text-base text-slate-800">Bir yerde kısa süre içinde (saatlik, günlük) görülen sıcaklık, yağış, rüzgâr, nem ve bulutluluk gibi olayların anlık durumudur. Sürekli değişir.</p>
+              <p class="text-sm text-slate-600 mt-1.5 italic">"Bugün hava parçalı bulutlu ve 23 °C."</p>
+            </div>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3.5">
+              <h3 class="text-base font-extrabold text-amber-800 mb-1">İklim</h3>
+              <p class="text-sm sm:text-base text-slate-800">Bir bölgede uzun yıllar boyunca (en az 30 yıl) gözlenen hava olaylarının ortalamasıdır. Kolay kolay değişmez.</p>
+              <p class="text-sm text-slate-600 mt-1.5 italic">"Akdeniz kıyılarında yazlar sıcak ve kurak geçer."</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
+            <div class="flex flex-col gap-3">
+              <div id="hiCard" class="min-h-[130px] bg-slate-50 border border-slate-200 rounded-xl p-5 flex items-center justify-center text-center text-lg sm:text-xl font-extrabold text-slate-900"></div>
+              <div id="hiBtns" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button data-hi="h" class="px-4 py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-base font-extrabold cursor-pointer transition">Hava durumu</button>
+                <button data-hi="i" class="px-4 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-base font-extrabold cursor-pointer transition">İklim</button>
+              </div>
+              <div id="hiFb"></div>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div><h4 class="text-base font-extrabold text-sky-700 mb-1">Hava Durumu</h4><ul id="hiColH" class="list-disc pl-5 text-sm sm:text-base text-slate-800 space-y-1"></ul></div>
+                <div><h4 class="text-base font-extrabold text-amber-700 mb-1">İklim</h4><ul id="hiColI" class="list-disc pl-5 text-sm sm:text-base text-slate-800 space-y-1"></ul></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Türkiye'nin iklimleri -->
+        <div id="climPane2" class="clim-pane hidden flex-col gap-3">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+            <div class="lg:col-span-7 flex flex-col gap-2">
+              <svg id="climMap" viewBox="0 0 960 440" class="w-full h-auto rounded-xl" role="img" aria-label="Türkiye iklim haritası"></svg>
+              <div class="flex flex-wrap gap-4 text-sm text-slate-700 font-semibold">
+                <span><i class="inline-block w-3.5 h-3.5 rounded-sm align-[-2px] mr-1.5" style="background:#f6a96b"></i>Akdeniz İklimi</span>
+                <span><i class="inline-block w-3.5 h-3.5 rounded-sm align-[-2px] mr-1.5" style="background:#9fd08a"></i>Karadeniz İklimi</span>
+                <span><i class="inline-block w-3.5 h-3.5 rounded-sm align-[-2px] mr-1.5" style="background:#f3e3a0"></i>Karasal İklim</span>
+                <span class="text-slate-500 font-normal">Harita temsilîdir; iklim sınırları yaklaşıktır.</span>
+              </div>
+            </div>
+            <div id="climInfo" class="lg:col-span-5 bg-slate-50 border border-slate-200 rounded-xl p-4"></div>
+          </div>
+          <div>
+            <h3 class="text-base font-extrabold text-slate-900 mb-2">Türkiye'nin iklimini neler etkiler?</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+              <div class="bg-sky-50 border border-sky-200 rounded-xl p-3"><b class="text-sky-800">Üç tarafı denizlerle çevrili</b><p class="text-sm text-slate-700 mt-1">Denizler kıyılarda kışları ılıtır, nem ve yağış getirir.</p></div>
+              <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><b class="text-emerald-800">Dağların uzanış yönü</b><p class="text-sm text-slate-700 mt-1">Kıyıya paralel uzanan dağlar nemli havanın iç kesimlere girmesini zorlaştırır. Kıyılar yağışlı, iç kesimler kurak olur.</p></div>
+              <div class="bg-amber-50 border border-amber-200 rounded-xl p-3"><b class="text-amber-800">Yükseltinin batıdan doğuya artması</b><p class="text-sm text-slate-700 mt-1">Yükseldikçe hava soğur. Doğu Anadolu yüksek olduğu için kışlar uzun ve çok soğuktur.</p></div>
+              <div class="bg-violet-50 border border-violet-200 rounded-xl p-3"><b class="text-violet-800">Yer şekillerinin çeşitliliği</b><p class="text-sm text-slate-700 mt-1">Dağ, ova, plato ve vadiler yan yana olduğu için kısa mesafelerde bile iklim değişebilir.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Grafikten iklimi bul -->
+        <div id="climPane3" class="clim-pane hidden flex-col gap-3">
+          <p class="text-sm sm:text-base text-slate-700">Grafikteki pembe çubuklar her ayın <b>yağış</b> miktarını (sol eksen, mm), mavi çizgi ise <b>sıcaklığı</b> (sağ eksen, °C) gösterir. Grafiğe bakarak hangi iklime ait olduğunu bul.</p>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+            <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-xl p-3">
+              <div class="flex justify-between text-sm font-bold text-slate-500 mb-1"><span id="gqCount"></span><span id="gqScore"></span></div>
+              <div id="gqGraph"></div>
+            </div>
+            <div class="lg:col-span-5 flex flex-col gap-2.5">
+              <p class="text-lg font-extrabold text-slate-900">Bu grafik hangi iklime ait?</p>
+              <div id="gqOpts" class="grid grid-cols-1 gap-2"></div>
+              <div id="gqFb"></div>
+              <button id="gqNext" class="hidden self-end px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-base cursor-pointer">Sonraki Grafik →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. İklim ve yaşam -->
+        <div id="climPane4" class="clim-pane hidden flex-col gap-3">
+          <p class="text-sm sm:text-base text-slate-700">İklim giyimimizden evlerimize, yediklerimizden yaptığımız işlere kadar yaşamımızın pek çok alanını etkiler. Her örneğin hangi alanla ilgili olduğunu bul.</p>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+            <div class="lg:col-span-7 flex flex-col gap-3">
+              <div id="lifeCard" class="min-h-[130px] bg-slate-50 border border-slate-200 rounded-xl p-5 flex items-center justify-center text-center text-lg sm:text-xl font-extrabold text-slate-900"></div>
+              <div id="lifeBtns" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
+              <div id="lifeFb"></div>
+            </div>
+            <div class="lg:col-span-5 bg-slate-50 border border-slate-200 rounded-xl p-4">
+              <h3 class="text-base font-extrabold text-slate-900 mb-2">İklimin etkileri</h3>
+              <ul id="lifeDone" class="text-sm sm:text-base text-slate-800 space-y-1.5"></ul>
+            </div>
+          </div>
+        </div>
+
+        <details class="mt-1 text-sm text-slate-600">
+          <summary class="cursor-pointer font-bold">Öğretmen notu</summary>
+          <p class="mt-2 leading-relaxed">İklim bölümü ders kitabının hava durumu ve iklim, Türkiye'nin iklim tipleri ve iklimin etkileri sayfalarına göre hazırlandı (SB.6.2.2, doğal çevre özelliklerinden iklim). Grafiklerdeki aylık değerler kitaptaki Antalya, Rize ve Konya grafiklerinden yaklaşık olarak okunmuştur. İklim haritası temsilîdir. Sayfanın tamamı internet bağlantısı gerektirir; görseller yanındaki img klasöründen yüklenir.</p>
+        </details>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- GÖRSEL BÜYÜTME PENCERESİ (LIGHTBOX MODAL) -->
+  <div id="imageLightboxModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-xs items-center justify-center p-4 sm:p-6">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-5xl w-full overflow-hidden flex flex-col animate-[fadeIn_0.15s_ease-out]">
+      <!-- Pencere Başlığı ve Kapat Düğmesi -->
+      <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200 bg-slate-50">
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md bg-sky-600 text-white font-extrabold text-sm">Gerçek Görünüm</span>
+          <h3 id="lightboxTitle" class="text-base font-extrabold text-slate-900"></h3>
+        </div>
+        <button id="btnCloseLightbox" class="px-3 py-1 rounded-lg bg-slate-200 hover:bg-rose-600 hover:text-white text-slate-800 font-extrabold text-sm cursor-pointer transition">
+          ✕ Kapat (ESC)
+        </button>
+      </div>
+
+      <!-- Büyük Görsel Alanı -->
+      <div class="bg-slate-950 flex items-center justify-center p-2 sm:p-4">
+        <img id="lightboxImg" src="" alt="Büyük Görsel" class="max-h-[75vh] w-auto max-w-full object-contain rounded-lg" />
+      </div>
+
+      <!-- Alt Açıklama -->
+      <div id="lightboxCaptionBar" class="px-4 py-2.5 bg-white border-t border-slate-100 text-sm text-slate-700 font-semibold text-center"></div>
+    </div>
+  </div>
+
+  <script>
+    // ============================================================================
+    // 1. 10 YERYÜZÜ ŞEKLİ VERİ SETİ (TÜMÜNDE GERÇEK GÖRSEL + İNSAN YAŞAMI ETKİSİ)
+    // ============================================================================
+    const NUFUS_LABELS = {
+      yogun: { text: 'Nüfus genellikle yoğun', cls: 'bg-orange-100 text-orange-800 border border-orange-300' },
+      seyrek: { text: 'Nüfus genellikle seyrek', cls: 'bg-slate-200 text-slate-700 border border-slate-300' },
+      orta: { text: 'Nüfus duruma göre değişir', cls: 'bg-amber-100 text-amber-800 border border-amber-300' }
+    };
+
+    const LANDFORMS = [
+      {
+        id: 'delta',
+        name: 'Delta Ovası',
+        nufus: 'yogun',
+        shortDef: 'Delta ovası, akarsuyun taşıdığı verimli toprakları sığ deniz kıyısında biriktirmesiyle oluşan üçgen şekilli düzlüktür. Zamanla deniz toprakla dolar ve kara denize doğru ilerler.',
+        termTitle: 'Alüvyon',
+        termDesc: 'Akarsuların aşındırıp taşıdığı ve denizin içine biriktirdiği çok verimli ince toprak.',
+        humanImpact: 'Toprakları çok verimli olduğu için tarım gelişmiştir ve nüfus yoğundur. Ancak alçak ve düz oldukları için taşkın tehlikesi vardır.',
+        photo: 'img/delta.jpg',
+        photoCaption: 'Akarsuyun denize döküldüğü yerde oluşan verimli delta ovası.',
+        camPreset: { yaw: 0.35, pitch: 0.78, dist: 4.1 },
+        labels3D: [
+          { text: 'Akarsu', x: 0.05, y: 0.30, z: -0.95 },
+          { text: 'Eski Kıyı Çizgisi', x: -1.75, y: 0.10, z: -0.27 },
+          { text: 'Delta Ovası (Denize İlerleyen Kara)', x: 0.30, y: 0.12, z: 0.42, minProg: 0.45 },
+          { text: 'Sığ Deniz', x: 1.50, y: 0.05, z: 1.15 }
+        ],
+        stages: [
+          '1. Başlangıç: Akarsu dağlardan bol toprak (alüvyon) taşır ve sığ denize dökülür. Henüz üçgen çıkıntı oluşmamıştır.',
+          '2. Gelişim: Taşınan topraklar sığ deniz tabanını doldurur ve su yüzüne çıkmaya başlar. Kıyı çizgisi denize doğru ilerler.',
+          '3. Son Hali: Akarsu kendi biriktirdiği düzlüğün üzerinde kollara ayrılır ve denizin içine doğru verimli bir üçgen ova oluşur.'
+        ],
+        step1Task: {
+          q: 'Oluşum sürgüsünü 1. adımdan 3. adıma getirdiğinde kıyı çizgisinde nasıl bir değişim gördün?',
+          options: [
+            { text: 'Akarsuyun getirdiği alüvyonlar biriktikçe kara denize doğru ilerledi.', correct: true, msg: 'Harika! Delta ovasında akarsu taşıdığı alüvyonlarla sığ denizi doldurur ve karayı denize doğru büyütür.' },
+            { text: 'Deniz yükseldi ve kıyı karanın içine doğru çekildi.', correct: false, msg: 'Tekrar bak: Kıyı geri çekilmedi, tam tersine denize doğru ilerledi. Bunu yapan, akarsuyun biriktirdiği alüvyonlardır.' },
+            { text: 'Kıyı hiç değişmedi, yalnızca akarsu kollara ayrıldı.', correct: false, msg: 'Akarsuyun kollara ayrıldığı doğru, ama dikkat et: Kollar yeni oluşan kara parçasının üzerinde. Kıyı denize doğru ilerledi.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 0,
+          prompt: 'Seyhan ve Ceyhan nehirlerinin Akdeniz kıyısında oluşturduğu Türkiye\'nin en büyük delta ovasını (Çukurova) haritada bul ve tıkla!'
+        },
+        compareText: 'İç Ova ile Delta Ovası farkı: Konya Ovası gibi iç ovalar karaların iç kesiminde yer alır. Delta ovası (Çukurova, Bafra) ise akarsuyun denize (bazen de bir göle) döküldüğü yerde, taşıdığı alüvyonları biriktirmesiyle oluşur.',
+        turkeyLocations: [
+          { name: 'Çukurova Deltası (Adana)', region: 'Akdeniz', lat: 36.72, lon: 35.48, zoom: 9, desc: 'Seyhan ve Ceyhan nehirlerinin oluşturduğu Türkiye\'nin en büyük delta ovasıdır.' },
+          { name: 'Bafra Ovası (Samsun)', region: 'Karadeniz', lat: 41.62, lon: 35.95, zoom: 10, desc: 'Kızılırmak nehrinin Karadeniz kıyısında oluşturduğu büyük delta ovasıdır.' },
+          { name: 'Çarşamba Ovası (Samsun)', region: 'Karadeniz', lat: 41.28, lon: 36.72, zoom: 10, desc: 'Yeşilırmak nehrinin Karadeniz kıyısında oluşturduğu verimli deltadır.' }
+        ]
+      },
+      {
+        id: 'plato',
+        name: 'Plato',
+        nufus: 'orta',
+        shortDef: 'Plato, çevresine göre yüksekte kalan ve akarsuların derin vadilerle yardığı geniş düzlüktür.',
+        termTitle: 'Derin Vadi (Kanyon)',
+        termDesc: 'Yüksek düzlüğün üzerindeki akarsuyun yatağını zamanla derine kazarak açtığı dik yamaçlı oluk.',
+        humanImpact: 'Düz olduğu için yerleşmeye uygundur ama yüksekte olduğu için kışlar soğuk geçer. Geniş otlakları sayesinde hayvancılık yapılır. Akarsular derin vadilerin dibinden aktığı için tarlaları sulamak zordur.',
+        photo: 'img/plato.jpg',
+        photoCaption: 'Çevresine göre yüksekte kalan ve akarsularla derin yarılmış plato düzlüğü.',
+        camPreset: { yaw: 0.35, pitch: 0.48, dist: 3.6 },
+        labels3D: [
+          { text: 'Yüksek Plato Düzlüğü', x: -1.05, y: 0.78, z: -0.1 },
+          { text: 'Vadiyi Kazarak Açan Akarsu', x: 0.0, y: 0.16, z: 0.25 }
+        ],
+        stages: [
+          '1. Başlangıç: Yüksekteki geniş düzlüğün üzerinde bir akarsu akmaktadır. Vadi henüz derinleşmemiştir.',
+          '2. Gelişim: Yüksekte akan akarsu, güçlü akışıyla altındaki kayaları derine doğru aşındırmaya başlar.',
+          '3. Son Hali: Akarsu yatağını iyice derinleştirir; üstte yüksek düzlükler (plato), ortada ise derin akarsu vadisi oluşur.'
+        ],
+        step1Task: {
+          q: 'Oluşumu oynattığında platodaki derin vadi nasıl oluştu?',
+          options: [
+            { text: 'Yüksek düzlükte akan akarsu, yatağını zamanla derine kazdı.', correct: true, msg: 'Tam isabet! Platodaki derin vadiyi açan, yüksek düzlükte akan akarsuyun aşındırmasıdır.' },
+            { text: 'Düzlüğün ortası çöktü, akarsu sonradan bu çukura yerleşti.', correct: false, msg: 'Hayır; vadiyi açan çökme değil, akarsuyun kendisidir. Su en baştan beri orada akar ve yatağını derinleştirir.' },
+            { text: 'Rüzgâr yüksek düzlüğü oyarak vadiyi açtı.', correct: false, msg: 'Rüzgâr da aşındırır ama platodaki derin vadileri açan akarsulardır.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 0,
+          prompt: 'İç Anadolu\'da Ankara yakınlarında yer alan ve tahıl tarımıyla bilinen "Haymana Platosu"nu haritada bul ve tıkla!'
+        },
+        compareText: 'Ova da plato da düzdür. Ama ova alçakta, plato yüksektedir. Ovada akarsu yüzeyde akar, platoda ise derin vadilerin dibinden akar.',
+        turkeyLocations: [
+          { name: 'Haymana ve Cihanbeyli Platoları', region: 'İç Anadolu', lat: 39.15, lon: 32.50, zoom: 8, desc: 'Ankara ve Konya çevresinde yer alan, tahıl tarımının yapıldığı geniş platolardır.' },
+          { name: 'Erzurum - Kars Platosu', region: 'Doğu Anadolu', lat: 40.65, lon: 43.05, zoom: 8, desc: 'Türkiye\'nin yüksek platolarındandır; yaz yağışlarıyla gür çayırlar oluştuğu için büyükbaş hayvancılık yapılır.' },
+          { name: 'Taşeli ve Teke Platoları', region: 'Akdeniz', lat: 36.55, lon: 32.95, zoom: 8, desc: 'Akdeniz\'de kireçtaşı kayalarının erimesi ve akarsuların yarmasıyla oluşmuş platolardır.' }
+        ]
+      },
+      {
+        id: 'dag',
+        name: 'Dağ',
+        nufus: 'seyrek',
+        shortDef: 'Dağ, çevresine göre çok yüksek olan, yamaçları dik ve eğimli yer şeklidir. Yer kabuğu levhalarının birbirini sıkıştırması veya volkanizma sonucu oluşur.',
+        termTitle: 'Sıradağ',
+        termDesc: 'Yan yana uzanan dağların oluşturduğu dağ dizisidir. Toroslar ve Kuzey Anadolu Dağları sıradağlara örnektir.',
+        humanImpact: 'Eğim fazla olduğu için tarla açmak ve yol yapmak zordur, kışlar uzun ve soğuk geçer. Bu yüzden dağlık yerlerde nüfus genellikle seyrektir. Yazın serin olan yaylalar hayvancılık için kullanılır.',
+        photo: 'img/dag.jpg',
+        photoCaption: 'Çevresine göre yüksek, dik yamaçlı ve zirvesi karlı dağ oluşumu.',
+        camPreset: { yaw: 0.30, pitch: 0.40, dist: 5.2 },
+        labels3D: [
+          { text: 'Dağ Zirvesi (Doruk)', x: 0.0, y: 1.05, z: 0.0 },
+          { text: 'Yer Kabuğunu İten Kuvvet', x: -1.65, y: 0.28, z: 0.25 },
+          { text: 'Dik Dağ Yamacı', x: 0.55, y: 0.55, z: 0.2 }
+        ],
+        stages: [
+          '1. Başlangıç: İki yandaki dev yer kabuğu levhası birbirine doğru yaklaşmaya başlar. Aradaki tabakalar henüz alçaktır.',
+          '2. Gelişim: Yanlardaki levhalar birbirini güçlüce iter; sıkışan kaya tabakaları halı gibi kıvrılarak yukarı doğru yükselir.',
+          '3. Son Hali: Sıkışma devam ettikçe yüksek sıradağlar ortaya çıkar ve soğuk zirvelerde kalıcı karlar oluşur.'
+        ],
+        step1Task: {
+          q: 'Dağlık yerlerde nüfusun genellikle seyrek olmasının en önemli nedeni nedir?',
+          options: [
+            { text: 'Eğim fazla olduğu için tarla açmak ve yol yapmak zordur, kışlar uzun ve soğuktur.', correct: true, msg: 'Doğru! Eğim ve soğuk iklim, dağlık yerlerde yaşamı zorlaştırır.' },
+            { text: 'Dağlarda hiç su kaynağı yoktur.', correct: false, msg: 'Dağlarda kaynak suları ve dereler vardır. Asıl zorluk eğim ve soğuk iklimdir.' },
+            { text: 'Dağlarda hiçbir bitki yetişmez.', correct: false, msg: 'Dağ yamaçlarında ormanlar, yaylalarda çayırlar vardır. Asıl zorluk eğim ve soğuk iklimdir.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 0,
+          prompt: '5.137 metre yükseltiyle Türkiye\'nin en yüksek dağı olan "Ağrı Dağı"nı Doğu Anadolu\'da bul ve tıkla!'
+        },
+        compareText: 'Dağ ile Plato farkı: İkisi de yüksektir ancak Dağ\'ın zirvesi sivri veya sırt şeklindedir; Plato\'nun ise üst kısmı geniş bir düzlük halindedir.',
+        turkeyLocations: [
+          { name: 'Ağrı Dağı (5.137 m)', region: 'Doğu Anadolu', lat: 39.70, lon: 44.30, zoom: 9, desc: 'Türkiye\'nin en yüksek dağıdır; zirvesinde yaz-kış erimeyen buzul bulunur.' },
+          { name: 'Toros Sıradağları', region: 'Akdeniz', lat: 37.35, lon: 34.65, zoom: 8, desc: 'Levhaların sıkışmasıyla kıvrılarak yükselmiş, Akdeniz\'e paralel uzanan sıradağlarımızdır.' },
+          { name: 'Kaçkar Dağları (Rize)', region: 'Karadeniz', lat: 40.83, lon: 41.15, zoom: 9, desc: 'Doğu Karadeniz\'in en yüksek kıvrım dağ kuşağıdır.' }
+        ]
+      },
+      {
+        id: 'ova',
+        name: 'Ova',
+        nufus: 'yogun',
+        shortDef: 'Ova, çevresine göre alçakta kalan, düz ya da düze yakın geniş alanlardır. Ovalardan genellikle akarsular geçer.',
+        termTitle: 'Menderes',
+        termDesc: 'Ova düzlüğünde eğim çok azaldığı için akarsuyun yavaşlayarak çizdiği S şeklindeki kıvrımlar.',
+        humanImpact: 'Arazi düz ve toprak verimli olduğu için tarım kolaydır. Yol yapmak ve şehir kurmak da kolaydır. Bu yüzden ovalarda nüfus genellikle yoğundur.',
+        photo: 'img/ova.jpg',
+        photoCaption: 'Çevresine göre alçakta kalan, tarıma ve yerleşmeye elverişli geniş ova düzlüğü.',
+        camPreset: { yaw: 0.45, pitch: 0.50, dist: 3.7 },
+        labels3D: [
+          { text: 'Geniş Alçak Düzlük (Ova)', x: -1.05, y: 0.14, z: 0.45 },
+          { text: 'Kıvrılarak Akan Akarsu', x: 0.15, y: 0.10, z: -0.1 },
+          { text: 'Çevreleyen Yüksek Dağlar', x: -1.45, y: 0.65, z: -0.4 }
+        ],
+        stages: [
+          '1. Başlangıç: Dağlar arasındaki geniş çukur alanda henüz ince bir toprak tabakası vardır.',
+          '2. Gelişim: Çevredeki dağlardan inen akarsular taşıdıkları verimli toprakları bu çukur alana yayar.',
+          '3. Son Hali: Çukur tabanı alüvyon topraklarla dolarak dümdüz bir ova haline gelir; akarsu kıvrılarak sakin akar.'
+        ],
+        step1Task: {
+          q: '3B modelde ovanın ortasından geçen akarsu neden dümdüz değil de kıvrılarak (menderes çizerek) akıyor?',
+          options: [
+            { text: 'Ovada arazi düz olduğu ve eğim çok azaldığı için akarsu yavaşlayıp kıvrılır.', correct: true, msg: 'Doğru! Eğim azaldığında suyun hızı düşer ve akarsu sağa sola kıvrımlar (menderes) çizerek akar.' },
+            { text: 'Ovada akarsu çok hızlı aktığı için sağa sola savrulur.', correct: false, msg: 'Tam tersi; ovada eğim azaldığı için akarsu yavaşlar ve bu yüzden kıvrılır.' },
+            { text: 'Çevredeki dağlar akarsuyun önünü kestiği için', correct: false, msg: 'Kıvrımların nedeni dağlar değil, ovada eğimin çok az olmasıdır.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 0,
+          prompt: 'İç Anadolu\'da yer alan ve Türkiye\'nin tahıl ambarı olarak bilinen en geniş iç ovamızı (Konya Ovası) haritada bul ve tıkla!'
+        },
+        compareText: 'Ova alçakta, plato yüksekte kalan düzlüktür. İkisini ayırmanın en kolay yolu yükseltiye ve akarsuyun nereden aktığına bakmaktır.',
+        turkeyLocations: [
+          { name: 'Konya Ovası', region: 'İç Anadolu', lat: 37.85, lon: 33.15, zoom: 8, desc: 'Türkiye\'nin en geniş iç ovasıdır; buğday ve şeker pancarı tarımı yaygındır.' },
+          { name: 'Büyük Menderes Ovası', region: 'Ege', lat: 37.82, lon: 27.95, zoom: 9, desc: 'Ege Bölgesi\'nde çöküntü alanında oluşmuş çok verimli tarım ovasıdır.' },
+          { name: 'Harran Ovası (Şanlıurfa)', region: 'Güneydoğu Anadolu', lat: 36.86, lon: 39.03, zoom: 10, desc: 'Fırat Nehri sularıyla sulanan Güneydoğu\'nun en önemli tarım ovalarından biridir.' }
+        ]
+      },
+      {
+        id: 'gol',
+        name: 'Göl',
+        nufus: 'orta',
+        shortDef: 'Göl, karaların içindeki çukur alanlarda biriken büyük ve durgun su kütleleridir.',
+        termTitle: 'Tatlı ve Tuzlu/Sodalı Göl',
+        termDesc: 'Fazla suyunu dışarıya bir akarsuyla boşaltan göllerin suyu tatlıdır; dışarı akışı olmayan göllerin suyu tuzlu veya sodalıdır.',
+        humanImpact: 'Tatlı su gölleri içme ve sulama suyu sağlar, balıkçılık yapılır, kıyıları turizm için çekicidir. Van Gölü gibi sodalı ya da Tuz Gölü gibi tuzlu göllerin suyu ise içmeye ve sulamaya uygun değildir.',
+        photo: 'img/gol.jpg',
+        photoCaption: 'Karaların içindeki çukur çanakta birikmiş durgun göl suyu.',
+        camPreset: { yaw: 0.48, pitch: 0.54, dist: 3.8 },
+        labels3D: [
+          { text: 'Geniş Göl Suyu', x: -0.1, y: 0.16, z: 0.0 },
+          { text: 'Gölü Besleyen Akarsu', x: -0.65, y: 0.45, z: -0.9 },
+          { text: 'Çevreleyen Dağlar', x: 1.35, y: 0.72, z: -0.3 }
+        ],
+        stages: [
+          '1. Başlangıç: Dağların arasında çökme veya kapanma sonucu geniş bir çukur (çanak) oluşur.',
+          '2. Gelişim: Dağlardan inen akarsular ve yağışlar bu çukurun tabanında birikmeye başlar.',
+          '3. Son Hali: Çukur tamamen suyla dolarak geniş bir göl haline gelir.'
+        ],
+        step1Task: {
+          q: 'Tatlı su gölleri (Beyşehir Gölü gibi) çevresindeki insanların yaşamına nasıl katkı sağlar?',
+          options: [
+            { text: 'İçme ve sulama suyu sağlar, balıkçılık yapılır.', correct: true, msg: 'Doğru! Tatlı su gölleri hem içme ve sulama suyu hem de balıkçılık açısından çok değerlidir.' },
+            { text: 'Göllerin suyu her zaman tuzlu olduğu için yalnızca tuz çıkarılır.', correct: false, msg: 'Tuz Gölü gibi tuzlu göller var, ama Beyşehir gibi tatlı su gölleri içme ve sulama suyu sağlar.' },
+            { text: 'Gölün çevresinde yerleşme yapılamaz.', correct: false, msg: 'Göl kıyılarında köyler ve kasabalar vardır; tatlı su yerleşmeyi kolaylaştırır.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 0,
+          prompt: 'Doğu Anadolu\'da bulunan ve Türkiye\'nin en büyük gölü olan "Van Gölü"nü haritada bul ve tıkla!'
+        },
+        compareText: 'Ada ile Göl farkı: Birbirinin tam tersidir! Ada dört tarafı suyla çevrili karadır; Göl ise dört tarafı karayla çevrili durgun sudur.',
+        turkeyLocations: [
+          { name: 'Van Gölü', region: 'Doğu Anadolu', lat: 38.62, lon: 42.90, zoom: 8, desc: 'Türkiye\'nin en büyük gölüdür; dışarıya akışı olmadığı için suları sodalıdır.' },
+          { name: 'Beyşehir Gölü', region: 'Akdeniz', lat: 37.78, lon: 31.52, zoom: 9, desc: 'Türkiye\'nin en büyük tatlı su gölüdür; içme ve sulama suyu sağlar.' },
+          { name: 'Tuz Gölü', region: 'İç Anadolu', lat: 38.80, lon: 33.40, zoom: 8, desc: 'Çok sığ ve dışa akışı olmayan bir göl olduğu için Türkiye\'nin tuz ihtiyacının büyük kısmı buradan sağlanır.' }
+        ]
+      },
+      {
+        id: 'akarsu',
+        name: 'Akarsu ve Vadi',
+        nufus: 'orta',
+        shortDef: 'Akarsu, yüksek dağlardan doğup eğim boyunca belirli bir yatak içinde akarak denize veya göle dökülen sudur. Akarsuların aşındırarak açtığı uzun çukurlara ise Vadi denir.',
+        termTitle: 'Kaynak, Ağız ve Vadi',
+        termDesc: 'Akarsuyun doğduğu yüksek yere Kaynak, denize döküldüğü yere Ağız, aşındırarak içinde aktığı çukura Vadi denir.',
+        humanImpact: 'Geniş vadiler ve akarsu boyları tarım, yol ve yerleşme için uygundur; birçok kara yolu ve demir yolu vadileri izler. Dar ve derin vadilerde ise ev kuracak düz alan azdır ancak dar vadiler hidroelektrik baraj yapmaya çok uygundur.',
+        photo: 'img/akarsu.jpg',
+        photoCaption: 'Dağlardan doğup vadisi boyunca kıvrılarak akan akarsu.',
+        camPreset: { yaw: 0.40, pitch: 0.52, dist: 3.7 },
+        labels3D: [
+          { text: 'Kaynak (Doğduğu Dağ)', x: -0.55, y: 0.80, z: -1.0 },
+          { text: 'Akarsu Yatağı ve Vadisi', x: 0.05, y: 0.32, z: -0.05 },
+          { text: 'Ağız (Denize Döküldüğü Yer)', x: 0.2, y: 0.08, z: 0.9 }
+        ],
+        stages: [
+          '1. Başlangıç: Yüksek dağlarda eriyen kar ve yağmur suları eğim aşağı akmaya başlayarak ilk yatağı oluşturur.',
+          '2. Gelişim: Akarsu aktıkça yatağını aşındırır, yan derelerle birleşerek büyür ve vadisini genişletir.',
+          '3. Son Hali: Kaynaktan doğan nehir, vadisi boyunca akarak ağız kısmından denize ulaşır.'
+        ],
+        step1Task: {
+          q: '3B modelde suyun akış yönüne baktığında Kaynak ve Ağız noktaları nerede yer alır?',
+          options: [
+            { text: 'Kaynak yüksek dağlık kesimde, Ağız ise denize döküldüğü alçak kıyıda yer alır.', correct: true, msg: 'Doğru! Su yüksekten alçağa doğru akar; doğduğu yüksek yer kaynak, döküldüğü yer ağızdır.' },
+            { text: 'Kaynak deniz kıyısında, Ağız ise dağın zirvesindedir.', correct: false, msg: 'Akarsular denizden dağa doğru akamaz; yüksek yerden (kaynak) doğup denize (ağız) dökülür.' },
+            { text: 'Kaynak ile Ağız aynı yükseltidedir, su düz bir yolda akar.', correct: false, msg: 'Su ancak eğim varsa akar. Kaynak yüksekte, ağız alçaktadır.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 0,
+          prompt: 'Sivas\'tan doğup Samsun\'dan Karadeniz\'e dökülen, sınırlarımız içindeki en uzun akarsuyumuz "Kızılırmak"ı haritada bul ve tıkla!'
+        },
+        compareText: 'Akarsu ile Göl farkı: Akarsu eğimli bir vadi yatağı içinde sürekli akan sudur; Göl ise çukur bir çanakta birikmiş durgun sudur.',
+        turkeyLocations: [
+          { name: 'Kızılırmak (1.355 km)', region: 'İç Anadolu - Karadeniz', lat: 40.55, lon: 34.50, zoom: 7, desc: 'Türkiye sınırları içinde doğup yine Türkiye\'de denize dökülen en uzun akarsuyumuzdur.' },
+          { name: 'Fırat Nehri', region: 'Doğu & Güneydoğu Anadolu', lat: 38.75, lon: 38.75, zoom: 7, desc: 'Su miktarı ve barajlarımızdaki elektrik üretimi en yüksek nehrimizdir.' },
+          { name: 'Çoruh Vadisi ve Nehri (Artvin)', region: 'Doğu Karadeniz', lat: 40.95, lon: 41.65, zoom: 8, desc: 'Dar ve derin vadiler içinde hızlı akan, üzerine yüksek barajlar kurulmuş nehrimizdir.' }
+        ]
+      },
+      {
+        id: 'burun',
+        name: 'Burun',
+        nufus: 'seyrek',
+        shortDef: 'Burun, karaların denize veya göle doğru yaptığı sivri çıkıntıdır. Dalgaların ve rüzgârların en sert çarptığı uç noktalardır.',
+        termTitle: 'Falez (Yalıyar)',
+        termDesc: 'Deniz dalgalarının burun kıyısına çarparak oluşturduğu dik kıyı uçurumu.',
+        humanImpact: 'Açık deniz dalgalarına ve sert rüzgârlara açık olduğu için gemilerin yanaşmasına uygun değildir, nüfus seyrektir. Gemilere yol göstermek amacıyla burun uçlarına genellikle deniz feneri kurulur.',
+        photo: 'img/burun.jpg',
+        photoCaption: 'Denizin içine doğru sivri bir çıkıntı yapan kayalık burun.',
+        camPreset: { yaw: 0.42, pitch: 0.48, dist: 3.6 },
+        labels3D: [
+          { text: 'Burun Ucu (Denize Çıkıntı)', x: 0.0, y: 0.36, z: 0.52 },
+          { text: 'Dik Kıyı Yamacı (Falez)', x: -0.25, y: 0.25, z: 0.1 }
+        ],
+        stages: [
+          '1. Başlangıç: Deniz kıyısında sert kayalardan oluşan bir sırt ve yanlarında daha yumuşak topraklar bulunur.',
+          '2. Gelişim: Deniz dalgaları yanlardaki yumuşak kıyıları aşındırıp geriletirken, sert kaya sırtı denizin içinde kalır.',
+          '3. Son Hali: Sert kaya kütlesi denizin içine doğru sivri bir çıkıntı (burun) oluşturur ve kıyıları dikleşir.'
+        ],
+        step1Task: {
+          q: 'Burun uçlarına neden genellikle deniz feneri kurulur?',
+          options: [
+            { text: 'Denize uzanan bu uçlar gemiler için tehlikeli olduğundan, gemilere yol göstermek için', correct: true, msg: 'Doğru! Burunlar dalga ve rüzgârın en sert olduğu yerlerdir; fenerler gemilerin kayalara çarpmasını önler.' },
+            { text: 'Burunlar denizin en sakin yerleri olduğu için', correct: false, msg: 'Tam tersi; burunlar dalga ve rüzgârın en sert çarptığı yerlerdir.' },
+            { text: 'Burunlarda büyük şehirler kurulduğu için', correct: false, msg: 'Burunlarda nüfus genellikle seyrektir. Fenerler şehirler için değil, gemilere yol göstermek için kurulur.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 0,
+          prompt: 'Türkiye\'nin en kuzey uç noktası olan Sinop\'taki "İnceburun"u haritada bul ve tıkla!'
+        },
+        compareText: 'Burun ile Körfez farkı: Birbirinin tam zıttıdır! Burun karanın denize doğru çıkıntı yapmasıdır; Körfez ise denizin karanın içine doğru girinti yapmasıdır.',
+        turkeyLocations: [
+          { name: 'İnceburun (Sinop)', region: 'Karadeniz', lat: 42.097, lon: 34.942, zoom: 11, desc: 'Türkiye\'nin en kuzey uç noktasıdır.' },
+          { name: 'Baba Burnu (Çanakkale)', region: 'Ege', lat: 39.478, lon: 26.063, zoom: 11, desc: 'Anadolu\'nun ve tüm Asya kıtasının en batı uç noktasıdır.' },
+          { name: 'Anamur Burnu (Mersin)', region: 'Akdeniz', lat: 36.022, lon: 32.802, zoom: 11, desc: 'Anadolu Yarımadası\'nın Akdeniz\'e doğru uzanan en güney uçlarından biridir.' }
+        ]
+      },
+      {
+        id: 'korfez',
+        name: 'Körfez',
+        nufus: 'yogun',
+        shortDef: 'Körfez, denizin karanın içine doğru sokulduğu geniş girintilerdir. Küçük olanlarına koy denir.',
+        termTitle: 'Koy ve Doğal Liman',
+        termDesc: 'Körfezin küçük olanına Koy denir. Körfezler dalgalardan korunduğu için gemiler için doğal limandır.',
+        humanImpact: 'Dalgalardan korunaklı oldukları için liman kurmaya çok uygundur. Limanlar ticareti ve sanayiyi geliştirir. Bu yüzden İzmir ve İzmit gibi körfez kıyılarında büyük ve kalabalık şehirler kurulmuştur.',
+        photo: 'img/korfez.jpg',
+        photoCaption: 'Denizin karanın içine doğru sokulduğu korunaklı körfez kıyısı.',
+        camPreset: { yaw: 0.35, pitch: 0.56, dist: 3.8 },
+        labels3D: [
+          { text: 'Körfez İçi (Deniz Girintisi)', x: 0.0, y: 0.06, z: -0.2 },
+          { text: 'Korunaklı Kıyı Kolları', x: -1.05, y: 0.45, z: 0.1 }
+        ],
+        stages: [
+          '1. Başlangıç: Kıyıya dik uzanan dağların arasında alçak bir vadi oluğu yer alır.',
+          '2. Gelişim: Deniz seviyesi yükselir veya vadi tabanı çöker; deniz suyu kara içindeki oluğa doğru ilerler.',
+          '3. Son Hali: Deniz suyu karanın içine derinlemesine sokularak etrafı karalarla çevrili korunaklı bir körfez oluşturur.'
+        ],
+        step1Task: {
+          q: 'Büyük ticaret limanları neden burun uçlarına değil de körfezlerin içine kurulur?',
+          options: [
+            { text: 'Körfezlerin etrafı karalarla çevrili olduğu için gemileri açık deniz dalgalarından korur.', correct: true, msg: 'Kesinlikle doğru! Körfezler rüzgâr ve büyük dalgalara karşı korunaklı doğal limanlardır.' },
+            { text: 'Körfezlerin suyu tatlı olduğu için', correct: false, msg: 'Körfezin suyu deniz suyudur, tuzludur. Liman için önemli olan körfezin dalgalardan korunmasıdır.' },
+            { text: 'Körfezler denizin en derin yerleri olduğu için', correct: false, msg: 'Derinlik de önemlidir ama asıl neden körfezin dalgalardan korunaklı olmasıdır.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 0,
+          prompt: 'Ege Denizi kıyısında yer alan ve Türkiye\'nin en büyük liman şehirlerinden biri olan "İzmir Körfezi"ni haritada bul ve tıkla!'
+        },
+        compareText: 'Körfez ile Burun farkı: Körfez denizin karanın içine doğru girmesidir (İzmir Körfezi); Burun ise karanın denizin içine doğru çıkmasıdır (İnceburun).',
+        turkeyLocations: [
+          { name: 'İzmir Körfezi', region: 'Ege', lat: 38.45, lon: 26.95, zoom: 10, desc: 'Ege Denizi\'nin Anadolu içine sokulduğu en önemli doğal liman körfezimizdir.' },
+          { name: 'İskenderun Körfezi (Hatay)', region: 'Akdeniz', lat: 36.65, lon: 35.90, zoom: 9, desc: 'Akdeniz\'in ülkemiz kıyılarında kara içine en fazla sokulduğu büyük körfezdir.' },
+          { name: 'İzmit Körfezi (Kocaeli)', region: 'Marmara', lat: 40.73, lon: 29.65, zoom: 10, desc: 'Marmara Denizi\'nin doğu ucunda yer alan sanayi ve liman körfezidir.' }
+        ]
+      },
+      {
+        id: 'bogaz',
+        name: 'Boğaz',
+        nufus: 'yogun',
+        shortDef: 'Boğaz, iki denizi birbirine bağlayan dar su yoludur. İstanbul Boğazı Karadeniz\'i Marmara Denizi\'ne, Çanakkale Boğazı Marmara Denizi\'ni Ege Denizi\'ne bağlar.',
+        termTitle: 'Deniz Yolu',
+        termDesc: 'Gemilerin bir denizden ötekine geçtiği dar deniz geçidi. Boğazlar deniz ticareti için çok önemlidir.',
+        humanImpact: 'Gemiler boğazlardan geçtiği için buralar ticaret açısından çok önemlidir. İstanbul Boğazı\'nın iki yakasında Türkiye\'nin en kalabalık şehri İstanbul kurulmuştur. İki yaka köprülerle ve tünellerle birbirine bağlanır.',
+        photo: 'img/bogaz.jpg',
+        photoCaption: 'İki denizi birbirine bağlayan, iki yakasında yerleşmeler bulunan dar su yolu.',
+        camPreset: { yaw: 0.50, pitch: 0.62, dist: 4.2 },
+        labels3D: [
+          { text: 'Dar Su Yolu (Boğaz)', x: 0.08, y: 0.10, z: 0.0, minProg: 0.7 },
+          { text: '1. Deniz', x: 0.0, y: 0.05, z: -1.32 },
+          { text: '2. Deniz', x: 0.0, y: 0.05, z: 1.32 },
+          { text: 'Boğazın Yakası', x: -1.30, y: 0.45, z: 0.15 }
+        ],
+        stages: [
+          '1. Başlangıç: İki deniz arasında, ortasından bir akarsu vadisi geçen bir kara parçası vardır.',
+          '2. Gelişim: Deniz seviyesi yükselir; deniz suları vadinin alçak kısımlarına girmeye başlar.',
+          '3. Son Hali: Vadi tamamen sular altında kalır ve iki deniz dar bir su yoluyla birbirine bağlanır.'
+        ],
+        step1Task: {
+          q: 'Boğazların insanlar için en önemli yararı nedir?',
+          options: [
+            { text: 'Gemilerin bir denizden ötekine geçmesini sağlar, ticareti geliştirir.', correct: true, msg: 'Doğru! Boğazlar deniz ticaretinin geçiş yollarıdır; bu yüzden çevrelerinde büyük şehirler kurulmuştur.' },
+            { text: 'Boğazlar tatlı su kaynağıdır, tarlalar buradan sulanır.', correct: false, msg: 'Boğazdaki su deniz suyudur, tuzludur. Asıl önemi deniz ticaretidir.' },
+            { text: 'İki yakayı tamamen ayırdığı için çevresinde kimse yaşamaz.', correct: false, msg: 'Tam tersi; İstanbul Boğazı\'nın iki yakasında milyonlarca insan yaşar.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 0,
+          prompt: 'Karadeniz\'i Marmara Denizi\'ne bağlayan ve iki yakasında Türkiye\'nin en kalabalık şehrinin kurulduğu boğazı haritada bul ve tıkla!'
+        },
+        compareText: 'Boğaz ile Körfez farkı: Körfezin bir ucu karada kapanır. Boğaz ise iki denizi birbirine bağlar, iki ucu da açıktır.',
+        turkeyLocations: [
+          { name: 'İstanbul Boğazı', region: 'Marmara', lat: 41.12, lon: 29.07, zoom: 10, desc: 'Karadeniz\'i Marmara Denizi\'ne bağlar; iki yakasında İstanbul kuruludur.' },
+          { name: 'Çanakkale Boğazı', region: 'Marmara - Ege', lat: 40.15, lon: 26.40, zoom: 10, desc: 'Marmara Denizi\'ni Ege Denizi\'ne bağlar.' }
+        ]
+      },
+      {
+        id: 'ada',
+        name: 'Ada',
+        nufus: 'seyrek',
+        shortDef: 'Ada, dört tarafı tamamen sularla çevrili kara parçasıdır.',
+        termTitle: 'Takımada',
+        termDesc: 'Denizde birbirine yakın olarak dizilmiş birden fazla adanın oluşturduğu ada topluluğu.',
+        humanImpact: 'Adalara deniz ya da hava yoluyla gidilir, bu yüzden ulaşım zor olabilir ve kışın fırtınada feribot seferleri aksayabilir. Balıkçılık ve turizm önemli geçim kaynaklarıdır. Adalarımızın çoğunda nüfus azdır.',
+        photo: 'img/ada.jpg',
+        photoCaption: 'Dört tarafı tamamen deniz sularıyla çevrili ada.',
+        camPreset: { yaw: 0.55, pitch: 0.52, dist: 3.6 },
+        labels3D: [
+          { text: 'Ada Tepesi (Kara Parçası)', x: 0.0, y: 0.55, z: 0.0 },
+          { text: 'Dört Tarafı Çevreleyen Deniz', x: 0.85, y: 0.05, z: 0.55 }
+        ],
+        stages: [
+          '1. Başlangıç: Deniz seviyesinin alçak olduğu dönemde tepe kütlesi alçak düzlüklerle anakaraya bağlıdır.',
+          '2. Gelişim: Deniz seviyesi yükselir ve tepenin etrafındaki alçak düzlükler su altında kalmaya başlar.',
+          '3. Son Hali: Tepenin dört tarafı tamamen denizle çevrilir ve anakaradan bağımsız bir ada ortaya çıkar.'
+        ],
+        step1Task: {
+          q: 'Adada yaşayan insanlar için en büyük zorluk hangisi olabilir?',
+          options: [
+            { text: 'Anakaraya yalnızca deniz veya hava yoluyla gidilmesi; fırtınada seferlerin aksaması', correct: true, msg: 'Doğru! Adalarda en büyük zorluk ulaşımdır.' },
+            { text: 'Adalarda hiç tarım yapılamaması', correct: false, msg: 'Adalarda da tarım yapılır; örneğin Bozcaada bağcılığıyla bilinir. Asıl zorluk ulaşımdır.' },
+            { text: 'Adaların her zaman çok soğuk olması', correct: false, msg: 'Adaların iklimi bulundukları denize göre değişir. Asıl zorluk ulaşımdır.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 0,
+          prompt: 'Ege Denizi\'nde Çanakkale açıklarında yer alan ve Türkiye\'nin en büyük adası olan "Gökçeada"yı haritada bul ve tıkla!'
+        },
+        compareText: 'Adanın dört tarafı su ile çevrilidir. Yarımadanın ise üç tarafı sudur, bir tarafı karaya bağlıdır.',
+        turkeyLocations: [
+          { name: 'Gökçeada (Çanakkale)', region: 'Ege Denizi', lat: 40.16, lon: 25.84, zoom: 11, desc: 'Türkiye\'nin yüzölçümü bakımından en büyük adasıdır.' },
+          { name: 'Marmara Adası (Balıkesir)', region: 'Marmara Denizi', lat: 40.62, lon: 27.62, zoom: 11, desc: 'Türkiye\'nin ikinci büyük adasıdır; mermer yataklarıyla ünlüdür.' },
+          { name: 'Bozcaada (Çanakkale)', region: 'Ege Denizi', lat: 39.82, lon: 26.03, zoom: 12, desc: 'Ege Denizi\'nde yer alan Türkiye\'nin üçüncü büyük adasıdır.' }
+        ]
+      },
+      {
+        id: 'yarimada',
+        name: 'Yarımada',
+        nufus: 'orta',
+        shortDef: 'Yarımada, üç tarafı denizlerle çevrili, bir tarafı karaya bağlı kara parçalarıdır. Ülkemiz Türkiye\'nin bulunduğu Anadolu da büyük bir yarımadadır.',
+        termTitle: 'Kıstak (Saplı Ada / Tombolo)',
+        termDesc: 'Yarımadayı anakaraya bağlayan dar kara geçişine Kıstak denir.',
+        humanImpact: 'Uzun kıyıları sayesinde balıkçılık, deniz ulaşımı ve yaz turizmi gelişmiştir. Anakaraya kara yoluyla bağlı olduğu için adalara göre ulaşımı çok daha kolaydır. Yarımadanın dağlık ya da düz olması, orada insanların nasıl yaşadığını belirler.',
+        photo: 'img/yarimada.jpg',
+        photoCaption: 'Üç tarafı denizle çevrili, bir tarafı anakaraya bağlı yarımada.',
+        camPreset: { yaw: 0.45, pitch: 0.54, dist: 3.7 },
+        labels3D: [
+          { text: 'Yarımada Gövdesi (3 Tarafı Deniz)', x: 0.0, y: 0.42, z: 0.25 },
+          { text: 'Kıstak (Anakara Bağlantısı)', x: 0.0, y: 0.16, z: -0.52 },
+          { text: 'Anakara', x: 0.0, y: 0.46, z: -1.15 }
+        ],
+        stages: [
+          '1. Başlangıç: Kıyıya yakın bir ada kütlesi ile anakara arasında sığ bir deniz alanı vardır.',
+          '2. Gelişim: Dalgaların taşıdığı kum ve çakıllar ada ile anakara arasında birikmeye başlar.',
+          '3. Son Hali: Kum bandı (kıstak) adayı anakaraya bağlar; böylece üç tarafı suyla çevrili bir yarımada oluşur.'
+        ],
+        step1Task: {
+          q: '3B modelde Yarımada\'yı Ada\'dan ayıran en önemli bölüm neresidir?',
+          options: [
+            { text: 'Kara parçasını anakaraya bağlayan kara geçişinin (kıstak) bulunması', correct: true, msg: 'Doğru! Yarımada üç tarafı denizle çevrili olsa da bir boyunla anakaraya bağlıdır; yürüyerek veya araçla gidilebilir.' },
+            { text: 'Dört tarafının da suyla çevrili olması', correct: false, msg: 'Dört tarafı suyla çevrili olan adadır. Yarımada bir yanından karaya bağlıdır.' },
+            { text: 'Üzerinde dağ bulunması', correct: false, msg: 'Adalarda da yarımadalarda da dağ olabilir. Asıl fark karaya bağlı olup olmamasıdır.' }
+          ]
+        },
+        mapTask: {
+          targetIdx: 1,
+          prompt: 'Balıkesir\'de eskiden bir ada iken dalgaların biriktirdiği kıstakla karaya bağlanan "Kapıdağ Yarımadası"nı Marmara Denizi\'nde bul ve tıkla!'
+        },
+        compareText: 'Yarımada karaya bağlıdır, yürüyerek veya kara yoluyla gidilebilir. Ada ise tamamen su ile çevrilidir.',
+        turkeyLocations: [
+          { name: 'Gelibolu Yarımadası (Çanakkale)', region: 'Marmara', lat: 40.25, lon: 26.45, zoom: 9, desc: 'Çanakkale Boğazı ile Saros Körfezi arasında uzanan tarihi yarımadamızdır.' },
+          { name: 'Kapıdağ Yarımadası (Balıkesir)', region: 'Marmara', lat: 40.46, lon: 27.85, zoom: 10, desc: 'Bir adanın kum okuyla anakaraya bağlanması sonucu oluşmuş en ünlü yarımadamızdır.' },
+          { name: 'Datça ve Çeşme Yarımadaları', region: 'Ege', lat: 36.72, lon: 27.68, zoom: 10, desc: 'Ege Denizi\'ne doğru uzanan turistik yarımadalarımızdır.' }
+        ]
+      }
+    ];
+
+    // ============================================================================
+    // 2. UYGULAMA DURUMU (STATE)
+    // ============================================================================
+    let currentLandform = LANDFORMS[0];
+    let currentStep = 1; // 1: 3B Model, 2: Haritada Bul, 3: Yerleşim Seç, 4: Görsel Test
+    let visitedIds = new Set([LANDFORMS[0].id]);
+    let completedTasks = new Set();
+
+    let formationProgress = 1.0;
+    let isPlaying = false;
+    let sidebarOpen = true;
+
+    // 3B Kamera Durumu
+    let camYaw = 0.35;
+    let camPitch = 0.78;
+    let camDist = 4.1;
+    let targetYaw = 0.35;
+    let targetPitch = 0.78;
+    let targetDist = 4.1;
+    let isDragging = false;
+    let lastX = 0, lastY = 0;
+    let animTime = 0;
+
+    function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function smoothstep(e0, e1, x) {
+      const t = clamp((x - e0) / (e1 - e0), 0, 1);
+      return t * t * (3 - 2 * t);
+    }
+
+    function hash2D(ix, iz) {
+      const n = Math.sin(ix * 127.1 + iz * 311.7) * 43758.5453123;
+      return n - Math.floor(n);
+    }
+    function valueNoise(x, z) {
+      const ix = Math.floor(x), iz = Math.floor(z);
+      const fx = x - ix, fz = z - iz;
+      const ux = fx * fx * (3 - 2 * fx);
+      const uz = fz * fz * (3 - 2 * fz);
+      return lerp(
+        lerp(hash2D(ix, iz), hash2D(ix + 1, iz), ux),
+        lerp(hash2D(ix, iz + 1), hash2D(ix + 1, iz + 1), ux),
+        uz
+      ) * 2 - 1;
+    }
+    function fbm(x, z, oct = 3) {
+      let v = 0, amp = 0.5, freq = 1;
+      for (let i = 0; i < oct; i++) {
+        v += amp * valueNoise(x * freq, z * freq);
+        freq *= 2.02;
+        amp *= 0.5;
+      }
+      return v;
+    }
+
+    // ============================================================================
+    // 3. YERYÜZÜ ŞEKLİ YÜKSELTİ FONKSİYONU
+    // ============================================================================
+    function getWaterLevel(id, prog = formationProgress) {
+      switch (id) {
+        case 'ova': return -0.05;
+        case 'plato': return -0.35;
+        case 'dag': return -0.50;
+        case 'gol': return lerp(-0.10, 0.15, smoothstep(0.1, 0.9, prog));
+        case 'bogaz': return lerp(-0.12, 0.0, smoothstep(0.1, 0.95, prog));
+        default: return 0.0;
+      }
+    }
+
+    // Delta ovası: kıyı çizgisi nz = DELTA_COAST; delta, nehir ağzından denize doğru büyüyen bir kara yelpazesidir.
+    const DELTA_COAST = -0.18;
+    let deltaPaths = [];
+    function deltaShape(prog) {
+      const t = smoothstep(0.08, 1.0, prog);
+      return { reach: lerp(0.04, 0.72, t), width: lerp(0.08, 0.62, t) };
+    }
+    function deltaFan(nx, nz, prog) {
+      const sh = deltaShape(prog);
+      if (nz < DELTA_COAST - 0.06) return { mask: 0, height: 0, d: 2 };
+      const dz = Math.max(0, nz - DELTA_COAST);
+      const ang = Math.atan2(nx / sh.width, dz / sh.reach);
+      const wobble = 1 + 0.07 * Math.sin(ang * 7 + 1.3) + 0.04 * Math.sin(ang * 13);
+      const d = Math.hypot(nx / sh.width, dz / sh.reach) / wobble;
+      return { mask: smoothstep(1.0, 0.86, d), height: 0.028 + 0.035 * (1 - clamp(d, 0, 1)), d };
+    }
+    function deltaBranchEnds(prog) {
+      const sh = deltaShape(prog);
+      return [-0.62, 0, 0.62].map(a => ({ nx: Math.sin(a) * sh.width * 0.98, nz: DELTA_COAST + Math.cos(a) * sh.reach * 0.98 }));
+    }
+    function buildDeltaPaths(prog) {
+      const yAt = (x, z) => Math.max(0.012, getGeomorphHeight('delta', x, z, prog) + 0.014);
+      const apexZ = DELTA_COAST * 1.5;
+      const main = [];
+      for (let i = 0; i <= 40; i++) {
+        const t = i / 40;
+        const z = lerp(-1.48, apexZ, t);
+        const x = Math.sin((z / 1.5) * 4) * 0.05 * (1 - t);
+        main.push({ x, y: yAt(x, z), z });
+      }
+      const paths = [main];
+      deltaBranchEnds(prog).forEach((e, k) => {
+        if (k !== 1 && prog < 0.3) return;
+        const pts = [];
+        for (let i = 0; i <= 20; i++) {
+          const t = i / 20;
+          const nx = e.nx * t + Math.sin(t * Math.PI) * 0.02 * (k - 1);
+          const nz = lerp(DELTA_COAST, e.nz, t);
+          pts.push({ x: nx * 2.2, y: yAt(nx * 2.2, nz * 1.5), z: nz * 1.5 });
+        }
+        paths.push(pts);
+      });
+      return paths;
+    }
+
+    function getPlatoCanyonFloorY(prog) {
+      return lerp(0.68, 0.06, smoothstep(0.1, 1.0, prog));
+    }
+
+    function getGeomorphHeight(id, x, z, prog = formationProgress) {
+      const nx = x / 2.2;
+      const nz = z / 1.5;
+      const detail = fbm(x * 1.6, z * 1.6, 3) * 0.045;
+
+      switch (id) {
+        case 'delta': {
+          const COAST = DELTA_COAST;
+          const mtn = smoothstep(-0.50, -0.98, nz) * (0.62 + Math.abs(nx) * 0.25 + detail * 1.4);
+          const valley = Math.exp(-(nx * nx) / 0.02) * smoothstep(-0.45, -0.98, nz) * 0.42;
+          const plain = 0.06 + smoothstep(COAST, -0.55, nz) * 0.06 + detail * 0.25;
+          const landH = Math.max(plain, plain + mtn - valley);
+          const seaFloor = lerp(-0.03, -0.22, smoothstep(COAST, 0.95, nz));
+          const landMask = smoothstep(COAST + 0.04, COAST - 0.04, nz);
+          let h = lerp(seaFloor, landH, landMask);
+          const f = deltaFan(nx, nz, prog);
+          if (f.mask > 0) h = Math.max(h, lerp(seaFloor, f.height, f.mask));
+          return h;
+        }
+
+        case 'plato': {
+          const plateauTop = 0.74 + detail * 0.3;
+          const riverCurve = Math.sin(nz * 2.6) * 0.18;
+          const distRiver = Math.abs(nx - riverCurve);
+
+          const canyonFloorY = getPlatoCanyonFloorY(prog);
+          const canyonWidth = lerp(0.06, 0.24, smoothstep(0.1, 1.0, prog));
+          const wallFactor = smoothstep(0.035, canyonWidth, distRiver);
+
+          return lerp(canyonFloorY, plateauTop, wallFactor);
+        }
+
+        case 'dag': {
+          const uplift = lerp(0.18, 1.0, smoothstep(0.1, 1.0, prog));
+          const mainPeak = Math.exp(-(nx * nx * 7.5 + nz * nz * 6.0)) * 1.05;
+          const sidePeaks = Math.max(
+            Math.exp(-(Math.pow(nx - 0.42, 2) * 12 + Math.pow(nz + 0.10, 2) * 10)) * 0.62,
+            Math.exp(-(Math.pow(nx + 0.44, 2) * 12 + Math.pow(nz - 0.12, 2) * 10)) * 0.58
+          );
+          const ridge = Math.exp(-(nz * nz) * 6.0) * smoothstep(0.75, 0.0, Math.abs(nx)) * 0.22;
+          const foldWaves = Math.cos(nx * 8.5) * 0.03 * prog;
+          return 0.04 + (Math.max(mainPeak, sidePeaks, ridge) + foldWaves + detail * 1.1) * uplift;
+        }
+
+        case 'ova': {
+          const mountains = (smoothstep(0.45, 0.98, Math.abs(nx)) * 0.70 + smoothstep(0.58, 1.0, Math.abs(nz)) * 0.25) * (1 + detail);
+          const floorY = lerp(-0.08, 0.10, prog);
+          const meanderX = Math.sin(nz * 4.2) * 0.24 * prog;
+          const distRiver = Math.abs(nx - meanderX);
+          const riverCut = Math.exp(- (distRiver * distRiver) / 0.004) * 0.06;
+          return floorY + mountains - riverCut;
+        }
+
+        case 'gol': {
+          const basinR = Math.sqrt(Math.pow(nx * 0.80, 2) + Math.pow(nz * 0.90, 2));
+          const mtnRing = smoothstep(0.48, 0.96, basinR) * (0.72 + detail * 1.5);
+          const bowlDepth = smoothstep(0.55, 0.15, basinR) * lerp(0.08, 0.32, smoothstep(0.0, 0.5, prog));
+          const inflowCut = (nz < -0.35) ? Math.exp(- (nx * nx) / 0.018) * 0.30 : 0;
+          return 0.06 + mtnRing - bowlDepth - inflowCut;
+        }
+
+        case 'akarsu': {
+          const slope = smoothstep(0.68, -0.95, nz) * 0.84;
+          const meanderX = Math.sin(nz * 4.0) * 0.22 * smoothstep(-0.6, 0.45, nz) * prog;
+          const distR = Math.abs(nx - meanderX);
+          const vWidth = lerp(0.08, 0.36, smoothstep(-0.8, 0.5, nz));
+          const vDepth = lerp(0.34, 0.14, smoothstep(-0.8, 0.6, nz)) * smoothstep(0.1, 1.0, prog);
+          const vWalls = (1.0 - Math.exp(- Math.pow(distR / vWidth, 1.8))) * vDepth;
+          const bedCut = Math.exp(- (distR * distR) / 0.004) * 0.08;
+          const seaDrop = nz > 0.55 ? -(nz - 0.55) * 0.45 : 0;
+          return slope + vWalls - bedCut + seaDrop - 0.01 + detail * 0.7;
+        }
+
+        case 'burun': {
+          const retreat = lerp(0.15, -0.25, prog);
+          const spineX = Math.sin(nz * 1.4) * 0.05;
+          const cWidth = clamp((0.58 - nz) * 0.38, 0.04, 0.65);
+          const distS = Math.abs(nx - spineX);
+          const prom = nz < 0.55 ? Math.exp(-Math.pow(distS / cWidth, 2.5)) : 0;
+          const backCoast = smoothstep(retreat + 0.25, -0.95, nz) * 0.48;
+          const cliffH = prom * (0.42 * smoothstep(0.56, -0.5, nz));
+          const seaFloor = -0.18 * smoothstep(-0.3, 0.9, nz);
+          return Math.max(seaFloor, backCoast + cliffH - 0.06) + detail * 0.5;
+        }
+
+        case 'korfez': {
+          const incur = lerp(0.35, -0.45, prog);
+          const distX = Math.abs(nx) / 0.48;
+          const distZ = (nz - incur) / 0.75;
+          const bowl = Math.sqrt(distX * distX + Math.pow(Math.max(0, -distZ), 2));
+          const inside = nz > incur && distX < (1.0 + (nz - incur) * 0.25);
+          let landMask = smoothstep(0.68, 1.28, bowl);
+          if (inside) landMask = smoothstep(0.55, 1.05, distX);
+          const hills = landMask * smoothstep(0.88, -0.85, nz) * 0.60;
+          const seaD = -0.18 * (1 - landMask);
+          return hills + seaD - 0.04 + detail * 0.7;
+        }
+
+        case 'bogaz': {
+          const cx = Math.sin(nz * 2.2) * 0.06;
+          const d = Math.abs(nx - cx);
+          const chanW = 0.10 + Math.sin(nz * 3.1) * 0.025;
+          const hills = 0.14 + smoothstep(chanW, 0.9, d) * 0.34 + detail * 1.2;
+          const floorY = -0.05 - nz * 0.03;
+          const bank = smoothstep(chanW, chanW + 0.10, d);
+          const ends = smoothstep(0.62, 0.80, Math.abs(nz));
+          return lerp(lerp(floorY, hills, bank), -0.18, ends);
+        }
+
+        case 'ada': {
+          const sub = lerp(0.12, -0.16, prog);
+          const mainCone = Math.exp(- (nx * nx * 2.8 + nz * nz * 3.2)) * 0.68;
+          const sideCone = Math.exp(- (Math.pow(nx - 0.28, 2) * 7.5 + Math.pow(nz + 0.14, 2) * 7.5)) * 0.32;
+          return mainCone + sideCone + sub + detail * 0.6;
+        }
+
+        case 'yarimada': {
+          const mainland = smoothstep(-0.42, -0.95, nz) * 0.54;
+          const headD = Math.sqrt(Math.pow(nx / 0.52, 2) + Math.pow((nz - 0.18) / 0.44, 2));
+          const head = smoothstep(1.05, 0.35, headD) * 0.46;
+          const inIsthmus = (nz >= -0.58 && nz <= -0.05);
+          const iWidth = 0.16 * smoothstep(0.1, 0.85, prog);
+          const iMask = inIsthmus ? smoothstep(iWidth + 0.08, iWidth - 0.04, Math.abs(nx)) : 0;
+          const iHeight = iMask * lerp(-0.08, 0.16, prog);
+          return Math.max(-0.18, mainland + head + iHeight - 0.10) + detail * 0.5;
+        }
+      }
+      return 0;
+    }
+
+    // ============================================================================
+    // 4. THREE.JS 3B SAHNE MOTORU
+    // ============================================================================
+    const mountEl = document.getElementById('threeMount');
+    const labelsOverlay = document.getElementById('labelsOverlay');
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xdbeafe);
+
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.shadowMap.enabled = true;
+    mountEl.appendChild(renderer.domElement);
+
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x64748b, 0.85);
+    scene.add(hemiLight);
+
+    const dirLight = new THREE.DirectionalLight(0xfffbeb, 0.95);
+    dirLight.position.set(-3.8, 5.2, 3.2);
+    dirLight.castShadow = true;
+    scene.add(dirLight);
+
+    const BLOCK_W = 4.4;
+    const BLOCK_D = 3.0;
+    const BASE_Y = -0.48;
+    const NX = 120;
+    const NZ = 88;
+
+    const worldGroup = new THREE.Group();
+    scene.add(worldGroup);
+
+    let terrainMesh = null;
+    let wallsMesh = null;
+    let waterMesh = null;
+    let riverRibbonGroup = new THREE.Group();
+    let tectonicPlatesGroup = new THREE.Group();
+    let pinLinesGroup = new THREE.Group();
+    let flowParticles = null;
+    let flowParticleMeta = [];
+
+    worldGroup.add(riverRibbonGroup);
+    worldGroup.add(tectonicPlatesGroup);
+    worldGroup.add(pinLinesGroup);
+
+    function clearGroup(grp) {
+      while (grp.children.length > 0) {
+        const c = grp.children[0];
+        grp.remove(c);
+        if (c.geometry) c.geometry.dispose();
+        if (c.material) c.material.dispose();
+      }
+    }
+
+    function createRiverRibbonMesh(pathPoints, ribbonWidth = 0.11) {
+      const positions = [];
+      for (let i = 0; i < pathPoints.length - 1; i++) {
+        const p0 = pathPoints[i];
+        const p1 = pathPoints[i + 1];
+        const dx = p1.x - p0.x;
+        const dz = p1.z - p0.z;
+        const len = Math.hypot(dx, dz) || 1;
+        const nx = -dz / len * (ribbonWidth * 0.5);
+        const nz = dx / len * (ribbonWidth * 0.5);
+
+        const x0L = p0.x - nx, z0L = p0.z - nz;
+        const x0R = p0.x + nx, z0R = p0.z + nz;
+        const x1L = p1.x - nx, z1L = p1.z - nz;
+        const x1R = p1.x + nx, z1R = p1.z + nz;
+
+        positions.push(
+          x0L, p0.y, z0L, x1L, p1.y, z1L, x1R, p1.y, z1R,
+          x0L, p0.y, z0L, x1R, p1.y, z1R, x0R, p0.y, z0R
+        );
+      }
+      const geom = new THREE.BufferGeometry();
+      geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+      geom.computeVertexNormals();
+      const mat = new THREE.MeshStandardMaterial({
+        color: 0x0284c7,
+        roughness: 0.15,
+        metalness: 0.25,
+        side: THREE.DoubleSide
+      });
+      return new THREE.Mesh(geom, mat);
+    }
+
+    function build3DScene() {
+      const id = currentLandform.id;
+      const waterLevel = getWaterLevel(id, formationProgress);
+
+      [terrainMesh, wallsMesh, waterMesh, flowParticles].forEach(m => {
+        if (m) {
+          worldGroup.remove(m);
+          if (m.geometry) m.geometry.dispose();
+          if (m.material) m.material.dispose();
+        }
+      });
+      clearGroup(riverRibbonGroup);
+      clearGroup(tectonicPlatesGroup);
+      clearGroup(pinLinesGroup);
+
+      const squeezeFactor = id === 'dag' ? lerp(1.0, 0.78, smoothstep(0.1, 1.0, formationProgress)) : 1.0;
+      const currentW = BLOCK_W * squeezeFactor;
+
+      const hGrid = [];
+      for (let iz = 0; iz <= NZ; iz++) {
+        const row = [];
+        const z = -BLOCK_D * 0.5 + (iz / NZ) * BLOCK_D;
+        for (let ix = 0; ix <= NX; ix++) {
+          const unSqueezedX = -BLOCK_W * 0.5 + (ix / NX) * BLOCK_W;
+          const x = unSqueezedX * squeezeFactor;
+          const y = getGeomorphHeight(id, unSqueezedX, z, formationProgress);
+          row.push({ x, y, z });
+        }
+        hGrid.push(row);
+      }
+
+      const surfGeom = new THREE.PlaneGeometry(currentW, BLOCK_D, NX, NZ);
+      surfGeom.rotateX(-Math.PI / 2);
+      const posAttr = surfGeom.attributes.position;
+      const colArray = new Float32Array(posAttr.count * 3);
+
+      for (let iz = 0; iz <= NZ; iz++) {
+        for (let ix = 0; ix <= NX; ix++) {
+          const idx = iz * (NX + 1) + ix;
+          const pt = hGrid[iz][ix];
+          posAttr.setXYZ(idx, pt.x, pt.y, pt.z);
+
+          const ptR = hGrid[iz][Math.min(NX, ix + 1)];
+          const ptD = hGrid[Math.min(NZ, iz + 1)][ix];
+          const slope = Math.hypot((ptR.y - pt.y) / (currentW / NX), (ptD.y - pt.y) / (BLOCK_D / NZ));
+
+          let r = 0.32, g = 0.62, b = 0.30;
+          let fanCol = null;
+          if (id === 'delta' && pt.y > waterLevel + 0.015 && pt.z / 1.5 > DELTA_COAST - 0.02) {
+            const fd = deltaFan(pt.x / 2.2, pt.z / 1.5, formationProgress).d;
+            const ft = clamp((fd - 0.55) / 0.45, 0, 1);
+            fanCol = [lerp(0.40, 0.80, ft), lerp(0.66, 0.70, ft), lerp(0.30, 0.45, ft)];
+          }
+          if (fanCol) {
+            r = fanCol[0]; g = fanCol[1]; b = fanCol[2];
+          } else if (id === 'dag' && pt.y > 0.72) {
+            r = 0.96; g = 0.98; b = 1.0;
+          } else if (pt.y < waterLevel - 0.01 && id !== 'plato' && id !== 'dag') {
+            r = 0.25; g = 0.45; b = 0.62;
+          } else if (pt.y < waterLevel + 0.02 && id !== 'plato' && id !== 'dag') {
+            r = 0.86; g = 0.78; b = 0.56;
+          } else if (slope > 0.52) {
+            r = id === 'plato' ? 0.68 : 0.48;
+            g = id === 'plato' ? 0.46 : 0.46;
+            b = id === 'plato' ? 0.30 : 0.44;
+          } else if (pt.y > 0.52) {
+            if (id === 'plato') { r = 0.76; g = 0.66; b = 0.34; }
+            else { r = 0.52; g = 0.50; b = 0.47; }
+          } else if (pt.y > 0.26) {
+            r = 0.26; g = 0.52; b = 0.26;
+          } else {
+            const v = fbm(pt.x * 2.4 + 7, pt.z * 2.4 + 3, 2) * 0.06;
+            r = 0.34 + v; g = 0.64 + v; b = 0.30 + v * 0.6;
+          }
+
+          colArray[idx * 3] = r;
+          colArray[idx * 3 + 1] = g;
+          colArray[idx * 3 + 2] = b;
+        }
+      }
+
+      surfGeom.setAttribute('color', new THREE.BufferAttribute(colArray, 3));
+      surfGeom.computeVertexNormals();
+
+      terrainMesh = new THREE.Mesh(surfGeom, new THREE.MeshStandardMaterial({
+        vertexColors: true,
+        roughness: 0.80,
+        metalness: 0.04
+      }));
+      worldGroup.add(terrainMesh);
+
+      const wallPos = [];
+      const wallCol = [];
+      const LAYERS = 8;
+
+      function pushWall(p0, p1) {
+        for (let l = 0; l < LAYERS; l++) {
+          const t0 = l / LAYERS, t1 = (l + 1) / LAYERS;
+          const y00 = lerp(p0.y, BASE_Y, t0), y01 = lerp(p1.y, BASE_Y, t0);
+          const y11 = lerp(p1.y, BASE_Y, t1), y10 = lerp(p0.y, BASE_Y, t1);
+          const col = l < 2 ? [0.78, 0.56, 0.28] : (l < 5 ? [0.52, 0.48, 0.42] : [0.32, 0.35, 0.40]);
+          wallPos.push(p0.x, y00, p0.z, p0.x, y10, p0.z, p1.x, y11, p1.z);
+          wallPos.push(p0.x, y00, p0.z, p1.x, y11, p1.z, p1.x, y01, p1.z);
+          for (let k = 0; k < 6; k++) wallCol.push(...col);
+        }
+      }
+
+      for (let ix = 0; ix < NX; ix++) {
+        pushWall(hGrid[NZ][ix], hGrid[NZ][ix + 1]);
+        pushWall(hGrid[0][ix + 1], hGrid[0][ix]);
+      }
+      for (let iz = 0; iz < NZ; iz++) {
+        pushWall(hGrid[iz][0], hGrid[iz + 1][0]);
+        pushWall(hGrid[iz + 1][NX], hGrid[iz][NX]);
+      }
+
+      const wGeom = new THREE.BufferGeometry();
+      wGeom.setAttribute('position', new THREE.Float32BufferAttribute(wallPos, 3));
+      wGeom.setAttribute('color', new THREE.Float32BufferAttribute(wallCol, 3));
+      wGeom.computeVertexNormals();
+      wallsMesh = new THREE.Mesh(wGeom, new THREE.MeshStandardMaterial({
+        vertexColors: true,
+        roughness: 0.9,
+        side: THREE.DoubleSide
+      }));
+      worldGroup.add(wallsMesh);
+
+      if (!['dag', 'plato', 'ova'].includes(id)) {
+        const seaGeom = new THREE.PlaneGeometry(currentW, BLOCK_D, 48, 36);
+        seaGeom.rotateX(-Math.PI / 2);
+        seaGeom.translate(0, waterLevel, 0);
+        waterMesh = new THREE.Mesh(seaGeom, new THREE.MeshStandardMaterial({
+          color: 0x0284c7,
+          transparent: true,
+          opacity: 0.82,
+          roughness: 0.15,
+          metalness: 0.25
+        }));
+        worldGroup.add(waterMesh);
+      } else {
+        waterMesh = null;
+      }
+
+      flowParticleMeta = [];
+
+      if (id === 'delta') {
+        deltaPaths = buildDeltaPaths(formationProgress);
+        deltaPaths.forEach((pts, i) => riverRibbonGroup.add(createRiverRibbonMesh(pts, i === 0 ? 0.13 : 0.08)));
+      } else if (id === 'plato') {
+        const canyonFloorY = getPlatoCanyonFloorY(formationProgress);
+        const platoPts = [];
+        for (let i = 0; i <= 45; i++) {
+          const z = lerp(-1.48, 1.48, i / 45);
+          const nz = z / 1.5;
+          const x = Math.sin(nz * 2.6) * 0.18 * 2.2;
+          platoPts.push({ x, y: canyonFloorY + 0.018, z });
+        }
+        riverRibbonGroup.add(createRiverRibbonMesh(platoPts, 0.14));
+      } else if (id === 'ova') {
+        const floorY = lerp(-0.08, 0.10, formationProgress);
+        const ovaPts = [];
+        for (let i = 0; i <= 45; i++) {
+          const z = lerp(-1.48, 1.48, i / 45);
+          const nz = z / 1.5;
+          const x = Math.sin(nz * 4.2) * 0.24 * formationProgress * 2.2;
+          ovaPts.push({ x, y: floorY - 0.035, z });
+        }
+        riverRibbonGroup.add(createRiverRibbonMesh(ovaPts, 0.13));
+      } else if (id === 'akarsu') {
+        const akarsuPts = [];
+        for (let i = 0; i <= 45; i++) {
+          const z = lerp(-1.45, 0.95, i / 45);
+          const nz = z / 1.5;
+          const x = Math.sin(nz * 4.0) * 0.22 * smoothstep(-0.6, 0.45, nz) * formationProgress * 2.2;
+          const y = Math.max(0.01, getGeomorphHeight('akarsu', x, z, formationProgress) + 0.02);
+          akarsuPts.push({ x, y, z });
+        }
+        riverRibbonGroup.add(createRiverRibbonMesh(akarsuPts, 0.12));
+      } else if (id === 'bogaz' && formationProgress < 0.6) {
+        const bPts = [];
+        for (let i = 0; i <= 30; i++) {
+          const nz = lerp(-0.62, 0.62, i / 30);
+          bPts.push({ x: Math.sin(nz * 2.2) * 0.06 * 2.2, y: -0.05 - nz * 0.03 + 0.012, z: nz * 1.5 });
+        }
+        riverRibbonGroup.add(createRiverRibbonMesh(bPts, 0.09));
+      } else if (id === 'gol') {
+        const golInflowPts = [];
+        for (let i = 0; i <= 20; i++) {
+          const z = lerp(-1.48, -0.55, i / 20);
+          const y = Math.max(waterLevel + 0.01, getGeomorphHeight('gol', 0, z, formationProgress) + 0.02);
+          golInflowPts.push({ x: 0, y, z });
+        }
+        riverRibbonGroup.add(createRiverRibbonMesh(golInflowPts, 0.10));
+      }
+
+      if (id === 'dag') {
+        const plateMat = new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.7 });
+        const arrowMat = new THREE.MeshStandardMaterial({ color: 0xdc2626, roughness: 0.3 });
+
+        [-1, 1].forEach(dir => {
+          const plateX = dir * (currentW * 0.5 + 0.24);
+          const plateBox = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.65, BLOCK_D * 0.92), plateMat);
+          plateBox.position.set(plateX, -0.08, 0);
+          tectonicPlatesGroup.add(plateBox);
+
+          [-0.55, 0.55].forEach(zPos => {
+            const shaft = new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.10, 0.14), arrowMat);
+            shaft.position.set(plateX + dir * 0.12, 0.34, zPos);
+            tectonicPlatesGroup.add(shaft);
+
+            const cone = new THREE.Mesh(new THREE.ConeGeometry(0.16, 0.28, 12), arrowMat);
+            cone.rotation.z = dir === -1 ? -Math.PI / 2 : Math.PI / 2;
+            cone.position.set(plateX - dir * 0.16, 0.34, zPos);
+            tectonicPlatesGroup.add(cone);
+          });
+        });
+      }
+
+      if (['delta', 'plato', 'ova', 'akarsu', 'gol'].includes(id)) {
+        const pCount = 55;
+        const pGeom = new THREE.BufferGeometry();
+        const pPos = new Float32Array(pCount * 3);
+        for (let i = 0; i < pCount; i++) {
+          flowParticleMeta.push({
+            t: i / pCount,
+            branch: i % 3,
+            speed: 0.0045
+          });
+        }
+        pGeom.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+        flowParticles = new THREE.Points(pGeom, new THREE.PointsMaterial({
+          color: 0xffffff,
+          size: 0.065
+        }));
+        worldGroup.add(flowParticles);
+      } else {
+        flowParticles = null;
+      }
+
+      (currentLandform.labels3D || []).forEach(lb => {
+        lb.hidden = !!(lb.minProg && formationProgress < lb.minProg);
+        if (lb.hidden) return;
+        const lx = lb.x * squeezeFactor;
+        const surfY = getGeomorphHeight(id, lb.x, lb.z, formationProgress);
+        const baseH = Math.max(surfY, waterLevel);
+        const topH = Math.max(baseH, lb.y) + 0.24;
+        lb.renderX = lx;
+        lb.renderY = topH;
+
+        const lineGeom = new THREE.BufferGeometry().setFromPoints([
+          new THREE.Vector3(lx, baseH, lb.z),
+          new THREE.Vector3(lx, topH, lb.z)
+        ]);
+        pinLinesGroup.add(new THREE.Line(lineGeom, new THREE.LineBasicMaterial({ color: 0x0f172a })));
+
+        const sphere = new THREE.Mesh(
+          new THREE.SphereGeometry(0.04, 12, 12),
+          new THREE.MeshBasicMaterial({ color: 0x0284c7 })
+        );
+        sphere.position.set(lx, topH, lb.z);
+        pinLinesGroup.add(sphere);
+      });
+    }
+
+    // ============================================================================
+    // 5. ANİMASYON DÖNGÜSÜ VE 3B ETİKETLER
+    // ============================================================================
+    function animate() {
+      animTime += 0.02;
+
+      if (isPlaying) {
+        formationProgress += 0.0035;
+        if (formationProgress >= 1.0) {
+          formationProgress = 1.0;
+          setPlayingState(false);
+        }
+        document.getElementById('sliderFormation').value = Math.round(formationProgress * 100);
+        updateFormationStageText();
+        build3DScene();
+      }
+
+      if (flowParticles && flowParticleMeta.length > 0) {
+        const id = currentLandform.id;
+        const arr = flowParticles.geometry.attributes.position.array;
+        const reachZ = lerp(-0.18, 0.78, formationProgress) * 1.5;
+        const canyonY = getPlatoCanyonFloorY(formationProgress);
+        const ovaY = lerp(-0.08, 0.10, formationProgress);
+
+        for (let i = 0; i < flowParticleMeta.length; i++) {
+          const p = flowParticleMeta[i];
+          p.t = (p.t + p.speed) % 1.0;
+          let px = 0, py = 0.05, pz = 0;
+
+          if (id === 'delta' && deltaPaths.length) {
+            const nb = deltaPaths.length - 1;
+            const onMain = p.t < 0.6 || nb === 0;
+            const path = onMain ? deltaPaths[0] : deltaPaths[1 + (p.branch % nb)];
+            const u = onMain ? Math.min(1, p.t / 0.6) : (p.t - 0.6) / 0.4;
+            const fi = u * (path.length - 1), k0 = Math.floor(fi), k1 = Math.min(path.length - 1, k0 + 1), fr = fi - k0;
+            px = lerp(path[k0].x, path[k1].x, fr);
+            pz = lerp(path[k0].z, path[k1].z, fr);
+            py = lerp(path[k0].y, path[k1].y, fr) + 0.02;
+          } else if (id === 'plato') {
+            pz = lerp(-1.45, 1.45, p.t);
+            px = Math.sin((pz / 1.5) * 2.6) * 0.18 * 2.2;
+            py = canyonY + 0.035;
+          } else if (id === 'ova') {
+            pz = lerp(-1.45, 1.45, p.t);
+            px = Math.sin((pz / 1.5) * 4.2) * 0.24 * formationProgress * 2.2;
+            py = ovaY - 0.015;
+          } else if (id === 'akarsu') {
+            pz = lerp(-1.40, 0.92, p.t);
+            const nz = pz / 1.5;
+            px = Math.sin(nz * 4.0) * 0.22 * smoothstep(-0.6, 0.45, nz) * formationProgress * 2.2;
+            py = Math.max(0.025, getGeomorphHeight('akarsu', px, pz, formationProgress) + 0.035);
+          } else if (id === 'gol') {
+            pz = lerp(-1.42, -0.50, p.t);
+            px = 0;
+            py = Math.max(getWaterLevel('gol', formationProgress) + 0.02, getGeomorphHeight('gol', 0, pz, formationProgress) + 0.03);
+          }
+
+          arr[i * 3] = px;
+          arr[i * 3 + 1] = py;
+          arr[i * 3 + 2] = pz;
+        }
+        flowParticles.geometry.attributes.position.needsUpdate = true;
+      }
+
+      camYaw = lerp(camYaw, targetYaw, 0.12);
+      camPitch = lerp(camPitch, targetPitch, 0.12);
+      camDist = lerp(camDist, targetDist, 0.12);
+
+      camera.position.set(
+        camDist * Math.cos(camPitch) * Math.sin(camYaw),
+        camDist * Math.sin(camPitch),
+        camDist * Math.cos(camPitch) * Math.cos(camYaw)
+      );
+      camera.lookAt(0, 0.08, 0);
+
+      renderer.render(scene, camera);
+      update3DLabelsOverlay();
+      requestAnimationFrame(animate);
+    }
+
+    function update3DLabelsOverlay() {
+      const labels = currentLandform.labels3D || [];
+      const rect = mountEl.getBoundingClientRect();
+      if (rect.width === 0) return;
+
+      while (labelsOverlay.children.length < labels.length) {
+        const div = document.createElement('div');
+        div.className = 'absolute -translate-x-1/2 -translate-y-full px-2.5 py-1 rounded-lg bg-white/95 border border-slate-700 text-slate-900 font-extrabold text-sm shadow-sm whitespace-nowrap';
+        labelsOverlay.appendChild(div);
+      }
+      while (labelsOverlay.children.length > labels.length) {
+        labelsOverlay.removeChild(labelsOverlay.lastChild);
+      }
+
+      labels.forEach((lb, i) => {
+        const el = labelsOverlay.children[i];
+        el.textContent = lb.text;
+        const v = new THREE.Vector3(lb.renderX ?? lb.x, lb.renderY ?? lb.y, lb.z);
+        v.project(camera);
+        if (v.z > 1 || lb.hidden) {
+          el.style.display = 'none';
+        } else {
+          el.style.display = 'block';
+          el.style.left = `${(v.x * 0.5 + 0.5) * rect.width}px`;
+          el.style.top = `${(-v.y * 0.5 + 0.5) * rect.height - 6}px`;
+        }
+      });
+    }
+
+    // ============================================================================
+    // 6. ADIM 2: TÜRKİYE HARİTASI VE İSİMLERİ GİZLİ HARİTA GÖREVİ
+    // ============================================================================
+    const leafletMap = L.map('turkeyMap', {
+      center: [39.0, 35.2],
+      zoom: 6,
+      zoomControl: true
+    });
+
+    const mapTiles = {
+      sat: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Esri Uydu'
+      }),
+      topo: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        attribution: 'OpenTopoMap'
+      })
+    };
+    mapTiles.sat.addTo(leafletMap);
+
+    let currentMarkers = [];
+    let mapNamesRevealed = false; // Görev tamamlanana veya kullanıcı açana kadar isimler gizli!
+
+    function updateMapTooltipsAndCards() {
+      const locs = currentLandform.turkeyLocations;
+
+      // Harita üzerindeki işaretçilerin etiketlerini güncelle
+      currentMarkers.forEach((marker, idx) => {
+        marker.unbindTooltip();
+        const labelText = mapNamesRevealed ? locs[idx].name : `❓ ${idx + 1}. Nokta (Tıkla ve Bul)`;
+        marker.bindTooltip(labelText, {
+          permanent: true,
+          direction: 'top',
+          offset: [0, -10]
+        });
+      });
+
+      // Alt kartları güncelle (İsimler gizliyken kopya vermez!)
+      const cardsEl = document.getElementById('turkeyCardsGrid');
+      cardsEl.innerHTML = locs.map((loc, idx) => `
+        <button data-idx="${idx}" class="map-card-btn text-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:border-sky-500 hover:bg-sky-50/50 transition cursor-pointer flex flex-col gap-1">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-sm font-extrabold text-slate-900">
+              ${mapNamesRevealed ? loc.name : `❓ ${idx + 1}. Konum`}
+            </span>
+            ${mapNamesRevealed ? `<span class="text-sm font-bold px-2 py-0.5 rounded-md bg-sky-100 text-sky-800">${loc.region}</span>` : ''}
+          </div>
+          <p class="text-sm text-slate-600">
+            ${mapNamesRevealed ? loc.desc : 'Haritadaki bu noktaya tıklayarak neresi olduğunu keşfet!'}
+          </p>
+        </button>
+      `).join('');
+
+      cardsEl.querySelectorAll('.map-card-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          handleMapLocationPick(parseInt(btn.dataset.idx, 10));
+        });
+      });
+
+      document.getElementById('btnToggleMapNames').textContent = mapNamesRevealed ? 'İsimleri Gizle' : 'İsimleri Göster';
+    }
+
+    function renderTurkeyMapStep() {
+      currentMarkers.forEach(m => leafletMap.removeLayer(m));
+      currentMarkers = [];
+
+      // Yeni bir harita görevine geçildiğinde isimler otomatik olarak gizlenir!
+      mapNamesRevealed = false;
+
+      const locs = currentLandform.turkeyLocations;
+      const task = currentLandform.mapTask;
+      document.getElementById('mapTaskQuestion').textContent = task.prompt;
+
+      const statusEl = document.getElementById('mapTaskStatus');
+      statusEl.className = 'text-sm font-extrabold px-3 py-1 rounded-lg bg-white border border-sky-200 text-sky-800 shrink-0';
+      statusEl.textContent = 'Haritadaki ? işaretli noktalardan doğru olana tıkla!';
+
+      locs.forEach((loc, idx) => {
+        const marker = L.circleMarker([loc.lat, loc.lon], {
+          radius: 11,
+          fillColor: '#0284c7',
+          color: '#ffffff',
+          weight: 3,
+          fillOpacity: 0.95
+        }).addTo(leafletMap);
+
+        marker.on('click', () => {
+          handleMapLocationPick(idx);
+        });
+
+        currentMarkers.push(marker);
+      });
+
+      updateMapTooltipsAndCards();
+    }
+
+    function handleMapLocationPick(idx) {
+      const locs = currentLandform.turkeyLocations;
+      const picked = locs[idx];
+      const task = currentLandform.mapTask;
+      const statusEl = document.getElementById('mapTaskStatus');
+
+      leafletMap.flyTo([picked.lat, picked.lon], picked.zoom || 9, { duration: 1.0 });
+
+      if (idx === task.targetIdx) {
+        // Doğru bulunduğunda tüm isimleri aç ve kutla!
+        mapNamesRevealed = true;
+        updateMapTooltipsAndCards();
+        statusEl.className = 'text-sm font-extrabold px-3 py-1 rounded-lg bg-emerald-100 border border-emerald-400 text-emerald-900 shrink-0';
+        statusEl.textContent = `✓ Tebrikler! ${picked.name} konumunu doğru buldun. Tüm isimler açıldı!`;
+        markTaskCompleted(currentLandform.id);
+      } else {
+        // Yanlış noktaya tıklandığında sadece tıklanan noktanın adını ipucu olarak söyle, diğerleri gizli kalsın
+        statusEl.className = 'text-sm font-extrabold px-3 py-1 rounded-lg bg-amber-100 border border-amber-400 text-amber-900 shrink-0';
+        statusEl.textContent = `Seçtiğin yer: ${picked.name}. Görevdeki hedef yeri bulmak için diğer noktayı dene!`;
+      }
+    }
+
+    document.getElementById('btnToggleMapNames').addEventListener('click', () => {
+      mapNamesRevealed = !mapNamesRevealed;
+      updateMapTooltipsAndCards();
+    });
+
+    document.querySelectorAll('.tile-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        Object.values(mapTiles).forEach(t => leafletMap.removeLayer(t));
+        mapTiles[btn.dataset.tile].addTo(leafletMap);
+        document.querySelectorAll('.tile-btn').forEach(b => {
+          b.className = b === btn
+            ? 'tile-btn px-2.5 py-1 rounded-lg bg-sky-600 text-white font-bold text-sm cursor-pointer'
+            : 'tile-btn px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold text-sm cursor-pointer';
+        });
+      });
+    });
+
+    document.getElementById('btnResetMap').addEventListener('click', () => {
+      leafletMap.flyTo([39.0, 35.2], 6, { duration: 0.8 });
+    });
+
+    // ============================================================================
+    // 7. ADIM 3: YERLEŞİM YERİ SEÇ ETKİNLİĞİ (yeryuzu-6-sinif.html'den)
+    // ============================================================================
+    const SETTLE_TILES = [
+      { id: 'dag', name: 'Dağ', photo: 'img/dag.jpg' },
+      { id: 'plato', name: 'Plato', photo: 'img/plato-yuzey.jpg' },
+      { id: 'ova', name: 'Ova', photo: 'img/ova.jpg' },
+      { id: 'vadi', name: 'Dar Vadi', photo: 'img/dar-vadi.jpg' },
+      { id: 'delta', name: 'Delta Ovası', photo: 'img/delta.jpg' },
+      { id: 'korfez', name: 'Körfez Kıyısı', photo: 'img/korfez.jpg' }
+    ];
+
+    const PERSONAS = [
+      {
+        who: 'Çiftçi Ayşe Hanım', ini: 'A', color: '#16a34a',
+        need: 'Pamuk ve sebze yetiştirmek istiyoruz. Toprak verimli, arazi düz ve su yakın olsun.',
+        best: ['delta', 'ova'],
+        fb: {
+          delta: 'Delta ovasının toprağı akarsuyun getirdiği alüvyonlarla çok verimlidir. Çukurova\'da da böyledir. Yalnızca taşkınlara dikkat!',
+          ova: 'Ovalar düz ve verimlidir, akarsular sulama suyu sağlar. Tarım için çok uygun.',
+          korfez: ['ok', 'Kıyıda yaşamak güzel ama körfez kıyısında genellikle liman ve şehir vardır. Geniş tarla bulmak zor olabilir.'],
+          dag: 'Dağ yamaçları çok eğimli ve toprak ince. Tarla açmak ve sulamak çok zor.',
+          plato: 'Plato düz ama yüksektedir. Kışlar soğuk geçer ve akarsular derin vadilerin dibinden aktığı için sulamak zordur.',
+          vadi: 'Dar vadide düz alan çok azdır, büyük tarlalar kurulamaz.'
+        }
+      },
+      {
+        who: 'Kaptan Mert', ini: 'M', color: '#0284c7',
+        need: 'Gemilerim için dalgalardan korunan bir liman lazım. Deniz ticareti yapacağım.',
+        best: ['korfez'],
+        fb: {
+          korfez: 'Körfezler dalgalardan korunaklıdır. İzmir ve İzmit gibi büyük limanlar körfezlerde kurulmuştur.',
+          delta: ['ok', 'Delta kıyıda ama burada deniz çok sığdır ve akarsu sürekli alüvyon getirir. Büyük gemiler zorlanır.'],
+          ova: 'Ova karanın içindedir, denize kıyısı yok.',
+          dag: 'Dağda liman olmaz, deniz çok uzakta.',
+          plato: 'Plato yüksekte ve denizden uzakta.',
+          vadi: 'Dar vadide akarsu var ama büyük gemiler için deniz yok.'
+        }
+      },
+      {
+        who: 'Hayvancı Hasan Amca', ini: 'H', color: '#d97706',
+        need: 'Koyunlarım ve büyükbaş hayvanlarım için geniş otlak istiyorum. Yazın serin olsun.',
+        best: ['plato', 'dag'],
+        fb: {
+          plato: 'Platolarda geniş otlaklar vardır. Erzurum-Kars Platosu\'nda hayvancılık çok yaygındır.',
+          dag: 'Dağlardaki yaylalar yazın serin ve yeşildir. Hayvanlar yazın yaylaya çıkarılır.',
+          ova: ['ok', 'Ovada otlak bulunabilir ama verimli ova toprağı genellikle tarım için kullanılır. Yazlar da sıcak geçer.'],
+          delta: 'Delta toprağı çok verimlidir, tarla olarak daha değerlidir. Yazlar da sıcak ve nemli geçer.',
+          korfez: 'Körfez kıyısı şehir ve liman için uygundur, geniş otlak için değil.',
+          vadi: 'Dar vadide hayvanların otlayacağı geniş alan yoktur.'
+        }
+      },
+      {
+        who: 'Fabrika Kuracak Elif Hanım', ini: 'E', color: '#7c3aed',
+        need: 'Fabrikam için düz bir arazi, iyi yollar ve ürünleri gemiyle göndermek için liman lazım.',
+        best: ['korfez'],
+        fb: {
+          korfez: 'Düz kıyı, iyi yollar ve liman bir arada. İzmit Körfezi çevresinde bu yüzden çok sayıda fabrika vardır.',
+          ova: ['ok', 'Ova düzdür ve yol yapmak kolaydır ama liman yok. Ayrıca fabrikalar verimli tarlaların yerini alabilir.'],
+          delta: ['ok', 'Düz ve kıyıda ama delta toprağı çok verimlidir. Tarlaları fabrikaya çevirmek tarımı azaltır. Taşkın tehlikesi de var.'],
+          dag: 'Eğimli arazide büyük fabrika ve yol yapmak çok zor ve pahalıdır.',
+          plato: 'Denizden uzak ve yüksekte. Ürünleri limana taşımak zor olur.',
+          vadi: 'Dar vadide fabrikaya yetecek düz alan yoktur.'
+        }
+      },
+      {
+        who: 'Kayakçı Can', ini: 'C', color: '#dc2626',
+        need: 'Kayak merkezi açacağım. Kışın bol kar yağan, yüksek ve eğimli bir yer arıyorum.',
+        best: ['dag'],
+        fb: {
+          dag: 'Yüksek ve eğimli dağ yamaçlarına kışın bol kar yağar. Uludağ ve Erzurum\'daki Palandöken\'de kayak merkezleri vardır.',
+          plato: ['ok', 'Plato yüksek ve karlıdır ama düz olduğu için kayak pisti için eğim yetmez.'],
+          ova: 'Ova alçak ve düzdür. Kayak için ne eğim ne de yeterli kar var.',
+          delta: 'Kıyıdaki delta ovalarında kışlar ılık geçer, kar nadiren yağar.',
+          korfez: 'Kıyıda kar az yağar ve arazi düzdür.',
+          vadi: 'Alçak ve dar bir vadide kayak pisti kuracak geniş yamaç yoktur.'
+        }
+      },
+      {
+        who: 'Baraj Mühendisi Zeynep', ini: 'Z', color: '#0d9488',
+        need: 'Elektrik üretmek için baraj yapacağım. Akarsuyun aktığı dar ve derin bir yer arıyorum.',
+        best: ['vadi'],
+        fb: {
+          vadi: 'Barajlar genellikle dar ve derin vadilere kurulur. Kısa bir set duvarıyla çok su biriktirilebilir (Çoruh Vadisi gibi).',
+          dag: ['ok', 'Dağlarda akarsular hızlı akar ama barajı dağın zirvesine değil, aradaki dar vadiye kurmak gerekir.'],
+          plato: ['ok', 'Platoyu yaran derin vadiler baraj için uygun olabilir ama platonun düz yüzeyi değil, vadisi seçilmeli.'],
+          ova: 'Ovada akarsu yavaş akar ve arazi geniştir. Baraj gölü verimli tarlaları sular altında bırakır.',
+          delta: 'Delta denize çok yakın ve düzdür, akarsu burada yavaşlamıştır.',
+          korfez: 'Körfezde akarsu değil deniz vardır.'
+        }
+      }
+    ];
+
+    let pIdx = 0;
+    let pDone = false;
+
+    function renderSettleStep() {
+      const p = PERSONAS[pIdx];
+      document.getElementById('settleDots').innerHTML = PERSONAS.map((_, i) => `
+        <span class="w-3.5 h-3.5 rounded-full ${i === pIdx ? 'bg-sky-600 ring-2 ring-sky-200' : i < pIdx ? 'bg-emerald-500' : 'bg-slate-300'}"></span>
+      `).join('');
+
+      document.getElementById('personaCard').innerHTML = `
+        <div class="text-sm font-extrabold uppercase tracking-wider text-slate-500">Aile ${pIdx + 1} / ${PERSONAS.length}</div>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-extrabold text-xl shrink-0" style="background:${p.color}">${p.ini}</div>
+          <h3 class="text-lg font-extrabold text-slate-900">${p.who}</h3>
+        </div>
+        <p class="text-sm sm:text-base font-bold text-slate-800 bg-white border border-slate-200 rounded-xl p-3">
+          “${p.need}”
+        </p>
+        <div id="personaFb"></div>
+        <div class="flex gap-2 mt-1">
+          <button id="btnNextPersona" class="hidden px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-sm cursor-pointer transition">
+            ${pIdx < PERSONAS.length - 1 ? 'Sonraki Aileye Geç →' : 'Sonucu Gör'}
+          </button>
+        </div>
+      `;
+
+      const tilesEl = document.getElementById('settleTiles');
+      tilesEl.innerHTML = SETTLE_TILES.map(t => `
+        <button data-tile="${t.id}" class="settle-tile-btn border-2 border-slate-200 bg-white hover:border-sky-400 rounded-xl p-2 cursor-pointer transition flex flex-col items-center gap-1.5 shadow-xs">
+          <img src="${t.photo}" alt="${t.name}" class="w-full h-28 sm:h-32 object-cover rounded-lg bg-slate-100" />
+          <span class="font-extrabold text-sm sm:text-base text-slate-900">${t.name}</span>
+        </button>
+      `).join('');
+
+      pDone = false;
+
+      document.getElementById('btnNextPersona').onclick = () => {
+        if (pIdx < PERSONAS.length - 1) {
+          pIdx++;
+          renderSettleStep();
+        } else {
+          renderSettleEnd();
+        }
+      };
+
+      tilesEl.querySelectorAll('.settle-tile-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.tile;
+          let kind = p.best.includes(id) ? 'best' : 'no';
+          let text = p.fb[id];
+          if (Array.isArray(text)) { kind = text[0]; text = text[1]; }
+
+          btn.className = 'settle-tile-btn border-2 rounded-xl p-2 cursor-pointer transition flex flex-col items-center gap-1.5 shadow-xs ' + (
+            kind === 'best' ? 'border-emerald-500 bg-emerald-50' :
+            kind === 'ok' ? 'border-amber-500 bg-amber-50' :
+            'border-rose-400 bg-rose-50 opacity-85'
+          );
+
+          const head = { best: '✓ Harika seçim!', ok: '⚠ Olabilir ama...', no: '✗ Burası pek uygun değil.' }[kind];
+          const fbCls = kind === 'best'
+            ? 'bg-emerald-100 border border-emerald-300 text-emerald-900'
+            : kind === 'ok'
+            ? 'bg-amber-100 border border-amber-300 text-amber-900'
+            : 'bg-rose-100 border border-rose-300 text-rose-900';
+
+          document.getElementById('personaFb').innerHTML = `
+            <div class="p-3 rounded-xl text-sm sm:text-base font-semibold ${fbCls}">
+              <b>${head}</b> ${text}
+              ${kind !== 'best' ? '<div class="mt-1 font-bold">Başka bir yer şekli dene.</div>' : ''}
+            </div>
+          `;
+
+          if (kind === 'best' && !pDone) {
+            pDone = true;
+            document.getElementById('btnNextPersona').classList.remove('hidden');
+          }
+        });
+      });
+    }
+
+    function renderSettleEnd() {
+      document.getElementById('personaCard').innerHTML = `
+        <h3 class="text-lg font-extrabold text-emerald-800">🎉 Bütün Aileler Yerleşti!</h3>
+        <p class="text-sm sm:text-base text-slate-700 font-medium leading-relaxed">
+          Fark ettin mi? Tarım yapmak, ticaret yapmak ve fabrika kurmak isteyenler en çok <b>ova</b>, <b>delta ovası</b> ve <b>körfez kıyısını</b> seçti. Bu yerler düz, verimli ya da limana uygundur.
+        </p>
+        <p class="text-sm sm:text-base text-slate-700 font-medium leading-relaxed">
+          Türkiye'de de nüfus en çok ovalarda ve kıyılarda toplanmıştır. Dağlık ve yüksek yerlerde ise nüfus daha seyrektir.
+        </p>
+        <button id="btnRestartSettle" class="mt-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-sm cursor-pointer w-fit">
+          ↺ Baştan Oyna
+        </button>
+      `;
+      document.getElementById('btnRestartSettle').onclick = () => {
+        pIdx = 0;
+        renderSettleStep();
+      };
+    }
+
+    // ============================================================================
+    // 8. ADIM 4: TÜMÜ İSİMSİZ GERÇEK GÖRSELLİ 10 SORULUK TEST
+    // ============================================================================
+    const QUIZ_QUESTIONS = [
+      {
+        photoSrc: 'img/q/delta.jpg',
+        question: 'Görseldeki yer şekli hangisidir?',
+        options: ['Körfez', 'Delta Ovası', 'Göl', 'Yarımada'],
+        correct: 1,
+        wrongReasons: {
+          0: 'Körfezde deniz karanın içine girer. Görselde ise akarsu kollara ayrılarak denize ulaşıyor ve kıyıda yeni kara oluşmuş.',
+          2: 'Göl karaların içindeki durgun sudur. Görselde akarsu denize dökülüyor.',
+          3: 'Yarımada üç tarafı denizle çevrili kara parçasıdır. Görseldeki asıl ipucu, akarsuyun kollara ayrılarak denize döküldüğü düzlük.'
+        },
+        correctMsg: 'Akarsuyun taşıdığı alüvyonları denize döküldüğü yerde biriktirmesiyle oluşan düzlüğe Delta Ovası denir (ör. Çukurova).'
+      },
+      {
+        photoSrc: 'img/q/plato.jpg',
+        question: 'Görseldeki yer şekli hangisidir?',
+        options: ['Ova', 'Plato', 'Dağ', 'Körfez'],
+        correct: 1,
+        wrongReasons: {
+          0: 'Ova da düzdür ama alçakta kalır ve akarsu yüzeyde akar. Görselde düzlük yüksekte, akarsu derin bir vadinin dibinden akıyor.',
+          2: 'Dağın zirvesi sivri ya da sırt şeklindedir. Görseldeki yüksek yerin üstü ise geniş ve düz.',
+          3: 'Körfez denizin karaya sokulduğu girintidir; görselde deniz yok.'
+        },
+        correctMsg: 'Akarsuların derin vadilerle yardığı, çevresine göre yüksekte kalan geniş düzlüklere Plato denir (ör. Erzurum-Kars Platosu).'
+      },
+      {
+        photoSrc: 'img/q/ova.jpg',
+        question: 'Görseldeki yer şekli hangisidir?',
+        options: ['Plato', 'Ova', 'Delta Ovası', 'Dağ'],
+        correct: 1,
+        wrongReasons: {
+          0: 'Plato yüksekte kalan ve derin vadilerle yarılmış düzlüktür. Görseldeki düzlük çevresindeki dağlara göre alçakta ve akarsu yüzeyde kıvrılarak akıyor.',
+          2: 'Delta ovası deniz kıyısında oluşur. Görselde deniz yok; düzlük dağların arasında.',
+          3: 'Dağlar arka planda; görselin asıl konusu önündeki geniş ve alçak düzlük.'
+        },
+        correctMsg: 'Çevresine göre alçakta kalan geniş düzlüklere Ova denir (ör. Konya Ovası). Tarım ve ulaşım kolay olduğu için nüfus genellikle yoğundur.'
+      },
+      {
+        photoSrc: 'img/q/korfez.jpg',
+        question: 'Görseldeki yer şekli hangisidir?',
+        options: ['Göl', 'Boğaz', 'Körfez', 'Burun'],
+        correct: 2,
+        wrongReasons: {
+          0: 'Göl karaların içinde, çevresi tamamen karayla kapalı sudur. Görseldeki su açık denize bağlı.',
+          1: 'Boğaz iki denizi birbirine bağlar, iki ucu da açıktır. Görseldeki girintinin ise bir ucu karada kapanıyor.',
+          3: 'Burun karanın denize doğru çıkıntısıdır. Görselin asıl konusu ise denizin karaya sokulduğu girinti.'
+        },
+        correctMsg: 'Denizin karanın içine sokulduğu geniş girintilere Körfez denir. Dalgalardan korunaklı olduğu için liman kurmaya uygundur.'
+      },
+      {
+        photoSrc: 'img/q/yarimada.jpg',
+        question: 'Görseldeki yer şekli hangisidir?',
+        options: ['Ada', 'Yarımada', 'Burun', 'Delta Ovası'],
+        correct: 1,
+        wrongReasons: {
+          0: 'Adanın dört tarafı suyla çevrilidir. Görseldeki kara parçası ise bir yanından anakaraya bağlı.',
+          2: 'Burun da denize uzanır ama küçük ve sivri bir çıkıntıdır. Görseldeki geniş kara parçasının üç tarafı deniz.',
+          3: 'Delta ovası akarsuyun denize döküldüğü yerde oluşan alçak düzlüktür.'
+        },
+        correctMsg: 'Üç tarafı denizle çevrili, bir tarafı karaya bağlı kara parçasına Yarımada denir (ör. Gelibolu Yarımadası).'
+      },
+      {
+        photoSrc: 'img/q/bogaz.jpg',
+        question: 'Görseldeki yer şekli hangisidir?',
+        options: ['Körfez', 'Göl', 'Boğaz', 'Akarsu'],
+        correct: 2,
+        wrongReasons: {
+          0: 'Körfezin bir ucu karada kapanır. Görseldeki su yolu ise iki ucuyla da denize açılıyor.',
+          1: 'Göl karaların içindeki durgun sudur, büyük gemilerin geçtiği bir deniz yolu değildir.',
+          3: 'Akarsu tatlı sudur ve denize dökülür. Görseldeki ise iki denizi bağlayan, büyük gemilerin geçtiği deniz suyu.'
+        },
+        correctMsg: 'İki denizi birbirine bağlayan dar su yoluna Boğaz denir (ör. İstanbul Boğazı).'
+      },
+      {
+        photoSrc: 'img/q/dag.jpg',
+        question: 'Görseldeki gibi yüksek ve dik yamaçlı yerlerde nüfus için hangisi doğrudur?',
+        options: [
+          'Tarla açmak ve yol yapmak kolay olduğu için nüfus çok kalabalıktır',
+          'Eğim fazla ve kışlar soğuk olduğu için nüfus genellikle seyrektir',
+          'Büyük ticaret limanları kurulduğu için nüfus kalabalıktır',
+          'Toprak çok verimli olduğu için en büyük tarım alanlarıdır'
+        ],
+        correct: 1,
+        wrongReasons: {
+          0: 'Dağlık yerlerde eğim fazla olduğu için tarla açmak ve yol yapmak zordur.',
+          2: 'Limanlar dağlara değil, korunaklı körfez kıyılarına kurulur.',
+          3: 'En verimli tarım alanları ovalar ve delta ovalarıdır; dağ yamaçlarında toprak incedir.'
+        },
+        correctMsg: 'Dağlık yerlerde eğim ve soğuk iklim nedeniyle nüfus seyrektir. Yazın serin yaylalar hayvancılık için kullanılır.'
+      },
+      {
+        photoSrc: 'img/q/gol.jpg',
+        question: 'Görseldeki yer şekli hangisidir?',
+        options: ['Körfez', 'Göl', 'Boğaz', 'Delta Ovası'],
+        correct: 1,
+        wrongReasons: {
+          0: 'Körfez açık denize bağlıdır. Görseldeki su ise karaların içinde, çevresi karayla çevrili.',
+          2: 'Boğaz iki denizi birbirine bağlayan su yoludur.',
+          3: 'Delta ovası bir kara parçasıdır, su kütlesi değildir.'
+        },
+        correctMsg: 'Karaların içindeki çukurlarda biriken büyük su kütlelerine Göl denir (ör. Van Gölü).'
+      },
+      {
+        photoSrc: 'img/q/ada.jpg',
+        question: 'Görseldeki yer şekli hangisidir?',
+        options: ['Yarımada', 'Burun', 'Ada', 'Plato'],
+        correct: 2,
+        wrongReasons: {
+          0: 'Yarımadanın bir tarafı karaya bağlıdır. Görseldeki kara parçasının ise dört tarafı da deniz.',
+          1: 'Burun karadan denize uzanan bir çıkıntıdır; anakaraya bağlıdır.',
+          3: 'Plato karalar üzerindeki yüksek düzlüktür.'
+        },
+        correctMsg: 'Dört tarafı sularla çevrili kara parçasına Ada denir (ör. Gökçeada).'
+      },
+      {
+        photoSrc: 'img/q/burun.jpg',
+        question: 'Görseldeki yer şekli hangisidir?',
+        options: ['Körfez', 'Burun', 'Ada', 'Ova'],
+        correct: 1,
+        wrongReasons: {
+          0: 'Körfez denizin karaya girmesidir; görselde tam tersine kara denize uzanıyor.',
+          2: 'Ada tamamen suyla çevrilidir; görseldeki çıkıntı arkadaki karaya bağlı.',
+          3: 'Ova alçak ve geniş düzlüktür; görselde denize uzanan kayalık bir uç var.'
+        },
+        correctMsg: 'Karanın denize doğru yaptığı sivri çıkıntılara Burun denir (ör. Sinop İnceburun).'
+      },
+      {
+        photoSrc: 'img/q/akarsu.jpg',
+        question: 'Görseldeki su hangisidir?',
+        options: ['Göl', 'Akarsu', 'Boğaz', 'Körfez'],
+        correct: 1,
+        wrongReasons: {
+          0: 'Göl durgun sudur; görseldeki su bir yatak içinde akıyor.',
+          2: 'Boğaz iki denizi bağlayan deniz yoludur.',
+          3: 'Körfez denizin karaya sokulduğu girintidir.'
+        },
+        correctMsg: 'Bir yatak içinde yüksekten alçağa doğru sürekli akan suya Akarsu denir (ör. Kızılırmak).'
+      }
+    ];
+
+    let currentQuizIdx = 0;
+    let quizScore = 0;
+    let answeredQuizSet = new Set();
+
+    function renderQuizStep() {
+      const q = QUIZ_QUESTIONS[currentQuizIdx];
+      document.getElementById('quizCounterBadge').textContent = `Soru ${currentQuizIdx + 1} / ${QUIZ_QUESTIONS.length}`;
+      document.getElementById('quizScoreBadge').textContent = `Doğru: ${quizScore}`;
+      document.getElementById('quizQuestionText').textContent = q.question;
+
+      const imgEl = document.getElementById('quizImageEl');
+      imgEl.src = q.photoSrc;
+
+      const expBox = document.getElementById('quizExplanationBox');
+      expBox.className = 'hidden text-sm sm:text-base font-semibold p-3 rounded-xl leading-relaxed';
+
+      const optsEl = document.getElementById('quizOptionsList');
+      optsEl.innerHTML = q.options.map((opt, idx) => `
+        <button data-idx="${idx}" class="quiz-choice-btn text-left p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-600 hover:bg-sky-50 font-bold text-sm sm:text-base text-slate-900 transition cursor-pointer">
+          ${String.fromCharCode(65 + idx)}) ${opt}
+        </button>
+      `).join('');
+
+      optsEl.querySelectorAll('.quiz-choice-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const picked = parseInt(btn.dataset.idx, 10);
+          optsEl.querySelectorAll('.quiz-choice-btn').forEach(b => b.disabled = true);
+
+          if (picked === q.correct) {
+            if (!answeredQuizSet.has(currentQuizIdx)) {
+              quizScore++;
+              answeredQuizSet.add(currentQuizIdx);
+            }
+            btn.className = 'quiz-choice-btn text-left p-3 rounded-xl border-2 border-emerald-600 bg-emerald-100 font-extrabold text-sm sm:text-base text-emerald-950';
+            expBox.className = 'block text-sm sm:text-base font-semibold p-3 rounded-xl leading-relaxed bg-emerald-50 border border-emerald-300 text-emerald-900';
+            expBox.textContent = '✓ Doğru! ' + q.correctMsg;
+          } else {
+            answeredQuizSet.add(currentQuizIdx);
+            btn.className = 'quiz-choice-btn text-left p-3 rounded-xl border-2 border-rose-600 bg-rose-100 font-extrabold text-sm sm:text-base text-rose-950';
+            optsEl.querySelectorAll('.quiz-choice-btn')[q.correct].className = 'quiz-choice-btn text-left p-3 rounded-xl border-2 border-emerald-600 bg-emerald-100 font-extrabold text-sm sm:text-base text-emerald-950';
+            expBox.className = 'block text-sm sm:text-base font-semibold p-3 rounded-xl leading-relaxed bg-rose-50 border border-rose-300 text-rose-900';
+            expBox.textContent = '✗ Neden Yanlış: ' + (q.wrongReasons[picked] || '') + ' ' + q.correctMsg;
+          }
+          document.getElementById('quizScoreBadge').textContent = `Doğru: ${quizScore}`;
+        });
+      });
+    }
+
+    document.getElementById('btnPrevQuiz').addEventListener('click', () => {
+      if (currentQuizIdx > 0) {
+        currentQuizIdx--;
+        renderQuizStep();
+      }
+    });
+    document.getElementById('btnNextQuiz').addEventListener('click', () => {
+      if (currentQuizIdx < QUIZ_QUESTIONS.length - 1) {
+        currentQuizIdx++;
+        renderQuizStep();
+      } else {
+        const expBox = document.getElementById('quizExplanationBox');
+        expBox.className = 'block text-sm sm:text-base font-semibold p-3 rounded-xl leading-relaxed bg-sky-50 border border-sky-300 text-sky-900';
+        expBox.textContent = `Test bitti: ${QUIZ_QUESTIONS.length} sorudan ${quizScore} doğru. Yanlış yaptığın soruların açıklamalarını "Önceki Soru" ile geri dönüp tekrar okuyabilirsin.`;
+      }
+    });
+
+    // ============================================================================
+    // 9. GENEL AKIŞ, SOL MENÜ GİZLEME VE TAM EKRAN KONTROLLERİ
+    // ============================================================================
+    function markTaskCompleted(id) {
+      completedTasks.add(id);
+      document.getElementById('completedTaskCount').textContent = completedTasks.size;
+      renderLandformSidebar();
+    }
+
+    function renderLandformSidebar() {
+      const listEl = document.getElementById('landformList');
+      listEl.innerHTML = LANDFORMS.map(item => {
+        const isActive = item.id === currentLandform.id;
+        const isDone = completedTasks.has(item.id);
+        return `
+          <button data-id="${item.id}" class="lf-btn w-full text-left px-2.5 py-2 rounded-lg border transition flex items-center gap-2 cursor-pointer ${
+            isActive
+              ? 'bg-sky-600 text-white border-sky-600 font-extrabold shadow-xs'
+              : 'bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 font-bold'
+          }">
+            <img src="${item.photo.replace('img/', 'img/t/')}" alt="${item.name}" loading="lazy" class="w-8 h-6 object-cover rounded shrink-0 border border-black/10" />
+            <span class="text-sm truncate flex-1">${item.name}</span>
+            <span class="text-sm px-1.5 py-0.5 rounded font-extrabold ${
+              isActive ? 'bg-white/20 text-white' : (isDone ? 'bg-emerald-100 text-emerald-800' : 'text-slate-400')
+            }">${isDone ? '✓' : '→'}</span>
+          </button>
+        `;
+      }).join('');
+
+      listEl.querySelectorAll('.lf-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const found = LANDFORMS.find(l => l.id === btn.dataset.id);
+          if (found) selectLandform(found);
+        });
+      });
+
+      document.getElementById('visitedBadge').textContent = `${visitedIds.size} / ${LANDFORMS.length}`;
+    }
+
+    function setStep(stepNum) {
+      currentStep = clamp(stepNum, 1, 6);
+      // 5. ve 6. adım yer şekli listesini kullanmıyor; orada yer açmak için liste gizlenir.
+      document.getElementById('sidebarPanel').classList.toggle('hidden', !sidebarOpen || currentStep >= 5);
+      document.getElementById('btnToggleSidebar').classList.toggle('invisible', currentStep >= 5);
+      [1, 2, 3, 4, 5, 6].forEach(n => {
+        const panel = document.getElementById(`stepPanel${n}`);
+        if (n === currentStep) {
+          panel.classList.remove('hidden');
+          if (n === 1) panel.classList.add('grid');
+          else panel.classList.add('flex');
+        } else {
+          panel.classList.add('hidden');
+          panel.classList.remove('flex', 'grid');
+        }
+      });
+
+      document.querySelectorAll('.step-tab-btn').forEach(btn => {
+        const s = parseInt(btn.dataset.step, 10);
+        btn.className = s === currentStep
+          ? 'step-tab-btn py-1.5 px-3 rounded-lg font-extrabold text-sm transition cursor-pointer flex items-center gap-1.5 bg-sky-600 text-white shadow-xs'
+          : 'step-tab-btn py-1.5 px-3 rounded-lg font-bold text-sm transition cursor-pointer flex items-center gap-1.5 text-slate-700 hover:bg-white';
+      });
+
+      if (currentStep === 1) {
+        setTimeout(() => { handleResize(); build3DScene(); }, 30);
+      } else if (currentStep === 2) {
+        setTimeout(() => {
+          leafletMap.invalidateSize();
+          renderTurkeyMapStep();
+          leafletMap.flyTo([39.0, 35.2], 6, { duration: 0.5 });
+        }, 50);
+      } else if (currentStep === 3) {
+        renderSettleStep();
+      } else if (currentStep === 4) {
+        renderQuizStep();
+      } else if (currentStep === 5) {
+        renderSortStep();
+      }
+    }
+
+    function updateFormationStageText() {
+      let idx = 2;
+      if (formationProgress < 0.36) idx = 0;
+      else if (formationProgress < 0.78) idx = 1;
+      document.getElementById('formationStepText').textContent = currentLandform.stages[idx];
+    }
+
+    function setPlayingState(playing) {
+      isPlaying = playing;
+      const btn = document.getElementById('btnPlayFormation');
+      btn.textContent = playing ? '⏸ Duraklat' : '▶ Oluşumu Oynat';
+    }
+
+    function selectLandform(lf) {
+      setPlayingState(false);
+      currentLandform = lf;
+      visitedIds.add(lf.id);
+      formationProgress = 1.0;
+      document.getElementById('sliderFormation').value = 100;
+
+      targetYaw = lf.camPreset.yaw;
+      targetPitch = lf.camPreset.pitch;
+      targetDist = lf.camPreset.dist;
+
+      renderLandformSidebar();
+
+      // Başlık ve Nüfus Etiketi
+      document.getElementById('titleStep1').textContent = lf.name;
+      const nf = NUFUS_LABELS[lf.nufus] || NUFUS_LABELS.orta;
+      const nBadge = document.getElementById('nufusBadge');
+      nBadge.textContent = nf.text;
+      nBadge.className = `text-sm font-bold px-2.5 py-0.5 rounded-full ${nf.cls}`;
+
+      // Tanım, Tek Kavram ve İnsan Yaşamı Etkisi
+      document.getElementById('shortDefinition').textContent = lf.shortDef;
+      document.getElementById('singleTermTitle').textContent = lf.termTitle;
+      document.getElementById('singleTermDesc').textContent = lf.termDesc;
+      document.getElementById('humanImpactText').textContent = lf.humanImpact;
+
+      // Gerçek Görsel (10 şeklin tamamında var!)
+      document.getElementById('landformPhoto').src = lf.photo;
+      document.getElementById('landformPhotoCaption').textContent = lf.photoCaption;
+
+      // Adım 1 Mini Gözlem Görevi
+      document.getElementById('step1TaskPrompt').textContent = lf.step1Task.q;
+      const s1Fb = document.getElementById('step1TaskFeedback');
+      s1Fb.className = 'hidden text-sm font-bold mt-1 p-2 rounded-lg';
+      const s1Opts = document.getElementById('step1TaskChoices');
+      s1Opts.innerHTML = lf.step1Task.options.map((o, i) => `
+        <button data-idx="${i}" class="s1-opt text-left px-2.5 py-1.5 rounded-lg border border-amber-300 bg-white hover:bg-amber-100 font-bold text-sm text-slate-900 cursor-pointer transition">
+          • ${o.text}
+        </button>
+      `).join('');
+      s1Opts.querySelectorAll('.s1-opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const picked = lf.step1Task.options[parseInt(btn.dataset.idx, 10)];
+          s1Fb.className = picked.correct
+            ? 'block text-sm font-bold mt-1 p-2 rounded-lg bg-emerald-100 text-emerald-900 border border-emerald-400'
+            : 'block text-sm font-bold mt-1 p-2 rounded-lg bg-rose-100 text-rose-900 border border-rose-400';
+          s1Fb.textContent = picked.msg;
+          if (picked.correct) markTaskCompleted(lf.id);
+        });
+      });
+
+      // Harita ve Karşılaştırma Başlıkları
+      document.getElementById('titleStep2Map').textContent = `${lf.name} — Türkiye'de Nerelerde Görülür?`;
+      document.getElementById('comparePairText').textContent = lf.compareText;
+
+      labelsOverlay.innerHTML = '';
+      updateFormationStageText();
+      build3DScene();
+      if (currentStep === 2) renderTurkeyMapStep();
+    }
+
+    // Üst Sekme Düğmeleri
+    document.querySelectorAll('.step-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => setStep(parseInt(btn.dataset.step, 10)));
+    });
+
+    // Sol Menüyü Gizle / Göster
+    document.getElementById('btnToggleSidebar').addEventListener('click', () => {
+      sidebarOpen = !sidebarOpen;
+      const sb = document.getElementById('sidebarPanel');
+      const txt = document.getElementById('sidebarBtnText');
+      if (sidebarOpen) {
+        sb.classList.remove('hidden');
+        txt.textContent = 'Sol Menüyü Gizle';
+      } else {
+        sb.classList.add('hidden');
+        txt.textContent = 'Sol Menüyü Göster';
+      }
+      setTimeout(() => {
+        handleResize();
+        if (currentStep === 2) leafletMap.invalidateSize();
+      }, 50);
+    });
+
+    // Tam Ekran Modu
+    document.getElementById('btnFullscreen').addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+    document.addEventListener('fullscreenchange', () => {
+      const txt = document.getElementById('fullscreenBtnText');
+      txt.textContent = document.fullscreenElement ? 'Tam Ekrandan Çık' : 'Tam Ekran';
+      setTimeout(() => {
+        handleResize();
+        if (currentStep === 2) leafletMap.invalidateSize();
+      }, 80);
+    });
+
+    // 3B Sahne Fare Etkileşimi
+    const domEl = renderer.domElement;
+    domEl.addEventListener('pointerdown', e => {
+      isDragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      domEl.setPointerCapture(e.pointerId);
+    });
+    domEl.addEventListener('pointermove', e => {
+      if (!isDragging) return;
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      targetYaw -= dx * 0.0075;
+      targetPitch = clamp(targetPitch + dy * 0.0065, 0.20, 1.30);
+    });
+    domEl.addEventListener('pointerup', () => { isDragging = false; });
+    domEl.addEventListener('pointercancel', () => { isDragging = false; });
+    domEl.addEventListener('wheel', e => {
+      e.preventDefault();
+      targetDist = clamp(targetDist + e.deltaY * 0.002, 2.0, 5.8);
+    }, { passive: false });
+
+    document.getElementById('btnResetCamera').addEventListener('click', () => {
+      targetYaw = currentLandform.camPreset.yaw;
+      targetPitch = currentLandform.camPreset.pitch;
+      targetDist = currentLandform.camPreset.dist;
+    });
+
+    // Oluşum Kontrolleri
+    document.getElementById('btnPlayFormation').addEventListener('click', () => {
+      if (!isPlaying) {
+        if (formationProgress >= 0.96) formationProgress = 0.10;
+        setPlayingState(true);
+      } else {
+        setPlayingState(false);
+      }
+    });
+
+    document.getElementById('sliderFormation').addEventListener('input', e => {
+      setPlayingState(false);
+      formationProgress = parseInt(e.target.value, 10) / 100;
+      updateFormationStageText();
+      build3DScene();
+    });
+
+    document.querySelectorAll('.fstage-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setPlayingState(false);
+        formationProgress = parseFloat(btn.dataset.fstage);
+        document.getElementById('sliderFormation').value = Math.round(formationProgress * 100);
+        updateFormationStageText();
+        build3DScene();
+      });
+    });
+
+    function handleResize() {
+      const rect = mountEl.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        camera.aspect = rect.width / rect.height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(rect.width, rect.height);
+      }
+    }
+    window.addEventListener('resize', handleResize);
+
+    // Görsel Büyütme Penceresi (Lightbox) Kontrolleri
+    const lightboxModal = document.getElementById('imageLightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxCaptionBar = document.getElementById('lightboxCaptionBar');
+
+    function openImageLightbox(src, title, caption) {
+      lightboxImg.src = src;
+      lightboxTitle.textContent = title || '';
+      lightboxCaptionBar.textContent = caption || '';
+      lightboxCaptionBar.style.display = caption ? 'block' : 'none';
+      lightboxModal.classList.remove('hidden');
+      lightboxModal.classList.add('flex');
+    }
+
+    function closeImageLightbox() {
+      lightboxModal.classList.add('hidden');
+      lightboxModal.classList.remove('flex');
+    }
+
+    document.getElementById('photoCardTrigger').addEventListener('click', () => {
+      openImageLightbox(currentLandform.photo, currentLandform.name, currentLandform.photoCaption);
+    });
+
+    document.getElementById('quizPhotoTrigger').addEventListener('click', () => {
+      const q = QUIZ_QUESTIONS[currentQuizIdx];
+      openImageLightbox(q.photoSrc, `Soru ${currentQuizIdx + 1} Görseli`, '');
+    });
+
+    document.getElementById('btnCloseLightbox').addEventListener('click', closeImageLightbox);
+    lightboxModal.addEventListener('click', e => {
+      if (e.target === lightboxModal) closeImageLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeImageLightbox();
+    });
+
+    // ============================================================================
+    // 10. ADIM 5: İNSAN VE DOĞA SINIFLAMA
+    // ============================================================================
+    const SORT_ITEMS = [
+      { t: 'Ova düz ve verimli olduğu için köyler büyüyüp kasabaya dönüştü.', s: 'd', why: 'Ovanın düz ve verimli olması insanların orada toplanmasına neden oldu.' },
+      { t: 'Verimli ovaya fabrikalar ve evler yapıldı, tarlalar azaldı.', s: 'i', why: 'İnsanların yaptığı binalar tarım alanlarını azalttı.' },
+      { t: 'Dağlık arazi yüzünden evler yamaçlara dağınık kuruldu.', s: 'd', why: 'Yer şekli, evlerin nereye kurulacağını belirledi.' },
+      { t: 'Deltadaki sulak alan kurutuldu, kuşlar başka yerlere gitti.', s: 'i', why: 'İnsanlar sulak alanı değiştirdi, kuşların yaşam alanı yok oldu.' },
+      { t: 'Kışlar uzun ve soğuk olduğu için köylüler yazın yaylaya çıkıyor.', s: 'd', why: 'İklim, insanların ne zaman nerede yaşayacağını etkiledi.' },
+      { t: 'Yamaçtaki ağaçlar kesildi, sel ve heyelan tehlikesi arttı.', s: 'i', why: 'Ağaçlar toprağı tutar. İnsanlar ağaçları kesince doğa değişti.' },
+      { t: 'Körfez dalgalardan korunaklı olduğu için kıyısına liman şehri kuruldu.', s: 'd', why: 'Körfezin korunaklı olması insanları buraya çekti.' },
+      { t: 'Göl kıyısına çöp atıldı, gölün suyu kirlendi.', s: 'i', why: 'İnsanların davranışı gölü kirletti. Temizlik doğayı korumanın ilk adımıdır.' }
+    ];
+    let sortIdx = 0, sortLocked = false;
+
+    function renderSortStep() {
+      const card = document.getElementById('sortCard');
+      if (sortIdx >= SORT_ITEMS.length) {
+        card.textContent = 'Hepsini sınıflandırdın!';
+        document.getElementById('sortBtns').classList.add('hidden');
+        document.getElementById('sortEnd').classList.remove('hidden');
+        return;
+      }
+      card.innerHTML = `<div><div class="text-sm font-bold text-slate-500 mb-2">${sortIdx + 1} / ${SORT_ITEMS.length}</div>${SORT_ITEMS[sortIdx].t}</div>`;
+      sortLocked = false;
+    }
+
+    document.querySelectorAll('#sortBtns [data-side]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (sortLocked || sortIdx >= SORT_ITEMS.length) return;
+        const item = SORT_ITEMS[sortIdx];
+        const fb = document.getElementById('sortFb');
+        if (btn.dataset.side !== item.s) {
+          fb.innerHTML = '<div class="p-3 rounded-xl text-sm sm:text-base font-semibold bg-rose-100 border border-rose-300 text-rose-900">Bir daha düşün. Cümlede önce ne oluyor: Doğanın bir özelliği mi insanları etkiliyor, yoksa insanlar doğayı mı değiştiriyor?</div>';
+          return;
+        }
+        sortLocked = true;
+        fb.innerHTML = `<div class="p-3 rounded-xl text-sm sm:text-base font-semibold bg-emerald-100 border border-emerald-300 text-emerald-900">✓ Doğru! ${item.why}</div>`;
+        const li = document.createElement('li');
+        li.textContent = item.t;
+        document.getElementById(item.s === 'd' ? 'colD' : 'colI').appendChild(li);
+        setTimeout(() => { sortIdx++; renderSortStep(); }, 1400);
+      });
+    });
+
+    // ============================================================================
+    // 11. ADIM 6: İKLİM
+    // ============================================================================
+    const MONTHS = ['O', 'Ş', 'M', 'N', 'M', 'H', 'T', 'A', 'E', 'E', 'K', 'A'];
+    // Aylık değerler ders kitabındaki Antalya, Rize ve Konya grafiklerinden yaklaşık okunmuştur.
+    const CLIM = {
+      akdeniz: {
+        name: 'Akdeniz İklimi', color: '#f6a96b', where: 'Akdeniz, Ege ve Marmara Denizi kıyıları', city: 'Antalya', lat: 36.90, lon: 30.70,
+        facts: ['Yazlar sıcak ve kurak, kışlar ılık ve yağışlı geçer.', 'Bitki örtüsü makidir; kızılçam ormanları da görülür.', 'Pamuk, turunçgiller, incir ve zeytin yetişir.', 'Yazların sıcak olması turizmi, kışların ılık geçmesi seracılığı geliştirir.'],
+        temp: [10, 11, 13, 16, 20, 25, 28, 28, 25, 20, 15, 12], rain: [250, 170, 100, 45, 30, 10, 5, 5, 15, 60, 125, 255],
+        graphWhy: 'Yaz aylarında (Haziran, Temmuz, Ağustos) neredeyse hiç yağış yok, kış aylarında ise çok fazla. Sıcaklık kışın bile 10 °C civarında kalıyor. Yazı kurak, kışı ılık ve yağışlı: Akdeniz iklimi (Antalya).'
+      },
+      karadeniz: {
+        name: 'Karadeniz İklimi', color: '#9fd08a', where: 'Karadeniz kıyıları', city: 'Rize', lat: 41.02, lon: 40.52,
+        facts: ['Her mevsim yağışlıdır; yazlar serin, kışlar ılık geçer.', 'Yıl boyunca nem fazla olduğu için sıcaklık farkları azdır.', 'Bitki örtüsü ormandır.', 'Fındık, çay ve mısır yetişir. Doğu kesimlerinde bulutluluk fazla olduğu için güneş enerjisinden yararlanmak zordur.'],
+        temp: [7, 7, 9, 12, 16, 20, 23, 23, 20, 16, 12, 9], rain: [210, 180, 150, 90, 100, 135, 145, 175, 250, 300, 260, 250],
+        graphWhy: 'Her ay yağış var ve yağış miktarı çok fazla. Sıcaklık yıl boyunca çok değişmiyor (yaklaşık 7–23 °C). Her mevsim yağışlı: Karadeniz iklimi (Rize).'
+      },
+      karasal: {
+        name: 'Karasal İklim', color: '#f3e3a0', where: 'Denizden uzak iç kesimler', city: 'Konya', lat: 37.87, lon: 32.48,
+        facts: ['Kışlar soğuk ve kar yağışlı, yazlar sıcak ve kurak geçer.', 'Yıllık ve günlük sıcaklık farkları fazladır.', 'Yağış azdır ve en çok ilkbaharda düşer; tarımda sulamaya ihtiyaç vardır.', 'Bitki örtüsü bozkırdır. Buğday, arpa, mercimek ve nohut yetişir.'],
+        temp: [-1, 1, 5, 11, 16, 20, 24, 23, 18, 12, 5, 1], rain: [35, 25, 30, 40, 45, 25, 8, 5, 12, 30, 35, 40],
+        graphWhy: 'Yağış bütün yıl az. Kışın sıcaklık 0 °C\'nin altına iniyor, yazın 24 °C\'ye çıkıyor; yaz ile kış arasındaki fark büyük. Kışı soğuk, yağışı az: Karasal iklim (Konya).'
+      }
+    };
+
+    function climograph(c, title) {
+      const X0 = 46, X1 = 344, Y0 = 26, Y1 = 196;
+      const yR = v => Y1 - (v / 350) * (Y1 - Y0);
+      const yT = v => Y1 - ((v + 5) / 35) * (Y1 - Y0);
+      const step = (X1 - X0) / 12;
+      let g = '';
+      for (let v = 0; v <= 350; v += 50) {
+        g += `<line x1="${X0}" x2="${X1}" y1="${yR(v)}" y2="${yR(v)}" stroke="#e2e8f0"/>`;
+        g += `<text x="${X0 - 6}" y="${yR(v) + 4}" font-size="11" text-anchor="end" fill="#475569">${v}</text>`;
+      }
+      for (let v = -5; v <= 30; v += 5) g += `<text x="${X1 + 6}" y="${yT(v) + 4}" font-size="11" fill="#1d4ed8">${v}</text>`;
+      c.rain.forEach((r, i) => {
+        const x = X0 + step * i + step * 0.18;
+        g += `<rect x="${x}" y="${yR(r)}" width="${step * 0.64}" height="${Y1 - yR(r)}" fill="#f2a7c3" stroke="#db6b98" stroke-width="0.8"/>`;
+        g += `<text x="${X0 + step * (i + 0.5)}" y="${Y1 + 15}" font-size="11.5" text-anchor="middle" font-weight="700" fill="#334155">${MONTHS[i]}</text>`;
+      });
+      const pts = c.temp.map((t, i) => `${X0 + step * (i + 0.5)},${yT(t)}`).join(' ');
+      g += `<polyline points="${pts}" fill="none" stroke="#1d6fb8" stroke-width="2.5"/>`;
+      c.temp.forEach((t, i) => { g += `<circle cx="${X0 + step * (i + 0.5)}" cy="${yT(t)}" r="3.2" fill="#1d6fb8"/>`; });
+      g += `<line x1="${X0}" x2="${X1}" y1="${yT(0)}" y2="${yT(0)}" stroke="#93c5fd" stroke-dasharray="4 3"/>`;
+      return `<svg viewBox="0 0 390 236" class="w-full h-auto" role="img" aria-label="Sıcaklık ve yağış grafiği">
+        <text x="${X0 - 6}" y="15" font-size="11" text-anchor="end" fill="#475569" font-weight="700">mm</text>
+        <text x="${X1 + 6}" y="15" font-size="11" fill="#1d4ed8" font-weight="700">°C</text>
+        <rect x="130" y="5" width="12" height="10" fill="#f2a7c3" stroke="#db6b98"/><text x="147" y="14" font-size="11.5" fill="#334155">Yağış</text>
+        <line x1="200" x2="222" y1="10" y2="10" stroke="#1d6fb8" stroke-width="2.5"/><circle cx="211" cy="10" r="3" fill="#1d6fb8"/><text x="227" y="14" font-size="11.5" fill="#334155">Sıcaklık</text>
+        ${g}
+        <text x="195" y="232" font-size="12" text-anchor="middle" font-weight="700" fill="#0f172a">${title}</text>
+      </svg>`;
+    }
+
+    // --- sekmeler
+    function setClimTab(n) {
+      document.querySelectorAll('.clim-pane').forEach((p, i) => {
+        const on = i + 1 === n;
+        p.classList.toggle('hidden', !on);
+        p.classList.toggle('flex', on);
+      });
+      document.querySelectorAll('.clim-tab').forEach(b => {
+        const on = +b.dataset.ctab === n;
+        b.classList.toggle('bg-sky-600', on); b.classList.toggle('text-white', on); b.classList.toggle('border-sky-600', on);
+        b.classList.toggle('bg-white', !on); b.classList.toggle('text-slate-700', !on); b.classList.toggle('border-slate-300', !on);
+      });
+    }
+    document.querySelectorAll('.clim-tab').forEach(b => b.addEventListener('click', () => setClimTab(+b.dataset.ctab)));
+
+    // --- 1. hava durumu mu iklim mi
+    const HI_ITEMS = [
+      { t: 'Bugün İzmir\'de hava parçalı bulutlu ve 23 °C.', s: 'h' },
+      { t: 'Akdeniz kıyılarında yazlar sıcak ve kurak, kışlar ılık ve yağışlı geçer.', s: 'i' },
+      { t: 'Yarın Erzurum\'da kar yağışı bekleniyor.', s: 'h' },
+      { t: 'Karadeniz kıyılarında her mevsim yağış görülür.', s: 'i' },
+      { t: 'Bu öğleden sonra kuzeyden kuvvetli rüzgâr esecek.', s: 'h' },
+      { t: 'Konya\'da kışlar soğuk ve kar yağışlı geçer.', s: 'i' },
+      { t: 'Dün akşam Rize\'de sağanak yağmur yağdı.', s: 'h' },
+      { t: 'İç Anadolu\'da yıllık yağış miktarı azdır.', s: 'i' }
+    ];
+    let hiIdx = 0, hiLocked = false;
+    function renderHi() {
+      const card = document.getElementById('hiCard');
+      if (hiIdx >= HI_ITEMS.length) {
+        card.textContent = 'Hepsini ayırdın! Şimdi "2. Türkiye\'nin İklimleri" bölümüne geç.';
+        document.getElementById('hiBtns').classList.add('hidden');
+        return;
+      }
+      card.innerHTML = `<div><div class="text-sm font-bold text-slate-500 mb-2">${hiIdx + 1} / ${HI_ITEMS.length}</div>${HI_ITEMS[hiIdx].t}</div>`;
+      hiLocked = false;
+    }
+    document.querySelectorAll('#hiBtns [data-hi]').forEach(btn => btn.addEventListener('click', () => {
+      if (hiLocked || hiIdx >= HI_ITEMS.length) return;
+      const it = HI_ITEMS[hiIdx], fb = document.getElementById('hiFb');
+      if (btn.dataset.hi !== it.s) {
+        fb.innerHTML = '<div class="p-3 rounded-xl text-sm sm:text-base font-semibold bg-rose-100 border border-rose-300 text-rose-900">Bir daha düşün: Cümle belirli bir günü ya da anı mı anlatıyor, yoksa yıllardır süren genel durumu mu?</div>';
+        return;
+      }
+      hiLocked = true;
+      fb.innerHTML = `<div class="p-3 rounded-xl text-sm sm:text-base font-semibold bg-emerald-100 border border-emerald-300 text-emerald-900">✓ Doğru! ${it.s === 'h' ? 'Belirli bir gün ya da kısa bir süre anlatılıyor; bu hava durumudur.' : 'Uzun yıllar boyunca görülen genel durum anlatılıyor; bu iklimdir.'}</div>`;
+      const li = document.createElement('li'); li.textContent = it.t;
+      document.getElementById(it.s === 'h' ? 'hiColH' : 'hiColI').appendChild(li);
+      setTimeout(() => { hiIdx++; renderHi(); }, 1300);
+    }));
+
+    // --- 2. iklim haritası
+    const TR_POLY = [[26.36,41.71],[26.6,41.95],[27.3,42.08],[28.0,41.98],[27.98,41.88],[28.1,41.63],[28.68,41.35],[29.1,41.23],
+[29.61,41.18],[30.25,41.18],[30.7,41.11],[31.12,41.09],[31.42,41.28],[31.79,41.46],[32.39,41.75],[33.0,41.89],[33.76,41.98],
+[34.4,41.98],[34.95,42.1],[35.17,42.02],[35.2,41.8],[35.6,41.7],[35.95,41.73],[36.33,41.29],[36.7,41.3],[36.95,41.37],[37.28,41.13],
+[37.88,41.0],[38.39,40.92],[38.8,41.0],[39.72,41.0],[40.27,40.95],[40.52,41.03],[41.42,41.4],[41.55,41.52],
+[42.5,41.45],[42.8,41.58],[43.45,41.1],[43.6,40.95],[43.7,40.5],[43.6,40.1],[44.0,40.0],[44.6,39.8],[44.8,39.7],[44.3,39.4],
+[44.05,39.4],[44.25,38.9],[44.3,38.4],[44.2,37.9],[44.6,37.7],[44.8,37.3],[44.6,37.15],[44.2,37.15],[43.3,37.3],[42.8,37.35],
+[42.35,37.11],[41.2,37.07],[40.05,36.85],[38.95,36.7],[38.0,36.83],[37.1,36.65],[36.6,36.83],[36.67,36.25],[36.5,36.0],
+[36.15,35.82],[35.95,35.92],[35.97,36.08],[35.88,36.4],[36.17,36.58],[36.2,36.85],[35.79,36.77],[35.38,36.55],[34.98,36.72],
+[34.63,36.8],[34.3,36.6],[34.05,36.3],[33.88,36.32],[33.32,36.15],[32.8,36.02],[32.3,36.27],[32.0,36.53],[31.4,36.75],
+[30.7,36.88],[30.57,36.6],[30.4,36.2],[29.64,36.2],[29.4,36.27],[29.1,36.62],[28.8,36.72],[28.27,36.8],[28.05,36.68],
+[27.37,36.68],[27.9,36.95],[27.25,37.0],[27.6,37.24],[27.27,37.37],[27.25,37.53],[27.26,37.86],[26.82,38.1],[26.3,38.32],
+[26.38,38.6],[26.5,38.72],[27.0,38.45],[26.8,38.65],[26.75,38.67],[26.95,38.8],[26.88,39.07],[26.68,39.3],[26.95,39.55],
+[26.5,39.52],[26.07,39.48],[26.15,39.8],[26.2,40.0],[26.4,40.15],[26.68,40.34],[27.2,40.45],[27.8,40.5],[27.97,40.35],
+[28.4,40.4],[28.88,40.38],[29.12,40.43],[29.28,40.66],[29.9,40.76],[29.38,40.77],[29.3,40.82],[29.03,40.99],[28.97,41.01],
+[28.25,41.07],[27.5,40.97],[27.3,40.7],[27.1,40.6],[26.67,40.41],[26.18,40.04],[26.25,40.25],[26.5,40.48],[26.85,40.6],
+[26.5,40.65],[26.08,40.72],[26.33,40.95],[26.35,41.25],[26.63,41.35],[26.55,41.6]];
+    const CK = 58.5, CKX = CK * 0.777;
+    const CP = (lon, lat) => [20 + (lon - 25.3) * CKX, 18 + (42.4 - lat) * CK];
+    const ptsOf = arr => arr.map(([lo, la]) => CP(lo, la).map(v => v.toFixed(1)).join(',')).join(' ');
+    const CLIM_AREAS = {
+      karadeniz: [[27.4, 42.6], [42.4, 42.6], [42.4, 41.2], [41.0, 40.75], [39.5, 40.6], [37.5, 40.7], [36.0, 40.95], [34.5, 41.3], [33.0, 41.25], [31.5, 40.85], [30.0, 40.95], [29.1, 41.05], [28.2, 41.35], [27.4, 41.7]],
+      akdeniz: [[24.8, 40.75], [26.5, 40.85], [27.5, 40.95], [28.5, 41.0], [29.3, 40.7], [30.0, 40.55], [29.6, 40.0], [29.7, 39.2], [30.0, 38.4], [30.6, 37.75], [32.0, 37.25], [33.5, 36.95], [35.0, 37.35], [36.4, 37.35], [36.9, 36.9], [36.9, 35.4], [24.8, 35.4]]
+    };
+    let climSel = 'akdeniz';
+    function drawClimMap() {
+      const dim = id => (climSel === id ? 1 : 0.55);
+      const cities = Object.entries(CLIM).map(([id, c]) => {
+        const [x, y] = CP(c.lon, c.lat);
+        return `<g data-clim="${id}" style="cursor:pointer"><circle cx="${x}" cy="${y}" r="8" fill="#0f172a" stroke="#fff" stroke-width="3"/>
+          <text x="${x}" y="${y - 14}" text-anchor="middle" font-size="18" font-weight="800" fill="#0f172a" stroke="#fff" stroke-width="4" paint-order="stroke">${c.city}</text></g>`;
+      }).join('');
+      document.getElementById('climMap').innerHTML = `
+        <defs><clipPath id="trClipClim"><polygon points="${ptsOf(TR_POLY)}"/></clipPath></defs>
+        <rect width="960" height="440" fill="#cfe7f7"/>
+        <g clip-path="url(#trClipClim)">
+          <rect data-clim="karasal" width="960" height="440" fill="${CLIM.karasal.color}" opacity="${dim('karasal')}" style="cursor:pointer"/>
+          <polygon data-clim="akdeniz" points="${ptsOf(CLIM_AREAS.akdeniz)}" fill="${CLIM.akdeniz.color}" opacity="${dim('akdeniz')}" style="cursor:pointer"/>
+          <polygon data-clim="karadeniz" points="${ptsOf(CLIM_AREAS.karadeniz)}" fill="${CLIM.karadeniz.color}" opacity="${dim('karadeniz')}" style="cursor:pointer"/>
+        </g>
+        <polygon points="${ptsOf(TR_POLY)}" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+        <text x="${CP(33.5, 42.2)[0]}" y="${CP(33.5, 42.2)[1]}" font-size="20" font-weight="700" fill="#5d8db3" text-anchor="middle" letter-spacing="3">KARADENİZ</text>
+        <text x="${CP(31.0, 35.75)[0]}" y="${CP(31.0, 35.75)[1]}" font-size="20" font-weight="700" fill="#5d8db3" text-anchor="middle" letter-spacing="3">AKDENİZ</text>
+        ${cities}`;
+    }
+    function showClim(id) {
+      climSel = id;
+      drawClimMap();
+      const c = CLIM[id];
+      document.getElementById('climInfo').innerHTML = `
+        <div class="flex items-center gap-2 mb-1"><span class="inline-block w-4 h-4 rounded" style="background:${c.color}"></span><h3 class="text-lg font-extrabold text-slate-900">${c.name}</h3></div>
+        <p class="text-sm text-slate-600 mb-2"><b>Nerede görülür?</b> ${c.where}</p>
+        <ul class="list-disc pl-5 text-sm sm:text-base text-slate-800 space-y-1 mb-3">${c.facts.map(f => `<li>${f}</li>`).join('')}</ul>
+        <div class="bg-white border border-slate-200 rounded-lg p-2">${climograph(c, c.city + ' ilinin sıcaklık ve yağış grafiği')}</div>`;
+    }
+    document.getElementById('climMap').addEventListener('click', e => {
+      const t = e.target.closest('[data-clim]');
+      if (t) showClim(t.dataset.clim);
+    });
+
+    // --- 3. grafikten iklimi bul
+    const GQ = ['karadeniz', 'karasal', 'akdeniz'];
+    let gqIdx = 0, gqScore = 0, gqAnswered = false;
+    function renderGq() {
+      document.getElementById('gqFb').innerHTML = '';
+      document.getElementById('gqNext').classList.add('hidden');
+      if (gqIdx >= GQ.length) {
+        document.getElementById('gqCount').textContent = '';
+        document.getElementById('gqGraph').innerHTML = `<p class="p-4 text-lg font-extrabold text-slate-900">${GQ.length} grafikten ${gqScore} tanesini doğru buldun.</p><p class="px-4 pb-4 text-sm sm:text-base text-slate-700">İpucu: Önce yağış çubuklarına bak (hangi aylarda yüksek?), sonra sıcaklık çizgisine (kışın 0 °C'nin altına iniyor mu?).</p>`;
+        document.getElementById('gqOpts').innerHTML = '<button id="gqAgain" class="px-4 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 font-bold text-base cursor-pointer">Baştan dene</button>';
+        document.getElementById('gqAgain').onclick = () => { gqIdx = 0; gqScore = 0; renderGq(); };
+        return;
+      }
+      gqAnswered = false;
+      document.getElementById('gqCount').textContent = `Grafik ${gqIdx + 1} / ${GQ.length}`;
+      document.getElementById('gqScore').textContent = `Doğru: ${gqScore}`;
+      document.getElementById('gqGraph').innerHTML = climograph(CLIM[GQ[gqIdx]], 'Adı gizli bir ilin sıcaklık ve yağış grafiği');
+      document.getElementById('gqOpts').innerHTML = Object.entries(CLIM).map(([id, c]) =>
+        `<button data-gq="${id}" class="gq-opt text-left px-4 py-3 rounded-xl border-2 border-slate-300 bg-white hover:border-sky-600 font-extrabold text-base cursor-pointer transition">${c.name}</button>`).join('');
+      document.querySelectorAll('.gq-opt').forEach(b => b.addEventListener('click', () => {
+        if (gqAnswered) return;
+        const right = GQ[gqIdx];
+        const ok = b.dataset.gq === right;
+        if (ok) { gqAnswered = true; gqScore++; }
+        b.classList.remove('border-slate-300');
+        b.classList.add(ok ? 'border-emerald-600' : 'border-rose-500', ok ? 'bg-emerald-50' : 'bg-rose-50');
+        document.getElementById('gqFb').innerHTML = ok
+          ? `<div class="p-3 rounded-xl text-sm sm:text-base font-semibold bg-emerald-100 border border-emerald-300 text-emerald-900">✓ Doğru! ${CLIM[right].graphWhy}</div>`
+          : '<div class="p-3 rounded-xl text-sm sm:text-base font-semibold bg-rose-100 border border-rose-300 text-rose-900">Bir daha bak: Yağış çubukları hangi aylarda yüksek, hangi aylarda alçak? Sıcaklık çizgisi kışın 0 °C\'nin altına iniyor mu?</div>';
+        if (ok) {
+          document.getElementById('gqScore').textContent = `Doğru: ${gqScore}`;
+          document.getElementById('gqNext').classList.remove('hidden');
+        }
+      }));
+    }
+    document.getElementById('gqNext').addEventListener('click', () => { gqIdx++; renderGq(); });
+
+    // --- 4. iklim ve yaşam
+    const LIFE_AREAS = ['Giyim', 'Yiyecek ve İçecek', 'Barınma', 'Ulaşım', 'Yerleşim Yeri', 'Ekonomik Faaliyet', 'Sosyal ve Kültürel Faaliyet'];
+    const LIFE_ITEMS = [
+      { t: 'Erzurum\'da kışın kalın mont, bere ve eldiven giyilir.', a: 'Giyim', hint: 'İnsanların üzerine giydiklerini düşün.' },
+      { t: 'Karadeniz\'de yağış fazla olduğu için evlerin çatıları eğimli yapılır.', a: 'Barınma', hint: 'Evlerin nasıl yapıldığıyla ilgili.' },
+      { t: 'Antalya\'da yazların uzun ve sıcak geçmesi turizmi geliştirmiştir.', a: 'Ekonomik Faaliyet', hint: 'İnsanların para kazandığı işleri düşün.' },
+      { t: 'Doğu Anadolu\'da kışın yoğun kar yağışı bazı köy yollarını kapatır.', a: 'Ulaşım', hint: 'Bir yerden bir yere gitmeyi düşün.' },
+      { t: 'Karadeniz\'de mısırdan yapılan ekmek ve yemekler yaygındır.', a: 'Yiyecek ve İçecek', hint: 'Sofraya gelenleri düşün.' },
+      { t: 'Karadeniz yaylalarında yaz aylarında şenlikler düzenlenir.', a: 'Sosyal ve Kültürel Faaliyet', hint: 'İnsanların bir araya geldiği etkinlikleri düşün.' },
+      { t: 'İnsanlar daha çok iklimi ılıman ve suyu yeterli yerlere yerleşir.', a: 'Yerleşim Yeri', hint: 'Köylerin ve şehirlerin nerede kurulduğunu düşün.' }
+    ];
+    let lifeIdx = 0, lifeLocked = false;
+    function renderLife() {
+      const card = document.getElementById('lifeCard');
+      if (lifeIdx >= LIFE_ITEMS.length) {
+        card.textContent = 'Hepsini eşleştirdin! İklim yaşamımızın her alanını etkiliyor.';
+        document.getElementById('lifeBtns').classList.add('hidden');
+        return;
+      }
+      card.innerHTML = `<div><div class="text-sm font-bold text-slate-500 mb-2">${lifeIdx + 1} / ${LIFE_ITEMS.length}</div>${LIFE_ITEMS[lifeIdx].t}</div>`;
+      lifeLocked = false;
+    }
+    document.getElementById('lifeBtns').innerHTML = LIFE_AREAS.map(a =>
+      `<button data-life="${a}" class="px-3 py-2.5 rounded-xl border-2 border-slate-300 bg-white hover:border-sky-600 hover:bg-sky-50 font-extrabold text-sm sm:text-base text-slate-900 cursor-pointer transition">${a}</button>`).join('');
+    document.querySelectorAll('#lifeBtns [data-life]').forEach(b => b.addEventListener('click', () => {
+      if (lifeLocked || lifeIdx >= LIFE_ITEMS.length) return;
+      const it = LIFE_ITEMS[lifeIdx], fb = document.getElementById('lifeFb');
+      if (b.dataset.life !== it.a) {
+        fb.innerHTML = `<div class="p-3 rounded-xl text-sm sm:text-base font-semibold bg-rose-100 border border-rose-300 text-rose-900">Bir daha düşün. İpucu: ${it.hint}</div>`;
+        return;
+      }
+      lifeLocked = true;
+      fb.innerHTML = `<div class="p-3 rounded-xl text-sm sm:text-base font-semibold bg-emerald-100 border border-emerald-300 text-emerald-900">✓ Doğru! Bu örnek iklimin <b>${it.a.toLocaleLowerCase('tr')}</b> üzerindeki etkisini gösteriyor.</div>`;
+      document.getElementById('lifeDone').insertAdjacentHTML('beforeend', `<li><b class="text-sky-800">${it.a}:</b> ${it.t}</li>`);
+      setTimeout(() => { lifeIdx++; renderLife(); }, 1300);
+    }));
+
+    setClimTab(1);
+    renderHi();
+    showClim('akdeniz');
+    renderGq();
+    renderLife();
+
+    // Başlat
+    document.getElementById('taskTotal').textContent = LANDFORMS.length;
+    renderSortStep();
+    handleResize();
+    selectLandform(LANDFORMS[0]);
+    renderSettleStep();
+    requestAnimationFrame(animate);
+  </script>
+</body>
+</html>
