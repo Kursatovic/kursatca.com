@@ -98,13 +98,16 @@ function buildGradeHTML(data) {
           <div class="unit-body">
             <div class="unit-divider"></div>
             <div class="topic-list">
-              ${unite.konular.map(konu => `
-                <a href="${escapeHTML(konu.href)}" class="topic-item" data-topic-list='${JSON.stringify(unite.konular).replace(/'/g, "&apos;")}'>
-                  <span class="topic-num">${escapeHTML(String(konu.no))}</span>
-                  <span class="topic-title">${escapeHTML(konu.baslik)}</span>
-                  <span class="topic-badge">${escapeHTML(konu.badge)}</span>
-                  <span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
-                </a>`).join('')}
+              ${unite.konular.map(konu => {
+                const kaynaklar = Array.isArray(konu.alternatifler) ? konu.alternatifler : [{ baslik: konu.baslik, href: konu.href, badge: konu.badge }];
+                return kaynaklar.map(kaynak => `
+                  <a href="${escapeHTML(kaynak.href)}" class="topic-item" data-topic-list='${JSON.stringify(unite.konular).replace(/'/g, "&apos;")}'>
+                    <span class="topic-num">${escapeHTML(String(konu.no))}</span>
+                    <span class="topic-title">${escapeHTML(konu.baslik)}${konu.alternatifler ? ` · ${escapeHTML(kaynak.baslik)}` : ''}</span>
+                    <span class="topic-badge">${escapeHTML(kaynak.badge)}</span>
+                    <span class="topic-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+                  </a>`).join('');
+              }).join('')}
             </div>
           </div>
         </div>`).join('')}
@@ -143,12 +146,15 @@ function buildFocusedGradeHTML(data) {
             <span class="focused-topic-count">${unite.konular.length} konu</span>
           </div>
           <div class="focused-topic-list">
-            ${unite.konular.map(konu => `
-              <a href="${escapeHTML(konu.href)}" class="focused-topic-link" data-topic-list='${JSON.stringify(unite.konular).replace(/'/g, "&apos;")}'>
-                <span>${escapeHTML(String(konu.no))}</span>
-                <strong>${escapeHTML(konu.baslik)}</strong>
-                <em>${escapeHTML((konu.etiketler || []).slice(0, 3).join(' · '))}</em>
-              </a>`).join('')}
+            ${unite.konular.map(konu => {
+              const kaynaklar = Array.isArray(konu.alternatifler) ? konu.alternatifler : [{ baslik: konu.baslik, href: konu.href }];
+              return kaynaklar.map(kaynak => `
+                <a href="${escapeHTML(kaynak.href)}" class="focused-topic-link" data-topic-list='${JSON.stringify(unite.konular).replace(/'/g, "&apos;")}'>
+                  <span>${escapeHTML(String(konu.no))}</span>
+                  <strong>${escapeHTML(konu.baslik)}${konu.alternatifler ? ` · ${escapeHTML(kaynak.baslik)}` : ''}</strong>
+                  <em>${escapeHTML((konu.etiketler || []).slice(0, 3).join(' · '))}</em>
+                </a>`).join('');
+            }).join('')}
           </div>
         </article>`).join('')}
     </div>
