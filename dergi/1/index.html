@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Benim Sosyal Dünyam — 3B İnteraktif Okul Dergisi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Dynamic Ambient Background Layers -->
+  <div id="ambient-bg">
+    <div class="glow glow-1" id="glow-left"></div>
+    <div class="glow glow-2" id="glow-right"></div>
+    <div class="noise-overlay"></div>
+  </div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-card">
+      <div class="book-spinner">
+        <div class="page-flip p1"></div>
+        <div class="page-flip p2"></div>
+        <div class="page-flip p3"></div>
+      </div>
+      <h1>Benim Sosyal Dünyam</h1>
+      <p>3B İnteraktif Dergi Hazırlanıyor...</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <span class="progress-text" id="progress-text">%0</span>
+    </div>
+  </div>
+
+  <!-- Top Header Bar -->
+  <header class="top-bar" id="top-bar">
+    <div class="brand">
+      <button class="icon-btn" id="btn-toc" title="İçindekiler Menüsü" aria-label="İçindekiler">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="15" y2="12"></line>
+          <line x1="3" y1="18" x2="18" y2="18"></line>
+        </svg>
+        <span class="btn-label">İçindekiler</span>
+      </button>
+      <div class="brand-title">
+        <span class="magazine-badge">SAYI 01</span>
+        <span class="magazine-name">Benim Sosyal Dünyam</span>
+      </div>
+    </div>
+
+    <div class="current-article-pill" id="article-pill">
+      <span id="article-title">Ön Kapak</span>
+    </div>
+
+    <div class="top-actions">
+      <div class="zoom-controls">
+        <button class="icon-btn" id="btn-zoom-out" title="Uzaklaştır (-)" aria-label="Uzaklaştır">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        </button>
+        <span class="zoom-level" id="zoom-label">%100</span>
+        <button class="icon-btn" id="btn-zoom-in" title="Yakınlaştır (+)" aria-label="Yakınlaştır">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        </button>
+        <button class="icon-btn" id="btn-zoom-reset" title="Görünümü Sıfırla" aria-label="Görünümü Sıfırla" style="display:none;">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+        </button>
+      </div>
+
+      <button class="icon-btn" id="btn-sound" title="Sayfa Sesi Aç/Kapat" aria-label="Sayfa Sesi">
+        <svg id="icon-sound-on" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+        <svg id="icon-sound-off" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none;">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+      </button>
+
+      <button class="icon-btn" id="btn-fullscreen" title="Tam Ekran (F)" aria-label="Tam Ekran">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 3D WebGL Canvas Container -->
+  <main id="canvas-container">
+    <!-- Floating Side Navigation Arrows -->
+    <button class="nav-arrow nav-prev" id="btn-prev" title="Önceki Sayfa (Sol Ok)" aria-label="Önceki Sayfa">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <button class="nav-arrow nav-next" id="btn-next" title="Sonraki Sayfa (Sağ Ok)" aria-label="Sonraki Sayfa">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    <!-- Subtle Interactive Gesture Hint -->
+    <div class="gesture-hint" id="gesture-hint">
+      <span>Sayfayı çevirmek için köşesinden sürükleyin veya tıklayın • Yakınlaşmak için çift tıklayın / tekerleği kullanın</span>
+    </div>
+  </main>
+
+  <!-- Table of Contents (İçindekiler) Drawer -->
+  <aside class="toc-drawer" id="toc-drawer" aria-hidden="true">
+    <div class="toc-header">
+      <div>
+        <h2>İçindekiler</h2>
+        <p>Benim Sosyal Dünyam • 36 Sayfa</p>
+      </div>
+      <button class="icon-btn" id="btn-toc-close" aria-label="Kapat">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="toc-list" id="toc-list"></div>
+  </aside>
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <!-- Bottom Control & Thumbnail Bar -->
+  <footer class="bottom-bar" id="bottom-bar">
+    <!-- Collapsible Thumbnail Strip -->
+    <div class="thumb-strip-wrapper" id="thumb-strip-wrapper">
+      <div class="thumb-strip" id="thumb-strip"></div>
+    </div>
+
+    <div class="bottom-controls">
+      <button class="pill-btn" id="btn-thumbs-toggle" title="Sayfa Önizlemelerini Göster/Gizle">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+          <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+          <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+          <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+        </svg>
+        <span>Sayfalar</span>
+      </button>
+
+      <!-- Mobile Spread Half Switcher (Only visible in narrow portrait mode when viewing a 2-page spread) -->
+      <div class="mobile-page-focus" id="mobile-page-focus">
+        <button class="focus-tab active" id="btn-focus-left">Sol Sayfa</button>
+        <button class="focus-tab" id="btn-focus-both">İkili</button>
+        <button class="focus-tab" id="btn-focus-right">Sağ Sayfa</button>
+      </div>
+
+      <div class="page-scrubber">
+        <button class="mini-nav-btn" id="btn-first" title="Ön Kapağa Dön">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <polyline points="11 17 6 12 11 7"></polyline>
+            <polyline points="18 17 13 12 18 7"></polyline>
+          </svg>
+        </button>
+        <input type="range" id="page-slider" min="0" max="18" step="1" value="0" aria-label="Sayfa Geçiş Çubuğu" />
+        <button class="mini-nav-btn" id="btn-last" title="Arka Kapağa Git">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="page-counter" id="page-counter">
+        Ön Kapak (1 / 36)
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="app.js?v=6"></script>
+</body>
+</html>

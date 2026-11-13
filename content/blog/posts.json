@@ -1,5 +1,16 @@
 [
   {
+    "slug": "benim-sosyal-dunyam-1",
+    "baslik": "Benim Sosyal Dünyam 1. sayı",
+    "kategori": "dergi",
+    "tarih": "1. sayı",
+    "okumaSuresi": "36 sayfa",
+    "aciklama": "Benim Sosyal Dünyam'ın etkileşimli okul dergisini sayfaları çevirerek keşfedin.",
+    "href": "/dergi/1/",
+    "ikonTip": "emoji",
+    "ikon": "📖"
+  },
+  {
     "slug": "buyutmek-mi-yetistirmek-mi",
     "baslik": "Büyütmek mi, Yetiştirmek mi?",
     "kategori": "dusunce",

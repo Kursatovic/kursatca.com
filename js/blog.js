@@ -19,7 +19,8 @@ function blogIcon(post) {
 const KATEGORİ_ETIKET = {
   kitap:    'Kitap',
   tarih:    'Tarih',
-  dusunce:  'Düşünce'
+  dusunce:  'Düşünce',
+  dergi:    'Dergi'
 };
 
 /* Tek blog kartı HTML'i */

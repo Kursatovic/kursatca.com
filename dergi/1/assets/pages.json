@@ -1,0 +1,398 @@
+[
+  {
+    "magPage": 1,
+    "pdfPage": 1,
+    "src": "assets/pages/page_01.webp?v=6",
+    "thumb": "assets/thumbs/thumb_01.webp?v=6",
+    "color": [
+      150,
+      145,
+      142
+    ]
+  },
+  {
+    "magPage": 2,
+    "pdfPage": 2,
+    "src": "assets/pages/page_02.webp?v=6",
+    "thumb": "assets/thumbs/thumb_02.webp?v=6",
+    "color": [
+      247,
+      247,
+      247
+    ]
+  },
+  {
+    "magPage": 3,
+    "pdfPage": 3,
+    "src": "assets/pages/page_03.webp?v=6",
+    "thumb": "assets/thumbs/thumb_03.webp?v=6",
+    "color": [
+      224,
+      218,
+      213
+    ]
+  },
+  {
+    "magPage": 4,
+    "pdfPage": 4,
+    "src": "assets/pages/page_04.webp?v=6",
+    "thumb": "assets/thumbs/thumb_04.webp?v=6",
+    "color": [
+      198,
+      196,
+      193
+    ]
+  },
+  {
+    "magPage": 5,
+    "pdfPage": 5,
+    "src": "assets/pages/page_05.webp?v=6",
+    "thumb": "assets/thumbs/thumb_05.webp?v=6",
+    "color": [
+      165,
+      158,
+      150
+    ]
+  },
+  {
+    "magPage": 6,
+    "pdfPage": 6,
+    "src": "assets/pages/page_06.webp?v=6",
+    "thumb": "assets/thumbs/thumb_06.webp?v=6",
+    "color": [
+      163,
+      142,
+      124
+    ]
+  },
+  {
+    "magPage": 7,
+    "pdfPage": 7,
+    "src": "assets/pages/page_07.webp?v=6",
+    "thumb": "assets/thumbs/thumb_07.webp?v=6",
+    "color": [
+      188,
+      169,
+      164
+    ]
+  },
+  {
+    "magPage": 8,
+    "pdfPage": 8,
+    "src": "assets/pages/page_08.webp?v=6",
+    "thumb": "assets/thumbs/thumb_08.webp?v=6",
+    "color": [
+      194,
+      194,
+      181
+    ]
+  },
+  {
+    "magPage": 9,
+    "pdfPage": 9,
+    "src": "assets/pages/page_09.webp?v=6",
+    "thumb": "assets/thumbs/thumb_09.webp?v=6",
+    "color": [
+      190,
+      191,
+      177
+    ]
+  },
+  {
+    "magPage": 10,
+    "pdfPage": 10,
+    "src": "assets/pages/page_10.webp?v=6",
+    "thumb": "assets/thumbs/thumb_10.webp?v=6",
+    "color": [
+      189,
+      181,
+      182
+    ]
+  },
+  {
+    "magPage": 11,
+    "pdfPage": 11,
+    "src": "assets/pages/page_11.webp?v=6",
+    "thumb": "assets/thumbs/thumb_11.webp?v=6",
+    "color": [
+      186,
+      178,
+      155
+    ]
+  },
+  {
+    "magPage": 12,
+    "pdfPage": 12,
+    "src": "assets/pages/page_12.webp?v=6",
+    "thumb": "assets/thumbs/thumb_12.webp?v=6",
+    "color": [
+      175,
+      181,
+      175
+    ]
+  },
+  {
+    "magPage": 13,
+    "pdfPage": 13,
+    "src": "assets/pages/page_13.webp?v=6",
+    "thumb": "assets/thumbs/thumb_13.webp?v=6",
+    "color": [
+      162,
+      136,
+      98
+    ]
+  },
+  {
+    "magPage": 14,
+    "pdfPage": 14,
+    "src": "assets/pages/page_14.webp?v=6",
+    "thumb": "assets/thumbs/thumb_14.webp?v=6",
+    "color": [
+      190,
+      147,
+      149
+    ]
+  },
+  {
+    "magPage": 15,
+    "pdfPage": 15,
+    "src": "assets/pages/page_15.webp?v=6",
+    "thumb": "assets/thumbs/thumb_15.webp?v=6",
+    "color": [
+      180,
+      169,
+      162
+    ]
+  },
+  {
+    "magPage": 16,
+    "pdfPage": 16,
+    "src": "assets/pages/page_16.webp?v=6",
+    "thumb": "assets/thumbs/thumb_16.webp?v=6",
+    "color": [
+      184,
+      174,
+      165
+    ]
+  },
+  {
+    "magPage": 17,
+    "pdfPage": 17,
+    "src": "assets/pages/page_17.webp?v=6",
+    "thumb": "assets/thumbs/thumb_17.webp?v=6",
+    "color": [
+      176,
+      167,
+      160
+    ]
+  },
+  {
+    "magPage": 18,
+    "pdfPage": 18,
+    "src": "assets/pages/page_18.webp?v=6",
+    "thumb": "assets/thumbs/thumb_18.webp?v=6",
+    "color": [
+      161,
+      153,
+      140
+    ]
+  },
+  {
+    "magPage": 19,
+    "pdfPage": 19,
+    "src": "assets/pages/page_19.webp?v=6",
+    "thumb": "assets/thumbs/thumb_19.webp?v=6",
+    "color": [
+      158,
+      146,
+      132
+    ]
+  },
+  {
+    "magPage": 20,
+    "pdfPage": 20,
+    "src": "assets/pages/page_20.webp?v=6",
+    "thumb": "assets/thumbs/thumb_20.webp?v=6",
+    "color": [
+      232,
+      231,
+      226
+    ]
+  },
+  {
+    "magPage": 21,
+    "pdfPage": 21,
+    "src": "assets/pages/page_21.webp?v=6",
+    "thumb": "assets/thumbs/thumb_21.webp?v=6",
+    "color": [
+      199,
+      195,
+      167
+    ]
+  },
+  {
+    "magPage": 22,
+    "pdfPage": 22,
+    "src": "assets/pages/page_22.webp?v=6",
+    "thumb": "assets/thumbs/thumb_22.webp?v=6",
+    "color": [
+      161,
+      168,
+      185
+    ]
+  },
+  {
+    "magPage": 23,
+    "pdfPage": 23,
+    "src": "assets/pages/page_23.webp?v=6",
+    "thumb": "assets/thumbs/thumb_23.webp?v=6",
+    "color": [
+      142,
+      124,
+      123
+    ]
+  },
+  {
+    "magPage": 24,
+    "pdfPage": 24,
+    "src": "assets/pages/page_24.webp?v=6",
+    "thumb": "assets/thumbs/thumb_24.webp?v=6",
+    "color": [
+      192,
+      178,
+      163
+    ]
+  },
+  {
+    "magPage": 25,
+    "pdfPage": 25,
+    "src": "assets/pages/page_25.webp?v=6",
+    "thumb": "assets/thumbs/thumb_25.webp?v=6",
+    "color": [
+      133,
+      117,
+      87
+    ]
+  },
+  {
+    "magPage": 26,
+    "pdfPage": 26,
+    "src": "assets/pages/page_26.webp?v=6",
+    "thumb": "assets/thumbs/thumb_26.webp?v=6",
+    "color": [
+      162,
+      151,
+      138
+    ]
+  },
+  {
+    "magPage": 27,
+    "pdfPage": 27,
+    "src": "assets/pages/page_27.webp?v=6",
+    "thumb": "assets/thumbs/thumb_27.webp?v=6",
+    "color": [
+      162,
+      153,
+      138
+    ]
+  },
+  {
+    "magPage": 28,
+    "pdfPage": 28,
+    "src": "assets/pages/page_28.webp?v=6",
+    "thumb": "assets/thumbs/thumb_28.webp?v=6",
+    "color": [
+      197,
+      177,
+      157
+    ]
+  },
+  {
+    "magPage": 29,
+    "pdfPage": 29,
+    "src": "assets/pages/page_29.webp?v=6",
+    "thumb": "assets/thumbs/thumb_29.webp?v=6",
+    "color": [
+      161,
+      148,
+      132
+    ]
+  },
+  {
+    "magPage": 30,
+    "pdfPage": 30,
+    "src": "assets/pages/page_30.webp?v=6",
+    "thumb": "assets/thumbs/thumb_30.webp?v=6",
+    "color": [
+      135,
+      152,
+      163
+    ]
+  },
+  {
+    "magPage": 31,
+    "pdfPage": 31,
+    "src": "assets/pages/page_31.webp?v=6",
+    "thumb": "assets/thumbs/thumb_31.webp?v=6",
+    "color": [
+      184,
+      164,
+      146
+    ]
+  },
+  {
+    "magPage": 32,
+    "pdfPage": 32,
+    "src": "assets/pages/page_32.webp?v=6",
+    "thumb": "assets/thumbs/thumb_32.webp?v=6",
+    "color": [
+      194,
+      199,
+      190
+    ]
+  },
+  {
+    "magPage": 33,
+    "pdfPage": 33,
+    "src": "assets/pages/page_33.webp?v=6",
+    "thumb": "assets/thumbs/thumb_33.webp?v=6",
+    "color": [
+      198,
+      201,
+      190
+    ]
+  },
+  {
+    "magPage": 34,
+    "pdfPage": 34,
+    "src": "assets/pages/page_34.webp?v=6",
+    "thumb": "assets/thumbs/thumb_34.webp?v=6",
+    "color": [
+      179,
+      169,
+      158
+    ]
+  },
+  {
+    "magPage": 35,
+    "pdfPage": 35,
+    "src": "assets/pages/page_35.webp?v=6",
+    "thumb": "assets/thumbs/thumb_35.webp?v=6",
+    "color": [
+      234,
+      230,
+      221
+    ]
+  },
+  {
+    "magPage": 36,
+    "pdfPage": 36,
+    "src": "assets/pages/page_36.webp?v=6",
+    "thumb": "assets/thumbs/thumb_36.webp?v=6",
+    "color": [
+      150,
+      149,
+      154
+    ]
+  }
+]
